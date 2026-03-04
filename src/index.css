@@ -4,11 +4,6 @@
 @theme {
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-display: 'Playfair Display', Georgia, serif;
-  --color-brand: #9b1b30;
-  --color-brand-light: #c2314a;
-  --color-brand-dark: #7a1526;
-  --color-mint: #d4a574;
-  --color-mint-light: #e0be98;
 }
 
 #root { width: 100%; min-height: 100vh; }
@@ -21,18 +16,15 @@ html {
 }
 
 body {
-  background-color: #0a0a0f;
-  color: #e2e8f0;
   font-family: 'Inter', system-ui, sans-serif;
   overflow-x: hidden;
   width: 100%;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 ::selection { background-color: #9b1b30; color: white; }
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0a0a0f; }
-::-webkit-scrollbar-thumb { background: #2a2a35; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #9b1b30; }
+::-webkit-scrollbar-thumb { background: #9b1b30; border-radius: 3px; }
 
 /* ── Animations ── */
 @keyframes fade-up {
@@ -78,27 +70,6 @@ body {
 .rv-d3 { transition-delay: 0.3s; }
 .rv-d4 { transition-delay: 0.4s; }
 
-/* ── Glass ── */
-.glass {
-  background: rgba(16, 16, 24, 0.75);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(155, 27, 48, 0.15);
-}
-.glass-card {
-  background: rgba(20, 20, 30, 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.glass-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(155, 27, 48, 0.3);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(155,27,48,0.1);
-}
-
 /* ── CTA Button ── */
 .btn-cta {
   display: inline-flex;
@@ -138,26 +109,3 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-
-/* ── Grid background ── */
-.bg-grid {
-  background-image:
-    linear-gradient(rgba(155,27,48,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(155,27,48,0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
-/* ── Drawer mobile ── */
-.drawer-overlay {
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  background: rgba(10, 10, 15, 0.8);
-}
-.drawer-panel {
-  background: rgba(16, 16, 24, 0.97);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-}
-
-/* ── Section alt bg ── */
-.section-alt { background: rgba(16, 16, 24, 0.4); }
