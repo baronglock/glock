@@ -37,7 +37,7 @@ const IMG = {
   caseAuto: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80&auto=format&fit=crop',
   caseWeb: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80&auto=format&fit=crop',
   ctaBg: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1400&q=80&auto=format&fit=crop',
-  divider: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1400&q=80&auto=format&fit=crop&h=500',
+  divider: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=90&auto=format&fit=crop',
   svcData: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80&auto=format&fit=crop',
   svcAuto: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&q=80&auto=format&fit=crop',
   svcChat: 'https://images.unsplash.com/photo-1531746790095-e5a2ebf3fa62?w=900&q=80&auto=format&fit=crop',
