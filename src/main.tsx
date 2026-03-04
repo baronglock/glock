@@ -18,7 +18,7 @@ createRoot(document.getElementById('root')!).render(
             path={`/servicos/${slug}`}
             element={
               <Layout>
-                <ServicePage data={data} />
+                <ServicePage data={data} slug={slug} />
               </Layout>
             }
           />

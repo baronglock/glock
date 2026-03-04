@@ -4,6 +4,15 @@ import { useReveal } from '../hooks/useReveal';
 import { useLanguage } from '../hooks/useLanguage';
 import { useTheme } from '../hooks/useTheme';
 
+const SERVICE_IMAGES: Record<string, string> = {
+  'extracao-de-dados': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80&auto=format&fit=crop',
+  'automacao': 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80&auto=format&fit=crop',
+  'chatbots': 'https://images.unsplash.com/photo-1531746790095-e5a2ebf3fa62?w=1200&q=80&auto=format&fit=crop',
+  'sites': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80&auto=format&fit=crop',
+  'dashboards': 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&q=80&auto=format&fit=crop',
+  'consultoria-ia': 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&q=80&auto=format&fit=crop',
+};
+
 export interface ServicePageData {
   icon: any;
   titlePt: string;
@@ -20,11 +29,12 @@ export interface ServicePageData {
   ctaEn: string;
 }
 
-export function ServicePage({ data }: { data: ServicePageData }) {
+export function ServicePage({ data, slug }: { data: ServicePageData; slug: string }) {
   const { lang, t } = useLanguage();
   const { colors } = useTheme();
   const ref = useReveal();
   const Icon = data.icon;
+  const heroImg = SERVICE_IMAGES[slug] || SERVICE_IMAGES['consultoria-ia'];
 
   const title = lang === 'pt' ? data.titlePt : data.titleEn;
   const subtitle = lang === 'pt' ? data.subtitlePt : data.subtitleEn;
@@ -35,42 +45,44 @@ export function ServicePage({ data }: { data: ServicePageData }) {
 
   return (
     <div ref={ref}>
-      {/* Hero */}
-      <section style={{
-        paddingTop: 140, paddingBottom: 80, width: '100%', position: 'relative', overflow: 'hidden',
-        backgroundImage: `linear-gradient(${colors.gridLine} 1px, transparent 1px), linear-gradient(90deg, ${colors.gridLine} 1px, transparent 1px)`,
-        backgroundSize: '60px 60px',
-      }}>
-        <div style={{ position: 'absolute', top: '10%', right: '10%', width: 400, height: 400, background: `radial-gradient(circle, ${colors.orbBrand} 0%, transparent 70%)`, borderRadius: '50%', pointerEvents: 'none', filter: 'blur(80px)' }} />
+      {/* Hero with image */}
+      <section style={{ position: 'relative', width: '100%', overflow: 'hidden' }}>
+        {/* Background image */}
+        <div style={{ position: 'absolute', inset: 0 }}>
+          <img src={heroImg} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="eager" />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(10,10,15,0.95) 40%, rgba(10,10,15,0.6) 70%, rgba(155,27,48,0.2))' }} />
+        </div>
 
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 10 }}>
-          <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: colors.textMuted, textDecoration: 'none', fontSize: 14, marginBottom: 32, transition: 'color 0.3s' }}
-            onMouseEnter={e => e.currentTarget.style.color = colors.brand}
-            onMouseLeave={e => e.currentTarget.style.color = colors.textMuted}>
+        <div style={{ position: 'relative', zIndex: 10, maxWidth: 1200, margin: '0 auto', padding: '160px 24px 100px' }}>
+          <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: 'rgba(255,255,255,0.6)', textDecoration: 'none', fontSize: 14, marginBottom: 32, transition: 'color 0.3s' }}
+            onMouseEnter={e => e.currentTarget.style.color = '#e8a0a0'}
+            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}>
             <ArrowLeft size={16} />
             {lang === 'pt' ? 'Voltar ao início' : 'Back to home'}
           </Link>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 24 }}>
-            <div className="reveal" style={{ width: 56, height: 56, borderRadius: 14, background: 'rgba(155,27,48,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Icon size={28} style={{ color: colors.brandLight }} />
+            <div className="reveal" style={{ width: 56, height: 56, borderRadius: 14, background: 'rgba(155,27,48,0.2)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Icon size={28} style={{ color: '#e8a0a0' }} />
             </div>
           </div>
 
-          <h1 className="reveal rv-d1" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 700, color: colors.white, marginBottom: 16, lineHeight: 1.15, maxWidth: 700 }}>
+          <h1 className="reveal rv-d1" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 700, color: '#fff', marginBottom: 16, lineHeight: 1.15, maxWidth: 700 }}>
             {title}
           </h1>
 
-          <p className="reveal rv-d2" style={{ fontSize: 20, color: colors.brandLight, fontWeight: 500, marginBottom: 24 }}>
+          <p className="reveal rv-d2" style={{ fontSize: 20, color: '#e8a0a0', fontWeight: 500, marginBottom: 24 }}>
             {subtitle}
           </p>
 
-          <p className="reveal rv-d3" style={{ fontSize: 17, color: colors.textMuted, lineHeight: 1.8, maxWidth: 650 }}>
+          <p className="reveal rv-d3" style={{ fontSize: 17, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, maxWidth: 600 }}>
             {desc}
           </p>
-        </div>
 
-        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 80, background: `linear-gradient(to top, ${colors.bg}, transparent)`, pointerEvents: 'none' }} />
+          <a href="/#contato" className="btn-cta reveal rv-d4" style={{ marginTop: 32, padding: '14px 36px', fontSize: 16, display: 'inline-flex' }}>
+            {t('hero.cta')} <ArrowRight size={16} />
+          </a>
+        </div>
       </section>
 
       {/* Benefits */}
@@ -124,13 +136,15 @@ export function ServicePage({ data }: { data: ServicePageData }) {
         </div>
       </section>
 
-      {/* CTA */}
-      <section style={{ padding: '80px 0', background: colors.bgAlt }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
-          <h2 className="reveal" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', fontWeight: 700, color: colors.white, marginBottom: 16 }}>
+      {/* CTA with background image */}
+      <section style={{ position: 'relative', padding: '100px 0', overflow: 'hidden' }}>
+        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1400&q=80&auto=format&fit=crop" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(10,10,15,0.9), rgba(155,27,48,0.25), rgba(10,10,15,0.92))' }} />
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative', zIndex: 10 }}>
+          <h2 className="reveal" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', fontWeight: 700, color: '#fff', marginBottom: 16 }}>
             {cta}
           </h2>
-          <p className="reveal rv-d1" style={{ color: colors.textMuted, marginBottom: 32, fontSize: 17 }}>
+          <p className="reveal rv-d1" style={{ color: 'rgba(255,255,255,0.7)', marginBottom: 32, fontSize: 17 }}>
             {lang === 'pt' ? 'Vamos conversar sobre como podemos ajudar.' : "Let's talk about how we can help."}
           </p>
           <a href="/#contato" className="btn-cta anim-pulse-glow reveal rv-d2" style={{ padding: '16px 40px', fontSize: 17 }}>

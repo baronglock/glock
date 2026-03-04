@@ -28,54 +28,98 @@ function Section({ children, className = '', id, alt, style, colors }: { childre
   );
 }
 
+/* ── Image URLs ── */
+const IMG = {
+  heroAi: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80&auto=format&fit=crop',
+  heroTeam: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&auto=format&fit=crop',
+  about: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=700&q=80&auto=format&fit=crop',
+  caseData: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&auto=format&fit=crop',
+  caseAuto: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80&auto=format&fit=crop',
+  caseWeb: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80&auto=format&fit=crop',
+  ctaBg: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1400&q=80&auto=format&fit=crop',
+  divider: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1400&q=80&auto=format&fit=crop&h=500',
+  svcData: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80&auto=format&fit=crop',
+  svcAuto: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&q=80&auto=format&fit=crop',
+  svcChat: 'https://images.unsplash.com/photo-1531746790095-e5a2ebf3fa62?w=900&q=80&auto=format&fit=crop',
+  svcSites: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80&auto=format&fit=crop',
+  svcDash: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&q=80&auto=format&fit=crop',
+  svcConsult: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=900&q=80&auto=format&fit=crop',
+};
+
 /* ═══════════════ HERO ═══════════════ */
 function Hero({ t, lang, colors }: any) {
   return (
     <section style={{
-      position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', width: '100%',
+      position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden', width: '100%',
       backgroundImage: `linear-gradient(${colors.gridLine} 1px, transparent 1px), linear-gradient(90deg, ${colors.gridLine} 1px, transparent 1px)`,
       backgroundSize: '60px 60px',
     }}>
       <div style={{ position: 'absolute', top: '15%', left: '15%', width: 500, height: 500, background: `radial-gradient(circle, ${colors.orbBrand} 0%, transparent 70%)`, borderRadius: '50%', pointerEvents: 'none', filter: 'blur(80px)' }} />
       <div style={{ position: 'absolute', bottom: '20%', right: '10%', width: 400, height: 400, background: `radial-gradient(circle, ${colors.orbGold} 0%, transparent 70%)`, borderRadius: '50%', pointerEvents: 'none', filter: 'blur(80px)' }} />
 
-      <W style={{ paddingTop: 120, paddingBottom: 80, textAlign: 'center', position: 'relative', zIndex: 10 }}>
-        <h1 className="anim-fade-up" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: 28 }}>
-          <span style={{ color: colors.white }}>{t('hero.title1')}</span>
-          <br />
-          <span className="text-gradient">{t('hero.title2')}</span>
-        </h1>
+      <W style={{ paddingTop: 120, paddingBottom: 80, position: 'relative', zIndex: 10 }}>
+        <div id="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'center' }}>
+          {/* Left: text */}
+          <div>
+            <h1 className="anim-fade-up" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(2.2rem, 5vw, 4rem)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: 28 }}>
+              <span style={{ color: colors.white }}>{t('hero.title1')}</span>
+              <br />
+              <span className="text-gradient">{t('hero.title2')}</span>
+            </h1>
 
-        <p className="anim-fade-up" style={{ maxWidth: 620, margin: '0 auto 44px', color: colors.textMuted, fontSize: 'clamp(1rem, 2vw, 1.125rem)', lineHeight: 1.75, animationDelay: '0.2s' }}>
-          {t('hero.sub')}
-        </p>
+            <p className="anim-fade-up" style={{ maxWidth: 520, color: colors.textMuted, fontSize: 'clamp(1rem, 2vw, 1.125rem)', lineHeight: 1.75, animationDelay: '0.2s', marginBottom: 36 }}>
+              {t('hero.sub')}
+            </p>
 
-        <div className="anim-fade-up" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: 16, animationDelay: '0.35s' }}>
-          <a href="#contato" className="btn-cta" style={{ padding: '14px 36px', fontSize: 16 }}>
-            {t('hero.cta')} <ArrowRight size={16} />
-          </a>
-          <a href="#servicos" style={{
-            padding: '14px 36px', borderRadius: 9999, border: `1px solid ${colors.border}`, color: colors.text,
-            fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: 8, textDecoration: 'none',
-            transition: 'all 0.3s ease', fontSize: 16,
-          }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = colors.brand; e.currentTarget.style.color = colors.white; }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = colors.border; e.currentTarget.style.color = colors.text; }}
-          >
-            {t('hero.cta2')} <ChevronRight size={16} />
-          </a>
+            <div className="anim-fade-up" style={{ display: 'flex', flexWrap: 'wrap', gap: 16, animationDelay: '0.35s', marginBottom: 40 }}>
+              <a href="#contato" className="btn-cta" style={{ padding: '14px 36px', fontSize: 16 }}>
+                {t('hero.cta')} <ArrowRight size={16} />
+              </a>
+              <a href="#servicos" style={{
+                padding: '14px 36px', borderRadius: 9999, border: `1px solid ${colors.border}`, color: colors.text,
+                fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: 8, textDecoration: 'none',
+                transition: 'all 0.3s ease', fontSize: 16,
+              }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = colors.brand; e.currentTarget.style.color = colors.white; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = colors.border; e.currentTarget.style.color = colors.text; }}
+              >
+                {t('hero.cta2')} <ChevronRight size={16} />
+              </a>
+            </div>
+
+            <div className="anim-fade-up" style={{ display: 'flex', flexWrap: 'wrap', gap: 10, animationDelay: '0.5s' }}>
+              {(lang === 'pt'
+                ? ['Dados sob medida', 'Processos automatizados', 'Atendimento 24h', 'Presença digital premium', 'Decisões baseadas em dados', 'IA aplicada']
+                : ['Custom data', 'Automated processes', '24/7 support', 'Premium digital presence', 'Data-driven decisions', 'Applied AI']
+              ).map((tag) => (
+                <span key={tag} style={{ padding: '5px 14px', borderRadius: 9999, background: colors.badgeBg, border: `1px solid ${colors.badgeBorder}`, fontSize: 12, color: colors.textDim, fontWeight: 500 }}>
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: image collage */}
+          <div className="anim-fade-up" style={{ position: 'relative', animationDelay: '0.3s' }}>
+            <div style={{ position: 'relative', borderRadius: 20, overflow: 'hidden', boxShadow: `0 40px 80px ${colors.shadow}`, border: `1px solid ${colors.glassCardBorder}` }}>
+              <img src={IMG.heroAi} alt="AI visualization" style={{ width: '100%', height: 380, objectFit: 'cover', display: 'block' }} loading="eager" />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(155,27,48,0.15), transparent 60%)' }} />
+            </div>
+            <div style={{
+              position: 'absolute', bottom: -24, left: -24, width: 180, height: 180, borderRadius: 16, overflow: 'hidden',
+              boxShadow: `0 20px 40px ${colors.shadow}`, border: `2px solid ${colors.glassCardBorder}`,
+            }}>
+              <img src={IMG.heroTeam} alt="Team collaboration" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading="eager" />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(155,27,48,0.1), transparent 50%)' }} />
+            </div>
+          </div>
         </div>
-
-        <div className="anim-fade-up" style={{ marginTop: 64, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 10, animationDelay: '0.5s' }}>
-          {(lang === 'pt'
-            ? ['Dados sob medida', 'Processos automatizados', 'Atendimento 24h', 'Presença digital premium', 'Decisões baseadas em dados', 'Inteligência artificial aplicada']
-            : ['Custom data', 'Automated processes', '24/7 support', 'Premium digital presence', 'Data-driven decisions', 'Applied AI']
-          ).map((tag) => (
-            <span key={tag} style={{ padding: '5px 14px', borderRadius: 9999, background: colors.badgeBg, border: `1px solid ${colors.badgeBorder}`, fontSize: 12, color: colors.textDim, fontWeight: 500 }}>
-              {tag}
-            </span>
-          ))}
-        </div>
+        <style>{`
+          @media (max-width: 768px) {
+            #hero-grid { grid-template-columns: 1fr !important; text-align: center; }
+            #hero-grid > div:last-child { display: none; }
+          }
+        `}</style>
       </W>
 
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 120, background: `linear-gradient(to top, ${colors.bg}, transparent)`, pointerEvents: 'none' }} />
@@ -238,19 +282,39 @@ function Process({ lang, colors }: any) {
   );
 }
 
+/* ═══════════════ IMAGE DIVIDER ═══════════════ */
+function ImageDivider({ colors }: any) {
+  return (
+    <div style={{ position: 'relative', width: '100%', height: 360, overflow: 'hidden' }}>
+      <img src={IMG.divider} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading="lazy" />
+      <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, ${colors.bg}, rgba(155,27,48,0.15), ${colors.bgAlt})` }} />
+    </div>
+  );
+}
+
 /* ═══════════════ ABOUT ═══════════════ */
 function About({ t, colors }: any) {
-  const skills = [
-    { icon: Database, label: 'Data Engineering' },
-    { icon: Bot, label: 'AI & Automation' },
-    { icon: Globe, label: 'Web Development' },
-    { icon: MessageSquare, label: 'Chatbots & NLP' },
-  ];
-
   return (
     <Section id="sobre" alt colors={colors} style={{ padding: '96px 0' }}>
       <W>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: 48, alignItems: 'center' }}>
+        <div id="about-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'center' }}>
+          {/* Image */}
+          <div className="reveal" style={{ position: 'relative' }}>
+            <div style={{ borderRadius: 20, overflow: 'hidden', boxShadow: `0 30px 60px ${colors.shadow}`, border: `1px solid ${colors.glassCardBorder}` }}>
+              <img src={IMG.about} alt="Technology workspace" style={{ width: '100%', height: 420, objectFit: 'cover', display: 'block' }} loading="lazy" />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(155,27,48,0.1), transparent 50%)' }} />
+            </div>
+            {/* Floating stats card */}
+            <div style={{
+              position: 'absolute', bottom: -16, right: -16, padding: '20px 28px', borderRadius: 16,
+              background: colors.glassCard, backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
+              border: `1px solid ${colors.glassCardBorder}`, boxShadow: `0 20px 40px ${colors.shadow}`,
+            }}>
+              <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 28, fontWeight: 700, color: colors.brandLight }}>5+</div>
+              <div style={{ fontSize: 12, color: colors.textDim, fontWeight: 500 }}>anos de experiência</div>
+            </div>
+          </div>
+          {/* Text */}
           <div>
             <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', borderRadius: 9999, background: 'rgba(155,27,48,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
               {t('about.tag')}
@@ -259,23 +323,23 @@ function About({ t, colors }: any) {
               {t('about.title')}
             </h2>
             <p className="reveal rv-d2" style={{ color: colors.textMuted, lineHeight: 1.75, marginBottom: 16 }}>{t('about.p1')}</p>
-            <p className="reveal rv-d3" style={{ color: colors.textMuted, lineHeight: 1.75 }}>{t('about.p2')}</p>
-          </div>
-          <div className="reveal rv-d2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
-            {skills.map((item) => (
-              <div key={item.label} style={{
-                padding: 24, textAlign: 'center', borderRadius: 16, background: colors.glassCard, border: `1px solid ${colors.glassCardBorder}`,
-                transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)',
-              }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.borderColor = colors.borderHover; }}
-                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = colors.glassCardBorder; }}
-              >
-                <item.icon size={28} style={{ color: colors.brandLight, margin: '0 auto 12px' }} />
-                <span style={{ fontSize: 14, color: colors.text, fontWeight: 500 }}>{item.label}</span>
-              </div>
-            ))}
+            <p className="reveal rv-d3" style={{ color: colors.textMuted, lineHeight: 1.75, marginBottom: 32 }}>{t('about.p2')}</p>
+            <div className="reveal rv-d4" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+              {[
+                { icon: Database, label: 'Data Engineering' },
+                { icon: Bot, label: 'AI & Automation' },
+                { icon: Globe, label: 'Web Development' },
+                { icon: MessageSquare, label: 'Chatbots & NLP' },
+              ].map((item) => (
+                <div key={item.label} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', borderRadius: 12, background: colors.glassCard, border: `1px solid ${colors.glassCardBorder}` }}>
+                  <item.icon size={20} style={{ color: colors.brandLight, flexShrink: 0 }} />
+                  <span style={{ fontSize: 13, color: colors.text, fontWeight: 500 }}>{item.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
+        <style>{`@media (max-width: 768px) { #about-grid { grid-template-columns: 1fr !important; } }`}</style>
       </W>
     </Section>
   );
@@ -283,6 +347,7 @@ function About({ t, colors }: any) {
 
 /* ═══════════════ CASES ═══════════════ */
 function Cases({ lang, colors }: any) {
+  const caseImages = [IMG.caseData, IMG.caseAuto, IMG.caseWeb];
   const cases = lang === 'pt' ? [
     { title: 'Inteligência de Mercado — Base Empresarial', desc: 'Extração e organização de mais de 1.6 milhão de registros empresariais para prospecção comercial. Dados de contato, sócios, atividade econômica e situação fiscal — tudo limpo e pronto para uso.', tags: ['Dados Públicos', 'Prospecção', 'Inteligência Comercial'], metric: '1.6M+ empresas mapeadas' },
     { title: 'Automação Inteligente para Escritório', desc: 'Sistema completo de prospecção automatizada, atendimento via WhatsApp com IA, gestão financeira automatizada e painel de acompanhamento em tempo real.', tags: ['Automação', 'WhatsApp', 'IA', 'Gestão'], metric: '70% menos trabalho manual' },
@@ -301,21 +366,33 @@ function Cases({ lang, colors }: any) {
           <h2 className="reveal rv-d1" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 700, color: colors.white }}>Cases</h2>
         </div>
         <div id="cases-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
-          {cases.map((c) => (
+          {cases.map((c, i) => (
             <div key={c.title} className="reveal" style={{
-              padding: 28, display: 'flex', flexDirection: 'column', borderRadius: 16, background: colors.glassCard, border: `1px solid ${colors.glassCardBorder}`,
-              transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)',
+              display: 'flex', flexDirection: 'column', borderRadius: 16, background: colors.glassCard, border: `1px solid ${colors.glassCardBorder}`,
+              transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)', overflow: 'hidden',
             }}
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.borderColor = colors.borderHover; }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = colors.glassCardBorder; }}
             >
-              <span style={{ display: 'inline-block', padding: '4px 12px', borderRadius: 6, background: 'rgba(212,165,116,0.1)', color: colors.gold, fontSize: 12, fontWeight: 600, marginBottom: 16, alignSelf: 'flex-start' }}>{c.metric}</span>
-              <h3 style={{ fontSize: 18, fontWeight: 600, color: colors.white, marginBottom: 12 }}>{c.title}</h3>
-              <p style={{ color: colors.textMuted, fontSize: 14, lineHeight: 1.7, marginBottom: 20, flex: 1 }}>{c.desc}</p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                {c.tags.map((tag) => (
-                  <span key={tag} style={{ padding: '3px 10px', borderRadius: 9999, background: colors.tagBg, border: `1px solid ${colors.tagBorder}`, fontSize: 12, color: colors.textDim, fontWeight: 500 }}>{tag}</span>
-                ))}
+              {/* Case image */}
+              <div style={{ position: 'relative', height: 180, overflow: 'hidden' }}>
+                <img src={caseImages[i]} alt={c.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }}
+                  loading="lazy"
+                  onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
+                  onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+                />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.6), transparent 60%)' }} />
+                <span style={{ position: 'absolute', bottom: 12, left: 16, padding: '4px 12px', borderRadius: 6, background: 'rgba(212,165,116,0.2)', backdropFilter: 'blur(8px)', color: colors.gold, fontSize: 12, fontWeight: 600 }}>{c.metric}</span>
+              </div>
+              {/* Case content */}
+              <div style={{ padding: 24, display: 'flex', flexDirection: 'column', flex: 1 }}>
+                <h3 style={{ fontSize: 17, fontWeight: 600, color: colors.white, marginBottom: 12 }}>{c.title}</h3>
+                <p style={{ color: colors.textMuted, fontSize: 14, lineHeight: 1.7, marginBottom: 20, flex: 1 }}>{c.desc}</p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                  {c.tags.map((tag) => (
+                    <span key={tag} style={{ padding: '3px 10px', borderRadius: 9999, background: colors.tagBg, border: `1px solid ${colors.tagBorder}`, fontSize: 12, color: colors.textDim, fontWeight: 500 }}>{tag}</span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
@@ -327,18 +404,20 @@ function Cases({ lang, colors }: any) {
 }
 
 /* ═══════════════ CTA ═══════════════ */
-function CtaSection({ t, colors }: any) {
+function CtaSection({ t }: any) {
   return (
-    <Section alt colors={colors} style={{ padding: '96px 0', position: 'relative', overflow: 'hidden' }}>
-      <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(135deg, rgba(155,27,48,0.04), transparent 50%, rgba(212,165,116,0.03))`, pointerEvents: 'none' }} />
+    <section style={{ position: 'relative', overflow: 'hidden', padding: '120px 0' }}>
+      {/* Background image */}
+      <img src={IMG.ctaBg} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(10,10,15,0.88), rgba(155,27,48,0.3), rgba(10,10,15,0.92))' }} />
       <W style={{ textAlign: 'center', position: 'relative', zIndex: 10 }}>
-        <h2 className="reveal" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.8rem, 5vw, 3rem)', fontWeight: 700, color: colors.white, marginBottom: 24 }}>{t('cta.title')}</h2>
-        <p className="reveal rv-d1" style={{ color: colors.textMuted, maxWidth: 500, margin: '0 auto 40px', fontSize: 18, lineHeight: 1.7 }}>{t('cta.sub')}</p>
+        <h2 className="reveal" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.8rem, 5vw, 3rem)', fontWeight: 700, color: '#fff', marginBottom: 24 }}>{t('cta.title')}</h2>
+        <p className="reveal rv-d1" style={{ color: 'rgba(255,255,255,0.7)', maxWidth: 500, margin: '0 auto 40px', fontSize: 18, lineHeight: 1.7 }}>{t('cta.sub')}</p>
         <a href="#contato" className="btn-cta anim-pulse-glow reveal rv-d2" style={{ padding: '16px 40px', fontSize: 18 }}>
           {t('cta.btn')} <ArrowRight size={18} />
         </a>
       </W>
-    </Section>
+    </section>
   );
 }
 
@@ -437,6 +516,7 @@ export default function App() {
       <Navbar t={t} lang={lang} toggle={toggle} colors={colors} theme={theme} toggleTheme={toggleTheme} />
       <Hero t={t} lang={lang} colors={colors} />
       <Services t={t} lang={lang} colors={colors} />
+      <ImageDivider colors={colors} />
       <Metrics t={t} colors={colors} />
       <Process lang={lang} colors={colors} />
       <About t={t} colors={colors} />
