@@ -9,7 +9,7 @@ export function Footer({ t, lang, colors }: any) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 32, marginBottom: 40 }}>
           <div>
             <Link to="/" style={{ textDecoration: 'none' }}>
-              <GlockLogo size={24} />
+              <GlockLogo size={24} colors={colors} />
             </Link>
             <p style={{ fontSize: 13, color: colors.textDim, marginTop: 12, lineHeight: 1.6 }}>{lang === 'pt' ? 'Automação, Dados e IA' : 'Automation, Data & AI'}</p>
           </div>
