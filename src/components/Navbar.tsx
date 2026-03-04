@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Languages, Sun, Moon, ArrowLeft } from 'lucide-react';
+import { GlockLogo } from './GlockLogo';
 
 export function Navbar({ t, lang, toggle, colors, theme, toggleTheme }: any) {
   const [scrolled, setScrolled] = useState(false);
@@ -38,11 +39,9 @@ export function Navbar({ t, lang, toggle, colors, theme, toggleTheme }: any) {
       }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
           <div style={{ height: 72, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'baseline', gap: 10 }}>
-              {!isHome && <ArrowLeft size={16} style={{ color: colors.textMuted, alignSelf: 'center' }} />}
-              <span style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 26, fontWeight: 700, color: colors.white, letterSpacing: '-0.03em' }}>
-                Glock<span style={{ color: colors.brand }}>.</span>
-              </span>
+            <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 10 }}>
+              {!isHome && <ArrowLeft size={16} style={{ color: colors.textMuted }} />}
+              <GlockLogo size={26} />
               <span className="hidden sm:inline" style={{ fontSize: 11, color: colors.textDim, fontWeight: 400, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                 {lang === 'pt' ? 'Automação, Dados e IA' : 'Automation, Data & AI'}
               </span>

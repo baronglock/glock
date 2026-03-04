@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Instagram, Linkedin, Github } from 'lucide-react';
+import { GlockLogo } from './GlockLogo';
 
 export function Footer({ t, lang, colors }: any) {
   return (
@@ -8,7 +9,7 @@ export function Footer({ t, lang, colors }: any) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 32, marginBottom: 40 }}>
           <div>
             <Link to="/" style={{ textDecoration: 'none' }}>
-              <span style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 24, fontWeight: 700, color: colors.white }}>Glock<span style={{ color: colors.brand }}>.</span></span>
+              <GlockLogo size={24} />
             </Link>
             <p style={{ fontSize: 13, color: colors.textDim, marginTop: 12, lineHeight: 1.6 }}>{lang === 'pt' ? 'Automação, Dados e IA' : 'Automation, Data & AI'}</p>
           </div>
