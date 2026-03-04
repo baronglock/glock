@@ -30,7 +30,7 @@ function Section({ children, className = '', id, alt, style, colors }: { childre
 
 /* ── Image URLs ── */
 const IMG = {
-  heroAi: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&q=85&auto=format&fit=crop&crop=center',
+  heroAi: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=900&q=85&auto=format&fit=crop',
   heroTeam: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&auto=format&fit=crop',
   about: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=700&q=80&auto=format&fit=crop',
   caseData: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&auto=format&fit=crop',
@@ -53,6 +53,13 @@ function Hero({ t, lang, colors }: any) {
       position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden', width: '100%',
       backgroundImage: colors.neuralBg,
     }}>
+      {/* Animated gradient overlay */}
+      <div style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.4,
+        background: 'radial-gradient(ellipse at 20% 50%, rgba(155,27,48,0.15), transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(212,165,116,0.1), transparent 50%), radial-gradient(ellipse at 60% 80%, rgba(155,27,48,0.08), transparent 50%)',
+        backgroundSize: '200% 200%',
+        animation: 'bg-gradient-shift 20s ease infinite',
+      }} />
       <div style={{ position: 'absolute', top: '15%', left: '15%', width: 500, height: 500, background: `radial-gradient(circle, ${colors.orbBrand} 0%, transparent 70%)`, borderRadius: '50%', pointerEvents: 'none', filter: 'blur(80px)' }} />
       <div style={{ position: 'absolute', bottom: '20%', right: '10%', width: 400, height: 400, background: `radial-gradient(circle, ${colors.orbGold} 0%, transparent 70%)`, borderRadius: '50%', pointerEvents: 'none', filter: 'blur(80px)' }} />
 
@@ -123,6 +130,54 @@ function Hero({ t, lang, colors }: any) {
 
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 120, background: `linear-gradient(to top, ${colors.bg}, transparent)`, pointerEvents: 'none' }} />
     </section>
+  );
+}
+
+/* ═══════════════ TECH CAROUSEL ═══════════════ */
+const techLogos = [
+  { name: 'OpenAI', icon: 'https://cdn.simpleicons.org/openai/{c}' },
+  { name: 'Anthropic', icon: 'https://cdn.simpleicons.org/anthropic/{c}' },
+  { name: 'Google Gemini', icon: 'https://cdn.simpleicons.org/googlegemini/{c}' },
+  { name: 'Python', icon: 'https://cdn.simpleicons.org/python/{c}' },
+  { name: 'React', icon: 'https://cdn.simpleicons.org/react/{c}' },
+  { name: 'Node.js', icon: 'https://cdn.simpleicons.org/nodedotjs/{c}' },
+  { name: 'TypeScript', icon: 'https://cdn.simpleicons.org/typescript/{c}' },
+  { name: 'PostgreSQL', icon: 'https://cdn.simpleicons.org/postgresql/{c}' },
+  { name: 'n8n', icon: 'https://cdn.simpleicons.org/n8n/{c}' },
+  { name: 'WhatsApp', icon: 'https://cdn.simpleicons.org/whatsapp/{c}' },
+  { name: 'Vercel', icon: 'https://cdn.simpleicons.org/vercel/{c}' },
+  { name: 'Supabase', icon: 'https://cdn.simpleicons.org/supabase/{c}' },
+];
+
+function TechCarousel({ lang, colors, theme }: any) {
+  const iconColor = theme === 'dark' ? '94a3b8' : '475569';
+  const items = techLogos.map(l => ({ ...l, icon: l.icon.replace('{c}', iconColor) }));
+  const doubled = [...items, ...items];
+
+  return (
+    <Section colors={colors} alt style={{ padding: '48px 0', overflow: 'hidden' }}>
+      <div style={{ textAlign: 'center', marginBottom: 24 }}>
+        <p className="reveal" style={{ fontSize: 13, color: colors.textDim, fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+          {lang === 'pt' ? 'Tecnologias que implementamos' : 'Technologies we implement'}
+        </p>
+      </div>
+      <div style={{ position: 'relative', width: '100%', overflow: 'hidden', maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
+        <div style={{
+          display: 'flex', gap: 48, alignItems: 'center', width: 'max-content',
+          animation: 'scroll-left 30s linear infinite',
+        }}>
+          {doubled.map((l, i) => (
+            <div key={`${l.name}-${i}`} style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0, opacity: 0.7, transition: 'opacity 0.3s' }}
+              onMouseEnter={e => e.currentTarget.style.opacity = '1'}
+              onMouseLeave={e => e.currentTarget.style.opacity = '0.7'}
+            >
+              <img src={l.icon} alt={l.name} width={22} height={22} loading="lazy" style={{ display: 'block' }} />
+              <span style={{ fontSize: 14, color: colors.textMuted, fontWeight: 500, whiteSpace: 'nowrap' }}>{l.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Section>
   );
 }
 
@@ -523,6 +578,7 @@ export default function App() {
     <div style={{ minHeight: '100vh', background: colors.bg, color: colors.text, fontFamily: "'Inter', system-ui, sans-serif", width: '100%', transition: 'background-color 0.4s ease, color 0.4s ease' }}>
       <Navbar t={t} lang={lang} toggle={toggle} colors={colors} theme={theme} toggleTheme={toggleTheme} />
       <Hero t={t} lang={lang} colors={colors} />
+      <TechCarousel lang={lang} colors={colors} theme={theme} />
       <Services t={t} lang={lang} colors={colors} />
       <ImageDivider colors={colors} />
       <Metrics lang={lang} colors={colors} />
