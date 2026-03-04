@@ -30,14 +30,14 @@ function Section({ children, className = '', id, alt, style, colors }: { childre
 
 /* ── Image URLs ── */
 const IMG = {
-  heroAi: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80&auto=format&fit=crop',
+  heroAi: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80&auto=format&fit=crop',
   heroTeam: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&auto=format&fit=crop',
   about: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=700&q=80&auto=format&fit=crop',
   caseData: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&auto=format&fit=crop',
   caseAuto: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80&auto=format&fit=crop',
   caseWeb: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80&auto=format&fit=crop',
   ctaBg: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1400&q=80&auto=format&fit=crop',
-  divider: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1400&q=80&auto=format&fit=crop&h=500',
+  divider: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1400&q=80&auto=format&fit=crop&h=500',
   svcData: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80&auto=format&fit=crop',
   svcAuto: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&q=80&auto=format&fit=crop',
   svcChat: 'https://images.unsplash.com/photo-1531746790095-e5a2ebf3fa62?w=900&q=80&auto=format&fit=crop',
@@ -190,12 +190,17 @@ function Services({ t, lang, colors }: any) {
 }
 
 /* ═══════════════ METRICS ═══════════════ */
-function Metrics({ t, colors }: any) {
-  const metrics = [
-    { value: '1.6M+', label: t('metrics.data'), icon: BarChart3 },
-    { value: '200+', label: t('metrics.auto'), icon: Clock },
-    { value: '99.9%', label: t('metrics.uptime'), icon: Shield },
-    { value: '< 7 dias', label: t('metrics.speed'), icon: TrendingUp },
+function Metrics({ lang, colors }: any) {
+  const metrics = lang === 'pt' ? [
+    { value: '1.6M+', label: 'Registros processados', desc: 'Dados empresariais extraídos e organizados para prospecção comercial.', icon: BarChart3 },
+    { value: '200+', label: 'Horas economizadas/mês', desc: 'Automações que eliminam tarefas repetitivas e liberam sua equipe.', icon: Clock },
+    { value: '99.9%', label: 'Disponibilidade', desc: 'Sistemas sempre online com monitoramento e suporte contínuo.', icon: Shield },
+    { value: '< 7 dias', label: 'Prazo de entrega', desc: 'Da proposta ao primeiro entregável em menos de uma semana.', icon: TrendingUp },
+  ] : [
+    { value: '1.6M+', label: 'Records processed', desc: 'Business data extracted and organized for commercial prospecting.', icon: BarChart3 },
+    { value: '200+', label: 'Hours saved/month', desc: 'Automations that eliminate repetitive tasks and free your team.', icon: Clock },
+    { value: '99.9%', label: 'Availability', desc: 'Systems always online with continuous monitoring and support.', icon: Shield },
+    { value: '< 7 days', label: 'Delivery time', desc: 'From proposal to first deliverable in less than a week.', icon: TrendingUp },
   ];
 
   return (
@@ -203,11 +208,14 @@ function Metrics({ t, colors }: any) {
       <W>
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
           <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', borderRadius: 9999, background: 'rgba(212,165,116,0.1)', color: colors.gold, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
-            {t('metrics.tag')}
+            {lang === 'pt' ? 'Resultados' : 'Results'}
           </span>
-          <h2 className="reveal rv-d1" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 700, color: colors.white }}>
-            {t('metrics.title')}
+          <h2 className="reveal rv-d1" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 700, color: colors.white, marginBottom: 12 }}>
+            {lang === 'pt' ? 'Resultados que comprovam' : 'Proven results'}
           </h2>
+          <p className="reveal rv-d2" style={{ color: colors.textMuted, maxWidth: 520, margin: '0 auto', lineHeight: 1.7 }}>
+            {lang === 'pt' ? 'Cada número representa impacto real na operação dos nossos clientes.' : 'Each number represents real impact on our clients\' operations.'}
+          </p>
         </div>
         <div id="metrics-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20 }}>
           {metrics.map((m) => (
@@ -218,9 +226,10 @@ function Metrics({ t, colors }: any) {
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.borderColor = colors.borderHover; }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = colors.glassCardBorder; }}
             >
-              <m.icon size={26} style={{ color: colors.gold, margin: '0 auto 16px' }} />
-              <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 700, color: colors.white, marginBottom: 8 }}>{m.value}</div>
-              <div style={{ fontSize: 13, color: colors.textDim }}>{m.label}</div>
+              <m.icon size={24} style={{ color: colors.gold, margin: '0 auto 14px' }} />
+              <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', fontWeight: 700, color: colors.white, marginBottom: 6 }}>{m.value}</div>
+              <div style={{ fontSize: 14, color: colors.text, fontWeight: 600, marginBottom: 8 }}>{m.label}</div>
+              <div style={{ fontSize: 13, color: colors.textDim, lineHeight: 1.6 }}>{m.desc}</div>
             </div>
           ))}
         </div>
@@ -517,7 +526,7 @@ export default function App() {
       <Hero t={t} lang={lang} colors={colors} />
       <Services t={t} lang={lang} colors={colors} />
       <ImageDivider colors={colors} />
-      <Metrics t={t} colors={colors} />
+      <Metrics lang={lang} colors={colors} />
       <Process lang={lang} colors={colors} />
       <About t={t} colors={colors} />
       <Cases lang={lang} colors={colors} />
