@@ -7,7 +7,7 @@ import { useTheme } from '../hooks/useTheme';
 const SERVICE_IMAGES: Record<string, string> = {
   'extracao-de-dados': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80&auto=format&fit=crop',
   'automacao': 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80&auto=format&fit=crop',
-  'chatbots': 'https://images.unsplash.com/photo-1531746790095-e5a2ebf3fa62?w=1200&q=80&auto=format&fit=crop',
+  'chatbots': 'https://images.unsplash.com/photo-1676299081847-824916de030a?w=1200&q=80&auto=format&fit=crop',
   'sites': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80&auto=format&fit=crop',
   'dashboards': 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&q=80&auto=format&fit=crop',
   'consultoria-ia': 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&q=80&auto=format&fit=crop',
