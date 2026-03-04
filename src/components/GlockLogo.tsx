@@ -15,16 +15,16 @@ export function GlockLogo({ size = 28 }: { size?: number }) {
           viewBox="0 0 100 100"
           style={{
             position: 'absolute',
-            left: '5%', top: '-8%',
-            width: '90%', height: '115%',
+            left: 0, top: '-15%',
+            width: '100%', height: '130%',
             pointerEvents: 'none',
           }}
         >
           <path
-            d="M62 2 L42 44 L58 44 L34 98"
+            d="M60 0 L38 42 L56 42 L30 100"
             fill="none"
             stroke={BRAND}
-            strokeWidth="5"
+            strokeWidth="4.5"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
