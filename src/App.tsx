@@ -13,6 +13,127 @@ import { useTheme } from './hooks/useTheme';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 
+/* ═══════════════════════════════════════════════════════════════
+   COSMIC BACKGROUND — Fixed starfield with real stellar coordinates
+   ───────────────────────────────────────────────────────────────
+   Prosperity stars (traditional astrology) mapped from RA/Dec:
+   Regulus (α Leo)    = authority    │ RA 10.14h  Dec +12°
+   Spica (α Virgo)    = wealth      │ RA 13.42h  Dec -11°
+   Aldebaran (α Tau)  = persistence │ RA  4.60h  Dec +16°
+   Vega (α Lyra)      = charisma    │ RA 18.62h  Dec +39°
+   Sirius (α CMa)     = prominence  │ RA  6.75h  Dec -17°
+   Capella (α Aur)    = honors      │ RA  5.28h  Dec +46°
+   Procyon (α CMi)    = opportunity │ RA  7.65h  Dec +5°
+   Antares (α Sco)    = power       │ RA 16.49h  Dec -26°
+   Mapped: x = RA/24*100,  y = (50-Dec)/80*100
+   ═══════════════════════════════════════════════════════════════ */
+function CosmicBackground({ theme }: any) {
+  const dk = theme === 'dark';
+
+  /* Real stellar coordinates → viewBox percentages */
+  const stars = {
+    regulus:   { x: 42.3, y: 47.5, name: 'Regulus' },
+    spica:     { x: 55.9, y: 76.3, name: 'Spica' },
+    aldebaran: { x: 19.2, y: 42.5, name: 'Aldebaran' },
+    vega:      { x: 77.6, y: 13.8, name: 'Vega' },
+    sirius:    { x: 28.1, y: 83.8, name: 'Sirius' },
+    capella:   { x: 22.0, y: 5.0,  name: 'Capella' },
+    procyon:   { x: 31.9, y: 56.3, name: 'Procyon' },
+    antares:   { x: 68.7, y: 95.0, name: 'Antares' },
+  };
+
+  /* Small background stars — scattered */
+  const dimStars = [
+    [8,12],[15,28],[3,45],[12,67],[6,82],[18,95],[25,8],[30,35],
+    [27,62],[35,18],[38,48],[33,78],[40,92],[45,5],[48,32],[44,58],
+    [50,72],[52,88],[55,15],[58,42],[62,28],[65,55],[60,80],[68,10],
+    [72,38],[75,62],[70,85],[78,25],[82,50],[85,72],[80,95],[88,8],
+    [90,35],[92,58],[95,18],[97,42],[93,75],[86,90],[10,52],[37,3],
+    [63,95],[47,22],[73,48],[84,15],[16,38],[53,62],[42,85],[77,92],
+    [21,75],[66,3],[89,65],[4,22],[96,82],[34,92],[57,8],[81,32],
+  ];
+
+  const nodeColor = dk ? 'rgba(195,55,80,0.7)' : 'rgba(155,27,48,0.25)';
+  const nodeGold = dk ? 'rgba(220,180,130,0.6)' : 'rgba(170,120,60,0.2)';
+  const glowColor = dk ? 'rgba(155,27,48,0.12)' : 'rgba(155,27,48,0.05)';
+  const glowGold = dk ? 'rgba(212,165,116,0.1)' : 'rgba(170,120,60,0.04)';
+  const lineColor = dk ? 'rgba(155,27,48,0.2)' : 'rgba(155,27,48,0.1)';
+  const lineFaint = dk ? 'rgba(155,27,48,0.08)' : 'rgba(155,27,48,0.04)';
+  const lineGold = dk ? 'rgba(212,165,116,0.15)' : 'rgba(170,120,60,0.07)';
+  const dimColor = dk ? 'rgba(255,255,255,' : 'rgba(155,27,48,';
+  const coreColor = dk ? 'rgba(255,255,255,0.9)' : 'rgba(155,27,48,0.35)';
+
+  const s = stars;
+
+  return (
+    <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none', overflow: 'hidden' }}>
+      {/* Cosmic gradient: space → atmosphere */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: dk
+          ? 'linear-gradient(180deg, rgba(4,4,14,0.95) 0%, rgba(8,6,18,0.7) 25%, rgba(12,10,20,0.4) 45%, transparent 65%)'
+          : 'linear-gradient(180deg, rgba(235,230,225,0.9) 0%, rgba(245,240,237,0.5) 30%, transparent 55%)',
+      }} />
+
+      {/* Animated color nebula */}
+      <div style={{
+        position: 'absolute', inset: 0, opacity: dk ? 0.5 : 0.3,
+        background: 'radial-gradient(ellipse at 25% 30%, rgba(155,27,48,0.12), transparent 50%), radial-gradient(ellipse at 75% 20%, rgba(212,165,116,0.08), transparent 45%), radial-gradient(ellipse at 50% 70%, rgba(155,27,48,0.06), transparent 50%)',
+        backgroundSize: '200% 200%',
+        animation: 'bg-gradient-shift 25s ease infinite',
+      }} />
+
+      {/* SVG starfield + constellation lines */}
+      <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
+        {/* Dim background stars */}
+        {dimStars.map(([x, y], i) => {
+          const o = (0.05 + Math.sin(i * 1.7) * 0.04).toFixed(3);
+          const r = (0.15 + Math.sin(i * 2.3) * 0.1).toFixed(2);
+          return <circle key={i} cx={x} cy={y} r={r} fill={`${dimColor}${o})`} />;
+        })}
+
+        {/* Prosperity constellation lines */}
+        {/* Wealth triangle (gold): Jupiter-aligned Spica → Sirius → Aldebaran */}
+        <line x1={s.spica.x} y1={s.spica.y} x2={s.sirius.x} y2={s.sirius.y} stroke={lineGold} strokeWidth="0.08" />
+        <line x1={s.sirius.x} y1={s.sirius.y} x2={s.aldebaran.x} y2={s.aldebaran.y} stroke={lineGold} strokeWidth="0.08" />
+        <line x1={s.aldebaran.x} y1={s.aldebaran.y} x2={s.spica.x} y2={s.spica.y} stroke={lineGold} strokeWidth="0.06" />
+
+        {/* Authority axis: Capella → Aldebaran → Regulus → Vega */}
+        <line x1={s.capella.x} y1={s.capella.y} x2={s.aldebaran.x} y2={s.aldebaran.y} stroke={lineColor} strokeWidth="0.08" />
+        <line x1={s.aldebaran.x} y1={s.aldebaran.y} x2={s.regulus.x} y2={s.regulus.y} stroke={lineColor} strokeWidth="0.08" />
+        <line x1={s.regulus.x} y1={s.regulus.y} x2={s.vega.x} y2={s.vega.y} stroke={lineColor} strokeWidth="0.08" />
+
+        {/* Commerce circuit: Procyon → Regulus → Spica → Antares */}
+        <line x1={s.procyon.x} y1={s.procyon.y} x2={s.regulus.x} y2={s.regulus.y} stroke={lineFaint} strokeWidth="0.06" />
+        <line x1={s.regulus.x} y1={s.regulus.y} x2={s.spica.x} y2={s.spica.y} stroke={lineFaint} strokeWidth="0.06" />
+        <line x1={s.spica.x} y1={s.spica.y} x2={s.antares.x} y2={s.antares.y} stroke={lineFaint} strokeWidth="0.06" />
+        <line x1={s.vega.x} y1={s.vega.y} x2={s.antares.x} y2={s.antares.y} stroke={lineFaint} strokeWidth="0.05" />
+
+        {/* Network extensions */}
+        <line x1={s.procyon.x} y1={s.procyon.y} x2={s.sirius.x} y2={s.sirius.y} stroke={lineFaint} strokeWidth="0.05" />
+        <line x1={s.capella.x} y1={s.capella.y} x2={s.vega.x} y2={s.vega.y} stroke={lineFaint} strokeWidth="0.04" />
+
+        {/* Anchor star glows */}
+        {Object.values(s).map((star) => (
+          <circle key={star.name + '-glow'} cx={star.x} cy={star.y} r="1.5"
+            fill={star.name === 'Spica' || star.name === 'Sirius' ? glowGold : glowColor} />
+        ))}
+
+        {/* Anchor star outer ring */}
+        {Object.values(s).map((star) => (
+          <circle key={star.name + '-ring'} cx={star.x} cy={star.y} r="0.5"
+            fill={star.name === 'Spica' || star.name === 'Sirius' || star.name === 'Aldebaran' ? nodeGold : nodeColor} />
+        ))}
+
+        {/* Anchor star bright cores */}
+        {Object.values(s).map((star) => (
+          <circle key={star.name + '-core'} cx={star.x} cy={star.y} r="0.18" fill={coreColor} />
+        ))}
+      </svg>
+    </div>
+  );
+}
+
 /* ── Wrapper ── */
 function W({ children, className = '', style }: { children: React.ReactNode; className?: string; style?: React.CSSProperties }) {
   return <div className={className} style={{ maxWidth: 1200, marginLeft: 'auto', marginRight: 'auto', paddingLeft: 24, paddingRight: 24, width: '100%', ...style }}>{children}</div>;
@@ -30,7 +151,7 @@ function Section({ children, className = '', id, alt, style, colors }: { childre
 
 /* ── Image URLs ── */
 const IMG = {
-  heroAi: 'https://images.unsplash.com/photo-1680783954745-dc3da458d3c6?w=900&q=85&auto=format&fit=crop',
+  heroAi: 'https://images.unsplash.com/photo-1639322537228-f710d846310a?w=900&q=85&auto=format&fit=crop',
   heroTeam: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&auto=format&fit=crop',
   about: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=700&q=80&auto=format&fit=crop',
   caseData: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&auto=format&fit=crop',
@@ -133,46 +254,35 @@ function Hero({ t, lang, colors }: any) {
 }
 
 /* ═══════════════ TECH CAROUSEL ═══════════════ */
-const techLogos = [
-  { name: 'OpenAI', slug: 'openai' },
-  { name: 'Claude', slug: 'anthropic' },
-  { name: 'Gemini', slug: 'googlegemini' },
-  { name: 'Python', slug: 'python' },
-  { name: 'React', slug: 'react' },
-  { name: 'Node.js', slug: 'nodedotjs' },
-  { name: 'TypeScript', slug: 'typescript' },
-  { name: 'PostgreSQL', slug: 'postgresql' },
-  { name: 'n8n', slug: 'n8n' },
-  { name: 'WhatsApp', slug: 'whatsapp' },
-  { name: 'Vercel', slug: 'vercel' },
-  { name: 'Supabase', slug: 'supabase' },
-];
+const techNames = ['OpenAI', 'Claude', 'Gemini', 'Python', 'React', 'Node.js', 'TypeScript', 'PostgreSQL', 'n8n', 'WhatsApp API', 'Vercel', 'Supabase', 'LangChain', 'Docker'];
 
-function TechCarousel({ lang, colors, theme }: any) {
-  const iconColor = theme === 'dark' ? 'e2e8f0' : '475569';
-  const items = techLogos.map(l => ({ ...l, icon: `https://cdn.simpleicons.org/${l.slug}/${iconColor}` }));
-  const doubled = [...items, ...items];
+function TechCarousel({ lang, colors }: any) {
+  const doubled = [...techNames, ...techNames];
 
   return (
-    <Section colors={colors} alt style={{ padding: '48px 0', overflow: 'hidden' }}>
-      <div style={{ textAlign: 'center', marginBottom: 24 }}>
-        <p className="reveal" style={{ fontSize: 13, color: colors.textDim, fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+    <Section colors={colors} alt style={{ padding: '44px 0', overflow: 'hidden' }}>
+      <div style={{ textAlign: 'center', marginBottom: 20 }}>
+        <p className="reveal" style={{ fontSize: 12, color: colors.textDim, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
           {lang === 'pt' ? 'Tecnologias que implementamos' : 'Technologies we implement'}
         </p>
       </div>
-      <div style={{ position: 'relative', width: '100%', overflow: 'hidden', maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
+      <div style={{ position: 'relative', width: '100%', overflow: 'hidden', maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)' }}>
         <div style={{
-          display: 'flex', gap: 48, alignItems: 'center', width: 'max-content',
-          animation: 'scroll-left 30s linear infinite',
+          display: 'flex', gap: 24, alignItems: 'center', width: 'max-content',
+          animation: 'scroll-left 35s linear infinite',
         }}>
-          {doubled.map((l, i) => (
-            <div key={`${l.name}-${i}`} style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0, opacity: 0.7, transition: 'opacity 0.3s' }}
-              onMouseEnter={e => e.currentTarget.style.opacity = '1'}
-              onMouseLeave={e => e.currentTarget.style.opacity = '0.7'}
+          {doubled.map((name, i) => (
+            <span key={`${name}-${i}`} style={{
+              fontSize: 14, color: colors.textMuted, fontWeight: 600, whiteSpace: 'nowrap',
+              padding: '8px 20px', borderRadius: 9999, border: `1px solid ${colors.glassCardBorder}`,
+              background: colors.glassCard, backdropFilter: 'blur(8px)',
+              transition: 'all 0.3s', flexShrink: 0,
+            }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = colors.borderHover; e.currentTarget.style.color = colors.brandLight; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = colors.glassCardBorder; e.currentTarget.style.color = colors.textMuted; }}
             >
-              <img src={l.icon} alt={l.name} width={22} height={22} loading="lazy" style={{ display: 'block' }} />
-              <span style={{ fontSize: 14, color: colors.textMuted, fontWeight: 500, whiteSpace: 'nowrap' }}>{l.name}</span>
-            </div>
+              {name}
+            </span>
           ))}
         </div>
       </div>
@@ -577,16 +687,13 @@ export default function App() {
     <div style={{
       minHeight: '100vh', color: colors.text, fontFamily: "'Inter', system-ui, sans-serif", width: '100%',
       transition: 'background-color 0.4s ease, color 0.4s ease',
-      background: `${colors.bg}`,
-      backgroundImage: colors.cosmicBg,
-      backgroundAttachment: 'fixed',
+      background: colors.bg,
     }}>
-      {/* Cosmic gradient overlay: space → atmosphere */}
-      <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0, background: colors.cosmicGradient }} />
+      <CosmicBackground theme={theme} />
       <div style={{ position: 'relative', zIndex: 1 }}>
       <Navbar t={t} lang={lang} toggle={toggle} colors={colors} theme={theme} toggleTheme={toggleTheme} />
       <Hero t={t} lang={lang} colors={colors} />
-      <TechCarousel lang={lang} colors={colors} theme={theme} />
+      <TechCarousel lang={lang} colors={colors} />
       <Services t={t} lang={lang} colors={colors} />
       <ImageDivider colors={colors} />
       <Metrics lang={lang} colors={colors} />
