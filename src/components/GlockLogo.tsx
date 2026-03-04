@@ -1,5 +1,4 @@
-export function GlockLogo({ size = 28, colors }: { size?: number; colors?: any }) {
-  const textColor = colors?.white ?? '#fff';
+export function GlockLogo({ size = 28 }: { size?: number }) {
   return (
     <span style={{
       fontFamily: "'Playfair Display', Georgia, serif",
