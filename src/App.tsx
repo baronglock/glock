@@ -225,17 +225,11 @@ function Hero({ t, lang, colors }: any) {
             </div>
           </div>
 
-          {/* Right: image collage */}
+          {/* Right: hero image */}
           <div className="anim-fade-up" style={{ position: 'relative', animationDelay: '0.3s' }}>
-            <div style={{ position: 'relative', borderRadius: 20, overflow: 'hidden', boxShadow: `0 40px 80px ${colors.shadow}`, border: `1px solid ${colors.glassCardBorder}` }}>
-              <img src={IMG.heroAi} alt="AI visualization" style={{ width: '100%', height: 380, objectFit: 'cover', display: 'block' }} loading="eager" />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(37,99,235,0.15), transparent 60%)' }} />
-            </div>
-            <div style={{
-              position: 'absolute', bottom: -24, left: -24, width: 180, height: 180, borderRadius: 16, overflow: 'hidden',
-              boxShadow: `0 20px 40px ${colors.shadow}`, border: `2px solid ${colors.glassCardBorder}`,
-            }}>
-              <img src={IMG.heroTeam} alt="Team collaboration" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading="eager" />
+            <div style={{ position: 'relative', borderRadius: 24, overflow: 'hidden', boxShadow: `0 40px 80px ${colors.shadow}`, border: `1px solid ${colors.glassCardBorder}` }}>
+              <img src={IMG.heroAi} alt="AI visualization" style={{ width: '100%', height: 520, objectFit: 'cover', display: 'block' }} loading="eager" />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 40%, rgba(10,10,15,0.6) 100%)' }} />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(37,99,235,0.1), transparent 50%)' }} />
             </div>
           </div>
