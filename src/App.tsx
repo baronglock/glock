@@ -485,7 +485,7 @@ function ImageDivider({ colors }: any) {
 }
 
 /* ═══════════════ ABOUT ═══════════════ */
-function About({ t, colors }: any) {
+function About({ t, lang, colors }: any) {
   return (
     <Section id="sobre" alt colors={colors} style={{ padding: '96px 0' }}>
       <W>
@@ -503,7 +503,7 @@ function About({ t, colors }: any) {
               border: `1px solid ${colors.glassCardBorder}`, boxShadow: `0 20px 40px ${colors.shadow}`,
             }}>
               <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 28, fontWeight: 700, color: colors.brandLight }}>5+</div>
-              <div style={{ fontSize: 12, color: colors.textDim, fontWeight: 500 }}>anos de experiência</div>
+              <div style={{ fontSize: 12, color: colors.textDim, fontWeight: 500 }}>{lang === 'pt' ? 'anos de experiência' : 'years of experience'}</div>
             </div>
           </div>
           {/* Text */}
@@ -517,12 +517,17 @@ function About({ t, colors }: any) {
             <p className="reveal rv-d2" style={{ color: colors.textMuted, lineHeight: 1.75, marginBottom: 16 }}>{t('about.p1')}</p>
             <p className="reveal rv-d3" style={{ color: colors.textMuted, lineHeight: 1.75, marginBottom: 32 }}>{t('about.p2')}</p>
             <div className="reveal rv-d4" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
-              {[
+              {(lang === 'pt' ? [
+                { icon: Database, label: 'Engenharia de Dados' },
+                { icon: Bot, label: 'IA & Automação' },
+                { icon: Globe, label: 'Desenvolvimento Web' },
+                { icon: MessageSquare, label: 'Chatbots & NLP' },
+              ] : [
                 { icon: Database, label: 'Data Engineering' },
                 { icon: Bot, label: 'AI & Automation' },
                 { icon: Globe, label: 'Web Development' },
                 { icon: MessageSquare, label: 'Chatbots & NLP' },
-              ].map((item) => (
+              ]).map((item) => (
                 <div key={item.label} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', borderRadius: 12, background: colors.glassCard, border: `1px solid ${colors.glassCardBorder}` }}>
                   <item.icon size={20} style={{ color: colors.brandLight, flexShrink: 0 }} />
                   <span style={{ fontSize: 13, color: colors.text, fontWeight: 500 }}>{item.label}</span>
@@ -625,7 +630,8 @@ function Contact({ lang, colors }: any) {
     const data = new FormData(form);
     const name = data.get('name');
     const msg = data.get('message');
-    window.open(`https://wa.me/5541987991419?text=${encodeURIComponent(`Olá! Sou ${name}. ${msg}`)}`, '_blank');
+    const greeting = lang === 'pt' ? `Olá! Sou ${name}. ${msg}` : `Hello! I'm ${name}. ${msg}`;
+    window.open(`https://wa.me/5541987991419?text=${encodeURIComponent(greeting)}`, '_blank');
     setSent(true);
     setTimeout(() => setSent(false), 3000);
   };
@@ -718,7 +724,7 @@ export default function App() {
       <ImageDivider colors={colors} />
       <Metrics lang={lang} colors={colors} />
       <Process lang={lang} colors={colors} />
-      <About t={t} colors={colors} />
+      <About t={t} lang={lang} colors={colors} />
       <Cases lang={lang} colors={colors} />
       <CtaSection t={t} colors={colors} />
       <Contact lang={lang} colors={colors} />

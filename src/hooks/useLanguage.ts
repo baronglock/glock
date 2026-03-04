@@ -1,6 +1,8 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 
 export type Lang = 'pt' | 'en';
+
+const STORAGE_KEY = 'glock-lang';
 
 const translations = {
   // Nav
@@ -96,8 +98,37 @@ const translations = {
 
 type TranslationKey = keyof typeof translations;
 
+function getStoredLang(): Lang {
+  try {
+    const v = localStorage.getItem(STORAGE_KEY);
+    if (v === 'en' || v === 'pt') return v;
+  } catch {}
+  return 'pt';
+}
+
 export function useLanguage() {
-  const [lang, setLang] = useState<Lang>('pt');
+  const [lang, setLang] = useState<Lang>(getStoredLang);
+
+  /* Sync across tabs / multiple hook instances */
+  useEffect(() => {
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === STORAGE_KEY && (e.newValue === 'pt' || e.newValue === 'en')) {
+        setLang(e.newValue);
+      }
+    };
+    window.addEventListener('storage', onStorage);
+    return () => window.removeEventListener('storage', onStorage);
+  }, []);
+
+  /* Also listen for custom in-page event (same-tab sync between hook instances) */
+  useEffect(() => {
+    const onCustom = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (detail === 'pt' || detail === 'en') setLang(detail);
+    };
+    window.addEventListener('glock-lang-change', onCustom);
+    return () => window.removeEventListener('glock-lang-change', onCustom);
+  }, []);
 
   const t = useCallback(
     (key: TranslationKey) => translations[key]?.[lang] ?? key,
@@ -105,8 +136,11 @@ export function useLanguage() {
   );
 
   const toggle = useCallback(() => {
-    setLang((prev) => (prev === 'pt' ? 'en' : 'pt'));
-  }, []);
+    const next: Lang = lang === 'pt' ? 'en' : 'pt';
+    setLang(next);
+    try { localStorage.setItem(STORAGE_KEY, next); } catch {}
+    window.dispatchEvent(new CustomEvent('glock-lang-change', { detail: next }));
+  }, [lang]);
 
   return { lang, t, toggle };
 }
