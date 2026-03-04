@@ -30,7 +30,7 @@ function Section({ children, className = '', id, alt, style, colors }: { childre
 
 /* ── Image URLs ── */
 const IMG = {
-  heroAi: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=900&q=85&auto=format&fit=crop',
+  heroAi: 'https://images.unsplash.com/photo-1680783954745-dc3da458d3c6?w=900&q=85&auto=format&fit=crop',
   heroTeam: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&auto=format&fit=crop',
   about: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=700&q=80&auto=format&fit=crop',
   caseData: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&auto=format&fit=crop',
@@ -51,7 +51,6 @@ function Hero({ t, lang, colors }: any) {
   return (
     <section style={{
       position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden', width: '100%',
-      backgroundImage: colors.neuralBg,
     }}>
       {/* Animated gradient overlay */}
       <div style={{
@@ -135,23 +134,23 @@ function Hero({ t, lang, colors }: any) {
 
 /* ═══════════════ TECH CAROUSEL ═══════════════ */
 const techLogos = [
-  { name: 'OpenAI', icon: 'https://cdn.simpleicons.org/openai/{c}' },
-  { name: 'Anthropic', icon: 'https://cdn.simpleicons.org/anthropic/{c}' },
-  { name: 'Google Gemini', icon: 'https://cdn.simpleicons.org/googlegemini/{c}' },
-  { name: 'Python', icon: 'https://cdn.simpleicons.org/python/{c}' },
-  { name: 'React', icon: 'https://cdn.simpleicons.org/react/{c}' },
-  { name: 'Node.js', icon: 'https://cdn.simpleicons.org/nodedotjs/{c}' },
-  { name: 'TypeScript', icon: 'https://cdn.simpleicons.org/typescript/{c}' },
-  { name: 'PostgreSQL', icon: 'https://cdn.simpleicons.org/postgresql/{c}' },
-  { name: 'n8n', icon: 'https://cdn.simpleicons.org/n8n/{c}' },
-  { name: 'WhatsApp', icon: 'https://cdn.simpleicons.org/whatsapp/{c}' },
-  { name: 'Vercel', icon: 'https://cdn.simpleicons.org/vercel/{c}' },
-  { name: 'Supabase', icon: 'https://cdn.simpleicons.org/supabase/{c}' },
+  { name: 'OpenAI', slug: 'openai' },
+  { name: 'Claude', slug: 'anthropic' },
+  { name: 'Gemini', slug: 'googlegemini' },
+  { name: 'Python', slug: 'python' },
+  { name: 'React', slug: 'react' },
+  { name: 'Node.js', slug: 'nodedotjs' },
+  { name: 'TypeScript', slug: 'typescript' },
+  { name: 'PostgreSQL', slug: 'postgresql' },
+  { name: 'n8n', slug: 'n8n' },
+  { name: 'WhatsApp', slug: 'whatsapp' },
+  { name: 'Vercel', slug: 'vercel' },
+  { name: 'Supabase', slug: 'supabase' },
 ];
 
 function TechCarousel({ lang, colors, theme }: any) {
-  const iconColor = theme === 'dark' ? '94a3b8' : '475569';
-  const items = techLogos.map(l => ({ ...l, icon: l.icon.replace('{c}', iconColor) }));
+  const iconColor = theme === 'dark' ? 'e2e8f0' : '475569';
+  const items = techLogos.map(l => ({ ...l, icon: `https://cdn.simpleicons.org/${l.slug}/${iconColor}` }));
   const doubled = [...items, ...items];
 
   return (
@@ -575,7 +574,16 @@ export default function App() {
   const { theme, colors, toggleTheme } = useTheme();
 
   return (
-    <div style={{ minHeight: '100vh', background: colors.bg, color: colors.text, fontFamily: "'Inter', system-ui, sans-serif", width: '100%', transition: 'background-color 0.4s ease, color 0.4s ease' }}>
+    <div style={{
+      minHeight: '100vh', color: colors.text, fontFamily: "'Inter', system-ui, sans-serif", width: '100%',
+      transition: 'background-color 0.4s ease, color 0.4s ease',
+      background: `${colors.bg}`,
+      backgroundImage: colors.cosmicBg,
+      backgroundAttachment: 'fixed',
+    }}>
+      {/* Cosmic gradient overlay: space → atmosphere */}
+      <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0, background: colors.cosmicGradient }} />
+      <div style={{ position: 'relative', zIndex: 1 }}>
       <Navbar t={t} lang={lang} toggle={toggle} colors={colors} theme={theme} toggleTheme={toggleTheme} />
       <Hero t={t} lang={lang} colors={colors} />
       <TechCarousel lang={lang} colors={colors} theme={theme} />
@@ -588,6 +596,7 @@ export default function App() {
       <CtaSection t={t} colors={colors} />
       <Contact lang={lang} colors={colors} />
       <Footer t={t} lang={lang} colors={colors} />
+      </div>
     </div>
   );
 }

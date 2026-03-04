@@ -2,51 +2,173 @@ import { useState, useCallback, useEffect } from 'react';
 
 export type Theme = 'dark' | 'light';
 
-/* ── Neural network SVG pattern ── */
-function createNeuralBg(nodeOpacity: number, lineOpacity: number, faintOpacity: number): string {
-  const r = 155, g = 27, b = 48;
-  const n = `rgba(${r},${g},${b},${nodeOpacity})`;
-  const l = `rgba(${r},${g},${b},${lineOpacity})`;
-  const f = `rgba(${r},${g},${b},${faintOpacity})`;
-  const svg = `<svg width='220' height='220' xmlns='http://www.w3.org/2000/svg'>` +
-    /* edge nodes — match across tiles */
-    `<circle cx='0' cy='55' r='1.5' fill='${n}'/>` +
-    `<circle cx='220' cy='55' r='1.5' fill='${n}'/>` +
-    `<circle cx='0' cy='165' r='1.5' fill='${n}'/>` +
-    `<circle cx='220' cy='165' r='1.5' fill='${n}'/>` +
-    `<circle cx='75' cy='0' r='1.5' fill='${n}'/>` +
-    `<circle cx='75' cy='220' r='1.5' fill='${n}'/>` +
-    `<circle cx='160' cy='0' r='1.5' fill='${n}'/>` +
-    `<circle cx='160' cy='220' r='1.5' fill='${n}'/>` +
-    /* interior nodes */
-    `<circle cx='55' cy='85' r='2' fill='${n}'/>` +
-    `<circle cx='110' cy='42' r='1.8' fill='${n}'/>` +
-    `<circle cx='170' cy='95' r='2' fill='${n}'/>` +
-    `<circle cx='85' cy='148' r='1.8' fill='${n}'/>` +
-    `<circle cx='140' cy='168' r='2' fill='${n}'/>` +
-    `<circle cx='38' cy='190' r='1.5' fill='${n}'/>` +
-    `<circle cx='195' cy='38' r='1.5' fill='${n}'/>` +
-    /* main connections */
-    `<line x1='0' y1='55' x2='55' y2='85' stroke='${l}' stroke-width='0.6'/>` +
-    `<line x1='55' y1='85' x2='110' y2='42' stroke='${l}' stroke-width='0.6'/>` +
-    `<line x1='110' y1='42' x2='170' y2='95' stroke='${l}' stroke-width='0.6'/>` +
-    `<line x1='110' y1='42' x2='75' y2='0' stroke='${f}' stroke-width='0.5'/>` +
-    `<line x1='110' y1='42' x2='160' y2='0' stroke='${f}' stroke-width='0.5'/>` +
-    `<line x1='170' y1='95' x2='220' y2='55' stroke='${l}' stroke-width='0.6'/>` +
-    `<line x1='170' y1='95' x2='195' y2='38' stroke='${f}' stroke-width='0.5'/>` +
-    `<line x1='170' y1='95' x2='220' y2='165' stroke='${f}' stroke-width='0.5'/>` +
-    `<line x1='55' y1='85' x2='85' y2='148' stroke='${l}' stroke-width='0.6'/>` +
-    `<line x1='85' y1='148' x2='140' y2='168' stroke='${l}' stroke-width='0.6'/>` +
-    `<line x1='140' y1='168' x2='220' y2='165' stroke='${f}' stroke-width='0.5'/>` +
-    `<line x1='85' y1='148' x2='0' y2='165' stroke='${f}' stroke-width='0.5'/>` +
-    `<line x1='140' y1='168' x2='160' y2='220' stroke='${l}' stroke-width='0.6'/>` +
-    `<line x1='38' y1='190' x2='75' y2='220' stroke='${f}' stroke-width='0.5'/>` +
-    `<line x1='38' y1='190' x2='0' y2='165' stroke='${f}' stroke-width='0.5'/>` +
-    `<line x1='38' y1='190' x2='85' y2='148' stroke='${l}' stroke-width='0.6'/>` +
-    `<line x1='195' y1='38' x2='220' y2='55' stroke='${f}' stroke-width='0.5'/>` +
-    `<line x1='55' y1='85' x2='0' y2='55' stroke='${f}' stroke-width='0.5'/>` +
-    `</svg>`;
+/* ══════════════════════════════════════════════════════
+   COSMIC NEURAL PATTERN
+   ──────────────────────────────────────────────────────
+   Stars + Neural connections + Astrological positioning
+
+   Traditional astrology positions for business success:
+   ─ Regulus (α Leo)        → authority, leadership, ambition
+   ─ Spica (α Virgo)        → wealth, harvest, prosperity
+   ─ Jupiter (benefic)      → expansion, abundance, fortune
+   ─ Aldebaran (α Taurus)   → material success, persistence
+   ─ Vega (α Lyra)          → charisma, artistic success
+   ─ MC / 10th House (top)  → career peak, public image
+   ─ 2nd House (lower-left) → wealth, resources
+   ─ 11th House (upper-rt)  → goals, networks, future gains
+
+   These are placed as bright "anchor nodes" in the tile,
+   connected by neural lines forming a prosperity sigil.
+   Smaller stars fill the cosmic background.
+   ══════════════════════════════════════════════════════ */
+
+function createCosmicPattern(theme: 'dark' | 'light'): string {
+  const dk = theme === 'dark';
+
+  /* ── Color palette ── */
+  const starBright  = dk ? 'rgba(255,255,255,0.75)' : 'rgba(155,27,48,0.18)';
+  const starMed     = dk ? 'rgba(255,255,255,0.35)' : 'rgba(155,27,48,0.1)';
+  const starDim     = dk ? 'rgba(255,255,255,0.12)' : 'rgba(155,27,48,0.05)';
+  const starTiny    = dk ? 'rgba(255,255,255,0.07)' : 'rgba(155,27,48,0.03)';
+  const nodeBrand   = dk ? 'rgba(195,50,74,0.55)'   : 'rgba(155,27,48,0.22)';
+  const nodeGold    = dk ? 'rgba(212,175,130,0.5)'   : 'rgba(170,120,60,0.18)';
+  const line        = dk ? 'rgba(155,27,48,0.18)'    : 'rgba(155,27,48,0.09)';
+  const lineFaint   = dk ? 'rgba(155,27,48,0.09)'    : 'rgba(155,27,48,0.045)';
+  const lineGold    = dk ? 'rgba(212,165,116,0.12)'  : 'rgba(170,120,60,0.06)';
+
+  /* ── Astrological anchor positions (450×450 tile) ──
+     Based on whole-sign house positions projected onto 2D:
+     MC (10th) = top center, ASC (1st) = left center,
+     2nd = lower-left, 11th = upper-right, etc.           */
+  const astro = {
+    regulus:   { x: 225, y: 42,  r: 2.5 }, // MC – leadership peak
+    spica:     { x: 78,  y: 340, r: 2.2 }, // 2nd house – wealth
+    jupiter:   { x: 370, y: 98,  r: 2.8 }, // 11th house – expansion
+    aldebaran: { x: 130, y: 195, r: 2.0 }, // ASC/1st – material foundation
+    vega:      { x: 340, y: 280, r: 2.2 }, // 7th – partnerships/charisma
+    saturn:    { x: 55,  y: 110, r: 1.8 }, // 12th→1st cusp – discipline
+    mercury:   { x: 290, y: 185, r: 1.8 }, // 6th – commerce/daily work
+    venus:     { x: 180, y: 395, r: 2.0 }, // 3rd – value/attraction
+  };
+
+  /* ── Random-ish small stars (hand-placed for natural feel) ── */
+  const stars = [
+    { x: 15, y: 22, r: 0.8, c: starDim }, { x: 67, y: 8, r: 0.6, c: starTiny },
+    { x: 145, y: 15, r: 1.0, c: starMed }, { x: 210, y: 5, r: 0.5, c: starTiny },
+    { x: 310, y: 18, r: 0.7, c: starDim }, { x: 395, y: 10, r: 0.9, c: starDim },
+    { x: 440, y: 35, r: 0.5, c: starTiny }, { x: 28, y: 65, r: 0.6, c: starTiny },
+    { x: 100, y: 58, r: 1.1, c: starMed }, { x: 195, y: 75, r: 0.5, c: starTiny },
+    { x: 265, y: 52, r: 0.7, c: starDim }, { x: 410, y: 60, r: 0.8, c: starDim },
+    { x: 42, y: 142, r: 0.5, c: starTiny }, { x: 175, y: 130, r: 0.9, c: starDim },
+    { x: 320, y: 140, r: 0.6, c: starTiny }, { x: 430, y: 145, r: 1.0, c: starMed },
+    { x: 12, y: 205, r: 0.7, c: starDim }, { x: 200, y: 230, r: 0.5, c: starTiny },
+    { x: 355, y: 215, r: 0.8, c: starDim }, { x: 445, y: 210, r: 0.6, c: starTiny },
+    { x: 90, y: 265, r: 1.0, c: starMed }, { x: 165, y: 285, r: 0.5, c: starTiny },
+    { x: 240, y: 270, r: 0.7, c: starDim }, { x: 410, y: 290, r: 0.6, c: starTiny },
+    { x: 25, y: 320, r: 0.8, c: starDim }, { x: 305, y: 325, r: 0.5, c: starTiny },
+    { x: 420, y: 340, r: 0.9, c: starDim }, { x: 50, y: 385, r: 0.6, c: starTiny },
+    { x: 255, y: 380, r: 0.7, c: starDim }, { x: 350, y: 395, r: 1.0, c: starMed },
+    { x: 115, y: 420, r: 0.5, c: starTiny }, { x: 200, y: 440, r: 0.8, c: starDim },
+    { x: 380, y: 430, r: 0.6, c: starTiny }, { x: 445, y: 415, r: 0.7, c: starDim },
+    { x: 15, y: 440, r: 0.9, c: starDim }, { x: 310, y: 445, r: 0.5, c: starTiny },
+    /* edge stars for seamless tiling */
+    { x: 0, y: 100, r: 0.7, c: starDim }, { x: 450, y: 100, r: 0.7, c: starDim },
+    { x: 0, y: 300, r: 0.6, c: starTiny }, { x: 450, y: 300, r: 0.6, c: starTiny },
+    { x: 150, y: 0, r: 0.8, c: starDim }, { x: 150, y: 450, r: 0.8, c: starDim },
+    { x: 350, y: 0, r: 0.6, c: starTiny }, { x: 350, y: 450, r: 0.6, c: starTiny },
+  ];
+
+  /* ── Build SVG ── */
+  let svg = `<svg width='450' height='450' xmlns='http://www.w3.org/2000/svg'>`;
+
+  /* Small background stars */
+  for (const s of stars) {
+    svg += `<circle cx='${s.x}' cy='${s.y}' r='${s.r}' fill='${s.c}'/>`;
+  }
+
+  /* Astrological anchor nodes (bright, branded) */
+  const a = astro;
+  // Glow halos for major nodes
+  if (dk) {
+    svg += `<circle cx='${a.regulus.x}' cy='${a.regulus.y}' r='8' fill='rgba(155,27,48,0.06)'/>`;
+    svg += `<circle cx='${a.jupiter.x}' cy='${a.jupiter.y}' r='10' fill='rgba(212,165,116,0.05)'/>`;
+    svg += `<circle cx='${a.spica.x}' cy='${a.spica.y}' r='8' fill='rgba(212,165,116,0.04)'/>`;
+  }
+  // Node dots
+  svg += `<circle cx='${a.regulus.x}' cy='${a.regulus.y}' r='${a.regulus.r}' fill='${nodeBrand}'/>`;
+  svg += `<circle cx='${a.spica.x}' cy='${a.spica.y}' r='${a.spica.r}' fill='${nodeGold}'/>`;
+  svg += `<circle cx='${a.jupiter.x}' cy='${a.jupiter.y}' r='${a.jupiter.r}' fill='${nodeGold}'/>`;
+  svg += `<circle cx='${a.aldebaran.x}' cy='${a.aldebaran.y}' r='${a.aldebaran.r}' fill='${nodeBrand}'/>`;
+  svg += `<circle cx='${a.vega.x}' cy='${a.vega.y}' r='${a.vega.r}' fill='${nodeBrand}'/>`;
+  svg += `<circle cx='${a.saturn.x}' cy='${a.saturn.y}' r='${a.saturn.r}' fill='${nodeBrand}'/>`;
+  svg += `<circle cx='${a.mercury.x}' cy='${a.mercury.y}' r='${a.mercury.r}' fill='${nodeBrand}'/>`;
+  svg += `<circle cx='${a.venus.x}' cy='${a.venus.y}' r='${a.venus.r}' fill='${nodeGold}'/>`;
+  // Bright center dot on each
+  svg += `<circle cx='${a.regulus.x}' cy='${a.regulus.y}' r='1' fill='${starBright}'/>`;
+  svg += `<circle cx='${a.jupiter.x}' cy='${a.jupiter.y}' r='1.2' fill='${starBright}'/>`;
+  svg += `<circle cx='${a.spica.x}' cy='${a.spica.y}' r='1' fill='${starBright}'/>`;
+  svg += `<circle cx='${a.aldebaran.x}' cy='${a.aldebaran.y}' r='0.8' fill='${starBright}'/>`;
+  svg += `<circle cx='${a.vega.x}' cy='${a.vega.y}' r='1' fill='${starBright}'/>`;
+
+  /* ── Neural / constellation connections ──
+     Prosperity sigil: Jupiter → Regulus → Mercury → Vega → Spica → Venus
+     Foundation line:  Saturn → Aldebaran → Mercury
+     Wealth triangle:  Jupiter → Spica → Venus (golden lines) */
+
+  // Primary prosperity circuit (brand color)
+  const ln = (x1: number, y1: number, x2: number, y2: number, c: string, w = 0.6) =>
+    `<line x1='${x1}' y1='${y1}' x2='${x2}' y2='${y2}' stroke='${c}' stroke-width='${w}'/>`;
+
+  svg += ln(a.jupiter.x, a.jupiter.y, a.regulus.x, a.regulus.y, line);
+  svg += ln(a.regulus.x, a.regulus.y, a.mercury.x, a.mercury.y, line);
+  svg += ln(a.mercury.x, a.mercury.y, a.vega.x, a.vega.y, line);
+  svg += ln(a.vega.x, a.vega.y, a.spica.x, a.spica.y, lineFaint);
+  svg += ln(a.spica.x, a.spica.y, a.venus.x, a.venus.y, lineFaint);
+
+  // Foundation line (discipline → material → commerce)
+  svg += ln(a.saturn.x, a.saturn.y, a.aldebaran.x, a.aldebaran.y, line);
+  svg += ln(a.aldebaran.x, a.aldebaran.y, a.mercury.x, a.mercury.y, line);
+  svg += ln(a.saturn.x, a.saturn.y, a.regulus.x, a.regulus.y, lineFaint);
+
+  // Wealth triangle (golden lines)
+  svg += ln(a.jupiter.x, a.jupiter.y, a.spica.x, a.spica.y, lineGold, 0.5);
+  svg += ln(a.spica.x, a.spica.y, a.venus.x, a.venus.y, lineGold, 0.5);
+  svg += ln(a.venus.x, a.venus.y, a.aldebaran.x, a.aldebaran.y, lineFaint);
+
+  // Network extensions (connecting to edges for tiling)
+  svg += ln(a.saturn.x, a.saturn.y, 0, 100, lineFaint, 0.4);
+  svg += ln(a.jupiter.x, a.jupiter.y, 450, 100, lineFaint, 0.4);
+  svg += ln(a.regulus.x, a.regulus.y, 150, 0, lineFaint, 0.4);
+  svg += ln(a.venus.x, a.venus.y, 150, 450, lineFaint, 0.4);
+  svg += ln(a.vega.x, a.vega.y, 450, 300, lineFaint, 0.4);
+  svg += ln(a.spica.x, a.spica.y, 0, 300, lineFaint, 0.4);
+  svg += ln(a.regulus.x, a.regulus.y, 350, 0, lineFaint, 0.4);
+  svg += ln(a.venus.x, a.venus.y, 350, 450, lineFaint, 0.4);
+
+  svg += `</svg>`;
   return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
+}
+
+/* ── Cosmic gradient (space → atmosphere) ── */
+function cosmicGradient(theme: 'dark' | 'light'): string {
+  if (theme === 'dark') {
+    return `linear-gradient(180deg,
+      rgba(6,6,18,1) 0%,
+      rgba(10,10,22,1) 8%,
+      rgba(12,8,20,0.95) 20%,
+      rgba(15,10,18,0.85) 35%,
+      rgba(10,10,15,0.7) 50%,
+      rgba(10,10,15,0.3) 70%,
+      transparent 100%
+    )`;
+  }
+  return `linear-gradient(180deg,
+    rgba(235,232,228,1) 0%,
+    rgba(240,236,232,0.95) 15%,
+    rgba(248,244,240,0.8) 35%,
+    rgba(250,249,247,0.5) 55%,
+    transparent 100%
+  )`;
 }
 
 export const dark = {
@@ -70,7 +192,8 @@ export const dark = {
   glassCardBorder: 'rgba(255, 255, 255, 0.06)',
   inputBg: 'rgba(20,20,30,0.6)',
   shadow: 'rgba(0,0,0,0.4)',
-  neuralBg: createNeuralBg(0.35, 0.2, 0.12),
+  cosmicBg: createCosmicPattern('dark'),
+  cosmicGradient: cosmicGradient('dark'),
   orbBrand: 'rgba(155,27,48,0.07)',
   orbGold: 'rgba(212,165,116,0.05)',
   badgeBg: 'rgba(255,255,255,0.03)',
@@ -101,7 +224,8 @@ export const light = {
   glassCardBorder: 'rgba(0, 0, 0, 0.06)',
   inputBg: 'rgba(255,255,255,0.8)',
   shadow: 'rgba(0,0,0,0.08)',
-  neuralBg: createNeuralBg(0.22, 0.13, 0.07),
+  cosmicBg: createCosmicPattern('light'),
+  cosmicGradient: cosmicGradient('light'),
   orbBrand: 'rgba(155,27,48,0.05)',
   orbGold: 'rgba(212,165,116,0.06)',
   badgeBg: 'rgba(0,0,0,0.04)',
