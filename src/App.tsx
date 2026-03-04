@@ -53,15 +53,15 @@ function CosmicBackground({ theme }: any) {
     [21,75],[66,3],[89,65],[4,22],[96,82],[34,92],[57,8],[81,32],
   ];
 
-  const nodeColor = dk ? 'rgba(195,55,80,0.7)' : 'rgba(155,27,48,0.25)';
-  const nodeGold = dk ? 'rgba(220,180,130,0.6)' : 'rgba(170,120,60,0.2)';
-  const glowColor = dk ? 'rgba(155,27,48,0.12)' : 'rgba(155,27,48,0.05)';
-  const glowGold = dk ? 'rgba(212,165,116,0.1)' : 'rgba(170,120,60,0.04)';
-  const lineColor = dk ? 'rgba(155,27,48,0.2)' : 'rgba(155,27,48,0.1)';
-  const lineFaint = dk ? 'rgba(155,27,48,0.08)' : 'rgba(155,27,48,0.04)';
-  const lineGold = dk ? 'rgba(212,165,116,0.15)' : 'rgba(170,120,60,0.07)';
-  const dimColor = dk ? 'rgba(255,255,255,' : 'rgba(155,27,48,';
-  const coreColor = dk ? 'rgba(255,255,255,0.9)' : 'rgba(155,27,48,0.35)';
+  const nodeColor = dk ? 'rgba(37,99,235,0.7)' : 'rgba(37,99,235,0.25)';
+  const nodeGold = dk ? 'rgba(220,180,130,0.6)' : 'rgba(56,189,248,0.2)';
+  const glowColor = dk ? 'rgba(37,99,235,0.12)' : 'rgba(37,99,235,0.05)';
+  const glowGold = dk ? 'rgba(56,189,248,0.1)' : 'rgba(56,189,248,0.04)';
+  const lineColor = dk ? 'rgba(37,99,235,0.2)' : 'rgba(37,99,235,0.1)';
+  const lineFaint = dk ? 'rgba(37,99,235,0.08)' : 'rgba(37,99,235,0.04)';
+  const lineGold = dk ? 'rgba(56,189,248,0.15)' : 'rgba(56,189,248,0.07)';
+  const dimColor = dk ? 'rgba(255,255,255,' : 'rgba(37,99,235,';
+  const coreColor = dk ? 'rgba(255,255,255,0.9)' : 'rgba(37,99,235,0.35)';
 
   const s = stars;
 
@@ -78,7 +78,7 @@ function CosmicBackground({ theme }: any) {
       {/* Animated color nebula */}
       <div style={{
         position: 'absolute', inset: 0, opacity: dk ? 0.5 : 0.3,
-        background: 'radial-gradient(ellipse at 25% 30%, rgba(155,27,48,0.12), transparent 50%), radial-gradient(ellipse at 75% 20%, rgba(212,165,116,0.08), transparent 45%), radial-gradient(ellipse at 50% 70%, rgba(155,27,48,0.06), transparent 50%)',
+        background: 'radial-gradient(ellipse at 25% 30%, rgba(37,99,235,0.12), transparent 50%), radial-gradient(ellipse at 75% 20%, rgba(56,189,248,0.08), transparent 45%), radial-gradient(ellipse at 50% 70%, rgba(37,99,235,0.06), transparent 50%)',
         backgroundSize: '200% 200%',
         animation: 'bg-gradient-shift 25s ease infinite',
       }} />
@@ -176,7 +176,7 @@ function Hero({ t, lang, colors }: any) {
       {/* Animated gradient overlay */}
       <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.4,
-        background: 'radial-gradient(ellipse at 20% 50%, rgba(155,27,48,0.15), transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(212,165,116,0.1), transparent 50%), radial-gradient(ellipse at 60% 80%, rgba(155,27,48,0.08), transparent 50%)',
+        background: 'radial-gradient(ellipse at 20% 50%, rgba(37,99,235,0.15), transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(56,189,248,0.1), transparent 50%), radial-gradient(ellipse at 60% 80%, rgba(37,99,235,0.08), transparent 50%)',
         backgroundSize: '200% 200%',
         animation: 'bg-gradient-shift 20s ease infinite',
       }} />
@@ -229,14 +229,14 @@ function Hero({ t, lang, colors }: any) {
           <div className="anim-fade-up" style={{ position: 'relative', animationDelay: '0.3s' }}>
             <div style={{ position: 'relative', borderRadius: 20, overflow: 'hidden', boxShadow: `0 40px 80px ${colors.shadow}`, border: `1px solid ${colors.glassCardBorder}` }}>
               <img src={IMG.heroAi} alt="AI visualization" style={{ width: '100%', height: 380, objectFit: 'cover', display: 'block' }} loading="eager" />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(155,27,48,0.15), transparent 60%)' }} />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(37,99,235,0.15), transparent 60%)' }} />
             </div>
             <div style={{
               position: 'absolute', bottom: -24, left: -24, width: 180, height: 180, borderRadius: 16, overflow: 'hidden',
               boxShadow: `0 20px 40px ${colors.shadow}`, border: `2px solid ${colors.glassCardBorder}`,
             }}>
               <img src={IMG.heroTeam} alt="Team collaboration" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading="eager" />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(155,27,48,0.1), transparent 50%)' }} />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(37,99,235,0.1), transparent 50%)' }} />
             </div>
           </div>
         </div>
@@ -318,10 +318,10 @@ function ServiceCard({ icon: Icon, title, desc, slug, lang, colors }: any) {
       border: `1px solid ${colors.glassCardBorder}`, transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)', cursor: 'pointer',
       textDecoration: 'none', display: 'block',
     }}
-      onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.borderColor = colors.borderHover; e.currentTarget.style.boxShadow = `0 20px 40px ${colors.shadow}, 0 0 30px rgba(155,27,48,0.08)`; }}
+      onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.borderColor = colors.borderHover; e.currentTarget.style.boxShadow = `0 20px 40px ${colors.shadow}, 0 0 30px rgba(37,99,235,0.08)`; }}
       onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = colors.glassCardBorder; e.currentTarget.style.boxShadow = 'none'; }}
     >
-      <div style={{ width: 48, height: 48, borderRadius: 12, background: 'rgba(155,27,48,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
+      <div style={{ width: 48, height: 48, borderRadius: 12, background: 'rgba(37,99,235,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
         <Icon size={22} style={{ color: colors.brandLight }} />
       </div>
       <h3 style={{ fontSize: 17, fontWeight: 600, color: colors.white, marginBottom: 10 }}>{title}</h3>
@@ -348,7 +348,7 @@ function Services({ t, lang, colors }: any) {
     <Section id="servicos" colors={colors} style={{ padding: '96px 0' }}>
       <W>
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', borderRadius: 9999, background: 'rgba(155,27,48,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
+          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', borderRadius: 9999, background: 'rgba(37,99,235,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
             {t('services.tag')}
           </span>
           <h2 className="reveal rv-d1" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 700, color: colors.white, marginBottom: 16 }}>
@@ -390,7 +390,7 @@ function Metrics({ lang, colors }: any) {
     <Section alt colors={colors} style={{ padding: '96px 0' }}>
       <W>
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', borderRadius: 9999, background: 'rgba(212,165,116,0.1)', color: colors.gold, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
+          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', borderRadius: 9999, background: 'rgba(56,189,248,0.1)', color: colors.gold, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
             {lang === 'pt' ? 'Resultados' : 'Results'}
           </span>
           <h2 className="reveal rv-d1" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 700, color: colors.white, marginBottom: 12 }}>
@@ -440,7 +440,7 @@ function Process({ lang, colors }: any) {
     <Section colors={colors} style={{ padding: '96px 0' }}>
       <W>
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', borderRadius: 9999, background: 'rgba(155,27,48,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
+          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', borderRadius: 9999, background: 'rgba(37,99,235,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
             {lang === 'pt' ? 'Processo' : 'Process'}
           </span>
           <h2 className="reveal rv-d1" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 700, color: colors.white }}>
@@ -457,7 +457,7 @@ function Process({ lang, colors }: any) {
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = colors.glassCardBorder; }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-                <div style={{ width: 32, height: 32, borderRadius: 8, background: 'rgba(155,27,48,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: colors.brand, fontWeight: 700, fontSize: 14 }}>{i + 1}</div>
+                <div style={{ width: 32, height: 32, borderRadius: 8, background: 'rgba(37,99,235,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: colors.brand, fontWeight: 700, fontSize: 14 }}>{i + 1}</div>
                 <step.icon size={18} style={{ color: colors.brandLight }} />
               </div>
               <h3 style={{ color: colors.white, fontWeight: 600, marginBottom: 8, fontSize: 16 }}>{step.title}</h3>
@@ -479,7 +479,7 @@ function ImageDivider({ colors }: any) {
   return (
     <div style={{ position: 'relative', width: '100%', height: 360, overflow: 'hidden' }}>
       <img src={IMG.divider} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading="lazy" />
-      <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, ${colors.bg}, rgba(155,27,48,0.15), ${colors.bgAlt})` }} />
+      <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, ${colors.bg}, rgba(37,99,235,0.15), ${colors.bgAlt})` }} />
     </div>
   );
 }
@@ -494,7 +494,7 @@ function About({ t, lang, colors }: any) {
           <div className="reveal" style={{ position: 'relative' }}>
             <div style={{ borderRadius: 20, overflow: 'hidden', boxShadow: `0 30px 60px ${colors.shadow}`, border: `1px solid ${colors.glassCardBorder}` }}>
               <img src={IMG.about} alt="Technology workspace" style={{ width: '100%', height: 420, objectFit: 'cover', display: 'block' }} loading="lazy" />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(155,27,48,0.1), transparent 50%)' }} />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(37,99,235,0.1), transparent 50%)' }} />
             </div>
             {/* Floating stats card */}
             <div style={{
@@ -508,7 +508,7 @@ function About({ t, lang, colors }: any) {
           </div>
           {/* Text */}
           <div>
-            <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', borderRadius: 9999, background: 'rgba(155,27,48,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
+            <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', borderRadius: 9999, background: 'rgba(37,99,235,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
               {t('about.tag')}
             </span>
             <h2 className="reveal rv-d1" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 700, color: colors.white, marginBottom: 24 }}>
@@ -559,7 +559,7 @@ function Cases({ lang, colors }: any) {
     <Section id="cases" colors={colors} style={{ padding: '96px 0' }}>
       <W>
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', borderRadius: 9999, background: 'rgba(155,27,48,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>Portfolio</span>
+          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', borderRadius: 9999, background: 'rgba(37,99,235,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>Portfolio</span>
           <h2 className="reveal rv-d1" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 700, color: colors.white }}>Cases</h2>
         </div>
         <div id="cases-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
@@ -579,7 +579,7 @@ function Cases({ lang, colors }: any) {
                   onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
                 />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.6), transparent 60%)' }} />
-                <span style={{ position: 'absolute', bottom: 12, left: 16, padding: '4px 12px', borderRadius: 6, background: 'rgba(212,165,116,0.2)', backdropFilter: 'blur(8px)', color: colors.gold, fontSize: 12, fontWeight: 600 }}>{c.metric}</span>
+                <span style={{ position: 'absolute', bottom: 12, left: 16, padding: '4px 12px', borderRadius: 6, background: 'rgba(56,189,248,0.2)', backdropFilter: 'blur(8px)', color: colors.gold, fontSize: 12, fontWeight: 600 }}>{c.metric}</span>
               </div>
               {/* Case content */}
               <div style={{ padding: 24, display: 'flex', flexDirection: 'column', flex: 1 }}>
@@ -606,7 +606,7 @@ function CtaSection({ t }: any) {
     <section style={{ position: 'relative', overflow: 'hidden', padding: '120px 0' }}>
       {/* Background image */}
       <img src={IMG.ctaBg} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(10,10,15,0.88), rgba(155,27,48,0.3), rgba(10,10,15,0.92))' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(10,10,15,0.88), rgba(37,99,235,0.3), rgba(10,10,15,0.92))' }} />
       <W style={{ textAlign: 'center', position: 'relative', zIndex: 10 }}>
         <h2 className="reveal" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.8rem, 5vw, 3rem)', fontWeight: 700, color: '#fff', marginBottom: 24 }}>{t('cta.title')}</h2>
         <p className="reveal rv-d1" style={{ color: 'rgba(255,255,255,0.7)', maxWidth: 500, margin: '0 auto 40px', fontSize: 18, lineHeight: 1.7 }}>{t('cta.sub')}</p>
@@ -647,7 +647,7 @@ function Contact({ lang, colors }: any) {
       <W>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 360px), 1fr))', gap: 48 }}>
           <div>
-            <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', borderRadius: 9999, background: 'rgba(155,27,48,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
+            <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', borderRadius: 9999, background: 'rgba(37,99,235,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
               {lang === 'pt' ? 'Contato' : 'Contact'}
             </span>
             <h2 className="reveal rv-d1" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 700, color: colors.white, marginBottom: 24 }}>

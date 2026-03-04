@@ -26,15 +26,15 @@ function createCosmicPattern(theme: 'dark' | 'light'): string {
   const dk = theme === 'dark';
 
   /* ── Color palette ── */
-  const starBright  = dk ? 'rgba(255,255,255,0.75)' : 'rgba(155,27,48,0.18)';
-  const starMed     = dk ? 'rgba(255,255,255,0.35)' : 'rgba(155,27,48,0.1)';
-  const starDim     = dk ? 'rgba(255,255,255,0.12)' : 'rgba(155,27,48,0.05)';
-  const starTiny    = dk ? 'rgba(255,255,255,0.07)' : 'rgba(155,27,48,0.03)';
-  const nodeBrand   = dk ? 'rgba(195,50,74,0.55)'   : 'rgba(155,27,48,0.22)';
-  const nodeGold    = dk ? 'rgba(212,175,130,0.5)'   : 'rgba(170,120,60,0.18)';
-  const line        = dk ? 'rgba(155,27,48,0.18)'    : 'rgba(155,27,48,0.09)';
-  const lineFaint   = dk ? 'rgba(155,27,48,0.09)'    : 'rgba(155,27,48,0.045)';
-  const lineGold    = dk ? 'rgba(212,165,116,0.12)'  : 'rgba(170,120,60,0.06)';
+  const starBright  = dk ? 'rgba(255,255,255,0.75)' : 'rgba(37,99,235,0.18)';
+  const starMed     = dk ? 'rgba(255,255,255,0.35)' : 'rgba(37,99,235,0.1)';
+  const starDim     = dk ? 'rgba(255,255,255,0.12)' : 'rgba(37,99,235,0.05)';
+  const starTiny    = dk ? 'rgba(255,255,255,0.07)' : 'rgba(37,99,235,0.03)';
+  const nodeBrand   = dk ? 'rgba(37,99,235,0.55)'   : 'rgba(37,99,235,0.22)';
+  const nodeGold    = dk ? 'rgba(56,189,248,0.5)'    : 'rgba(56,189,248,0.18)';
+  const line        = dk ? 'rgba(37,99,235,0.18)'    : 'rgba(37,99,235,0.09)';
+  const lineFaint   = dk ? 'rgba(37,99,235,0.09)'    : 'rgba(37,99,235,0.045)';
+  const lineGold    = dk ? 'rgba(56,189,248,0.12)'   : 'rgba(56,189,248,0.06)';
 
   /* ── Astrological anchor positions (450×450 tile) ──
      Based on whole-sign house positions projected onto 2D:
@@ -90,9 +90,9 @@ function createCosmicPattern(theme: 'dark' | 'light'): string {
   const a = astro;
   // Glow halos for major nodes
   if (dk) {
-    svg += `<circle cx='${a.regulus.x}' cy='${a.regulus.y}' r='8' fill='rgba(155,27,48,0.06)'/>`;
-    svg += `<circle cx='${a.jupiter.x}' cy='${a.jupiter.y}' r='10' fill='rgba(212,165,116,0.05)'/>`;
-    svg += `<circle cx='${a.spica.x}' cy='${a.spica.y}' r='8' fill='rgba(212,165,116,0.04)'/>`;
+    svg += `<circle cx='${a.regulus.x}' cy='${a.regulus.y}' r='8' fill='rgba(37,99,235,0.06)'/>`;
+    svg += `<circle cx='${a.jupiter.x}' cy='${a.jupiter.y}' r='10' fill='rgba(56,189,248,0.05)'/>`;
+    svg += `<circle cx='${a.spica.x}' cy='${a.spica.y}' r='8' fill='rgba(56,189,248,0.04)'/>`;
   }
   // Node dots
   svg += `<circle cx='${a.regulus.x}' cy='${a.regulus.y}' r='${a.regulus.r}' fill='${nodeBrand}'/>`;
@@ -176,26 +176,26 @@ export const dark = {
   bgCard: 'rgba(20, 20, 30, 0.6)',
   bgAlt: 'rgba(16, 16, 24, 0.4)',
   border: 'rgba(255,255,255,0.06)',
-  borderHover: 'rgba(155, 27, 48, 0.3)',
+  borderHover: 'rgba(37, 99, 235, 0.3)',
   text: '#e2e8f0',
   textMuted: '#94a3b8',
   textDim: '#64748b',
   white: '#ffffff',
-  brand: '#9b1b30',
-  brandLight: '#c2314a',
-  brandDark: '#7a1526',
-  gold: '#d4a574',
-  goldLight: '#e0be98',
+  brand: '#2563eb',
+  brandLight: '#60a5fa',
+  brandDark: '#1d4ed8',
+  gold: '#38bdf8',
+  goldLight: '#7dd3fc',
   glass: 'rgba(16, 16, 24, 0.75)',
-  glassBorder: 'rgba(155, 27, 48, 0.15)',
+  glassBorder: 'rgba(37, 99, 235, 0.15)',
   glassCard: 'rgba(20, 20, 30, 0.6)',
   glassCardBorder: 'rgba(255, 255, 255, 0.06)',
   inputBg: 'rgba(20,20,30,0.6)',
   shadow: 'rgba(0,0,0,0.4)',
   cosmicBg: createCosmicPattern('dark'),
   cosmicGradient: cosmicGradient('dark'),
-  orbBrand: 'rgba(155,27,48,0.07)',
-  orbGold: 'rgba(212,165,116,0.05)',
+  orbBrand: 'rgba(37,99,235,0.07)',
+  orbGold: 'rgba(56,189,248,0.05)',
   badgeBg: 'rgba(255,255,255,0.03)',
   badgeBorder: 'rgba(255,255,255,0.06)',
   tagBg: 'rgba(255,255,255,0.04)',
@@ -208,26 +208,26 @@ export const light = {
   bgCard: 'rgba(255, 255, 255, 0.7)',
   bgAlt: 'rgba(245, 243, 240, 0.6)',
   border: 'rgba(0,0,0,0.08)',
-  borderHover: 'rgba(155, 27, 48, 0.25)',
+  borderHover: 'rgba(37, 99, 235, 0.25)',
   text: '#1e293b',
   textMuted: '#475569',
   textDim: '#64748b',
   white: '#0f172a',
-  brand: '#9b1b30',
-  brandLight: '#b82640',
-  brandDark: '#7a1526',
-  gold: '#a07040',
-  goldLight: '#c49060',
+  brand: '#2563eb',
+  brandLight: '#1d4ed8',
+  brandDark: '#1e40af',
+  gold: '#0284c7',
+  goldLight: '#0ea5e9',
   glass: 'rgba(255, 255, 255, 0.8)',
-  glassBorder: 'rgba(155, 27, 48, 0.12)',
+  glassBorder: 'rgba(37, 99, 235, 0.12)',
   glassCard: 'rgba(255, 255, 255, 0.65)',
   glassCardBorder: 'rgba(0, 0, 0, 0.06)',
   inputBg: 'rgba(255,255,255,0.8)',
   shadow: 'rgba(0,0,0,0.08)',
   cosmicBg: createCosmicPattern('light'),
   cosmicGradient: cosmicGradient('light'),
-  orbBrand: 'rgba(155,27,48,0.05)',
-  orbGold: 'rgba(212,165,116,0.06)',
+  orbBrand: 'rgba(37,99,235,0.05)',
+  orbGold: 'rgba(56,189,248,0.06)',
   badgeBg: 'rgba(0,0,0,0.04)',
   badgeBorder: 'rgba(0,0,0,0.08)',
   tagBg: 'rgba(0,0,0,0.04)',

@@ -50,20 +50,20 @@ export function ServicePage({ data, slug }: { data: ServicePageData; slug: strin
         {/* Background image */}
         <div style={{ position: 'absolute', inset: 0 }}>
           <img src={heroImg} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="eager" />
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(10,10,15,0.95) 40%, rgba(10,10,15,0.6) 70%, rgba(155,27,48,0.2))' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(10,10,15,0.95) 40%, rgba(10,10,15,0.6) 70%, rgba(37,99,235,0.2))' }} />
         </div>
 
         <div style={{ position: 'relative', zIndex: 10, maxWidth: 1200, margin: '0 auto', padding: '160px 24px 100px' }}>
           <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: 'rgba(255,255,255,0.6)', textDecoration: 'none', fontSize: 14, marginBottom: 32, transition: 'color 0.3s' }}
-            onMouseEnter={e => e.currentTarget.style.color = '#e8a0a0'}
+            onMouseEnter={e => e.currentTarget.style.color = '#93c5fd'}
             onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}>
             <ArrowLeft size={16} />
             {lang === 'pt' ? 'Voltar ao início' : 'Back to home'}
           </Link>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 24 }}>
-            <div className="reveal" style={{ width: 56, height: 56, borderRadius: 14, background: 'rgba(155,27,48,0.2)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Icon size={28} style={{ color: '#e8a0a0' }} />
+            <div className="reveal" style={{ width: 56, height: 56, borderRadius: 14, background: 'rgba(37,99,235,0.2)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Icon size={28} style={{ color: '#93c5fd' }} />
             </div>
           </div>
 
@@ -71,7 +71,7 @@ export function ServicePage({ data, slug }: { data: ServicePageData; slug: strin
             {title}
           </h1>
 
-          <p className="reveal rv-d2" style={{ fontSize: 20, color: '#e8a0a0', fontWeight: 500, marginBottom: 24 }}>
+          <p className="reveal rv-d2" style={{ fontSize: 20, color: '#93c5fd', fontWeight: 500, marginBottom: 24 }}>
             {subtitle}
           </p>
 
@@ -139,7 +139,7 @@ export function ServicePage({ data, slug }: { data: ServicePageData; slug: strin
       {/* CTA with background image */}
       <section style={{ position: 'relative', padding: '100px 0', overflow: 'hidden' }}>
         <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1400&q=80&auto=format&fit=crop" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(10,10,15,0.9), rgba(155,27,48,0.25), rgba(10,10,15,0.92))' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(10,10,15,0.9), rgba(37,99,235,0.25), rgba(10,10,15,0.92))' }} />
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative', zIndex: 10 }}>
           <h2 className="reveal" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', fontWeight: 700, color: '#fff', marginBottom: 16 }}>
             {cta}
