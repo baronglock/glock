@@ -1,14 +1,17 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Database, Bot, Globe, BrainCircuit, ChevronRight, ArrowRight,
-  Menu, X, ExternalLink, Mail, Phone, MapPin, Instagram,
+  ExternalLink, Mail, Phone, MapPin, Instagram,
   Linkedin, Github, Shield, Clock, TrendingUp,
   BarChart3, Code2, MessageSquare, Search, FileSpreadsheet,
-  Workflow, Languages, LayoutDashboard, Zap, Sun, Moon
+  Workflow, LayoutDashboard, Zap
 } from 'lucide-react';
 import { useReveal } from './hooks/useReveal';
 import { useLanguage } from './hooks/useLanguage';
 import { useTheme } from './hooks/useTheme';
+import { Navbar } from './components/Navbar';
+import { Footer } from './components/Footer';
 
 /* ── Wrapper ── */
 function W({ children, className = '', style }: { children: React.ReactNode; className?: string; style?: React.CSSProperties }) {
@@ -25,110 +28,8 @@ function Section({ children, className = '', id, alt, style, colors }: { childre
   );
 }
 
-/* ═══════════════ NAVBAR ═══════════════ */
-function Navbar({ t, lang, toggle, colors, theme, toggleTheme }: any) {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', fn, { passive: true });
-    return () => window.removeEventListener('scroll', fn);
-  }, []);
-
-  const links = [
-    { href: '#servicos', label: t('nav.services') },
-    { href: '#sobre', label: t('nav.about') },
-    { href: '#cases', label: t('nav.cases') },
-    { href: '#contato', label: t('nav.contact') },
-  ];
-
-  return (
-    <>
-      <nav style={{
-        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
-        transition: 'all 0.5s ease',
-        background: scrolled ? colors.glass : 'transparent',
-        backdropFilter: scrolled ? 'blur(20px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
-        borderBottom: scrolled ? `1px solid ${colors.glassBorder}` : '1px solid transparent',
-        boxShadow: scrolled ? `0 4px 30px ${colors.shadow}` : 'none',
-      }}>
-        <W>
-          <div style={{ height: 72, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'baseline', gap: 10 }}>
-              <span style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 26, fontWeight: 700, color: colors.white, letterSpacing: '-0.03em' }}>
-                Glock<span style={{ color: colors.brand }}>.</span>
-              </span>
-              <span className="hidden sm:inline" style={{ fontSize: 11, color: colors.textDim, fontWeight: 400, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                {lang === 'pt' ? 'Automação, Dados e IA' : 'Automation, Data & AI'}
-              </span>
-            </a>
-
-            <div className="hidden md:flex" style={{ alignItems: 'center', gap: 28 }}>
-              {links.map((l) => (
-                <a key={l.href} href={l.href} style={{ fontSize: 14, color: colors.textMuted, textDecoration: 'none', transition: 'color 0.3s' }}
-                  onMouseEnter={e => (e.currentTarget.style.color = colors.white)}
-                  onMouseLeave={e => (e.currentTarget.style.color = colors.textMuted)}>
-                  {l.label}
-                </a>
-              ))}
-              <button onClick={toggleTheme} style={{ background: 'none', border: 'none', color: colors.textDim, cursor: 'pointer', display: 'flex', alignItems: 'center', padding: 4, transition: 'color 0.3s' }}
-                onMouseEnter={e => e.currentTarget.style.color = colors.brand}
-                onMouseLeave={e => e.currentTarget.style.color = colors.textDim}
-                title={theme === 'dark' ? 'Tema claro' : 'Tema escuro'}>
-                {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-              </button>
-              <button onClick={toggle} style={{ background: 'none', border: 'none', color: colors.textDim, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, fontWeight: 500 }}>
-                <Languages size={14} />
-                {lang === 'pt' ? 'EN' : 'PT'}
-              </button>
-              <a href="#contato" className="btn-cta" style={{ padding: '9px 22px', fontSize: 14 }}>
-                {t('hero.cta')}
-              </a>
-            </div>
-
-            <div className="flex md:hidden" style={{ alignItems: 'center', gap: 10 }}>
-              <button onClick={toggleTheme} style={{ background: 'none', border: 'none', color: colors.textMuted, cursor: 'pointer' }}>
-                {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-              </button>
-              <button onClick={toggle} style={{ background: 'none', border: 'none', color: colors.textMuted, cursor: 'pointer' }}>
-                <Languages size={18} />
-              </button>
-              <button onClick={() => setOpen(true)} style={{ background: 'none', border: 'none', color: colors.textMuted, cursor: 'pointer' }}>
-                <Menu size={22} />
-              </button>
-            </div>
-          </div>
-        </W>
-      </nav>
-
-      {open && (
-        <div className="anim-fade-in" style={{ position: 'fixed', inset: 0, zIndex: 60, backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)', background: theme === 'dark' ? 'rgba(10,10,15,0.8)' : 'rgba(0,0,0,0.3)' }} onClick={() => setOpen(false)}>
-          <div className="anim-slide-right" style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 280, padding: 24, background: colors.glass, backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', borderLeft: `1px solid ${colors.border}` }} onClick={e => e.stopPropagation()}>
-            <button onClick={() => setOpen(false)} style={{ position: 'absolute', top: 20, right: 20, background: 'none', border: 'none', color: colors.textMuted, cursor: 'pointer' }}>
-              <X size={22} />
-            </button>
-            <div style={{ marginTop: 56, display: 'flex', flexDirection: 'column', gap: 24 }}>
-              {links.map((l) => (
-                <a key={l.href} href={l.href} onClick={() => setOpen(false)}
-                  style={{ fontSize: 18, color: colors.text, textDecoration: 'none' }}>
-                  {l.label}
-                </a>
-              ))}
-              <a href="#contato" onClick={() => setOpen(false)} className="btn-cta" style={{ padding: '12px 20px', marginTop: 16, textAlign: 'center', fontSize: 14 }}>
-                {t('hero.cta')}
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
-    </>
-  );
-}
-
 /* ═══════════════ HERO ═══════════════ */
-function Hero({ t, colors }: any) {
+function Hero({ t, lang, colors }: any) {
   return (
     <section style={{
       position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', width: '100%',
@@ -166,9 +67,12 @@ function Hero({ t, colors }: any) {
         </div>
 
         <div className="anim-fade-up" style={{ marginTop: 64, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 10, animationDelay: '0.5s' }}>
-          {['Python', 'React', 'Node.js', 'OpenAI', 'n8n', 'WhatsApp API'].map((tech) => (
-            <span key={tech} style={{ padding: '5px 14px', borderRadius: 9999, background: colors.badgeBg, border: `1px solid ${colors.badgeBorder}`, fontSize: 12, color: colors.textDim, fontWeight: 500 }}>
-              {tech}
+          {(lang === 'pt'
+            ? ['Dados sob medida', 'Processos automatizados', 'Atendimento 24h', 'Presença digital premium', 'Decisões baseadas em dados', 'Inteligência artificial aplicada']
+            : ['Custom data', 'Automated processes', '24/7 support', 'Premium digital presence', 'Data-driven decisions', 'Applied AI']
+          ).map((tag) => (
+            <span key={tag} style={{ padding: '5px 14px', borderRadius: 9999, background: colors.badgeBg, border: `1px solid ${colors.badgeBorder}`, fontSize: 12, color: colors.textDim, fontWeight: 500 }}>
+              {tag}
             </span>
           ))}
         </div>
@@ -180,11 +84,12 @@ function Hero({ t, colors }: any) {
 }
 
 /* ═══════════════ SERVICE CARD ═══════════════ */
-function ServiceCard({ icon: Icon, title, desc, colors }: any) {
+function ServiceCard({ icon: Icon, title, desc, slug, lang, colors }: any) {
   return (
-    <div className="reveal" style={{
+    <Link to={`/servicos/${slug}`} className="reveal" style={{
       padding: 28, borderRadius: 16, background: colors.glassCard, backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)',
-      border: `1px solid ${colors.glassCardBorder}`, transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)', cursor: 'default',
+      border: `1px solid ${colors.glassCardBorder}`, transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)', cursor: 'pointer',
+      textDecoration: 'none', display: 'block',
     }}
       onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.borderColor = colors.borderHover; e.currentTarget.style.boxShadow = `0 20px 40px ${colors.shadow}, 0 0 30px rgba(155,27,48,0.08)`; }}
       onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = colors.glassCardBorder; e.currentTarget.style.boxShadow = 'none'; }}
@@ -194,19 +99,22 @@ function ServiceCard({ icon: Icon, title, desc, colors }: any) {
       </div>
       <h3 style={{ fontSize: 17, fontWeight: 600, color: colors.white, marginBottom: 10 }}>{title}</h3>
       <p style={{ color: colors.textMuted, fontSize: 14, lineHeight: 1.7 }}>{desc}</p>
-    </div>
+      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginTop: 16, fontSize: 13, color: colors.brandLight, fontWeight: 500 }}>
+        {lang === 'pt' ? 'Saiba mais' : 'Learn more'} <ChevronRight size={14} />
+      </span>
+    </Link>
   );
 }
 
 /* ═══════════════ SERVICES (6 cards, 3x2) ═══════════════ */
-function Services({ t, colors }: any) {
+function Services({ t, lang, colors }: any) {
   const services = [
-    { icon: Database, titleKey: 'svc.data.title', descKey: 'svc.data.desc' },
-    { icon: Workflow, titleKey: 'svc.auto.title', descKey: 'svc.auto.desc' },
-    { icon: MessageSquare, titleKey: 'svc.chat.title', descKey: 'svc.chat.desc' },
-    { icon: Globe, titleKey: 'svc.web.title', descKey: 'svc.web.desc' },
-    { icon: LayoutDashboard, titleKey: 'svc.bi.title', descKey: 'svc.bi.desc' },
-    { icon: BrainCircuit, titleKey: 'svc.consult.title', descKey: 'svc.consult.desc' },
+    { icon: Database, titleKey: 'svc.data.title', descKey: 'svc.data.desc', slug: 'extracao-de-dados' },
+    { icon: Workflow, titleKey: 'svc.auto.title', descKey: 'svc.auto.desc', slug: 'automacao' },
+    { icon: MessageSquare, titleKey: 'svc.chat.title', descKey: 'svc.chat.desc', slug: 'chatbots' },
+    { icon: Globe, titleKey: 'svc.web.title', descKey: 'svc.web.desc', slug: 'sites' },
+    { icon: LayoutDashboard, titleKey: 'svc.bi.title', descKey: 'svc.bi.desc', slug: 'dashboards' },
+    { icon: BrainCircuit, titleKey: 'svc.consult.title', descKey: 'svc.consult.desc', slug: 'consultoria-ia' },
   ];
 
   return (
@@ -225,7 +133,7 @@ function Services({ t, colors }: any) {
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
           {services.map((s) => (
-            <ServiceCard key={s.titleKey} icon={s.icon} title={t(s.titleKey as any)} desc={t(s.descKey as any)} colors={colors} />
+            <ServiceCard key={s.titleKey} icon={s.icon} title={t(s.titleKey as any)} desc={t(s.descKey as any)} slug={s.slug} lang={lang} colors={colors} />
           ))}
         </div>
         <style>{`
@@ -519,59 +427,6 @@ function Contact({ lang, colors }: any) {
   );
 }
 
-/* ═══════════════ FOOTER ═══════════════ */
-function Footer({ t, lang, colors }: any) {
-  return (
-    <footer style={{ borderTop: `1px solid ${colors.border}`, padding: '48px 0', width: '100%' }}>
-      <W>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 32, marginBottom: 40 }}>
-          <div>
-            <span style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 24, fontWeight: 700, color: colors.white }}>Glock<span style={{ color: colors.brand }}>.</span></span>
-            <p style={{ fontSize: 13, color: colors.textDim, marginTop: 12, lineHeight: 1.6 }}>{lang === 'pt' ? 'Automação, Dados e IA' : 'Automation, Data & AI'}</p>
-          </div>
-          <div>
-            <h4 style={{ fontSize: 13, fontWeight: 600, color: colors.text, marginBottom: 12, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{t('footer.services')}</h4>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
-              {[t('svc.data.title'), t('svc.auto.title'), t('svc.web.title'), t('svc.consult.title')].map((s) => (
-                <li key={s}><a href="#servicos" style={{ fontSize: 14, color: colors.textDim, textDecoration: 'none', transition: 'color 0.3s' }}
-                  onMouseEnter={e => e.currentTarget.style.color = colors.brand} onMouseLeave={e => e.currentTarget.style.color = colors.textDim}>{s}</a></li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 style={{ fontSize: 13, fontWeight: 600, color: colors.text, marginBottom: 12, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{t('footer.company')}</h4>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
-              <li><a href="#sobre" style={{ fontSize: 14, color: colors.textDim, textDecoration: 'none' }}>{t('nav.about')}</a></li>
-              <li><a href="#cases" style={{ fontSize: 14, color: colors.textDim, textDecoration: 'none' }}>Cases</a></li>
-              <li><a href="#contato" style={{ fontSize: 14, color: colors.textDim, textDecoration: 'none' }}>{t('nav.contact')}</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 style={{ fontSize: 13, fontWeight: 600, color: colors.text, marginBottom: 12, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{t('footer.contact')}</h4>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8, fontSize: 14, color: colors.textDim }}>
-              <li>+55 (41) 98799-1419</li>
-              <li>contato@glock.dev</li>
-              <li>Curitiba, PR</li>
-            </ul>
-          </div>
-        </div>
-        <div style={{ borderTop: `1px solid ${colors.border}`, paddingTop: 32, display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
-          <p style={{ fontSize: 12, color: colors.footerBorder }}>&copy; {new Date().getFullYear()} Glock. {t('footer.rights')}</p>
-          <div style={{ display: 'flex', gap: 16 }}>
-            {[Instagram, Linkedin, Github].map((Icon, i) => (
-              <a key={i} href={i === 2 ? 'https://github.com/baronglock' : '#'} target={i === 2 ? '_blank' : undefined} rel="noopener noreferrer"
-                style={{ color: colors.footerBorder, transition: 'color 0.3s', textDecoration: 'none' }}
-                onMouseEnter={e => e.currentTarget.style.color = colors.brand} onMouseLeave={e => e.currentTarget.style.color = colors.footerBorder}>
-                <Icon size={16} />
-              </a>
-            ))}
-          </div>
-        </div>
-      </W>
-    </footer>
-  );
-}
-
 /* ═══════════════ APP ═══════════════ */
 export default function App() {
   const { lang, t, toggle } = useLanguage();
@@ -580,8 +435,8 @@ export default function App() {
   return (
     <div style={{ minHeight: '100vh', background: colors.bg, color: colors.text, fontFamily: "'Inter', system-ui, sans-serif", width: '100%', transition: 'background-color 0.4s ease, color 0.4s ease' }}>
       <Navbar t={t} lang={lang} toggle={toggle} colors={colors} theme={theme} toggleTheme={toggleTheme} />
-      <Hero t={t} colors={colors} />
-      <Services t={t} colors={colors} />
+      <Hero t={t} lang={lang} colors={colors} />
+      <Services t={t} lang={lang} colors={colors} />
       <Metrics t={t} colors={colors} />
       <Process lang={lang} colors={colors} />
       <About t={t} colors={colors} />
