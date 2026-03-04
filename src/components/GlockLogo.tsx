@@ -1,30 +1,35 @@
 const BRAND = '#9b1b30';
 
 export function GlockLogo({ size = 28 }: { size?: number }) {
+  /* Raio proporcional: usa em units so it scales with any size */
+  const boltH = size * 1.3;
+  const boltW = size * 0.55;
+  const boltTop = size * -0.18;
+  const boltLeft = size * 0.15;
+
   return (
     <span style={{
       fontFamily: "'Playfair Display', Georgia, serif",
       fontWeight: 700, fontSize: size, letterSpacing: '-0.03em',
       color: BRAND, lineHeight: 1, whiteSpace: 'nowrap',
     }}>
-      {/* G as real text so it shares the same baseline as "lock" */}
-      <span style={{ position: 'relative', display: 'inline' }}>
+      <span style={{ position: 'relative', display: 'inline-block' }}>
         G
-        {/* Lightning bolt overlaid on the G */}
         <svg
-          viewBox="0 0 100 100"
+          viewBox="0 0 55 130"
+          width={boltW}
+          height={boltH}
           style={{
             position: 'absolute',
-            left: 0, top: '-15%',
-            width: '100%', height: '130%',
+            left: boltLeft, top: boltTop,
             pointerEvents: 'none',
           }}
         >
           <path
-            d="M60 0 L38 42 L56 42 L30 100"
+            d="M38 0 L18 52 L35 52 L12 130"
             fill="none"
             stroke={BRAND}
-            strokeWidth="4.5"
+            strokeWidth="5"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
