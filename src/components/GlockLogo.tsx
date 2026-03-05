@@ -6,6 +6,7 @@ export function GlockLogo({ size = 28 }: { size?: number }) {
       lineHeight: 1, whiteSpace: 'nowrap',
     }}>
       <span style={{ color: '#2563eb' }}>G</span>
+      <span style={{ color: '#2563eb', fontWeight: 300 }}>lock</span>
       <span style={{ color: '#60a5fa' }}>.</span>
     </span>
   );
