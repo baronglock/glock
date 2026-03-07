@@ -15,7 +15,7 @@ createRoot(document.getElementById('root')!).render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />} />
-          <Route path="/websites" element={<Layout><WebsitesPage /></Layout>} />
+          <Route path="/servicos/sites" element={<Layout><WebsitesPage /></Layout>} />
           {Object.entries(servicesData).map(([slug, data]) => (
             <Route
               key={slug}
