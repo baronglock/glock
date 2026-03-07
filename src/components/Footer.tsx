@@ -19,7 +19,7 @@ export function Footer({ t, lang, colors }: any) {
               {[
                 { label: t('svc.data.title'), to: '/servicos/extracao-de-dados' },
                 { label: t('svc.auto.title'), to: '/servicos/automacao' },
-                { label: t('svc.web.title'), to: '/servicos/sites' },
+                { label: t('svc.web.title'), to: '/websites' },
                 { label: t('svc.consult.title'), to: '/servicos/consultoria-ia' },
               ].map((s) => (
                 <li key={s.to}><Link to={s.to} style={{ fontSize: 14, color: colors.textDim, textDecoration: 'none', transition: 'color 0.3s' }}
