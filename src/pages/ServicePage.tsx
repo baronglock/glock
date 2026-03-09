@@ -67,7 +67,7 @@ export function ServicePage({ data, slug }: { data: ServicePageData; slug: strin
             </div>
           </div>
 
-          <h1 className="reveal rv-d1" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 700, color: '#fff', marginBottom: 16, lineHeight: 1.15, maxWidth: 700 }}>
+          <h1 className="reveal rv-d1" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 300, color: '#fff', marginBottom: 16, lineHeight: 1.15, maxWidth: 700 }}>
             {title}
           </h1>
 
@@ -88,7 +88,7 @@ export function ServicePage({ data, slug }: { data: ServicePageData; slug: strin
       {/* Benefits */}
       <section style={{ padding: '80px 0', background: colors.bgAlt }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
-          <h2 className="reveal" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700, color: colors.white, marginBottom: 48, textAlign: 'center' }}>
+          <h2 className="reveal" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 300, color: colors.white, marginBottom: 48, textAlign: 'center' }}>
             {lang === 'pt' ? 'O que entregamos' : 'What we deliver'}
           </h2>
 
@@ -113,7 +113,7 @@ export function ServicePage({ data, slug }: { data: ServicePageData; slug: strin
       {/* Sectors */}
       <section style={{ padding: '80px 0' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
-          <h2 className="reveal" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700, color: colors.white, marginBottom: 16, textAlign: 'center' }}>
+          <h2 className="reveal" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 300, color: colors.white, marginBottom: 16, textAlign: 'center' }}>
             {lang === 'pt' ? 'Setores que atendemos' : 'Industries we serve'}
           </h2>
           <p className="reveal rv-d1" style={{ textAlign: 'center', color: colors.textMuted, marginBottom: 48, maxWidth: 500, margin: '0 auto 48px' }}>
@@ -141,7 +141,7 @@ export function ServicePage({ data, slug }: { data: ServicePageData; slug: strin
         <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1400&q=80&auto=format&fit=crop" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(10,10,15,0.9), rgba(37,99,235,0.25), rgba(10,10,15,0.92))' }} />
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative', zIndex: 10 }}>
-          <h2 className="reveal" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', fontWeight: 700, color: '#fff', marginBottom: 16 }}>
+          <h2 className="reveal" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', fontWeight: 300, color: '#fff', marginBottom: 16 }}>
             {cta}
           </h2>
           <p className="reveal rv-d1" style={{ color: 'rgba(255,255,255,0.7)', marginBottom: 32, fontSize: 17 }}>

@@ -187,7 +187,7 @@ function Hero({ t, lang, colors }: any) {
         <div id="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'center' }}>
           {/* Left: text */}
           <div>
-            <h1 className="anim-fade-up" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(2.2rem, 5vw, 4rem)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: 28 }}>
+            <h1 className="anim-fade-up" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 300, lineHeight: 0.95, letterSpacing: '-0.03em', marginBottom: 28 }}>
               <span style={{ color: colors.white }}>{t('hero.title1')}</span>
               <br />
               <span className="text-gradient">{t('hero.title2')}</span>
@@ -342,10 +342,10 @@ function Services({ t, lang, colors }: any) {
     <Section id="servicos" colors={colors} style={{ padding: '96px 0' }}>
       <W>
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', borderRadius: 9999, background: 'rgba(37,99,235,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
+          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(37,99,235,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
             {t('services.tag')}
           </span>
-          <h2 className="reveal rv-d1" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 700, color: colors.white, marginBottom: 16 }}>
+          <h2 className="reveal rv-d1" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white, marginBottom: 16 }}>
             {t('services.title')}
           </h2>
           <p className="reveal rv-d2" style={{ color: colors.textMuted, maxWidth: 560, margin: '0 auto', lineHeight: 1.7 }}>
@@ -384,10 +384,10 @@ function Metrics({ lang, colors }: any) {
     <Section alt colors={colors} style={{ padding: '96px 0' }}>
       <W>
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', borderRadius: 9999, background: 'rgba(56,189,248,0.1)', color: colors.gold, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
+          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(56,189,248,0.1)', color: colors.gold, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
             {lang === 'pt' ? 'Resultados' : 'Results'}
           </span>
-          <h2 className="reveal rv-d1" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 700, color: colors.white, marginBottom: 12 }}>
+          <h2 className="reveal rv-d1" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white, marginBottom: 12 }}>
             {lang === 'pt' ? 'Resultados que comprovam' : 'Proven results'}
           </h2>
           <p className="reveal rv-d2" style={{ color: colors.textMuted, maxWidth: 520, margin: '0 auto', lineHeight: 1.7 }}>
@@ -404,7 +404,7 @@ function Metrics({ lang, colors }: any) {
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = colors.glassCardBorder; }}
             >
               <m.icon size={24} style={{ color: colors.gold, margin: '0 auto 14px' }} />
-              <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', fontWeight: 700, color: colors.white, marginBottom: 6 }}>{m.value}</div>
+              <div style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', fontWeight: 300, color: colors.white, marginBottom: 6 }}>{m.value}</div>
               <div style={{ fontSize: 14, color: colors.text, fontWeight: 600, marginBottom: 8 }}>{m.label}</div>
               <div style={{ fontSize: 13, color: colors.textDim, lineHeight: 1.6 }}>{m.desc}</div>
             </div>
@@ -434,10 +434,10 @@ function Process({ lang, colors }: any) {
     <Section colors={colors} style={{ padding: '96px 0' }}>
       <W>
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', borderRadius: 9999, background: 'rgba(37,99,235,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
+          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(37,99,235,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
             {lang === 'pt' ? 'Processo' : 'Process'}
           </span>
-          <h2 className="reveal rv-d1" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 700, color: colors.white }}>
+          <h2 className="reveal rv-d1" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white }}>
             {lang === 'pt' ? 'Como trabalhamos' : 'How we work'}
           </h2>
         </div>
@@ -496,16 +496,16 @@ function About({ t, lang, colors }: any) {
               background: colors.glassCard, backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
               border: `1px solid ${colors.glassCardBorder}`, boxShadow: `0 20px 40px ${colors.shadow}`,
             }}>
-              <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 28, fontWeight: 700, color: colors.brandLight }}>5+</div>
+              <div style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 28, fontWeight: 300, color: colors.brandLight }}>5+</div>
               <div style={{ fontSize: 12, color: colors.textDim, fontWeight: 500 }}>{lang === 'pt' ? 'anos de experiência' : 'years of experience'}</div>
             </div>
           </div>
           {/* Text */}
           <div>
-            <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', borderRadius: 9999, background: 'rgba(37,99,235,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
+            <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(37,99,235,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
               {t('about.tag')}
             </span>
-            <h2 className="reveal rv-d1" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 700, color: colors.white, marginBottom: 24 }}>
+            <h2 className="reveal rv-d1" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white, marginBottom: 24 }}>
               {t('about.title')}
             </h2>
             <p className="reveal rv-d2" style={{ color: colors.textMuted, lineHeight: 1.75, marginBottom: 16 }}>{t('about.p1')}</p>
@@ -553,8 +553,8 @@ function Cases({ lang, colors }: any) {
     <Section id="cases" colors={colors} style={{ padding: '96px 0' }}>
       <W>
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', borderRadius: 9999, background: 'rgba(37,99,235,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>Portfolio</span>
-          <h2 className="reveal rv-d1" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 700, color: colors.white }}>Cases</h2>
+          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(37,99,235,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>Portfolio</span>
+          <h2 className="reveal rv-d1" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white }}>Cases</h2>
         </div>
         <div id="cases-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
           {cases.map((c, i) => (
@@ -602,7 +602,7 @@ function CtaSection({ t }: any) {
       <img src={IMG.ctaBg} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(10,10,15,0.88), rgba(37,99,235,0.3), rgba(10,10,15,0.92))' }} />
       <W style={{ textAlign: 'center', position: 'relative', zIndex: 10 }}>
-        <h2 className="reveal" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.8rem, 5vw, 3rem)', fontWeight: 700, color: '#fff', marginBottom: 24 }}>{t('cta.title')}</h2>
+        <h2 className="reveal" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 5vw, 3rem)', fontWeight: 300, color: '#fff', marginBottom: 24 }}>{t('cta.title')}</h2>
         <p className="reveal rv-d1" style={{ color: 'rgba(255,255,255,0.7)', maxWidth: 500, margin: '0 auto 40px', fontSize: 18, lineHeight: 1.7 }}>{t('cta.sub')}</p>
         <a href="#contato" className="btn-cta anim-pulse-glow reveal rv-d2" style={{ padding: '16px 40px', fontSize: 18 }}>
           {t('cta.btn')} <ArrowRight size={18} />
@@ -641,10 +641,10 @@ function Contact({ lang, colors }: any) {
       <W>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 360px), 1fr))', gap: 48 }}>
           <div>
-            <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', borderRadius: 9999, background: 'rgba(37,99,235,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
+            <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(37,99,235,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
               {lang === 'pt' ? 'Contato' : 'Contact'}
             </span>
-            <h2 className="reveal rv-d1" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 700, color: colors.white, marginBottom: 24 }}>
+            <h2 className="reveal rv-d1" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white, marginBottom: 24 }}>
               {lang === 'pt' ? 'Vamos conversar' : "Let's talk"}
             </h2>
             <p className="reveal rv-d2" style={{ color: colors.textMuted, lineHeight: 1.7, marginBottom: 32 }}>
