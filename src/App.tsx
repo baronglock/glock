@@ -73,7 +73,7 @@ function CosmicBackground({ theme }: any) {
       <img
         src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1920&q=80&auto=format&fit=crop&fm=webp"
         alt="" loading="eager"
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: dk ? 0.06 : 0.03 }}
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: dk ? 0.1 : 0.05 }}
       />
     </div>
 
