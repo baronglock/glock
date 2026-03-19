@@ -196,7 +196,7 @@ function Hero({ t, lang, colors }: any) {
           </p>
 
           <div className="anim-fade-up" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 16, animationDelay: '0.35s', marginBottom: 48 }}>
-            <a href="#contato" className="btn-cta" style={{ padding: '14px 36px', fontSize: 16 }}>
+            <a href="#contato" className="btn-cta" style={{ padding: '14px 36px', fontSize: 'clamp(0.875rem, 1.6vw, 1rem)' }}>
               {t('hero.cta')} <ArrowRight size={16} />
             </a>
             <a href="#servicos" style={{
@@ -225,7 +225,7 @@ function Hero({ t, lang, colors }: any) {
                 { value: '24/7', label: lang === 'pt' ? 'Automações ativas' : 'Active automations' },
               ].map(s => (
                 <div key={s.label} style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: 24, fontWeight: 600, color: colors.brand }}>{s.value}</div>
+                  <div style={{ fontSize: 'clamp(1.25rem, 2.5vw, 1.5rem)', fontWeight: 600, color: colors.brand }}>{s.value}</div>
                   <div style={{ fontSize: 11, color: colors.textDim, textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 4 }}>{s.label}</div>
                 </div>
               ))}
@@ -310,8 +310,8 @@ function ServiceCard({ icon: Icon, title, desc, slug, lang, colors }: any) {
       <div style={{ width: 48, height: 48, borderRadius: 12, background: 'rgba(37,99,235,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
         <Icon size={22} style={{ color: colors.brandLight }} />
       </div>
-      <h3 style={{ fontSize: 17, fontWeight: 600, color: colors.white, marginBottom: 10 }}>{title}</h3>
-      <p style={{ color: colors.textMuted, fontSize: 14, lineHeight: 1.7 }}>{desc}</p>
+      <h3 style={{ fontSize: 'clamp(0.95rem, 1.8vw, 1.1rem)', fontWeight: 600, color: colors.white, marginBottom: 10 }}>{title}</h3>
+      <p style={{ color: colors.textMuted, fontSize: 'clamp(0.8rem, 1.4vw, 0.875rem)', lineHeight: 1.7 }}>{desc}</p>
       <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginTop: 16, fontSize: 13, color: colors.brandLight, fontWeight: 500 }}>
         {lang === 'pt' ? 'Saiba mais' : 'Learn more'} <ChevronRight size={14} />
       </span>
@@ -446,7 +446,7 @@ function Process({ lang, colors }: any) {
                 <div style={{ width: 32, height: 32, borderRadius: 8, background: 'rgba(37,99,235,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: colors.brand, fontWeight: 700, fontSize: 14 }}>{i + 1}</div>
                 <step.icon size={18} style={{ color: colors.brandLight }} />
               </div>
-              <h3 style={{ color: colors.white, fontWeight: 600, marginBottom: 8, fontSize: 16 }}>{step.title}</h3>
+              <h3 style={{ color: colors.white, fontWeight: 600, marginBottom: 8, fontSize: 'clamp(0.9rem, 1.6vw, 1rem)' }}>{step.title}</h3>
               <p style={{ color: colors.textMuted, fontSize: 14, lineHeight: 1.6 }}>{step.desc}</p>
             </div>
           ))}
@@ -488,7 +488,7 @@ function About({ t, lang, colors }: any) {
               background: colors.glassCard, backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
               border: `1px solid ${colors.glassCardBorder}`, boxShadow: `0 20px 40px ${colors.shadow}`,
             }}>
-              <div style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 28, fontWeight: 300, color: colors.brandLight }}>5+</div>
+              <div style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.5rem, 3vw, 1.75rem)', fontWeight: 300, color: colors.brandLight }}>5+</div>
               <div style={{ fontSize: 12, color: colors.textDim, fontWeight: 500 }}>{lang === 'pt' ? 'anos de experiência' : 'years of experience'}</div>
             </div>
           </div>
@@ -569,8 +569,8 @@ function Cases({ lang, colors }: any) {
               </div>
               {/* Case content */}
               <div style={{ padding: 24, display: 'flex', flexDirection: 'column', flex: 1 }}>
-                <h3 style={{ fontSize: 17, fontWeight: 600, color: colors.white, marginBottom: 12 }}>{c.title}</h3>
-                <p style={{ color: colors.textMuted, fontSize: 14, lineHeight: 1.7, marginBottom: 20, flex: 1 }}>{c.desc}</p>
+                <h3 style={{ fontSize: 'clamp(0.95rem, 1.8vw, 1.1rem)', fontWeight: 600, color: colors.white, marginBottom: 12 }}>{c.title}</h3>
+                <p style={{ color: colors.textMuted, fontSize: 'clamp(0.8rem, 1.4vw, 0.875rem)', lineHeight: 1.7, marginBottom: 20, flex: 1 }}>{c.desc}</p>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                   {c.tags.map((tag) => (
                     <span key={tag} style={{ padding: '3px 10px', borderRadius: 9999, background: colors.tagBg, border: `1px solid ${colors.tagBorder}`, fontSize: 12, color: colors.textDim, fontWeight: 500 }}>{tag}</span>
@@ -595,8 +595,8 @@ function CtaSection({ t }: any) {
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(10,10,15,0.88), rgba(37,99,235,0.3), rgba(10,10,15,0.92))' }} />
       <W style={{ textAlign: 'center', position: 'relative', zIndex: 10 }}>
         <h2 className="reveal" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 5vw, 3rem)', fontWeight: 300, color: '#fff', marginBottom: 24 }}>{t('cta.title')}</h2>
-        <p className="reveal rv-d1" style={{ color: 'rgba(255,255,255,0.7)', maxWidth: 500, margin: '0 auto 40px', fontSize: 18, lineHeight: 1.7 }}>{t('cta.sub')}</p>
-        <a href="#contato" className="btn-cta anim-pulse-glow reveal rv-d2" style={{ padding: '16px 40px', fontSize: 18 }}>
+        <p className="reveal rv-d1" style={{ color: 'rgba(255,255,255,0.7)', maxWidth: 500, margin: '0 auto 40px', fontSize: 'clamp(1rem, 2vw, 1.125rem)', lineHeight: 1.7 }}>{t('cta.sub')}</p>
+        <a href="#contato" className="btn-cta anim-pulse-glow reveal rv-d2" style={{ padding: '16px 40px', fontSize: 'clamp(0.95rem, 1.8vw, 1.125rem)' }}>
           {t('cta.btn')} <ArrowRight size={18} />
         </a>
       </W>

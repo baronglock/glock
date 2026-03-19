@@ -92,7 +92,7 @@ export function WebsitesPage() {
               </h1>
 
               <p className="anim-fade-up" style={{
-                fontSize: 18, color: colors.textMuted, lineHeight: 1.7,
+                fontSize: 'clamp(1rem, 2vw, 1.125rem)', color: colors.textMuted, lineHeight: 1.7,
                 maxWidth: 480, marginBottom: 40, animationDelay: '0.3s',
               }}>
                 Tecnologia de ponta, design premium, entrega rápida.
@@ -128,7 +128,7 @@ export function WebsitesPage() {
               }}>
                 {[{ v: '8+', l: 'Segmentos' }, { v: '100%', l: 'Personalizado' }, { v: '48h', l: 'Entrega' }].map(s => (
                   <div key={s.l}>
-                    <div style={{ fontSize: 28, fontWeight: 300, color: colors.white }}>{s.v}</div>
+                    <div style={{ fontSize: 'clamp(1.5rem, 3vw, 1.75rem)', fontWeight: 300, color: colors.white }}>{s.v}</div>
                     <div style={{ fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: colors.textDim, marginTop: 4 }}>{s.l}</div>
                   </div>
                 ))}
@@ -222,7 +222,7 @@ export function WebsitesPage() {
                   <div style={{ width: 40, height: 40, borderRadius: 10, background: `${n.cor}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
                     <Icon size={20} style={{ color: n.cor }} />
                   </div>
-                  <h3 style={{ fontSize: 16, fontWeight: 600, color: colors.white, marginBottom: 8 }}>{n.nome}</h3>
+                  <h3 style={{ fontSize: 'clamp(0.9rem, 1.6vw, 1rem)', fontWeight: 600, color: colors.white, marginBottom: 8 }}>{n.nome}</h3>
                   <p style={{ fontSize: 14, color: colors.textMuted, lineHeight: 1.6, marginBottom: 16 }}>{n.desc}</p>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
                     {n.tags.map(tag => (
@@ -276,7 +276,7 @@ export function WebsitesPage() {
                   background: `${colors.brand}15`, display: 'flex', alignItems: 'center', justifyContent: 'center',
                   color: colors.brand, fontWeight: 700, fontSize: 14, marginBottom: 20,
                 }}>{s.n}</div>
-                <h3 style={{ fontSize: 18, fontWeight: 600, color: colors.white, marginBottom: 10 }}>{s.title}</h3>
+                <h3 style={{ fontSize: 'clamp(1rem, 1.8vw, 1.125rem)', fontWeight: 600, color: colors.white, marginBottom: 10 }}>{s.title}</h3>
                 <p style={{ fontSize: 14, color: colors.textMuted, lineHeight: 1.7 }}>{s.desc}</p>
               </div>
             ))}
@@ -326,16 +326,16 @@ export function WebsitesPage() {
                     fontSize: 11, fontWeight: 600, letterSpacing: '0.05em',
                   }}>{p.badge}</div>
                 )}
-                <h3 style={{ fontSize: 22, fontWeight: 300, color: colors.white, marginBottom: 4, letterSpacing: '-0.01em' }}>{p.nome}</h3>
+                <h3 style={{ fontSize: 'clamp(1.15rem, 2.2vw, 1.375rem)', fontWeight: 300, color: colors.white, marginBottom: 4, letterSpacing: '-0.01em' }}>{p.nome}</h3>
                 <p style={{ fontSize: 13, color: colors.textDim, marginBottom: 24 }}>{p.subtitulo}</p>
 
                 <div style={{ marginBottom: 8 }}>
                   <span style={{ fontSize: 13, color: colors.textDim }}>Setup: </span>
-                  <span style={{ fontSize: 28, fontWeight: 300, color: colors.white }}>R$ {p.setup.toLocaleString('pt-BR')}</span>
+                  <span style={{ fontSize: 'clamp(1.5rem, 3vw, 1.75rem)', fontWeight: 300, color: colors.white }}>R$ {p.setup.toLocaleString('pt-BR')}</span>
                 </div>
                 <div style={{ marginBottom: 28, paddingBottom: 28, borderBottom: `1px solid ${colors.border}` }}>
                   <span style={{ fontSize: 13, color: colors.textDim }}>Mensal: </span>
-                  <span style={{ fontSize: 18, fontWeight: 400, color: colors.brand }}>R$ {p.mensal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
+                  <span style={{ fontSize: 'clamp(1rem, 2vw, 1.125rem)', fontWeight: 400, color: colors.brand }}>R$ {p.mensal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
                   <span style={{ fontSize: 13, color: colors.textDim }}>/mês</span>
                 </div>
 
@@ -382,10 +382,10 @@ export function WebsitesPage() {
           }}>
             Pronto para ter um site que <span style={{ fontStyle: 'italic', fontWeight: 400, color: colors.brand }}>funciona</span>?
           </h2>
-          <p className="reveal rv-d1" style={{ fontSize: 16, color: colors.textMuted, lineHeight: 1.7, marginBottom: 40 }}>
+          <p className="reveal rv-d1" style={{ fontSize: 'clamp(0.875rem, 1.6vw, 1rem)', color: colors.textMuted, lineHeight: 1.7, marginBottom: 40 }}>
             Converse com a gente. Em 48 horas você terá uma proposta personalizada para o seu negócio.
           </p>
-          <a href="/#contato" className="btn-cta anim-pulse-glow reveal rv-d2" style={{ padding: '16px 40px', fontSize: 16 }}>
+          <a href="/#contato" className="btn-cta anim-pulse-glow reveal rv-d2" style={{ padding: '16px 40px', fontSize: 'clamp(0.875rem, 1.6vw, 1rem)' }}>
             Falar com especialista <ArrowRight size={16} />
           </a>
         </div>
