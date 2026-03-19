@@ -233,50 +233,76 @@ function Hero({ t, lang, colors }: any) {
             </div>
           </div>
 
-          {/* Browser mockup */}
-          <div className="anim-fade-up" style={{ animationDelay: '0.7s', marginTop: 56, maxWidth: 720, margin: '56px auto 0' }}>
-            <div style={{ background: 'rgba(16,16,24,0.8)', border: `1px solid ${colors.glassCardBorder}`, borderRadius: 12, overflow: 'hidden', boxShadow: `0 40px 80px ${colors.shadow}` }}>
+          {/* Browser mockup - realistic dashboard */}
+          <div className="anim-fade-up" style={{ animationDelay: '0.7s', maxWidth: 760, margin: '56px auto 0' }}>
+            <div style={{ background: '#0c0c14', border: `1px solid rgba(255,255,255,0.08)`, borderRadius: 12, overflow: 'hidden', boxShadow: `0 40px 80px rgba(0,0,0,0.5)` }}>
               {/* Browser bar */}
-              <div style={{ padding: '10px 16px', borderBottom: `1px solid ${colors.glassCardBorder}`, display: 'flex', alignItems: 'center', gap: 12 }}>
+              <div style={{ padding: '10px 16px', borderBottom: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', gap: 12 }}>
                 <div style={{ display: 'flex', gap: 6 }}>
-                  <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#ef4444aa' }} />
-                  <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#eab308aa' }} />
-                  <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#22c55eaa' }} />
+                  <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#ef444488' }} />
+                  <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#eab30888' }} />
+                  <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#22c55e88' }} />
                 </div>
-                <div style={{ flex: 1, margin: '0 16px', background: 'rgba(255,255,255,0.05)', padding: '5px 12px', borderRadius: 6, fontSize: 12, color: 'rgba(255,255,255,0.35)', fontFamily: 'monospace' }}>
-                  stauf.com.br
+                <div style={{ flex: 1, margin: '0 12px', background: 'rgba(255,255,255,0.04)', padding: '5px 12px', borderRadius: 6, fontSize: 11, color: 'rgba(255,255,255,0.3)', fontFamily: 'monospace', display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <Shield size={10} style={{ color: '#22c55e88' }} /> stauf.com.br/dashboard
                 </div>
               </div>
-              {/* Mock dashboard content */}
-              <div style={{ padding: 20 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-                  <div style={{ display: 'flex', gap: 8 }}>
-                    {[1,2,3].map(i => <div key={i} style={{ width: 48, height: 6, background: `rgba(255,255,255,${i===1?0.2:0.08})`, borderRadius: 3 }} />)}
+              {/* Dashboard content */}
+              <div style={{ padding: '16px 20px' }}>
+                {/* Navbar */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, paddingBottom: 12, borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.6)', letterSpacing: '0.1em' }}>STAUF.</span>
+                  <div style={{ display: 'flex', gap: 16 }}>
+                    {['Overview', 'Leads', 'Sites', 'Analytics'].map((t, i) => (
+                      <span key={t} style={{ fontSize: 10, color: i === 0 ? colors.brand : 'rgba(255,255,255,0.25)', fontWeight: i === 0 ? 600 : 400 }}>{t}</span>
+                    ))}
                   </div>
-                  <div style={{ width: 60, height: 24, borderRadius: 4, background: `${colors.brand}40` }} />
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, marginBottom: 16 }}>
-                  {[colors.brand, colors.gold, colors.brandLight].map((c, i) => (
-                    <div key={i} style={{ padding: 14, background: 'rgba(255,255,255,0.03)', borderRadius: 8, border: '1px solid rgba(255,255,255,0.05)' }}>
-                      <div style={{ width: 20, height: 20, borderRadius: 6, background: `${c}25`, marginBottom: 10 }} />
-                      <div style={{ width: '60%', height: 14, background: 'rgba(255,255,255,0.15)', borderRadius: 3, marginBottom: 6 }} />
-                      <div style={{ width: '40%', height: 10, background: 'rgba(255,255,255,0.06)', borderRadius: 3 }} />
+                {/* KPI cards */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8, marginBottom: 12 }}>
+                  {[
+                    { label: 'Leads ativos', value: '847', change: '+12%', up: true },
+                    { label: 'Conversão', value: '23.4%', change: '+3.1%', up: true },
+                    { label: 'Sites online', value: '12', change: '+2', up: true },
+                    { label: 'Automações', value: '38', change: '24/7', up: true },
+                  ].map(kpi => (
+                    <div key={kpi.label} style={{ padding: '10px 12px', background: 'rgba(255,255,255,0.02)', borderRadius: 8, border: '1px solid rgba(255,255,255,0.04)' }}>
+                      <div style={{ fontSize: 9, color: 'rgba(255,255,255,0.3)', marginBottom: 4, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{kpi.label}</div>
+                      <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
+                        <span style={{ fontSize: 16, fontWeight: 600, color: 'rgba(255,255,255,0.85)' }}>{kpi.value}</span>
+                        <span style={{ fontSize: 9, color: '#22c55e', fontWeight: 500 }}>{kpi.change}</span>
+                      </div>
                     </div>
                   ))}
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 12 }}>
-                  <div style={{ padding: 14, background: 'rgba(255,255,255,0.03)', borderRadius: 8, border: '1px solid rgba(255,255,255,0.05)' }}>
-                    <div style={{ display: 'flex', gap: 6, alignItems: 'flex-end', height: 48 }}>
-                      {[35,55,40,65,50,70,45,60,75,55,80,65].map((h,i) => (
-                        <div key={i} style={{ flex: 1, height: `${h}%`, background: `linear-gradient(to top, ${colors.brand}60, ${colors.brand}20)`, borderRadius: 2 }} />
+                {/* Chart + table */}
+                <div style={{ display: 'grid', gridTemplateColumns: '3fr 2fr', gap: 8 }}>
+                  {/* Chart */}
+                  <div style={{ padding: 12, background: 'rgba(255,255,255,0.02)', borderRadius: 8, border: '1px solid rgba(255,255,255,0.04)' }}>
+                    <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', marginBottom: 10, display: 'flex', justifyContent: 'space-between' }}>
+                      <span>Leads / mês</span>
+                      <span style={{ color: colors.brand }}>2026</span>
+                    </div>
+                    <div style={{ display: 'flex', gap: 4, alignItems: 'flex-end', height: 60 }}>
+                      {[28,42,35,58,48,65,52,72,60,78,68,85].map((h,i) => (
+                        <div key={i} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
+                          <div style={{ width: '100%', height: `${h}%`, background: i === 11 ? `linear-gradient(to top, ${colors.brand}, ${colors.brandLight})` : `linear-gradient(to top, ${colors.brand}50, ${colors.brand}20)`, borderRadius: 2 }} />
+                          <span style={{ fontSize: 7, color: 'rgba(255,255,255,0.15)' }}>{['J','F','M','A','M','J','J','A','S','O','N','D'][i]}</span>
+                        </div>
                       ))}
                     </div>
                   </div>
-                  <div style={{ padding: 14, background: 'rgba(255,255,255,0.03)', borderRadius: 8, border: '1px solid rgba(255,255,255,0.05)', display: 'flex', flexDirection: 'column', gap: 8 }}>
-                    {[1,2,3].map(i => (
-                      <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: i===1?colors.brand:i===2?colors.gold:'rgba(255,255,255,0.15)' }} />
-                        <div style={{ flex: 1, height: 6, background: `rgba(255,255,255,${0.15-i*0.04})`, borderRadius: 3 }} />
+                  {/* Recent leads */}
+                  <div style={{ padding: 12, background: 'rgba(255,255,255,0.02)', borderRadius: 8, border: '1px solid rgba(255,255,255,0.04)' }}>
+                    <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', marginBottom: 10 }}>Leads recentes</div>
+                    {[
+                      { name: 'Pizzaria Bella', status: 'Novo' },
+                      { name: 'Clínica Sorrir', status: 'Proposta' },
+                      { name: 'Barba & Cia', status: 'Fechado' },
+                    ].map(lead => (
+                      <div key={lead.name} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 0', borderBottom: '1px solid rgba(255,255,255,0.03)' }}>
+                        <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.5)' }}>{lead.name}</span>
+                        <span style={{ fontSize: 8, padding: '2px 6px', borderRadius: 4, background: lead.status === 'Fechado' ? '#22c55e18' : lead.status === 'Proposta' ? `${colors.brand}18` : 'rgba(255,255,255,0.04)', color: lead.status === 'Fechado' ? '#22c55e' : lead.status === 'Proposta' ? colors.brand : 'rgba(255,255,255,0.3)' }}>{lead.status}</span>
                       </div>
                     ))}
                   </div>
@@ -398,15 +424,13 @@ function Services({ t, lang, colors }: any) {
           </p>
         </div>
         <div id="services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
-          {services.map((s, i) => (
-            <div key={s.titleKey} style={{ gridColumn: i === 0 ? 'span 2' : undefined }}>
-              <ServiceCard icon={s.icon} title={t(s.titleKey as any)} desc={t(s.descKey as any)} slug={s.slug} lang={lang} colors={colors} />
-            </div>
+          {services.map((s) => (
+            <ServiceCard key={s.titleKey} icon={s.icon} title={t(s.titleKey as any)} desc={t(s.descKey as any)} slug={s.slug} lang={lang} colors={colors} />
           ))}
         </div>
         <style>{`
-          @media (max-width: 900px) { #services-grid { grid-template-columns: repeat(2, 1fr) !important; } #services-grid > div:first-child { grid-column: span 2 !important; } }
-          @media (max-width: 600px) { #services-grid { grid-template-columns: 1fr !important; } #services-grid > div:first-child { grid-column: span 1 !important; } }
+          @media (max-width: 900px) { #services-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+          @media (max-width: 600px) { #services-grid { grid-template-columns: 1fr !important; } }
         `}</style>
       </W>
     </Section>
@@ -537,32 +561,40 @@ function About({ t, lang, colors }: any) {
     <Section id="sobre" alt colors={colors} style={{ padding: '96px 0' }}>
       <W>
         <div id="about-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'center' }}>
-          {/* Abstract visual */}
+          {/* Visual — stats cards with gradient */}
           <div className="reveal" style={{ position: 'relative' }}>
-            <div style={{ borderRadius: 20, overflow: 'hidden', aspectRatio: '4/3', position: 'relative', background: 'rgba(16,16,24,0.6)', border: `1px solid ${colors.glassCardBorder}` }}>
-              {/* Gradient mesh background */}
-              <div style={{ position: 'absolute', inset: 0 }}>
-                <div style={{ position: 'absolute', top: '20%', left: '20%', width: 200, height: 200, background: `radial-gradient(circle, ${colors.brand}30, transparent 70%)`, borderRadius: '50%', filter: 'blur(50px)' }} />
-                <div style={{ position: 'absolute', bottom: '20%', right: '15%', width: 180, height: 180, background: `radial-gradient(circle, ${colors.gold}25, transparent 70%)`, borderRadius: '50%', filter: 'blur(40px)' }} />
-                <div style={{ position: 'absolute', top: '50%', left: '55%', width: 120, height: 120, background: `radial-gradient(circle, ${colors.brandLight}20, transparent 70%)`, borderRadius: '50%', filter: 'blur(30px)' }} />
+            <div style={{ borderRadius: 20, overflow: 'hidden', position: 'relative', background: colors.glassCard, border: `1px solid ${colors.glassCardBorder}`, padding: 32 }}>
+              {/* Gradient background */}
+              <div style={{ position: 'absolute', inset: 0, opacity: 0.5 }}>
+                <div style={{ position: 'absolute', top: '10%', left: '10%', width: 200, height: 200, background: `radial-gradient(circle, ${colors.brand}25, transparent 70%)`, borderRadius: '50%', filter: 'blur(50px)' }} />
+                <div style={{ position: 'absolute', bottom: '10%', right: '10%', width: 180, height: 180, background: `radial-gradient(circle, ${colors.gold}20, transparent 70%)`, borderRadius: '50%', filter: 'blur(40px)' }} />
               </div>
-              {/* Floating data points */}
-              <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 20 }}>
+              {/* Stats */}
+              <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: 16 }}>
                 {[
-                  { v: '900k+', l: lang === 'pt' ? 'registros' : 'records' },
-                  { v: '8', l: lang === 'pt' ? 'segmentos' : 'segments' },
-                  { v: '5+', l: lang === 'pt' ? 'anos' : 'years' },
-                ].map((s, i) => (
-                  <div key={s.l} style={{
-                    padding: '12px 24px', background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(12px)',
-                    border: '1px solid rgba(255,255,255,0.06)', borderRadius: 12,
-                    display: 'flex', alignItems: 'center', gap: 16,
-                    transform: `translateX(${i === 0 ? -20 : i === 2 ? 20 : 0}px)`,
-                  }}>
-                    <span style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.5rem)', fontWeight: 600, color: colors.brand }}>{s.v}</span>
-                    <span style={{ fontSize: 12, color: colors.textDim, textTransform: 'uppercase', letterSpacing: '0.1em' }}>{s.l}</span>
-                  </div>
-                ))}
+                  { v: '900k+', l: lang === 'pt' ? 'Registros processados' : 'Records processed', icon: Database },
+                  { v: '8', l: lang === 'pt' ? 'Segmentos atendidos' : 'Segments served', icon: Globe },
+                  { v: '24/7', l: lang === 'pt' ? 'Automações ativas' : 'Active automations', icon: Bot },
+                  { v: '< 7d', l: lang === 'pt' ? 'Tempo de entrega' : 'Delivery time', icon: Clock },
+                ].map((s) => {
+                  const SIcon = s.icon;
+                  return (
+                    <div key={s.l} style={{
+                      padding: '16px 20px', background: colors.bgCard, backdropFilter: 'blur(12px)',
+                      border: `1px solid ${colors.glassCardBorder}`, borderRadius: 12,
+                      display: 'flex', alignItems: 'center', gap: 16,
+                      transition: 'all 0.3s',
+                    }}>
+                      <div style={{ width: 36, height: 36, borderRadius: 8, background: `${colors.brand}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                        <SIcon size={18} style={{ color: colors.brand }} />
+                      </div>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontSize: 12, color: colors.textDim, marginBottom: 2 }}>{s.l}</div>
+                        <div style={{ fontSize: 'clamp(1.1rem, 2vw, 1.3rem)', fontWeight: 600, color: colors.white }}>{s.v}</div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -663,10 +695,10 @@ function Cases({ lang, colors }: any) {
 function CtaSection({ t }: any) {
   return (
     <section style={{ position: 'relative', overflow: 'hidden', padding: '120px 0' }}>
-      {/* Gradient background */}
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(10,10,15,1) 0%, rgba(13,148,136,0.15) 40%, rgba(45,212,191,0.08) 60%, rgba(10,10,15,1) 100%)' }} />
-      <div style={{ position: 'absolute', left: '25%', top: '40%', width: 400, height: 400, background: 'radial-gradient(circle, rgba(13,148,136,0.12) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(80px)' }} />
-      <div style={{ position: 'absolute', right: '20%', top: '30%', width: 300, height: 300, background: 'radial-gradient(circle, rgba(45,212,191,0.08) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(60px)' }} />
+      {/* Gradient background — smooth blend */}
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 0%, rgba(13,148,136,0.06) 30%, rgba(13,148,136,0.1) 50%, rgba(13,148,136,0.06) 70%, transparent 100%)' }} />
+      <div style={{ position: 'absolute', left: '30%', top: '50%', transform: 'translate(-50%,-50%)', width: 500, height: 500, background: 'radial-gradient(circle, rgba(13,148,136,0.08) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(100px)' }} />
+      <div style={{ position: 'absolute', right: '25%', top: '50%', transform: 'translate(50%,-50%)', width: 400, height: 400, background: 'radial-gradient(circle, rgba(45,212,191,0.05) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(80px)' }} />
       <W style={{ textAlign: 'center', position: 'relative', zIndex: 10 }}>
         <h2 className="reveal" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 5vw, 3rem)', fontWeight: 300, color: '#fff', marginBottom: 24 }}>{t('cta.title')}</h2>
         <p className="reveal rv-d1" style={{ color: 'rgba(255,255,255,0.7)', maxWidth: 500, margin: '0 auto 40px', fontSize: 'clamp(1rem, 2vw, 1.125rem)', lineHeight: 1.7 }}>{t('cta.sub')}</p>
