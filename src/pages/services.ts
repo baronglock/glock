@@ -376,12 +376,12 @@ export const servicesData: Record<string, ServicePageData> = {
     ],
     plansPt: [
       { name: 'Diagnóstico', subtitle: 'Mapeamento + roadmap', price: 'R$ 1.997', period: 'projeto', features: ['Diagnóstico operacional completo', 'Mapeamento de processos', 'Roadmap de IA priorizado', 'Análise de ROI estimado', 'Relatório executivo', 'Reunião de apresentação'] },
-      { name: 'Implementação', subtitle: 'Diagnóstico + execução', price: 'R$ 4.997', period: 'projeto + R$ 997/mês', features: ['Tudo do Diagnóstico', 'Implementação de até 3 soluções de IA', 'Seleção e configuração de ferramentas', 'Integrações com sistemas existentes', 'Treinamento da equipe', 'Suporte por 90 dias'], highlight: true },
+      { name: 'Implementação', subtitle: 'Diagnóstico + execução + acompanhamento', price: 'R$ 4.997', period: 'setup + R$ 497/mês', features: ['Tudo do Diagnóstico', 'Implementação de até 3 soluções de IA', 'Seleção e configuração de ferramentas', 'Integrações com sistemas existentes', 'Treinamento da equipe', 'Suporte e manutenção mensal contínua'], highlight: true },
       { name: 'Transformação', subtitle: 'Parceria contínua', price: 'Sob consulta', period: '', features: ['Tudo do Implementação', 'Consultoria estratégica mensal', 'Implementações ilimitadas', 'Acesso a novas tecnologias', 'Gerente de inovação dedicado', 'KPIs e relatórios de impacto'] },
     ],
     plansEn: [
       { name: 'Diagnosis', subtitle: 'Mapping + roadmap', price: 'R$ 1,997', period: 'project', features: ['Complete operational diagnosis', 'Process mapping', 'Prioritized AI roadmap', 'Estimated ROI analysis', 'Executive report', 'Presentation meeting'] },
-      { name: 'Implementation', subtitle: 'Diagnosis + execution', price: 'R$ 4,997', period: 'project + R$ 997/mo', features: ['Everything in Diagnosis', 'Implementation of up to 3 AI solutions', 'Tool selection and configuration', 'Integration with existing systems', 'Team training', '90-day support'], highlight: true },
+      { name: 'Implementation', subtitle: 'Diagnosis + execution + ongoing support', price: 'R$ 4,997', period: 'setup + R$ 497/mo', features: ['Everything in Diagnosis', 'Implementation of up to 3 AI solutions', 'Tool selection and configuration', 'Integration with existing systems', 'Team training', 'Ongoing monthly support and maintenance'], highlight: true },
       { name: 'Transformation', subtitle: 'Ongoing partnership', price: 'Custom', period: '', features: ['Everything in Implementation', 'Monthly strategic consulting', 'Unlimited implementations', 'Access to new technologies', 'Dedicated innovation manager', 'KPIs and impact reports'] },
     ],
   },
