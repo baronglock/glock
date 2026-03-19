@@ -305,8 +305,8 @@ function ServiceCard({ icon: Icon, title, desc, slug, lang, colors }: any) {
       border: `1px solid ${colors.glassCardBorder}`, transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)', cursor: 'pointer',
       textDecoration: 'none', display: 'block',
     }}
-      onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.borderColor = colors.borderHover; e.currentTarget.style.boxShadow = `0 20px 40px ${colors.shadow}, 0 0 30px rgba(37,99,235,0.08)`; }}
-      onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = colors.glassCardBorder; e.currentTarget.style.boxShadow = 'none'; }}
+      onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px) scale(1.02)'; e.currentTarget.style.borderColor = colors.borderHover; e.currentTarget.style.boxShadow = `0 24px 48px ${colors.shadow}, 0 0 40px rgba(13,148,136,0.1)`; }}
+      onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0) scale(1)'; e.currentTarget.style.borderColor = colors.glassCardBorder; e.currentTarget.style.boxShadow = 'none'; }}
     >
       <div style={{ width: 48, height: 48, borderRadius: 12, background: 'rgba(37,99,235,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
         <Icon size={22} style={{ color: colors.brandLight }} />
@@ -314,7 +314,7 @@ function ServiceCard({ icon: Icon, title, desc, slug, lang, colors }: any) {
       <h3 style={{ fontSize: 'clamp(0.95rem, 1.8vw, 1.1rem)', fontWeight: 600, color: colors.white, marginBottom: 10 }}>{title}</h3>
       <p style={{ color: colors.textMuted, fontSize: 'clamp(0.8rem, 1.4vw, 0.875rem)', lineHeight: 1.7 }}>{desc}</p>
       <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginTop: 16, fontSize: 13, color: colors.brandLight, fontWeight: 500 }}>
-        {lang === 'pt' ? 'Saiba mais' : 'Learn more'} <ChevronRight size={14} />
+        {lang === 'pt' ? 'Saiba mais' : 'Learn more'} <ChevronRight size={14} style={{ transition: 'transform 0.3s' }} className='svc-arrow' />
       </span>
     </Link>
   );
@@ -393,8 +393,8 @@ function Metrics({ lang, colors }: any) {
               padding: 28, textAlign: 'center', borderRadius: 16, background: colors.glassCard, border: `1px solid ${colors.glassCardBorder}`,
               transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)',
             }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.borderColor = colors.borderHover; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = colors.glassCardBorder; }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px) scale(1.02)'; e.currentTarget.style.borderColor = colors.borderHover; e.currentTarget.style.boxShadow = `0 24px 48px ${colors.shadow}`; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0) scale(1)'; e.currentTarget.style.borderColor = colors.glassCardBorder; e.currentTarget.style.boxShadow = 'none'; }}
             >
               <m.icon size={24} style={{ color: colors.gold, margin: '0 auto 14px' }} />
               <div style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', fontWeight: 300, color: colors.white, marginBottom: 6 }}>{m.value}</div>
@@ -440,8 +440,8 @@ function Process({ lang, colors }: any) {
               padding: 24, borderRadius: 16, background: colors.glassCard, border: `1px solid ${colors.glassCardBorder}`,
               transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)',
             }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.borderColor = colors.borderHover; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = colors.glassCardBorder; }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px) scale(1.02)'; e.currentTarget.style.borderColor = colors.borderHover; e.currentTarget.style.boxShadow = `0 24px 48px ${colors.shadow}`; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0) scale(1)'; e.currentTarget.style.borderColor = colors.glassCardBorder; e.currentTarget.style.boxShadow = 'none'; }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
                 <div style={{ width: 32, height: 32, borderRadius: 8, background: 'rgba(37,99,235,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: colors.brand, fontWeight: 700, fontSize: 14 }}>{i + 1}</div>
@@ -555,8 +555,8 @@ function Cases({ lang, colors }: any) {
               display: 'flex', flexDirection: 'column', borderRadius: 16, background: colors.glassCard, border: `1px solid ${colors.glassCardBorder}`,
               transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)', overflow: 'hidden',
             }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.borderColor = colors.borderHover; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = colors.glassCardBorder; }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px) scale(1.02)'; e.currentTarget.style.borderColor = colors.borderHover; e.currentTarget.style.boxShadow = `0 24px 48px ${colors.shadow}`; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0) scale(1)'; e.currentTarget.style.borderColor = colors.glassCardBorder; e.currentTarget.style.boxShadow = 'none'; }}
             >
               {/* Case image */}
               <div style={{ position: 'relative', height: 180, overflow: 'hidden' }}>
@@ -626,7 +626,7 @@ function Contact({ lang, colors }: any) {
   const inputStyle: React.CSSProperties = {
     width: '100%', padding: '12px 16px', borderRadius: 12,
     background: colors.inputBg, border: `1px solid ${colors.border}`,
-    color: colors.white, fontSize: 14, outline: 'none', transition: 'border-color 0.3s', fontFamily: 'inherit',
+    color: colors.white, fontSize: 14, outline: 'none', transition: 'border-color 0.3s, box-shadow 0.3s', fontFamily: 'inherit',
   };
 
   return (
@@ -668,17 +668,17 @@ function Contact({ lang, colors }: any) {
             <div>
               <label style={{ display: 'block', fontSize: 14, fontWeight: 500, color: colors.text, marginBottom: 6 }}>{lang === 'pt' ? 'Nome' : 'Name'}</label>
               <input name="name" required style={inputStyle} placeholder={lang === 'pt' ? 'Seu nome' : 'Your name'}
-                onFocus={e => e.currentTarget.style.borderColor = colors.brand} onBlur={e => e.currentTarget.style.borderColor = colors.border} />
+                onFocus={e => { e.currentTarget.style.borderColor = colors.brand; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(13,148,136,0.15)'; }} onBlur={e => { e.currentTarget.style.borderColor = colors.border; e.currentTarget.style.boxShadow = 'none'; }} />
             </div>
             <div>
               <label style={{ display: 'block', fontSize: 14, fontWeight: 500, color: colors.text, marginBottom: 6 }}>WhatsApp</label>
               <input name="whatsapp" type="tel" required style={inputStyle} placeholder="(41) 99999-9999"
-                onFocus={e => e.currentTarget.style.borderColor = colors.brand} onBlur={e => e.currentTarget.style.borderColor = colors.border} />
+                onFocus={e => { e.currentTarget.style.borderColor = colors.brand; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(13,148,136,0.15)'; }} onBlur={e => { e.currentTarget.style.borderColor = colors.border; e.currentTarget.style.boxShadow = 'none'; }} />
             </div>
             <div>
               <label style={{ display: 'block', fontSize: 14, fontWeight: 500, color: colors.text, marginBottom: 6 }}>{lang === 'pt' ? 'Mensagem' : 'Message'}</label>
               <textarea name="message" rows={4} required style={{ ...inputStyle, resize: 'none' }} placeholder={lang === 'pt' ? 'Conte-nos sobre seu projeto...' : 'Tell us about your project...'}
-                onFocus={e => e.currentTarget.style.borderColor = colors.brand} onBlur={e => e.currentTarget.style.borderColor = colors.border} />
+                onFocus={e => { e.currentTarget.style.borderColor = colors.brand; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(13,148,136,0.15)'; }} onBlur={e => { e.currentTarget.style.borderColor = colors.border; e.currentTarget.style.boxShadow = 'none'; }} />
             </div>
             <button type="submit" className="btn-cta" style={{ padding: '14px 24px', width: '100%', fontSize: 15 }}>
               {sent ? (lang === 'pt' ? 'Redirecionando para WhatsApp...' : 'Redirecting to WhatsApp...')  : (lang === 'pt' ? 'Enviar pelo WhatsApp' : 'Send via WhatsApp')}

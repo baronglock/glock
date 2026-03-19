@@ -122,6 +122,15 @@ a:focus-visible, button:focus-visible {
   animation: btn-shine 3s ease-in-out infinite;
 }
 
+/* ── Microinteractions ── */
+.btn-cta:active {
+  transform: translateY(0) scale(0.97);
+  transition: transform 0.1s;
+}
+a:hover .svc-arrow {
+  transform: translateX(4px);
+}
+
 /* ── Gradient text ── */
 .text-gradient {
   background: linear-gradient(135deg, #14b8a6, #0d9488, #2dd4bf);
