@@ -211,15 +211,25 @@ function Hero({ t, lang, colors }: any) {
             </a>
           </div>
 
-          <div className="anim-fade-up" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 10, animationDelay: '0.5s', marginTop: 8 }}>
-            {(lang === 'pt'
-              ? ['Automação com IA', 'Sites premium', 'Chatbots 24h', 'Extração de dados', 'Dashboards', 'Sistemas sob medida']
-              : ['AI Automation', 'Premium websites', '24/7 Chatbots', 'Data extraction', 'Dashboards', 'Custom systems']
-            ).map((tag) => (
-              <span key={tag} style={{ padding: '5px 14px', borderRadius: 9999, background: colors.badgeBg, border: `1px solid ${colors.badgeBorder}`, fontSize: 12, color: colors.textDim, fontWeight: 500 }}>
-                {tag}
-              </span>
-            ))}
+          {/* Social proof */}
+          <div className="anim-fade-up" style={{ animationDelay: '0.5s', marginTop: 8 }}>
+            <p style={{ fontSize: 13, color: colors.textDim, marginBottom: 20, letterSpacing: '0.02em' }}>
+              {lang === 'pt'
+                ? 'Ajudamos negócios locais a entrar no mundo da IA, automatizar operações e ampliar resultados.'
+                : 'We help local businesses enter the AI world, automate operations and amplify results.'}
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 32 }}>
+              {[
+                { value: '900k+', label: lang === 'pt' ? 'Registros processados' : 'Records processed' },
+                { value: '8', label: lang === 'pt' ? 'Segmentos atendidos' : 'Segments served' },
+                { value: '24/7', label: lang === 'pt' ? 'Automações ativas' : 'Active automations' },
+              ].map(s => (
+                <div key={s.label} style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: 24, fontWeight: 600, color: colors.brand }}>{s.value}</div>
+                  <div style={{ fontSize: 11, color: colors.textDim, textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 4 }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </W>
