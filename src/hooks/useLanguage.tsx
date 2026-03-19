@@ -2,7 +2,7 @@ import { useState, useCallback, useContext, createContext } from 'react';
 
 export type Lang = 'pt' | 'en';
 
-const STORAGE_KEY = 'glock-lang';
+const STORAGE_KEY = 'stauf-lang';
 
 const translations = {
   // Nav
@@ -73,8 +73,8 @@ const translations = {
   'about.tag': { pt: 'Sobre', en: 'About' },
   'about.title': { pt: 'Tecnologia com propósito', en: 'Technology with purpose' },
   'about.p1': {
-    pt: 'A Glock. nasceu da convicção de que tecnologia de ponta não precisa ser exclusividade de grandes corporações. Combinamos inteligência artificial, engenharia de dados e design de alta performance para entregar soluções que realmente transformam negócios.',
-    en: 'Glock. was born from the conviction that cutting-edge technology shouldn\'t be exclusive to large corporations. We combine artificial intelligence, data engineering, and high-performance design to deliver solutions that truly transform businesses.',
+    pt: 'A Stauf. nasceu da convicção de que tecnologia de ponta não precisa ser exclusividade de grandes corporações. Combinamos inteligência artificial, engenharia de dados e design de alta performance para entregar soluções que realmente transformam negócios.',
+    en: 'Stauf. was born from the conviction that cutting-edge technology shouldn\'t be exclusive to large corporations. We combine artificial intelligence, data engineering, and high-performance design to deliver solutions that truly transform businesses.',
   },
   'about.p2': {
     pt: 'Com experiência em automação de processos que geraram milhões em economia para grandes empresas, trazemos o mesmo nível de excelência para o seu negócio — independente do tamanho.',

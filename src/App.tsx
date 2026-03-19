@@ -653,7 +653,7 @@ function Contact({ lang, colors }: any) {
             <div className="reveal rv-d3" style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               {[
                 { icon: Phone, text: '+55 (41) 98799-1419', href: 'https://wa.me/5541987991419' },
-                { icon: Mail, text: 'contato@glock.dev', href: 'mailto:contato@glock.dev' },
+                { icon: Mail, text: 'contato@stauf.dev', href: 'mailto:contato@stauf.dev' },
                 { icon: MapPin, text: 'Curitiba, PR — Brasil', href: undefined },
               ].map((item) => {
                 const content = (<span style={{ display: 'flex', alignItems: 'center', gap: 12, color: colors.textMuted, fontSize: 14 }}><item.icon size={18} style={{ color: colors.brand }} /> {item.text}</span>);

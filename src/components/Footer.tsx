@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Instagram, Linkedin, Github } from 'lucide-react';
-import { GlockLogo } from './GlockLogo';
+import { StaufLogo } from './StaufLogo';
 
 export function Footer({ t, lang, colors }: any) {
   return (
@@ -9,7 +9,7 @@ export function Footer({ t, lang, colors }: any) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 32, marginBottom: 40 }}>
           <div>
             <Link to="/" style={{ textDecoration: 'none' }}>
-              <GlockLogo size={24} />
+              <StaufLogo size={24} />
             </Link>
             <p style={{ fontSize: 13, color: colors.textDim, marginTop: 12, lineHeight: 1.6 }}>{lang === 'pt' ? 'Automação, Dados e IA' : 'Automation, Data & AI'}</p>
           </div>
@@ -39,13 +39,13 @@ export function Footer({ t, lang, colors }: any) {
             <h4 style={{ fontSize: 13, fontWeight: 600, color: colors.text, marginBottom: 12, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{t('footer.contact')}</h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8, fontSize: 14, color: colors.textDim }}>
               <li>+55 (41) 98799-1419</li>
-              <li>contato@glock.dev</li>
+              <li>contato@stauf.dev</li>
               <li>Curitiba, PR</li>
             </ul>
           </div>
         </div>
         <div style={{ borderTop: `1px solid ${colors.border}`, paddingTop: 32, display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
-          <p style={{ fontSize: 12, color: colors.footerBorder }}>&copy; {new Date().getFullYear()} Glock. {t('footer.rights')}</p>
+          <p style={{ fontSize: 12, color: colors.footerBorder }}>&copy; {new Date().getFullYear()} Stauf. {t('footer.rights')}</p>
           <div style={{ display: 'flex', gap: 16 }}>
             {[Instagram, Linkedin, Github].map((Icon, i) => (
               <a key={i} href={i === 2 ? 'https://github.com/baronglock' : '#'} target={i === 2 ? '_blank' : undefined} rel="noopener noreferrer"

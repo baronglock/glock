@@ -238,7 +238,7 @@ export const light = {
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('glock-theme');
+      const saved = localStorage.getItem('stauf-theme');
       if (saved === 'light' || saved === 'dark') return saved;
     }
     return 'dark';
@@ -249,7 +249,7 @@ export function useTheme() {
   const toggleTheme = useCallback(() => {
     setTheme((prev) => {
       const next = prev === 'dark' ? 'light' : 'dark';
-      localStorage.setItem('glock-theme', next);
+      localStorage.setItem('stauf-theme', next);
       return next;
     });
   }, []);
