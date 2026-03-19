@@ -15,3 +15,4 @@ export function StaufLogo({ size = 28 }: { size?: number }) {
     </span>
   );
 }
+// cache bust 1773932985
