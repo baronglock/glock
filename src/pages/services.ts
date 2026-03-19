@@ -94,6 +94,40 @@ export const servicesData: Record<string, ServicePageData> = {
     sectorsEn: ['Accounting firms', 'Finance', 'HR', 'Logistics', 'E-commerce', 'Healthcare', 'Legal', 'Marketing', 'Education'],
     ctaPt: 'Quer automatizar sua operação?',
     ctaEn: 'Want to automate your operation?',
+    metricsPt: [
+      { value: '200+', label: 'Horas economizadas/mês' },
+      { value: '70%', label: 'Menos retrabalho' },
+      { value: '∞', label: 'Integrações possíveis' },
+      { value: '< 7d', label: 'Primeira entrega' },
+    ],
+    metricsEn: [
+      { value: '200+', label: 'Hours saved/month' },
+      { value: '70%', label: 'Less rework' },
+      { value: '∞', label: 'Possible integrations' },
+      { value: '< 7d', label: 'First delivery' },
+    ],
+    processPt: [
+      { title: 'Mapeamento', desc: 'Identificamos os processos repetitivos e gargalos da sua operação.' },
+      { title: 'Arquitetura', desc: 'Desenhamos o fluxo de automação e integrações necessárias.' },
+      { title: 'Desenvolvimento', desc: 'Construímos e testamos cada automação com validações semanais.' },
+      { title: 'Ativação', desc: 'Colocamos em produção, treinamos a equipe e monitoramos.' },
+    ],
+    processEn: [
+      { title: 'Mapping', desc: 'We identify repetitive processes and bottlenecks in your operation.' },
+      { title: 'Architecture', desc: 'We design the automation flow and required integrations.' },
+      { title: 'Development', desc: 'We build and test each automation with weekly validations.' },
+      { title: 'Activation', desc: 'We deploy, train the team and monitor.' },
+    ],
+    plansPt: [
+      { name: 'Starter', subtitle: 'Uma automação pontual', price: 'R$ 797', period: 'por automação', features: ['1 fluxo automatizado', 'Integração com até 2 sistemas', 'Documentação completa', 'Suporte por 30 dias', 'Treinamento básico'] },
+      { name: 'Growth', subtitle: 'Automação contínua', price: 'R$ 1.497', period: '/mês', features: ['Até 5 fluxos automatizados', 'Integrações ilimitadas', 'Relatórios automáticos', 'Alertas por WhatsApp/email', 'Suporte prioritário', 'Manutenção mensal'], highlight: true },
+      { name: 'Scale', subtitle: 'Operação no piloto automático', price: 'R$ 2.997', period: '/mês', features: ['Fluxos ilimitados', 'Dashboards de monitoramento', 'IA embarcada nos fluxos', 'Integrações customizadas', 'Gerente de conta dedicado', 'SLA de uptime 99.9%'] },
+    ],
+    plansEn: [
+      { name: 'Starter', subtitle: 'A single automation', price: 'R$ 797', period: 'per automation', features: ['1 automated workflow', 'Integration with up to 2 systems', 'Complete documentation', '30-day support', 'Basic training'] },
+      { name: 'Growth', subtitle: 'Continuous automation', price: 'R$ 1,497', period: '/month', features: ['Up to 5 automated workflows', 'Unlimited integrations', 'Automatic reports', 'WhatsApp/email alerts', 'Priority support', 'Monthly maintenance'], highlight: true },
+      { name: 'Scale', subtitle: 'Operation on autopilot', price: 'R$ 2,997', period: '/month', features: ['Unlimited workflows', 'Monitoring dashboards', 'AI embedded in workflows', 'Custom integrations', 'Dedicated account manager', '99.9% uptime SLA'] },
+    ],
   },
 
   'chatbots': {
@@ -124,6 +158,40 @@ export const servicesData: Record<string, ServicePageData> = {
     sectorsEn: ['Clinics', 'Real estate', 'E-commerce', 'Restaurants', 'Gyms', 'Offices', 'Education', 'Retail'],
     ctaPt: 'Quer um assistente virtual para seu negócio?',
     ctaEn: 'Want a virtual assistant for your business?',
+    metricsPt: [
+      { value: '24/7', label: 'Disponibilidade' },
+      { value: '< 3s', label: 'Tempo de resposta' },
+      { value: '95%', label: 'Resolução automática' },
+      { value: '40%', label: 'Mais conversões' },
+    ],
+    metricsEn: [
+      { value: '24/7', label: 'Availability' },
+      { value: '< 3s', label: 'Response time' },
+      { value: '95%', label: 'Auto resolution' },
+      { value: '40%', label: 'More conversions' },
+    ],
+    processPt: [
+      { title: 'Briefing', desc: 'Entendemos seu negócio, tom de voz e objetivos do chatbot.' },
+      { title: 'Base de conhecimento', desc: 'Treinamos a IA com informações do seu negócio, FAQ e catálogo.' },
+      { title: 'Desenvolvimento', desc: 'Construímos o bot com fluxos inteligentes e integração com seus sistemas.' },
+      { title: 'Lançamento', desc: 'Ativamos no WhatsApp/site, monitoramos e ajustamos conforme feedback.' },
+    ],
+    processEn: [
+      { title: 'Briefing', desc: 'We understand your business, tone of voice and chatbot goals.' },
+      { title: 'Knowledge base', desc: 'We train the AI with your business info, FAQ and catalog.' },
+      { title: 'Development', desc: 'We build the bot with smart flows and integration with your systems.' },
+      { title: 'Launch', desc: 'We activate on WhatsApp/website, monitor and adjust based on feedback.' },
+    ],
+    plansPt: [
+      { name: 'Básico', subtitle: 'FAQ automatizado', price: 'R$ 997', period: 'setup + R$ 197/mês', features: ['Chatbot para WhatsApp ou site', 'Até 50 perguntas treinadas', 'Respostas automáticas 24/7', 'Escalação para humano', 'Relatórios mensais'] },
+      { name: 'Inteligente', subtitle: 'IA com contexto', price: 'R$ 1.997', period: 'setup + R$ 397/mês', features: ['Tudo do plano Básico', 'IA com RAG (base de conhecimento)', 'Qualificação automática de leads', 'Agendamento via Google Calendar', 'Integração com CRM', 'Multi-idioma PT/EN'], highlight: true },
+      { name: 'Autônomo', subtitle: 'Vendedor digital completo', price: 'R$ 3.497', period: 'setup + R$ 697/mês', features: ['Tudo do plano Inteligente', 'Vendas e pedidos pelo chat', 'Integração com pagamento (PIX)', 'Análise de sentimento', 'Dashboard em tempo real', 'Gerente de conta dedicado'] },
+    ],
+    plansEn: [
+      { name: 'Basic', subtitle: 'Automated FAQ', price: 'R$ 997', period: 'setup + R$ 197/mo', features: ['Chatbot for WhatsApp or website', 'Up to 50 trained questions', '24/7 automatic responses', 'Human escalation', 'Monthly reports'] },
+      { name: 'Smart', subtitle: 'AI with context', price: 'R$ 1,997', period: 'setup + R$ 397/mo', features: ['Everything in Basic', 'AI with RAG (knowledge base)', 'Automatic lead qualification', 'Google Calendar scheduling', 'CRM integration', 'Multi-language PT/EN'], highlight: true },
+      { name: 'Autonomous', subtitle: 'Complete digital seller', price: 'R$ 3,497', period: 'setup + R$ 697/mo', features: ['Everything in Smart', 'Sales and orders via chat', 'Payment integration (PIX)', 'Sentiment analysis', 'Real-time dashboard', 'Dedicated account manager'] },
+    ],
   },
 
   'sites': {
@@ -154,6 +222,40 @@ export const servicesData: Record<string, ServicePageData> = {
     sectorsEn: ['Restaurants', 'Clinics', 'Offices', 'Shops', 'Gyms', 'Beauty salons', 'Construction', 'Startups', 'Freelancers'],
     ctaPt: 'Quer um site que realmente converte?',
     ctaEn: 'Want a website that really converts?',
+    metricsPt: [
+      { value: '8+', label: 'Segmentos atendidos' },
+      { value: '< 48h', label: 'Entrega rápida' },
+      { value: '100%', label: 'Personalizado' },
+      { value: 'A+', label: 'Performance score' },
+    ],
+    metricsEn: [
+      { value: '8+', label: 'Segments served' },
+      { value: '< 48h', label: 'Fast delivery' },
+      { value: '100%', label: 'Customized' },
+      { value: 'A+', label: 'Performance score' },
+    ],
+    processPt: [
+      { title: 'Briefing', desc: 'Entendemos seu negócio, público e objetivos. Definimos escopo e prazo.' },
+      { title: 'Design', desc: 'Criamos o design exclusivo alinhado com a identidade da sua marca.' },
+      { title: 'Desenvolvimento', desc: 'Construímos com tecnologia de ponta e velocidade máxima.' },
+      { title: 'Entrega', desc: 'Publicamos, treinamos e mantemos tudo funcionando.' },
+    ],
+    processEn: [
+      { title: 'Briefing', desc: 'We understand your business, audience and goals. Define scope and timeline.' },
+      { title: 'Design', desc: 'We create the exclusive design aligned with your brand identity.' },
+      { title: 'Development', desc: 'We build with cutting-edge technology and maximum speed.' },
+      { title: 'Delivery', desc: 'We publish, train and keep everything running.' },
+    ],
+    plansPt: [
+      { name: 'Essencial', subtitle: 'Presença online profissional', price: 'R$ 1.497', period: 'setup + R$ 149/mês', features: ['Página responsiva otimizada', 'Design premium personalizado', 'Galeria de fotos', 'WhatsApp flutuante', 'Certificado SSL', 'Hospedagem inclusa', 'Formulário de contato'] },
+      { name: 'Profissional', subtitle: 'Site completo com funcionalidades', price: 'R$ 2.897', period: 'setup + R$ 249/mês', features: ['Tudo do Essencial', 'Múltiplas páginas', 'Cardápio/catálogo interativo', 'SEO avançado', 'Blog integrado', 'Google Maps', 'Modo claro/escuro'], highlight: true },
+      { name: 'Premium', subtitle: 'E-commerce e integrações', price: 'R$ 4.497', period: 'setup + R$ 349/mês', features: ['Tudo do Profissional', 'E-commerce completo', 'Pagamento PIX + Cartão', 'Área do cliente', 'Gestão de pedidos', 'Multi-idioma', 'Design 100% exclusivo'] },
+    ],
+    plansEn: [
+      { name: 'Essential', subtitle: 'Professional online presence', price: 'R$ 1,497', period: 'setup + R$ 149/mo', features: ['Optimized responsive page', 'Custom premium design', 'Photo gallery', 'Floating WhatsApp', 'SSL certificate', 'Hosting included', 'Contact form'] },
+      { name: 'Professional', subtitle: 'Full site with features', price: 'R$ 2,897', period: 'setup + R$ 249/mo', features: ['Everything in Essential', 'Multiple pages', 'Interactive menu/catalog', 'Advanced SEO', 'Integrated blog', 'Google Maps', 'Light/dark mode'], highlight: true },
+      { name: 'Premium', subtitle: 'E-commerce and integrations', price: 'R$ 4,497', period: 'setup + R$ 349/mo', features: ['Everything in Professional', 'Full e-commerce', 'PIX + Card payment', 'Client area', 'Order management', 'Multi-language', '100% exclusive design'] },
+    ],
   },
 
   'dashboards': {
@@ -184,6 +286,40 @@ export const servicesData: Record<string, ServicePageData> = {
     sectorsEn: ['Finance', 'Retail', 'Logistics', 'Marketing', 'Healthcare', 'Manufacturing', 'Accounting', 'Education'],
     ctaPt: 'Quer ver seus dados de forma clara?',
     ctaEn: 'Want to see your data clearly?',
+    metricsPt: [
+      { value: 'Real-time', label: 'Dados ao vivo' },
+      { value: '∞', label: 'Fontes integráveis' },
+      { value: '< 5d', label: 'Primeira entrega' },
+      { value: '100%', label: 'Customizado' },
+    ],
+    metricsEn: [
+      { value: 'Real-time', label: 'Live data' },
+      { value: '∞', label: 'Integrable sources' },
+      { value: '< 5d', label: 'First delivery' },
+      { value: '100%', label: 'Customized' },
+    ],
+    processPt: [
+      { title: 'Levantamento', desc: 'Identificamos quais dados e KPIs são relevantes pro seu negócio.' },
+      { title: 'Integração', desc: 'Conectamos suas fontes de dados — planilhas, ERPs, bancos, APIs.' },
+      { title: 'Design', desc: 'Criamos visualizações claras e intuitivas com a sua marca.' },
+      { title: 'Entrega', desc: 'Painel publicado, equipe treinada e alertas configurados.' },
+    ],
+    processEn: [
+      { title: 'Assessment', desc: 'We identify which data and KPIs are relevant to your business.' },
+      { title: 'Integration', desc: 'We connect your data sources — spreadsheets, ERPs, databases, APIs.' },
+      { title: 'Design', desc: 'We create clear and intuitive visualizations with your brand.' },
+      { title: 'Delivery', desc: 'Dashboard published, team trained and alerts configured.' },
+    ],
+    plansPt: [
+      { name: 'Operacional', subtitle: 'Um dashboard essencial', price: 'R$ 1.297', period: 'setup + R$ 197/mês', features: ['1 dashboard interativo', 'Até 3 fontes de dados', 'Atualização automática', 'Acesso mobile', 'Exportação em PDF', 'Suporte por WhatsApp'] },
+      { name: 'Gerencial', subtitle: 'Visão completa do negócio', price: 'R$ 2.497', period: 'setup + R$ 397/mês', features: ['Até 5 dashboards', 'Fontes ilimitadas', 'Alertas automáticos', 'KPIs personalizados', 'Relatórios agendados', 'Suporte prioritário'], highlight: true },
+      { name: 'Estratégico', subtitle: 'BI completo com IA', price: 'R$ 4.997', period: 'setup + R$ 697/mês', features: ['Dashboards ilimitados', 'Análise preditiva com IA', 'Integração com BI tools', 'API de dados', 'White-label', 'Gerente de conta dedicado'] },
+    ],
+    plansEn: [
+      { name: 'Operational', subtitle: 'One essential dashboard', price: 'R$ 1,297', period: 'setup + R$ 197/mo', features: ['1 interactive dashboard', 'Up to 3 data sources', 'Automatic updates', 'Mobile access', 'PDF export', 'WhatsApp support'] },
+      { name: 'Managerial', subtitle: 'Complete business view', price: 'R$ 2,497', period: 'setup + R$ 397/mo', features: ['Up to 5 dashboards', 'Unlimited sources', 'Automatic alerts', 'Custom KPIs', 'Scheduled reports', 'Priority support'], highlight: true },
+      { name: 'Strategic', subtitle: 'Full BI with AI', price: 'R$ 4,997', period: 'setup + R$ 697/mo', features: ['Unlimited dashboards', 'Predictive AI analysis', 'BI tools integration', 'Data API', 'White-label', 'Dedicated account manager'] },
+    ],
   },
 
   'consultoria-ia': {
@@ -214,5 +350,39 @@ export const servicesData: Record<string, ServicePageData> = {
     sectorsEn: ['Any industry', 'Offices', 'Manufacturing', 'Retail', 'Healthcare', 'Finance', 'Logistics', 'Education', 'Startups'],
     ctaPt: 'Quer descobrir como IA pode ajudar seu negócio?',
     ctaEn: 'Want to discover how AI can help your business?',
+    metricsPt: [
+      { value: '40%', label: 'Redução de custos' },
+      { value: '3x', label: 'Mais produtividade' },
+      { value: '< 30d', label: 'Primeiro resultado' },
+      { value: '100%', label: 'Personalizado' },
+    ],
+    metricsEn: [
+      { value: '40%', label: 'Cost reduction' },
+      { value: '3x', label: 'More productivity' },
+      { value: '< 30d', label: 'First results' },
+      { value: '100%', label: 'Customized' },
+    ],
+    processPt: [
+      { title: 'Diagnóstico', desc: 'Mapeamos seus processos e identificamos onde IA gera mais impacto.' },
+      { title: 'Roadmap', desc: 'Criamos um plano prático com prioridades, custos e cronograma.' },
+      { title: 'Implementação', desc: 'Selecionamos ferramentas e implementamos com acompanhamento contínuo.' },
+      { title: 'Evolução', desc: 'Treinamos a equipe e definimos métricas de sucesso.' },
+    ],
+    processEn: [
+      { title: 'Diagnosis', desc: 'We map your processes and identify where AI generates the most impact.' },
+      { title: 'Roadmap', desc: 'We create a practical plan with priorities, costs and timeline.' },
+      { title: 'Implementation', desc: 'We select tools and implement with continuous monitoring.' },
+      { title: 'Evolution', desc: 'We train the team and define success metrics.' },
+    ],
+    plansPt: [
+      { name: 'Diagnóstico', subtitle: 'Mapeamento + roadmap', price: 'R$ 1.997', period: 'projeto', features: ['Diagnóstico operacional completo', 'Mapeamento de processos', 'Roadmap de IA priorizado', 'Análise de ROI estimado', 'Relatório executivo', 'Reunião de apresentação'] },
+      { name: 'Implementação', subtitle: 'Diagnóstico + execução', price: 'R$ 4.997', period: 'projeto + R$ 997/mês', features: ['Tudo do Diagnóstico', 'Implementação de até 3 soluções de IA', 'Seleção e configuração de ferramentas', 'Integrações com sistemas existentes', 'Treinamento da equipe', 'Suporte por 90 dias'], highlight: true },
+      { name: 'Transformação', subtitle: 'Parceria contínua', price: 'Sob consulta', period: '', features: ['Tudo do Implementação', 'Consultoria estratégica mensal', 'Implementações ilimitadas', 'Acesso a novas tecnologias', 'Gerente de inovação dedicado', 'KPIs e relatórios de impacto'] },
+    ],
+    plansEn: [
+      { name: 'Diagnosis', subtitle: 'Mapping + roadmap', price: 'R$ 1,997', period: 'project', features: ['Complete operational diagnosis', 'Process mapping', 'Prioritized AI roadmap', 'Estimated ROI analysis', 'Executive report', 'Presentation meeting'] },
+      { name: 'Implementation', subtitle: 'Diagnosis + execution', price: 'R$ 4,997', period: 'project + R$ 997/mo', features: ['Everything in Diagnosis', 'Implementation of up to 3 AI solutions', 'Tool selection and configuration', 'Integration with existing systems', 'Team training', '90-day support'], highlight: true },
+      { name: 'Transformation', subtitle: 'Ongoing partnership', price: 'Custom', period: '', features: ['Everything in Implementation', 'Monthly strategic consulting', 'Unlimited implementations', 'Access to new technologies', 'Dedicated innovation manager', 'KPIs and impact reports'] },
+    ],
   },
 };
