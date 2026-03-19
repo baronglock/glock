@@ -77,8 +77,8 @@ function CosmicBackground({ theme }: any) {
       />
     </div>
 
-    {/* Constellation — scrolls with content, stops at its natural height */}
-    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '300vh', maxHeight: '4000px', zIndex: 0, pointerEvents: 'none', overflow: 'visible' }}>
+    {/* Constellation — fixed in background */}
+    <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
 
       {/* SVG starfield + constellation lines */}
       <svg viewBox="-10 -10 120 120" preserveAspectRatio="xMidYMid meet" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
