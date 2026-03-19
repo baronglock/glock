@@ -67,7 +67,22 @@ function CosmicBackground({ theme }: any) {
   const s = stars;
 
   return (
-    <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none', overflow: 'hidden' }}>
+    <>
+    {/* Fixed starfield — dense subtle stars across entire background */}
+    <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
+      <svg viewBox="0 0 200 200" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
+        {Array.from({ length: 120 }).map((_, i) => {
+          const x = (i * 37 + i * i * 3) % 200;
+          const y = (i * 53 + i * i * 7) % 200;
+          const r = 0.2 + (i % 5) * 0.1;
+          const o = dk ? (0.04 + (i % 7) * 0.015) : (0.06 + (i % 7) * 0.02);
+          return <circle key={`sf${i}`} cx={x} cy={y} r={r} fill={dk ? `rgba(255,255,255,${o})` : `rgba(13,148,136,${o})`} />;
+        })}
+      </svg>
+    </div>
+
+    {/* Scrollable constellation — moves with content */}
+    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '100%', zIndex: 0, pointerEvents: 'none', overflow: 'hidden' }}>
       {/* Cosmic gradient: space → atmosphere */}
       <div style={{
         position: 'absolute', inset: 0,
@@ -132,6 +147,7 @@ function CosmicBackground({ theme }: any) {
         ))}
       </svg>
     </div>
+    </>
   );
 }
 
