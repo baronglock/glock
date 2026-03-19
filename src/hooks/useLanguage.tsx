@@ -12,8 +12,8 @@ const translations = {
   'nav.contact': { pt: 'Contato', en: 'Contact' },
 
   // Hero
-  'hero.title1': { pt: 'Automatize seu negócio', en: 'Automate your business' },
-  'hero.title2': { pt: 'com inteligência artificial.', en: 'with artificial intelligence.' },
+  'hero.title1': { pt: 'Automação empresarial.', en: 'Enterprise automation.' },
+  'hero.title2': { pt: 'Simplificada.', en: 'Simplified.' },
   'hero.sub': {
     pt: 'Sites, automações, chatbots e sistemas sob medida. A IA cuida do operacional — você foca no que importa.',
     en: 'Websites, automations, chatbots and custom systems. AI handles the operations — you focus on what matters.',

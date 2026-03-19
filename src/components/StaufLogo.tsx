@@ -5,12 +5,13 @@ export function StaufLogo({ size = 28 }: { size?: number }) {
   return (
     <span style={{
       fontFamily: "'Inter', system-ui, sans-serif",
-      fontSize: size, letterSpacing: '-0.03em',
+      fontSize: size, letterSpacing: '0.12em',
       lineHeight: 1, whiteSpace: 'nowrap',
+      fontWeight: 700, textTransform: 'uppercase' as const,
+      color: colors.white,
     }}>
-      <span style={{ color: colors.white, fontWeight: 600 }}>S</span>
-      <span style={{ color: colors.white, fontWeight: 300 }}>tauf</span>
-      <span style={{ color: colors.brand, fontWeight: 600 }}>.</span>
+      STAUF
+      <span style={{ color: colors.brand }}>.</span>
     </span>
   );
 }

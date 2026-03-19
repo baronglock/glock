@@ -73,8 +73,8 @@ export function WebsitesPage() {
               {/* Badge */}
               <div className="anim-fade-up" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8, padding: '8px 16px',
-                background: dk ? 'rgba(37,99,235,0.08)' : 'rgba(37,99,235,0.06)',
-                border: `1px solid ${dk ? 'rgba(37,99,235,0.2)' : 'rgba(37,99,235,0.15)'}`,
+                background: dk ? 'rgba(13,148,136,0.08)' : 'rgba(13,148,136,0.06)',
+                border: `1px solid ${dk ? 'rgba(13,148,136,0.2)' : 'rgba(13,148,136,0.15)'}`,
                 fontSize: 13, color: colors.brand, marginBottom: 24,
               }}>
                 <Zap size={14} /> Boutique digital em Curitiba
@@ -195,8 +195,8 @@ export function WebsitesPage() {
             <span style={{
               display: 'inline-block', padding: '4px 14px', fontSize: 11,
               letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 500,
-              color: colors.brand, background: dk ? 'rgba(37,99,235,0.08)' : 'rgba(37,99,235,0.06)',
-              border: `1px solid ${dk ? 'rgba(37,99,235,0.15)' : 'rgba(37,99,235,0.1)'}`,
+              color: colors.brand, background: dk ? 'rgba(13,148,136,0.08)' : 'rgba(13,148,136,0.06)',
+              border: `1px solid ${dk ? 'rgba(13,148,136,0.15)' : 'rgba(13,148,136,0.1)'}`,
               marginBottom: 20,
             }}>Nichos</span>
             <h2 style={{
@@ -247,8 +247,8 @@ export function WebsitesPage() {
             <span style={{
               display: 'inline-block', padding: '4px 14px', fontSize: 11,
               letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 500,
-              color: colors.brand, background: dk ? 'rgba(37,99,235,0.08)' : 'rgba(37,99,235,0.06)',
-              border: `1px solid ${dk ? 'rgba(37,99,235,0.15)' : 'rgba(37,99,235,0.1)'}`,
+              color: colors.brand, background: dk ? 'rgba(13,148,136,0.08)' : 'rgba(13,148,136,0.06)',
+              border: `1px solid ${dk ? 'rgba(13,148,136,0.15)' : 'rgba(13,148,136,0.1)'}`,
               marginBottom: 20,
             }}>Processo</span>
             <h2 style={{
@@ -291,8 +291,8 @@ export function WebsitesPage() {
             <span style={{
               display: 'inline-block', padding: '4px 14px', fontSize: 11,
               letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 500,
-              color: colors.brand, background: dk ? 'rgba(37,99,235,0.08)' : 'rgba(37,99,235,0.06)',
-              border: `1px solid ${dk ? 'rgba(37,99,235,0.15)' : 'rgba(37,99,235,0.1)'}`,
+              color: colors.brand, background: dk ? 'rgba(13,148,136,0.08)' : 'rgba(13,148,136,0.06)',
+              border: `1px solid ${dk ? 'rgba(13,148,136,0.15)' : 'rgba(13,148,136,0.1)'}`,
               marginBottom: 20,
             }}>Planos</span>
             <h2 style={{
