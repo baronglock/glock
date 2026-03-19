@@ -41,10 +41,10 @@ export function Navbar({ t, lang, toggle, colors, theme, toggleTheme }: any) {
       }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
           <div style={{ height: 72, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'flex-end', gap: 10 }}>
-              {!isHome && <ArrowLeft size={16} style={{ color: colors.textMuted, marginBottom: 4 }} />}
-              <StaufLogo size={22} colors={colors} />
-              <span className="hidden sm:inline" style={{ fontSize: 10, color: colors.textDim, fontWeight: 400, letterSpacing: '0.04em', marginBottom: 1 }}>
+            <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'flex-end', gap: 8, flexShrink: 0 }}>
+              {!isHome && <ArrowLeft size={16} style={{ color: colors.textMuted, marginBottom: 3 }} />}
+              <StaufLogo size={20} colors={colors} />
+              <span className="hidden sm:inline" style={{ fontSize: 10, color: colors.textDim, fontWeight: 400, letterSpacing: '0.04em', marginBottom: 1, whiteSpace: 'nowrap' }}>
                 We make stuff.
               </span>
             </Link>
