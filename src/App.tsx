@@ -616,7 +616,8 @@ function Contact({ lang, colors }: any) {
     const data = new FormData(form);
     const name = data.get('name');
     const msg = data.get('message');
-    const greeting = lang === 'pt' ? `Olá! Sou ${name}. ${msg}` : `Hello! I'm ${name}. ${msg}`;
+    const whats = data.get('whatsapp');
+    const greeting = lang === 'pt' ? `Olá! Sou ${name}${whats ? ` (${whats})` : ''}. ${msg}` : `Hello! I'm ${name}${whats ? ` (${whats})` : ''}. ${msg}`;
     window.open(`https://wa.me/5541987991419?text=${encodeURIComponent(greeting)}`, '_blank');
     setSent(true);
     setTimeout(() => setSent(false), 3000);
@@ -670,8 +671,8 @@ function Contact({ lang, colors }: any) {
                 onFocus={e => e.currentTarget.style.borderColor = colors.brand} onBlur={e => e.currentTarget.style.borderColor = colors.border} />
             </div>
             <div>
-              <label style={{ display: 'block', fontSize: 14, fontWeight: 500, color: colors.text, marginBottom: 6 }}>Email</label>
-              <input name="email" type="email" required style={inputStyle} placeholder={lang === 'pt' ? 'seu@email.com' : 'your@email.com'}
+              <label style={{ display: 'block', fontSize: 14, fontWeight: 500, color: colors.text, marginBottom: 6 }}>WhatsApp</label>
+              <input name="whatsapp" type="tel" required style={inputStyle} placeholder="(41) 99999-9999"
                 onFocus={e => e.currentTarget.style.borderColor = colors.brand} onBlur={e => e.currentTarget.style.borderColor = colors.border} />
             </div>
             <div>
