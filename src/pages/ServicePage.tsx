@@ -5,6 +5,15 @@ import { useReveal } from '../hooks/useReveal';
 import { useLanguage } from '../hooks/useLanguage';
 import { useTheme } from '../hooks/useTheme';
 
+const SERVICE_IMAGES: Record<string, string> = {
+  'extracao-de-dados': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80&auto=format&fit=crop&fm=webp',
+  'automacao': 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80&auto=format&fit=crop&fm=webp',
+  'chatbots': 'https://images.unsplash.com/photo-1676299081847-824916de030a?w=1200&q=80&auto=format&fit=crop&fm=webp',
+  'sites': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80&auto=format&fit=crop&fm=webp',
+  'dashboards': 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&q=80&auto=format&fit=crop&fm=webp',
+  'consultoria-ia': 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&q=80&auto=format&fit=crop&fm=webp',
+};
+
 export interface ServicePageData {
   icon: any;
   titlePt: string;
@@ -69,8 +78,15 @@ export function ServicePage({ data, slug }: { data: ServicePageData; slug: strin
 
       {/* ════ HERO ════ */}
       <section style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', padding: '120px 0 80px' }}>
-        {/* Gradient background */}
-        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.4, background: `radial-gradient(ellipse at 20% 50%, ${colors.brand}15, transparent 50%), radial-gradient(ellipse at 80% 20%, ${colors.gold}10, transparent 50%)` }} />
+        {/* Background image with gradient fade */}
+        {SERVICE_IMAGES[slug] && (
+          <>
+            <img src={SERVICE_IMAGES[slug]} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.12 }} loading="eager" />
+            <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to right, ${colors.bg} 35%, transparent 60%, ${colors.bg} 100%)` }} />
+            <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, ${colors.bg} 0%, transparent 30%, transparent 70%, ${colors.bg} 100%)` }} />
+          </>
+        )}
+        {/* Gradient orbs */}
         <div style={{ position: 'absolute', top: '15%', left: '15%', width: 500, height: 500, background: `radial-gradient(circle, ${colors.orbBrand} 0%, transparent 70%)`, borderRadius: '50%', pointerEvents: 'none', filter: 'blur(80px)' }} />
         <div style={{ position: 'absolute', bottom: '20%', right: '10%', width: 400, height: 400, background: `radial-gradient(circle, ${colors.orbGold} 0%, transparent 70%)`, borderRadius: '50%', pointerEvents: 'none', filter: 'blur(80px)' }} />
         {/* Decorative line */}
