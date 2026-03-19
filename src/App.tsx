@@ -479,7 +479,7 @@ function About({ t, lang, colors }: any) {
           {/* Image */}
           <div className="reveal" style={{ position: 'relative' }}>
             <div style={{ borderRadius: 20, overflow: 'hidden', boxShadow: `0 30px 60px ${colors.shadow}`, border: `1px solid ${colors.glassCardBorder}` }}>
-              <img src={IMG.about} alt="Technology workspace" width={700} height={420} style={{ width: '100%', height: 420, objectFit: 'cover', display: 'block' }} loading="lazy" />
+              <img src={IMG.about} alt="Ambiente de trabalho com tecnologia e automação" width={700} height={420} style={{ width: '100%', height: 420, objectFit: 'cover', display: 'block' }} loading="lazy" />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(37,99,235,0.1), transparent 50%)' }} />
             </div>
             {/* Floating stats card */}
@@ -559,7 +559,7 @@ function Cases({ lang, colors }: any) {
             >
               {/* Case image */}
               <div style={{ position: 'relative', height: 180, overflow: 'hidden' }}>
-                <img src={caseImages[i]} alt={c.title} loading="lazy" width={600} height={400} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }}
+                <img src={caseImages[i]} alt={`Case: ${c.title}`} loading="lazy" width={600} height={400} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }}
                   onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
                   onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
                 />
@@ -653,7 +653,7 @@ function Contact({ lang, colors }: any) {
               })}
             </div>
             <div className="reveal rv-d4" style={{ display: 'flex', gap: 12, marginTop: 32 }}>
-              {[{ icon: Instagram, href: '#' }, { icon: Linkedin, href: '#' }, { icon: Github, href: 'https://github.com/baronglock' }].map((s, i) => (
+              {[{ icon: Instagram, href: '#', label: 'Instagram' }, { icon: Linkedin, href: '#', label: 'LinkedIn' }, { icon: Github, href: 'https://github.com/baronglock', label: 'GitHub' }].map((s, i) => (
                 <a key={i} href={s.href} target={s.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer"
                   style={{ width: 40, height: 40, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: colors.textMuted, textDecoration: 'none', transition: 'all 0.3s', background: colors.glass, border: `1px solid ${colors.glassBorder}` }}
                   onMouseEnter={e => { e.currentTarget.style.color = colors.brand; e.currentTarget.style.borderColor = colors.borderHover; }}
@@ -680,7 +680,7 @@ function Contact({ lang, colors }: any) {
                 onFocus={e => e.currentTarget.style.borderColor = colors.brand} onBlur={e => e.currentTarget.style.borderColor = colors.border} />
             </div>
             <button type="submit" className="btn-cta" style={{ padding: '14px 24px', width: '100%', fontSize: 15 }}>
-              {sent ? (lang === 'pt' ? 'Redirecionando para WhatsApp...' : 'Redirecting to WhatsApp...') : (lang === 'pt' ? 'Enviar pelo WhatsApp' : 'Send via WhatsApp')}
+              {sent ? (lang === 'pt' ? 'Redirecionando para WhatsApp...' : 'Redirecting to WhatsApp...')  : (lang === 'pt' ? 'Enviar pelo WhatsApp' : 'Send via WhatsApp')}
               {!sent && <ExternalLink size={16} />}
             </button>
           </form>

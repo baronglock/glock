@@ -65,12 +65,12 @@ export function Navbar({ t, lang, toggle, colors, theme, toggleTheme }: any) {
                   </Link>
                 )
               )}
-              <button onClick={toggleTheme} style={{ background: 'none', border: 'none', color: colors.textDim, cursor: 'pointer', display: 'flex', alignItems: 'center', padding: 4, transition: 'color 0.3s' }}
+              <button onClick={toggleTheme} aria-label="Alternar tema" style={{ background: 'none', border: 'none', color: colors.textDim, cursor: 'pointer', display: 'flex', alignItems: 'center', padding: 4, transition: 'color 0.3s' }}
                 onMouseEnter={e => e.currentTarget.style.color = colors.brand}
                 onMouseLeave={e => e.currentTarget.style.color = colors.textDim}>
                 {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
               </button>
-              <button onClick={toggle} style={{ background: 'none', border: 'none', color: colors.textDim, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, fontWeight: 500 }}>
+              <button onClick={toggle} aria-label="Alternar idioma" style={{ background: 'none', border: 'none', color: colors.textDim, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, fontWeight: 500 }}>
                 <Languages size={14} />
                 {lang === 'pt' ? 'EN' : 'PT'}
               </button>
@@ -80,13 +80,13 @@ export function Navbar({ t, lang, toggle, colors, theme, toggleTheme }: any) {
             </div>
 
             <div className="flex md:hidden" style={{ alignItems: 'center', gap: 10 }}>
-              <button onClick={toggleTheme} style={{ background: 'none', border: 'none', color: colors.textMuted, cursor: 'pointer' }}>
+              <button onClick={toggleTheme} aria-label="Alternar tema" style={{ background: 'none', border: 'none', color: colors.textMuted, cursor: 'pointer' }}>
                 {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
               </button>
-              <button onClick={toggle} style={{ background: 'none', border: 'none', color: colors.textMuted, cursor: 'pointer' }}>
+              <button onClick={toggle} aria-label="Alternar idioma" style={{ background: 'none', border: 'none', color: colors.textMuted, cursor: 'pointer' }}>
                 <Languages size={18} />
               </button>
-              <button onClick={() => setOpen(true)} style={{ background: 'none', border: 'none', color: colors.textMuted, cursor: 'pointer' }}>
+              <button onClick={() => setOpen(true)} aria-label="Abrir menu" style={{ background: 'none', border: 'none', color: colors.textMuted, cursor: 'pointer' }}>
                 <Menu size={22} />
               </button>
             </div>
@@ -97,7 +97,7 @@ export function Navbar({ t, lang, toggle, colors, theme, toggleTheme }: any) {
       {open && (
         <div className="anim-fade-in" style={{ position: 'fixed', inset: 0, zIndex: 60, backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)', background: theme === 'dark' ? 'rgba(10,10,15,0.8)' : 'rgba(0,0,0,0.3)' }} onClick={() => setOpen(false)}>
           <div className="anim-slide-right" style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 280, padding: 24, background: colors.glass, backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', borderLeft: `1px solid ${colors.border}` }} onClick={e => e.stopPropagation()}>
-            <button onClick={() => setOpen(false)} style={{ position: 'absolute', top: 20, right: 20, background: 'none', border: 'none', color: colors.textMuted, cursor: 'pointer' }}>
+            <button onClick={() => setOpen(false)} aria-label="Fechar menu" style={{ position: 'absolute', top: 20, right: 20, background: 'none', border: 'none', color: colors.textMuted, cursor: 'pointer' }}>
               <X size={22} />
             </button>
             <div style={{ marginTop: 56, display: 'flex', flexDirection: 'column', gap: 24 }}>
