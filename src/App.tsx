@@ -176,7 +176,7 @@ function Hero({ t, lang, colors }: any) {
       {/* Animated gradient overlay */}
       <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.4,
-        background: 'radial-gradient(ellipse at 20% 50%, rgba(37,99,235,0.15), transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(56,189,248,0.1), transparent 50%), radial-gradient(ellipse at 60% 80%, rgba(37,99,235,0.08), transparent 50%)',
+        background: 'radial-gradient(ellipse at 20% 50%, rgba(13,148,136,0.15), transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(45,212,191,0.1), transparent 50%), radial-gradient(ellipse at 60% 80%, rgba(13,148,136,0.08), transparent 50%)',
         backgroundSize: '200% 200%',
         animation: 'bg-gradient-shift 20s ease infinite',
       }} />
@@ -184,62 +184,68 @@ function Hero({ t, lang, colors }: any) {
       <div style={{ position: 'absolute', bottom: '20%', right: '10%', width: 400, height: 400, background: `radial-gradient(circle, ${colors.orbGold} 0%, transparent 70%)`, borderRadius: '50%', pointerEvents: 'none', filter: 'blur(80px)' }} />
 
       <W style={{ paddingTop: 120, paddingBottom: 80, position: 'relative', zIndex: 10 }}>
-        <div id="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'center' }}>
-          {/* Left: text */}
-          <div>
-            <h1 className="anim-fade-up" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 300, lineHeight: 0.95, letterSpacing: '-0.03em', marginBottom: 28 }}>
-              <span style={{ color: colors.white }}>{t('hero.title1')}</span>
-              <br />
-              <span className="text-gradient">{t('hero.title2')}</span>
-            </h1>
+        <div style={{ textAlign: 'center', maxWidth: 800, margin: '0 auto' }}>
+          <h1 className="anim-fade-up" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(3rem, 7vw, 5.5rem)', fontWeight: 600, lineHeight: 0.95, letterSpacing: '-0.04em', marginBottom: 28 }}>
+            <span style={{ color: colors.white }}>{t('hero.title1')}</span>
+            <br />
+            <span className="text-gradient">{t('hero.title2')}</span>
+          </h1>
 
-            <p className="anim-fade-up" style={{ maxWidth: 520, color: colors.textMuted, fontSize: 'clamp(1rem, 2vw, 1.125rem)', lineHeight: 1.75, animationDelay: '0.2s', marginBottom: 36 }}>
-              {t('hero.sub')}
-            </p>
+          <p className="anim-fade-up" style={{ maxWidth: 560, margin: '0 auto', color: colors.textMuted, fontSize: 'clamp(1rem, 2vw, 1.15rem)', lineHeight: 1.75, animationDelay: '0.2s', marginBottom: 40 }}>
+            {t('hero.sub')}
+          </p>
 
-            <div className="anim-fade-up" style={{ display: 'flex', flexWrap: 'wrap', gap: 16, animationDelay: '0.35s', marginBottom: 40 }}>
-              <a href="#contato" className="btn-cta" style={{ padding: '14px 36px', fontSize: 16 }}>
-                {t('hero.cta')} <ArrowRight size={16} />
-              </a>
-              <a href="#servicos" style={{
-                padding: '14px 36px', borderRadius: 9999, border: `1px solid ${colors.border}`, color: colors.text,
-                fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: 8, textDecoration: 'none',
-                transition: 'all 0.3s ease', fontSize: 16,
-              }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = colors.brand; e.currentTarget.style.color = colors.white; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = colors.border; e.currentTarget.style.color = colors.text; }}
-              >
-                {t('hero.cta2')} <ChevronRight size={16} />
-              </a>
-            </div>
-
-            <div className="anim-fade-up" style={{ display: 'flex', flexWrap: 'wrap', gap: 10, animationDelay: '0.5s' }}>
-              {(lang === 'pt'
-                ? ['Dados sob medida', 'Processos automatizados', 'Atendimento 24h', 'Presença digital premium', 'Decisões baseadas em dados', 'IA aplicada']
-                : ['Custom data', 'Automated processes', '24/7 support', 'Premium digital presence', 'Data-driven decisions', 'Applied AI']
-              ).map((tag) => (
-                <span key={tag} style={{ padding: '5px 14px', borderRadius: 9999, background: colors.badgeBg, border: `1px solid ${colors.badgeBorder}`, fontSize: 12, color: colors.textDim, fontWeight: 500 }}>
-                  {tag}
-                </span>
-              ))}
-            </div>
+          <div className="anim-fade-up" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 16, animationDelay: '0.35s', marginBottom: 48 }}>
+            <a href="#contato" className="btn-cta" style={{ padding: '14px 36px', fontSize: 16 }}>
+              {t('hero.cta')} <ArrowRight size={16} />
+            </a>
+            <a href="#servicos" style={{
+              padding: '14px 36px', borderRadius: 9999, border: `1px solid ${colors.border}`, color: colors.text,
+              fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: 8, textDecoration: 'none',
+              transition: 'all 0.3s ease', fontSize: 16,
+            }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = colors.brand; e.currentTarget.style.color = colors.white; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = colors.border; e.currentTarget.style.color = colors.text; }}
+            >
+              {t('hero.cta2')} <ChevronRight size={16} />
+            </a>
           </div>
 
-          {/* Right: hero image */}
-          <div className="anim-fade-up" style={{ position: 'relative', animationDelay: '0.3s' }}>
-            <div style={{ position: 'relative', borderRadius: 24, overflow: 'hidden', boxShadow: `0 40px 80px ${colors.shadow}`, border: `1px solid ${colors.glassCardBorder}` }}>
-              <img src={IMG.heroAi} alt="AI visualization" style={{ width: '100%', height: 520, objectFit: 'cover', display: 'block' }} loading="eager" />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 40%, rgba(10,10,15,0.6) 100%)' }} />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(37,99,235,0.1), transparent 50%)' }} />
-            </div>
+          {/* Gradient mesh orb */}
+          <div className="anim-fade-up" style={{ animationDelay: '0.5s', position: 'relative', width: 320, height: 320, margin: '0 auto' }}>
+            <div style={{
+              position: 'absolute', inset: 0, borderRadius: '50%',
+              background: 'conic-gradient(from 0deg, #0d9488, #2dd4bf, #5eead4, #14b8a6, #0f766e, #0d9488)',
+              filter: 'blur(40px)', opacity: 0.5,
+              animation: 'bg-gradient-shift 8s ease infinite',
+              backgroundSize: '200% 200%',
+            }} />
+            <div style={{
+              position: 'absolute', inset: 20, borderRadius: '50%',
+              background: 'conic-gradient(from 180deg, #14b8a6, #0d9488, #2dd4bf, #5eead4, #14b8a6)',
+              filter: 'blur(30px)', opacity: 0.6,
+              animation: 'bg-gradient-shift 12s ease-in-out infinite reverse',
+              backgroundSize: '200% 200%',
+            }} />
+            <div style={{
+              position: 'absolute', inset: 40, borderRadius: '50%',
+              background: `radial-gradient(circle at 40% 40%, rgba(94,234,212,0.4), rgba(13,148,136,0.2), transparent 70%)`,
+              backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
+              border: '1px solid rgba(45,212,191,0.15)',
+            }} />
+          </div>
+
+          <div className="anim-fade-up" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 10, animationDelay: '0.65s', marginTop: 48 }}>
+            {(lang === 'pt'
+              ? ['Automação com IA', 'Sites premium', 'Chatbots 24h', 'Extração de dados', 'Dashboards', 'Sistemas sob medida']
+              : ['AI Automation', 'Premium websites', '24/7 Chatbots', 'Data extraction', 'Dashboards', 'Custom systems']
+            ).map((tag) => (
+              <span key={tag} style={{ padding: '5px 14px', borderRadius: 9999, background: colors.badgeBg, border: `1px solid ${colors.badgeBorder}`, fontSize: 12, color: colors.textDim, fontWeight: 500 }}>
+                {tag}
+              </span>
+            ))}
           </div>
         </div>
-        <style>{`
-          @media (max-width: 768px) {
-            #hero-grid { grid-template-columns: 1fr !important; text-align: center; }
-            #hero-grid > div:last-child { display: none; }
-          }
-        `}</style>
       </W>
 
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 120, background: `linear-gradient(to top, ${colors.bg}, transparent)`, pointerEvents: 'none' }} />
