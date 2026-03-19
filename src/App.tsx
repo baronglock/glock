@@ -54,15 +54,15 @@ function CosmicBackground({ theme }: any) {
     [21,75],[66,3],[89,65],[4,22],[96,82],[34,92],[57,8],[81,32],
   ];
 
-  const nodeColor = dk ? 'rgba(45,212,191,0.7)' : 'rgba(13,148,136,0.25)';
-  const nodeGold = dk ? 'rgba(94,234,212,0.6)' : 'rgba(45,212,191,0.2)';
-  const glowColor = dk ? 'rgba(13,148,136,0.15)' : 'rgba(13,148,136,0.05)';
-  const glowGold = dk ? 'rgba(45,212,191,0.12)' : 'rgba(45,212,191,0.04)';
-  const lineColor = dk ? 'rgba(45,212,191,0.25)' : 'rgba(13,148,136,0.1)';
-  const lineFaint = dk ? 'rgba(45,212,191,0.12)' : 'rgba(13,148,136,0.04)';
-  const lineGold = dk ? 'rgba(94,234,212,0.18)' : 'rgba(45,212,191,0.07)';
+  const nodeColor = dk ? 'rgba(45,212,191,0.8)' : 'rgba(13,148,136,0.4)';
+  const nodeGold = dk ? 'rgba(94,234,212,0.7)' : 'rgba(45,212,191,0.35)';
+  const glowColor = dk ? 'rgba(13,148,136,0.2)' : 'rgba(13,148,136,0.1)';
+  const glowGold = dk ? 'rgba(45,212,191,0.18)' : 'rgba(45,212,191,0.08)';
+  const lineColor = dk ? 'rgba(45,212,191,0.3)' : 'rgba(13,148,136,0.18)';
+  const lineFaint = dk ? 'rgba(45,212,191,0.18)' : 'rgba(13,148,136,0.1)';
+  const lineGold = dk ? 'rgba(94,234,212,0.25)' : 'rgba(45,212,191,0.15)';
   const dimColor = dk ? 'rgba(255,255,255,' : 'rgba(13,148,136,';
-  const coreColor = dk ? 'rgba(255,255,255,0.9)' : 'rgba(13,148,136,0.35)';
+  const coreColor = dk ? 'rgba(255,255,255,0.95)' : 'rgba(13,148,136,0.5)';
 
   const s = stars;
 
@@ -72,8 +72,8 @@ function CosmicBackground({ theme }: any) {
       <div style={{
         position: 'absolute', inset: 0,
         background: dk
-          ? 'linear-gradient(180deg, rgba(4,4,14,0.95) 0%, rgba(8,6,18,0.7) 25%, rgba(12,10,20,0.4) 45%, transparent 65%)'
-          : 'linear-gradient(180deg, rgba(235,230,225,0.9) 0%, rgba(245,240,237,0.5) 30%, transparent 55%)',
+          ? 'linear-gradient(180deg, rgba(4,4,14,0.6) 0%, rgba(8,6,18,0.3) 15%, transparent 35%)'
+          : 'linear-gradient(180deg, rgba(235,230,225,0.7) 0%, rgba(245,240,237,0.3) 20%, transparent 40%)',
       }} />
 
       {/* Animated color nebula */}
@@ -88,7 +88,7 @@ function CosmicBackground({ theme }: any) {
       <svg viewBox="-5 -5 110 110" preserveAspectRatio="xMidYMid slice" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
         {/* Dim background stars */}
         {dimStars.map(([x, y], i) => {
-          const o = (0.05 + Math.sin(i * 1.7) * 0.04).toFixed(3);
+          const o = (dk ? 0.06 + Math.sin(i * 1.7) * 0.05 : 0.12 + Math.sin(i * 1.7) * 0.08).toFixed(3);
           const r = (0.15 + Math.sin(i * 2.3) * 0.1).toFixed(2);
           return <circle key={i} cx={x} cy={y} r={r} fill={`${dimColor}${o})`} />;
         })}
