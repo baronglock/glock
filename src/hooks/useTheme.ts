@@ -210,7 +210,7 @@ export const dark = {
 };
 
 export const light = {
-  bg: '#faf9f7',
+  bg: '#f0eee9',
   bgCard: 'rgba(255, 255, 255, 0.7)',
   bgAlt: 'rgba(245, 243, 240, 0.6)',
   border: 'rgba(0,0,0,0.08)',
