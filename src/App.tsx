@@ -211,31 +211,7 @@ function Hero({ t, lang, colors }: any) {
             </a>
           </div>
 
-          {/* Gradient mesh orb */}
-          <div className="anim-fade-up" style={{ animationDelay: '0.5s', position: 'relative', width: 320, height: 320, margin: '0 auto' }}>
-            <div style={{
-              position: 'absolute', inset: 0, borderRadius: '50%',
-              background: 'conic-gradient(from 0deg, #0d9488, #2dd4bf, #5eead4, #14b8a6, #0f766e, #0d9488)',
-              filter: 'blur(40px)', opacity: 0.5,
-              animation: 'bg-gradient-shift 8s ease infinite',
-              backgroundSize: '200% 200%',
-            }} />
-            <div style={{
-              position: 'absolute', inset: 20, borderRadius: '50%',
-              background: 'conic-gradient(from 180deg, #14b8a6, #0d9488, #2dd4bf, #5eead4, #14b8a6)',
-              filter: 'blur(30px)', opacity: 0.6,
-              animation: 'bg-gradient-shift 12s ease-in-out infinite reverse',
-              backgroundSize: '200% 200%',
-            }} />
-            <div style={{
-              position: 'absolute', inset: 40, borderRadius: '50%',
-              background: `radial-gradient(circle at 40% 40%, rgba(94,234,212,0.4), rgba(13,148,136,0.2), transparent 70%)`,
-              backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
-              border: '1px solid rgba(45,212,191,0.15)',
-            }} />
-          </div>
-
-          <div className="anim-fade-up" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 10, animationDelay: '0.65s', marginTop: 48 }}>
+          <div className="anim-fade-up" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 10, animationDelay: '0.5s', marginTop: 8 }}>
             {(lang === 'pt'
               ? ['Automação com IA', 'Sites premium', 'Chatbots 24h', 'Extração de dados', 'Dashboards', 'Sistemas sob medida']
               : ['AI Automation', 'Premium websites', '24/7 Chatbots', 'Data extraction', 'Dashboards', 'Custom systems']
