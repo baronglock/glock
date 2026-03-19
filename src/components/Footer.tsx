@@ -9,7 +9,7 @@ export function Footer({ t, colors }: any) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 32, marginBottom: 40 }}>
           <div>
             <Link to="/" style={{ textDecoration: 'none' }}>
-              <StaufLogo size={24} />
+              <StaufLogo size={24} colors={colors} />
             </Link>
             <p style={{ fontSize: 13, color: colors.textDim, marginTop: 12, lineHeight: 1.6 }}>We make stuff.</p>
           </div>
