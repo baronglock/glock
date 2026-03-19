@@ -184,7 +184,7 @@ function Hero({ t, lang, colors }: any) {
         animation: 'bg-gradient-shift 20s ease infinite',
       }} />
       {/* Background image — visible on sides, faded in center */}
-      <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=1400&q=80&auto=format&fit=crop&fm=webp" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.15, pointerEvents: 'none' }} loading="eager" />
+      <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=1400&q=80&auto=format&fit=crop&fm=webp" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.22, pointerEvents: 'none' }} loading="eager" />
       <div style={{ position: 'absolute', inset: 0, background: `radial-gradient(ellipse at 50% 50%, ${colors.bg} 30%, transparent 70%)`, pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, ${colors.bg} 0%, transparent 25%, transparent 75%, ${colors.bg} 100%)`, pointerEvents: 'none' }} />
 
