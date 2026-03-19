@@ -81,7 +81,7 @@ function CosmicBackground({ theme }: any) {
     <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
 
       {/* SVG starfield + constellation lines */}
-      <svg viewBox="-10 -10 120 120" preserveAspectRatio="xMidYMid meet" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
         {/* Dim background stars */}
         {dimStars.map(([x, y], i) => {
           const o = (dk ? 0.06 + Math.sin(i * 1.7) * 0.05 : 0.12 + Math.sin(i * 1.7) * 0.08).toFixed(3);
