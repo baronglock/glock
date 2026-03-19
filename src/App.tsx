@@ -54,15 +54,15 @@ function CosmicBackground({ theme }: any) {
     [21,75],[66,3],[89,65],[4,22],[96,82],[34,92],[57,8],[81,32],
   ];
 
-  const nodeColor = dk ? 'rgba(37,99,235,0.7)' : 'rgba(37,99,235,0.25)';
-  const nodeGold = dk ? 'rgba(220,180,130,0.6)' : 'rgba(56,189,248,0.2)';
-  const glowColor = dk ? 'rgba(37,99,235,0.12)' : 'rgba(37,99,235,0.05)';
-  const glowGold = dk ? 'rgba(56,189,248,0.1)' : 'rgba(56,189,248,0.04)';
-  const lineColor = dk ? 'rgba(37,99,235,0.2)' : 'rgba(37,99,235,0.1)';
-  const lineFaint = dk ? 'rgba(37,99,235,0.08)' : 'rgba(37,99,235,0.04)';
-  const lineGold = dk ? 'rgba(56,189,248,0.15)' : 'rgba(56,189,248,0.07)';
-  const dimColor = dk ? 'rgba(255,255,255,' : 'rgba(37,99,235,';
-  const coreColor = dk ? 'rgba(255,255,255,0.9)' : 'rgba(37,99,235,0.35)';
+  const nodeColor = dk ? 'rgba(45,212,191,0.7)' : 'rgba(13,148,136,0.25)';
+  const nodeGold = dk ? 'rgba(94,234,212,0.6)' : 'rgba(45,212,191,0.2)';
+  const glowColor = dk ? 'rgba(13,148,136,0.15)' : 'rgba(13,148,136,0.05)';
+  const glowGold = dk ? 'rgba(45,212,191,0.12)' : 'rgba(45,212,191,0.04)';
+  const lineColor = dk ? 'rgba(45,212,191,0.25)' : 'rgba(13,148,136,0.1)';
+  const lineFaint = dk ? 'rgba(45,212,191,0.12)' : 'rgba(13,148,136,0.04)';
+  const lineGold = dk ? 'rgba(94,234,212,0.18)' : 'rgba(45,212,191,0.07)';
+  const dimColor = dk ? 'rgba(255,255,255,' : 'rgba(13,148,136,';
+  const coreColor = dk ? 'rgba(255,255,255,0.9)' : 'rgba(13,148,136,0.35)';
 
   const s = stars;
 
@@ -79,13 +79,13 @@ function CosmicBackground({ theme }: any) {
       {/* Animated color nebula */}
       <div style={{
         position: 'absolute', inset: 0, opacity: dk ? 0.5 : 0.3,
-        background: 'radial-gradient(ellipse at 25% 30%, rgba(37,99,235,0.12), transparent 50%), radial-gradient(ellipse at 75% 20%, rgba(56,189,248,0.08), transparent 45%), radial-gradient(ellipse at 50% 70%, rgba(37,99,235,0.06), transparent 50%)',
+        background: 'radial-gradient(ellipse at 25% 30%, rgba(13,148,136,0.12), transparent 50%), radial-gradient(ellipse at 75% 20%, rgba(45,212,191,0.08), transparent 45%), radial-gradient(ellipse at 50% 70%, rgba(13,148,136,0.06), transparent 50%)',
         backgroundSize: '200% 200%',
         animation: 'bg-gradient-shift 25s ease infinite',
       }} />
 
       {/* SVG starfield + constellation lines */}
-      <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
+      <svg viewBox="-5 -5 110 110" preserveAspectRatio="xMidYMid slice" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
         {/* Dim background stars */}
         {dimStars.map(([x, y], i) => {
           const o = (0.05 + Math.sin(i * 1.7) * 0.04).toFixed(3);
