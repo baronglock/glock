@@ -66,13 +66,32 @@ function CosmicBackground({ theme }: any) {
 
   return (
     <>
-    {/* Fixed galaxy/nebula background — real space image, very subtle */}
+    {/* Fixed background — galaxy (dark) / sun rays (light) */}
     <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
-      <img
-        src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800&q=60&auto=format&fit=crop&fm=webp"
-        alt="" loading="lazy"
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: dk ? 0.1 : 0.08 }}
-      />
+      {dk ? (
+        <img
+          src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800&q=60&auto=format&fit=crop&fm=webp"
+          alt="" loading="lazy"
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.1 }}
+        />
+      ) : (
+        <>
+          <div style={{
+            position: 'absolute', top: '-20%', right: '-10%', width: '70%', height: '70%',
+            background: 'radial-gradient(circle, rgba(251,191,36,0.08) 0%, rgba(251,191,36,0.03) 30%, transparent 60%)',
+            borderRadius: '50%',
+          }} />
+          <div style={{
+            position: 'absolute', top: '-10%', right: '5%', width: '40%', height: '40%',
+            background: 'radial-gradient(circle, rgba(251,191,36,0.06) 0%, transparent 50%)',
+            borderRadius: '50%',
+          }} />
+          <div style={{
+            position: 'absolute', top: '10%', right: '-5%', width: '80%', height: '60%',
+            background: 'conic-gradient(from 200deg at 80% 20%, rgba(251,191,36,0.04) 0deg, transparent 30deg, rgba(251,191,36,0.02) 60deg, transparent 90deg, rgba(251,191,36,0.03) 120deg, transparent 150deg, rgba(251,191,36,0.02) 180deg, transparent 210deg, rgba(251,191,36,0.04) 240deg, transparent 270deg, rgba(251,191,36,0.02) 300deg, transparent 330deg, rgba(251,191,36,0.03) 360deg)',
+          }} />
+        </>
+      )}
     </div>
 
     {/* Constellation — fixed in background */}
