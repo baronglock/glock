@@ -68,39 +68,20 @@ function CosmicBackground({ theme }: any) {
 
   return (
     <>
-    {/* Fixed starfield — dense subtle stars across entire background */}
+    {/* Fixed galaxy/nebula background — real space image, very subtle */}
     <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
-      <svg viewBox="0 0 200 200" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
-        {Array.from({ length: 120 }).map((_, i) => {
-          const x = (i * 37 + i * i * 3) % 200;
-          const y = (i * 53 + i * i * 7) % 200;
-          const r = 0.2 + (i % 5) * 0.1;
-          const o = dk ? (0.04 + (i % 7) * 0.015) : (0.06 + (i % 7) * 0.02);
-          return <circle key={`sf${i}`} cx={x} cy={y} r={r} fill={dk ? `rgba(255,255,255,${o})` : `rgba(13,148,136,${o})`} />;
-        })}
-      </svg>
+      <img
+        src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1920&q=80&auto=format&fit=crop&fm=webp"
+        alt="" loading="eager"
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: dk ? 0.06 : 0.03 }}
+      />
     </div>
 
-    {/* Scrollable constellation — moves with content */}
-    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '100%', zIndex: 0, pointerEvents: 'none', overflow: 'hidden' }}>
-      {/* Cosmic gradient: space → atmosphere */}
-      <div style={{
-        position: 'absolute', inset: 0,
-        background: dk
-          ? 'linear-gradient(180deg, rgba(4,4,14,0.6) 0%, rgba(8,6,18,0.3) 15%, transparent 35%)'
-          : 'linear-gradient(180deg, rgba(235,230,225,0.7) 0%, rgba(245,240,237,0.3) 20%, transparent 40%)',
-      }} />
-
-      {/* Animated color nebula */}
-      <div style={{
-        position: 'absolute', inset: 0, opacity: dk ? 0.5 : 0.3,
-        background: 'radial-gradient(ellipse at 25% 30%, rgba(13,148,136,0.12), transparent 50%), radial-gradient(ellipse at 75% 20%, rgba(45,212,191,0.08), transparent 45%), radial-gradient(ellipse at 50% 70%, rgba(13,148,136,0.06), transparent 50%)',
-        backgroundSize: '200% 200%',
-        animation: 'bg-gradient-shift 25s ease infinite',
-      }} />
+    {/* Constellation — scrolls with content, stops at its natural height */}
+    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '300vh', maxHeight: '4000px', zIndex: 0, pointerEvents: 'none', overflow: 'visible' }}>
 
       {/* SVG starfield + constellation lines */}
-      <svg viewBox="-5 -5 110 110" preserveAspectRatio="xMidYMid slice" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
+      <svg viewBox="-10 -10 120 120" preserveAspectRatio="xMidYMid meet" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
         {/* Dim background stars */}
         {dimStars.map(([x, y], i) => {
           const o = (dk ? 0.06 + Math.sin(i * 1.7) * 0.05 : 0.12 + Math.sin(i * 1.7) * 0.08).toFixed(3);
