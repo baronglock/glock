@@ -30,6 +30,40 @@ export const servicesData: Record<string, ServicePageData> = {
     sectorsEn: ['Accounting', 'Law firms', 'Real estate', 'Consulting', 'Insurance', 'Healthcare', 'Retail', 'Manufacturing', 'Technology', 'Finance'],
     ctaPt: 'Precisa de uma base de dados personalizada?',
     ctaEn: 'Need a custom database?',
+    metricsPt: [
+      { value: '900k+', label: 'Registros processados' },
+      { value: '10+', label: 'Fontes de dados' },
+      { value: '< 48h', label: 'Tempo de entrega' },
+      { value: '100%', label: 'Conformidade LGPD' },
+    ],
+    metricsEn: [
+      { value: '900k+', label: 'Records processed' },
+      { value: '10+', label: 'Data sources' },
+      { value: '< 48h', label: 'Delivery time' },
+      { value: '100%', label: 'LGPD compliant' },
+    ],
+    processPt: [
+      { title: 'Briefing', desc: 'Definimos juntos o perfil dos dados: região, setor, porte, filtros específicos.' },
+      { title: 'Coleta', desc: 'Extraímos dados de fontes públicas e privadas com tecnologia proprietária.' },
+      { title: 'Tratamento', desc: 'Limpamos, cruzamos e enriquecemos cada registro automaticamente.' },
+      { title: 'Entrega', desc: 'Você recebe a base pronta em CSV, Excel ou direto no seu CRM.' },
+    ],
+    processEn: [
+      { title: 'Briefing', desc: 'We define together the data profile: region, sector, size, specific filters.' },
+      { title: 'Collection', desc: 'We extract data from public and private sources with proprietary technology.' },
+      { title: 'Processing', desc: 'We clean, cross-reference and enrich each record automatically.' },
+      { title: 'Delivery', desc: 'You receive the database ready in CSV, Excel or directly into your CRM.' },
+    ],
+    plansPt: [
+      { name: 'Pontual', subtitle: 'Uma extração sob demanda', price: 'R$ 497', period: 'por extração', features: ['Até 10.000 registros', 'Filtros por região e setor', 'Entrega em CSV/Excel', 'Dados de contato + CNPJ', 'Suporte por WhatsApp'] },
+      { name: 'Recorrente', subtitle: 'Base atualizada mensalmente', price: 'R$ 897', period: '/mês', features: ['Até 50.000 registros/mês', 'Atualização automática mensal', 'Cruzamento de múltiplas fontes', 'Enriquecimento com sócios e CNAE', 'Entrega em CSV, Excel ou CRM', 'Suporte prioritário'], highlight: true },
+      { name: 'Enterprise', subtitle: 'Volume ilimitado + API', price: 'Sob consulta', period: '', features: ['Volume ilimitado', 'API de acesso em tempo real', 'Integração direta com seu sistema', 'Dashboards de monitoramento', 'Gerente de conta dedicado', 'SLA de entrega garantido'] },
+    ],
+    plansEn: [
+      { name: 'One-time', subtitle: 'A single on-demand extraction', price: 'R$ 497', period: 'per extraction', features: ['Up to 10,000 records', 'Region and sector filters', 'CSV/Excel delivery', 'Contact data + tax ID', 'WhatsApp support'] },
+      { name: 'Recurring', subtitle: 'Monthly updated database', price: 'R$ 897', period: '/month', features: ['Up to 50,000 records/month', 'Automatic monthly updates', 'Multi-source cross-referencing', 'Enrichment with partners and industry codes', 'CSV, Excel or CRM delivery', 'Priority support'], highlight: true },
+      { name: 'Enterprise', subtitle: 'Unlimited volume + API', price: 'Custom', period: '', features: ['Unlimited volume', 'Real-time API access', 'Direct integration with your system', 'Monitoring dashboards', 'Dedicated account manager', 'Guaranteed delivery SLA'] },
+    ],
   },
 
   'automacao': {
