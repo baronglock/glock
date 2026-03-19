@@ -100,7 +100,7 @@ export function WebsitesPage() {
               </p>
 
               <div className="anim-fade-up" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 24, marginBottom: 48, animationDelay: '0.45s' }}>
-                <a href="/demo/exemplo-pizzaria" style={{
+                <a href="/#contato" style={{
                   display: 'inline-flex', alignItems: 'center', gap: 10,
                   padding: '14px 28px', background: dk ? '#fff' : '#0f172a',
                   color: dk ? '#0f172a' : '#fff', fontSize: 14, fontWeight: 500,
@@ -110,7 +110,7 @@ export function WebsitesPage() {
                   onMouseEnter={e => { e.currentTarget.style.background = colors.brand; e.currentTarget.style.color = '#fff'; }}
                   onMouseLeave={e => { e.currentTarget.style.background = dk ? '#fff' : '#0f172a'; e.currentTarget.style.color = dk ? '#0f172a' : '#fff'; }}
                 >
-                  Ver demonstração <ArrowRight size={16} />
+                  Fale conosco <ArrowRight size={16} />
                 </a>
                 <a href="#planos" style={{ fontSize: 14, color: colors.textMuted, textDecoration: 'none', transition: 'color 0.3s', letterSpacing: '0.02em' }}
                   onMouseEnter={e => e.currentTarget.style.color = colors.brand}
