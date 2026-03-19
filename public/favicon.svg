@@ -1,4 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <text x="6" y="52" font-family="Inter, system-ui, sans-serif" font-size="56" font-weight="900" fill="#2563eb">S</text>
-  <circle cx="54" cy="50" r="5" fill="#60a5fa"/>
+  <text x="6" y="52" font-family="Inter, system-ui, sans-serif" font-size="56" font-weight="600" fill="#ffffff">S</text>
+  <circle cx="54" cy="50" r="5" fill="#2563eb"/>
 </svg>
