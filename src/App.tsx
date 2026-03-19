@@ -31,16 +31,16 @@ import { Footer } from './components/Footer';
 function CosmicBackground({ theme }: any) {
   const dk = theme === 'dark';
 
-  /* Real stellar coordinates → viewBox percentages */
+  /* Real stellar coordinates → pushed down to avoid header */
   const stars = {
-    regulus:   { x: 42.3, y: 47.5, name: 'Regulus' },
-    spica:     { x: 55.9, y: 76.3, name: 'Spica' },
-    aldebaran: { x: 19.2, y: 42.5, name: 'Aldebaran' },
-    vega:      { x: 77.6, y: 13.8, name: 'Vega' },
-    sirius:    { x: 28.1, y: 83.8, name: 'Sirius' },
-    capella:   { x: 22.0, y: 5.0,  name: 'Capella' },
-    procyon:   { x: 31.9, y: 56.3, name: 'Procyon' },
-    antares:   { x: 68.7, y: 95.0, name: 'Antares' },
+    regulus:   { x: 42.3, y: 50, name: 'Regulus' },
+    spica:     { x: 55.9, y: 75, name: 'Spica' },
+    aldebaran: { x: 19.2, y: 46, name: 'Aldebaran' },
+    vega:      { x: 77.6, y: 22, name: 'Vega' },
+    sirius:    { x: 28.1, y: 82, name: 'Sirius' },
+    capella:   { x: 22.0, y: 15, name: 'Capella' },
+    procyon:   { x: 31.9, y: 58, name: 'Procyon' },
+    antares:   { x: 68.7, y: 90, name: 'Antares' },
   };
 
   /* Small background stars — scattered */
@@ -56,8 +56,6 @@ function CosmicBackground({ theme }: any) {
 
   const nodeColor = dk ? 'rgba(45,212,191,0.8)' : 'rgba(13,148,136,0.4)';
   const nodeGold = dk ? 'rgba(94,234,212,0.7)' : 'rgba(45,212,191,0.35)';
-  const glowColor = dk ? 'rgba(13,148,136,0.2)' : 'rgba(13,148,136,0.1)';
-  const glowGold = dk ? 'rgba(45,212,191,0.18)' : 'rgba(45,212,191,0.08)';
   const lineColor = dk ? 'rgba(45,212,191,0.3)' : 'rgba(13,148,136,0.18)';
   const lineFaint = dk ? 'rgba(45,212,191,0.18)' : 'rgba(13,148,136,0.1)';
   const lineGold = dk ? 'rgba(94,234,212,0.25)' : 'rgba(45,212,191,0.15)';
@@ -80,51 +78,40 @@ function CosmicBackground({ theme }: any) {
     {/* Constellation — fixed in background */}
     <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
 
-      {/* SVG starfield + constellation lines */}
+      {/* SVG constellation — refined, minimal */}
       <svg viewBox="0 0 100 100" preserveAspectRatio="none" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
-        {/* Dim background stars */}
+        <defs>
+          <filter id="starGlow">
+            <feGaussianBlur stdDeviation="0.4" result="blur" />
+            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+        </defs>
+
+        {/* Dim background stars — tiny dots */}
         {dimStars.map(([x, y], i) => {
-          const o = (dk ? 0.06 + Math.sin(i * 1.7) * 0.05 : 0.12 + Math.sin(i * 1.7) * 0.08).toFixed(3);
-          const r = (0.15 + Math.sin(i * 2.3) * 0.1).toFixed(2);
-          return <circle key={i} cx={x} cy={y} r={r} fill={`${dimColor}${o})`} />;
+          const o = (dk ? 0.04 + Math.sin(i * 1.7) * 0.03 : 0.08 + Math.sin(i * 1.7) * 0.05).toFixed(3);
+          return <circle key={i} cx={x} cy={y} r="0.12" fill={`${dimColor}${o})`} />;
         })}
 
-        {/* Prosperity constellation lines */}
-        {/* Wealth triangle (gold): Jupiter-aligned Spica → Sirius → Aldebaran */}
-        <line x1={s.spica.x} y1={s.spica.y} x2={s.sirius.x} y2={s.sirius.y} stroke={lineGold} strokeWidth="0.08" />
-        <line x1={s.sirius.x} y1={s.sirius.y} x2={s.aldebaran.x} y2={s.aldebaran.y} stroke={lineGold} strokeWidth="0.08" />
-        <line x1={s.aldebaran.x} y1={s.aldebaran.y} x2={s.spica.x} y2={s.spica.y} stroke={lineGold} strokeWidth="0.06" />
-
-        {/* Authority axis: Capella → Aldebaran → Regulus → Vega */}
-        <line x1={s.capella.x} y1={s.capella.y} x2={s.aldebaran.x} y2={s.aldebaran.y} stroke={lineColor} strokeWidth="0.08" />
-        <line x1={s.aldebaran.x} y1={s.aldebaran.y} x2={s.regulus.x} y2={s.regulus.y} stroke={lineColor} strokeWidth="0.08" />
-        <line x1={s.regulus.x} y1={s.regulus.y} x2={s.vega.x} y2={s.vega.y} stroke={lineColor} strokeWidth="0.08" />
-
-        {/* Commerce circuit: Procyon → Regulus → Spica → Antares */}
-        <line x1={s.procyon.x} y1={s.procyon.y} x2={s.regulus.x} y2={s.regulus.y} stroke={lineFaint} strokeWidth="0.06" />
-        <line x1={s.regulus.x} y1={s.regulus.y} x2={s.spica.x} y2={s.spica.y} stroke={lineFaint} strokeWidth="0.06" />
-        <line x1={s.spica.x} y1={s.spica.y} x2={s.antares.x} y2={s.antares.y} stroke={lineFaint} strokeWidth="0.06" />
-        <line x1={s.vega.x} y1={s.vega.y} x2={s.antares.x} y2={s.antares.y} stroke={lineFaint} strokeWidth="0.05" />
-
-        {/* Network extensions */}
-        <line x1={s.procyon.x} y1={s.procyon.y} x2={s.sirius.x} y2={s.sirius.y} stroke={lineFaint} strokeWidth="0.05" />
-        <line x1={s.capella.x} y1={s.capella.y} x2={s.vega.x} y2={s.vega.y} stroke={lineFaint} strokeWidth="0.04" />
-
-        {/* Anchor star glows */}
-        {Object.values(s).map((star) => (
-          <circle key={star.name + '-glow'} cx={star.x} cy={star.y} r="1.5"
-            fill={star.name === 'Spica' || star.name === 'Sirius' ? glowGold : glowColor} />
+        {/* Constellation lines — ultra thin */}
+        {[
+          [s.spica, s.sirius, lineGold], [s.sirius, s.aldebaran, lineGold], [s.aldebaran, s.spica, lineGold],
+          [s.capella, s.aldebaran, lineColor], [s.aldebaran, s.regulus, lineColor], [s.regulus, s.vega, lineColor],
+          [s.procyon, s.regulus, lineFaint], [s.regulus, s.spica, lineFaint],
+          [s.spica, s.antares, lineFaint], [s.vega, s.antares, lineFaint],
+          [s.procyon, s.sirius, lineFaint], [s.capella, s.vega, lineFaint],
+        ].map(([a, b, color], i) => (
+          <line key={`cl${i}`} x1={(a as any).x} y1={(a as any).y} x2={(b as any).x} y2={(b as any).y}
+            stroke={color as string} strokeWidth="0.04" opacity={0.7} />
         ))}
 
-        {/* Anchor star outer ring */}
+        {/* Star points — small with natural glow */}
         {Object.values(s).map((star) => (
-          <circle key={star.name + '-ring'} cx={star.x} cy={star.y} r="0.5"
-            fill={star.name === 'Spica' || star.name === 'Sirius' || star.name === 'Aldebaran' ? nodeGold : nodeColor} />
-        ))}
-
-        {/* Anchor star bright cores */}
-        {Object.values(s).map((star) => (
-          <circle key={star.name + '-core'} cx={star.x} cy={star.y} r="0.18" fill={coreColor} />
+          <g key={star.name} filter="url(#starGlow)">
+            <circle cx={star.x} cy={star.y} r="0.25"
+              fill={star.name === 'Spica' || star.name === 'Sirius' || star.name === 'Aldebaran' ? nodeGold : nodeColor} />
+            <circle cx={star.x} cy={star.y} r="0.08" fill={coreColor} />
+          </g>
         ))}
       </svg>
     </div>
