@@ -12,11 +12,11 @@ const translations = {
   'nav.contact': { pt: 'Contato', en: 'Contact' },
 
   // Hero
-  'hero.title1': { pt: 'Transformamos dados', en: 'We turn data' },
-  'hero.title2': { pt: 'em vantagem competitiva.', en: 'into competitive advantage.' },
+  'hero.title1': { pt: 'Automatize seu negócio', en: 'Automate your business' },
+  'hero.title2': { pt: 'com inteligência artificial.', en: 'with artificial intelligence.' },
   'hero.sub': {
-    pt: 'Soluções inteligentes em extração de dados, automação de processos, desenvolvimento web e inteligência artificial para empresas que querem crescer.',
-    en: 'Intelligent solutions in data extraction, process automation, web development and artificial intelligence for companies that want to grow.',
+    pt: 'Sites, automações, chatbots e sistemas sob medida. A IA cuida do operacional — você foca no que importa.',
+    en: 'Websites, automations, chatbots and custom systems. AI handles the operations — you focus on what matters.',
   },
   'hero.cta': { pt: 'Fale conosco', en: 'Get in touch' },
   'hero.cta2': { pt: 'Ver serviços', en: 'View services' },
