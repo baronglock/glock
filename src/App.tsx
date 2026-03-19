@@ -71,8 +71,8 @@ function CosmicBackground({ theme }: any) {
     {/* Fixed galaxy/nebula background — real space image, very subtle */}
     <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
       <img
-        src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1920&q=80&auto=format&fit=crop&fm=webp"
-        alt="" loading="eager"
+        src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800&q=60&auto=format&fit=crop&fm=webp"
+        alt="" loading="lazy"
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: dk ? 0.1 : 0.05 }}
       />
     </div>
@@ -199,8 +199,8 @@ function Hero({ t, lang, colors }: any) {
         {[[9,25],[15,55],[22,75],[4,45],[78,35],[85,65],[91,25],[96,85]].map(([x,y], i) => <circle key={`nd${i}`} cx={`${x}%`} cy={`${y}%`} r="1.5" fill={colors.brand} opacity={0.12} />)}
       </svg>
 
-      <div style={{ position: 'absolute', top: '15%', left: '15%', width: 500, height: 500, background: `radial-gradient(circle, ${colors.orbBrand} 0%, transparent 70%)`, borderRadius: '50%', pointerEvents: 'none', filter: 'blur(80px)' }} />
-      <div style={{ position: 'absolute', bottom: '20%', right: '10%', width: 400, height: 400, background: `radial-gradient(circle, ${colors.orbGold} 0%, transparent 70%)`, borderRadius: '50%', pointerEvents: 'none', filter: 'blur(80px)' }} />
+      <div className="hidden sm:block" style={{ position: 'absolute', top: '15%', left: '15%', width: 500, height: 500, background: `radial-gradient(circle, ${colors.orbBrand} 0%, transparent 70%)`, borderRadius: '50%', pointerEvents: 'none', filter: 'blur(80px)' }} />
+      <div className="hidden sm:block" style={{ position: 'absolute', bottom: '20%', right: '10%', width: 400, height: 400, background: `radial-gradient(circle, ${colors.orbGold} 0%, transparent 70%)`, borderRadius: '50%', pointerEvents: 'none', filter: 'blur(80px)' }} />
 
       <W style={{ paddingTop: 120, paddingBottom: 80, position: 'relative', zIndex: 10 }}>
         <div style={{ textAlign: 'center', maxWidth: 800, margin: '0 auto' }}>

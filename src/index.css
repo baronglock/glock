@@ -6,7 +6,7 @@
   --font-display: 'Playfair Display', Georgia, serif;
 }
 
-#root { width: 100%; min-height: 100vh; }
+#root { width: 100%; min-height: 100vh; overflow-x: hidden; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
@@ -23,6 +23,23 @@ body {
 }
 
 ::selection { background-color: #0d9488; color: white; }
+
+/* ── Mobile performance ── */
+@media (max-width: 768px) {
+  /* Disable heavy backdrop-filter on mobile */
+  * {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  /* Reduce animation complexity */
+  .anim-pulse-glow {
+    animation: none !important;
+  }
+  /* Faster transitions */
+  .anim-fade-up { animation-duration: 0.4s !important; }
+  .anim-fade-in { animation-duration: 0.3s !important; }
+  .anim-slide-right { animation-duration: 0.4s !important; }
+}
 
 /* ── Accessibility: visible focus ── */
 :focus-visible {

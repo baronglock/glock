@@ -96,7 +96,7 @@ export function Navbar({ t, lang, toggle, colors, theme, toggleTheme }: any) {
 
       {open && (
         <div className="anim-fade-in" style={{ position: 'fixed', inset: 0, zIndex: 60, backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)', background: theme === 'dark' ? 'rgba(10,10,15,0.8)' : 'rgba(0,0,0,0.3)' }} onClick={() => setOpen(false)}>
-          <div className="anim-slide-right" style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 280, padding: 24, background: colors.glass, backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', borderLeft: `1px solid ${colors.border}` }} onClick={e => e.stopPropagation()}>
+          <div className="anim-slide-right" style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 280, padding: 24, background: colors.bg, borderLeft: `1px solid ${colors.border}` }} onClick={e => e.stopPropagation()}>
             <button onClick={() => setOpen(false)} aria-label="Fechar menu" style={{ position: 'absolute', top: 20, right: 20, background: 'none', border: 'none', color: colors.textMuted, cursor: 'pointer' }}>
               <X size={22} />
             </button>
