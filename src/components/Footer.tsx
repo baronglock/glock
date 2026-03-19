@@ -39,7 +39,7 @@ export function Footer({ t, colors }: any) {
             <h4 style={{ fontSize: 13, fontWeight: 600, color: colors.text, marginBottom: 12, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{t('footer.contact')}</h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8, fontSize: 14, color: colors.textDim }}>
               <li>+55 (41) 98799-1419</li>
-              <li>contato@stauf.dev</li>
+              <li>contato@stauf.com.br</li>
               <li>Curitiba, PR</li>
             </ul>
           </div>
