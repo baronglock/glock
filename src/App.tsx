@@ -232,6 +232,58 @@ function Hero({ t, lang, colors }: any) {
               ))}
             </div>
           </div>
+
+          {/* Browser mockup */}
+          <div className="anim-fade-up" style={{ animationDelay: '0.7s', marginTop: 56, maxWidth: 720, margin: '56px auto 0' }}>
+            <div style={{ background: 'rgba(16,16,24,0.8)', border: `1px solid ${colors.glassCardBorder}`, borderRadius: 12, overflow: 'hidden', boxShadow: `0 40px 80px ${colors.shadow}` }}>
+              {/* Browser bar */}
+              <div style={{ padding: '10px 16px', borderBottom: `1px solid ${colors.glassCardBorder}`, display: 'flex', alignItems: 'center', gap: 12 }}>
+                <div style={{ display: 'flex', gap: 6 }}>
+                  <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#ef4444aa' }} />
+                  <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#eab308aa' }} />
+                  <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#22c55eaa' }} />
+                </div>
+                <div style={{ flex: 1, margin: '0 16px', background: 'rgba(255,255,255,0.05)', padding: '5px 12px', borderRadius: 6, fontSize: 12, color: 'rgba(255,255,255,0.35)', fontFamily: 'monospace' }}>
+                  stauf.com.br
+                </div>
+              </div>
+              {/* Mock dashboard content */}
+              <div style={{ padding: 20 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+                  <div style={{ display: 'flex', gap: 8 }}>
+                    {[1,2,3].map(i => <div key={i} style={{ width: 48, height: 6, background: `rgba(255,255,255,${i===1?0.2:0.08})`, borderRadius: 3 }} />)}
+                  </div>
+                  <div style={{ width: 60, height: 24, borderRadius: 4, background: `${colors.brand}40` }} />
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, marginBottom: 16 }}>
+                  {[colors.brand, colors.gold, colors.brandLight].map((c, i) => (
+                    <div key={i} style={{ padding: 14, background: 'rgba(255,255,255,0.03)', borderRadius: 8, border: '1px solid rgba(255,255,255,0.05)' }}>
+                      <div style={{ width: 20, height: 20, borderRadius: 6, background: `${c}25`, marginBottom: 10 }} />
+                      <div style={{ width: '60%', height: 14, background: 'rgba(255,255,255,0.15)', borderRadius: 3, marginBottom: 6 }} />
+                      <div style={{ width: '40%', height: 10, background: 'rgba(255,255,255,0.06)', borderRadius: 3 }} />
+                    </div>
+                  ))}
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 12 }}>
+                  <div style={{ padding: 14, background: 'rgba(255,255,255,0.03)', borderRadius: 8, border: '1px solid rgba(255,255,255,0.05)' }}>
+                    <div style={{ display: 'flex', gap: 6, alignItems: 'flex-end', height: 48 }}>
+                      {[35,55,40,65,50,70,45,60,75,55,80,65].map((h,i) => (
+                        <div key={i} style={{ flex: 1, height: `${h}%`, background: `linear-gradient(to top, ${colors.brand}60, ${colors.brand}20)`, borderRadius: 2 }} />
+                      ))}
+                    </div>
+                  </div>
+                  <div style={{ padding: 14, background: 'rgba(255,255,255,0.03)', borderRadius: 8, border: '1px solid rgba(255,255,255,0.05)', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                    {[1,2,3].map(i => (
+                      <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: i===1?colors.brand:i===2?colors.gold:'rgba(255,255,255,0.15)' }} />
+                        <div style={{ flex: 1, height: 6, background: `rgba(255,255,255,${0.15-i*0.04})`, borderRadius: 3 }} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </W>
 
@@ -345,14 +397,16 @@ function Services({ t, lang, colors }: any) {
             {t('services.sub')}
           </p>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
-          {services.map((s) => (
-            <ServiceCard key={s.titleKey} icon={s.icon} title={t(s.titleKey as any)} desc={t(s.descKey as any)} slug={s.slug} lang={lang} colors={colors} />
+        <div id="services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+          {services.map((s, i) => (
+            <div key={s.titleKey} style={{ gridColumn: i === 0 ? 'span 2' : undefined }}>
+              <ServiceCard icon={s.icon} title={t(s.titleKey as any)} desc={t(s.descKey as any)} slug={s.slug} lang={lang} colors={colors} />
+            </div>
           ))}
         </div>
         <style>{`
-          @media (max-width: 900px) { #servicos [style*="grid-template-columns: repeat(3"] { grid-template-columns: repeat(2, 1fr) !important; } }
-          @media (max-width: 600px) { #servicos [style*="grid-template-columns: repeat(3"], #servicos [style*="grid-template-columns: repeat(2"] { grid-template-columns: 1fr !important; } }
+          @media (max-width: 900px) { #services-grid { grid-template-columns: repeat(2, 1fr) !important; } #services-grid > div:first-child { grid-column: span 2 !important; } }
+          @media (max-width: 600px) { #services-grid { grid-template-columns: 1fr !important; } #services-grid > div:first-child { grid-column: span 1 !important; } }
         `}</style>
       </W>
     </Section>
@@ -434,17 +488,19 @@ function Process({ lang, colors }: any) {
             {lang === 'pt' ? 'Como trabalhamos' : 'How we work'}
           </h2>
         </div>
-        <div id="process-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20 }}>
+        <div id="process-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20, position: 'relative' }}>
+          {/* Connecting line */}
+          <div className="process-line" style={{ position: 'absolute', top: 40, left: '12.5%', right: '12.5%', height: 2, background: `linear-gradient(to right, transparent, ${colors.brand}30, ${colors.brand}30, transparent)`, zIndex: 0 }} />
           {steps.map((step, i) => (
             <div key={step.title} className="reveal" style={{
               padding: 24, borderRadius: 16, background: colors.glassCard, border: `1px solid ${colors.glassCardBorder}`,
-              transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)',
+              transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)', position: 'relative', zIndex: 1,
             }}
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px) scale(1.02)'; e.currentTarget.style.borderColor = colors.borderHover; e.currentTarget.style.boxShadow = `0 24px 48px ${colors.shadow}`; }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0) scale(1)'; e.currentTarget.style.borderColor = colors.glassCardBorder; e.currentTarget.style.boxShadow = 'none'; }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-                <div style={{ width: 32, height: 32, borderRadius: 8, background: 'rgba(37,99,235,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: colors.brand, fontWeight: 700, fontSize: 14 }}>{i + 1}</div>
+                <div style={{ width: 32, height: 32, borderRadius: '50%', background: `${colors.brand}20`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: colors.brand, fontWeight: 700, fontSize: 14, border: `2px solid ${colors.brand}40` }}>{i + 1}</div>
                 <step.icon size={18} style={{ color: colors.brandLight }} />
               </div>
               <h3 style={{ color: colors.white, fontWeight: 600, marginBottom: 8, fontSize: 'clamp(0.9rem, 1.6vw, 1rem)' }}>{step.title}</h3>
@@ -461,12 +517,16 @@ function Process({ lang, colors }: any) {
   );
 }
 
-/* ═══════════════ IMAGE DIVIDER ═══════════════ */
+/* ═══════════════ GRADIENT DIVIDER ═══════════════ */
 function ImageDivider({ colors }: any) {
   return (
-    <div style={{ position: 'relative', width: '100%', height: 360, overflow: 'hidden' }}>
-      <img src={IMG.divider} alt="" width={1920} height={300} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading="lazy" />
-      <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, ${colors.bg}, rgba(37,99,235,0.15), ${colors.bgAlt})` }} />
+    <div style={{ position: 'relative', width: '100%', height: 200, overflow: 'hidden' }}>
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: `linear-gradient(135deg, ${colors.bg} 0%, rgba(13,148,136,0.08) 30%, rgba(45,212,191,0.05) 50%, rgba(13,148,136,0.08) 70%, ${colors.bgAlt} 100%)`,
+      }} />
+      <div style={{ position: 'absolute', left: '30%', top: '50%', transform: 'translate(-50%,-50%)', width: 300, height: 300, background: `radial-gradient(circle, ${colors.orbBrand} 0%, transparent 70%)`, borderRadius: '50%', filter: 'blur(60px)' }} />
+      <div style={{ position: 'absolute', right: '20%', top: '50%', transform: 'translate(50%,-50%)', width: 200, height: 200, background: `radial-gradient(circle, ${colors.orbGold} 0%, transparent 70%)`, borderRadius: '50%', filter: 'blur(40px)' }} />
     </div>
   );
 }
@@ -477,20 +537,33 @@ function About({ t, lang, colors }: any) {
     <Section id="sobre" alt colors={colors} style={{ padding: '96px 0' }}>
       <W>
         <div id="about-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'center' }}>
-          {/* Image */}
+          {/* Abstract visual */}
           <div className="reveal" style={{ position: 'relative' }}>
-            <div style={{ borderRadius: 20, overflow: 'hidden', boxShadow: `0 30px 60px ${colors.shadow}`, border: `1px solid ${colors.glassCardBorder}` }}>
-              <img src={IMG.about} alt="Ambiente de trabalho com tecnologia e automação" width={700} height={420} style={{ width: '100%', height: 420, objectFit: 'cover', display: 'block' }} loading="lazy" />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(37,99,235,0.1), transparent 50%)' }} />
-            </div>
-            {/* Floating stats card */}
-            <div style={{
-              position: 'absolute', bottom: -16, right: -16, padding: '20px 28px', borderRadius: 16,
-              background: colors.glassCard, backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
-              border: `1px solid ${colors.glassCardBorder}`, boxShadow: `0 20px 40px ${colors.shadow}`,
-            }}>
-              <div style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.5rem, 3vw, 1.75rem)', fontWeight: 300, color: colors.brandLight }}>5+</div>
-              <div style={{ fontSize: 12, color: colors.textDim, fontWeight: 500 }}>{lang === 'pt' ? 'anos de experiência' : 'years of experience'}</div>
+            <div style={{ borderRadius: 20, overflow: 'hidden', aspectRatio: '4/3', position: 'relative', background: 'rgba(16,16,24,0.6)', border: `1px solid ${colors.glassCardBorder}` }}>
+              {/* Gradient mesh background */}
+              <div style={{ position: 'absolute', inset: 0 }}>
+                <div style={{ position: 'absolute', top: '20%', left: '20%', width: 200, height: 200, background: `radial-gradient(circle, ${colors.brand}30, transparent 70%)`, borderRadius: '50%', filter: 'blur(50px)' }} />
+                <div style={{ position: 'absolute', bottom: '20%', right: '15%', width: 180, height: 180, background: `radial-gradient(circle, ${colors.gold}25, transparent 70%)`, borderRadius: '50%', filter: 'blur(40px)' }} />
+                <div style={{ position: 'absolute', top: '50%', left: '55%', width: 120, height: 120, background: `radial-gradient(circle, ${colors.brandLight}20, transparent 70%)`, borderRadius: '50%', filter: 'blur(30px)' }} />
+              </div>
+              {/* Floating data points */}
+              <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 20 }}>
+                {[
+                  { v: '900k+', l: lang === 'pt' ? 'registros' : 'records' },
+                  { v: '8', l: lang === 'pt' ? 'segmentos' : 'segments' },
+                  { v: '5+', l: lang === 'pt' ? 'anos' : 'years' },
+                ].map((s, i) => (
+                  <div key={s.l} style={{
+                    padding: '12px 24px', background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(12px)',
+                    border: '1px solid rgba(255,255,255,0.06)', borderRadius: 12,
+                    display: 'flex', alignItems: 'center', gap: 16,
+                    transform: `translateX(${i === 0 ? -20 : i === 2 ? 20 : 0}px)`,
+                  }}>
+                    <span style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.5rem)', fontWeight: 600, color: colors.brand }}>{s.v}</span>
+                    <span style={{ fontSize: 12, color: colors.textDim, textTransform: 'uppercase', letterSpacing: '0.1em' }}>{s.l}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           {/* Text */}
@@ -590,9 +663,10 @@ function Cases({ lang, colors }: any) {
 function CtaSection({ t }: any) {
   return (
     <section style={{ position: 'relative', overflow: 'hidden', padding: '120px 0' }}>
-      {/* Background image */}
-      <img src={IMG.ctaBg} alt="" width={1400} height={600} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(10,10,15,0.88), rgba(37,99,235,0.3), rgba(10,10,15,0.92))' }} />
+      {/* Gradient background */}
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(10,10,15,1) 0%, rgba(13,148,136,0.15) 40%, rgba(45,212,191,0.08) 60%, rgba(10,10,15,1) 100%)' }} />
+      <div style={{ position: 'absolute', left: '25%', top: '40%', width: 400, height: 400, background: 'radial-gradient(circle, rgba(13,148,136,0.12) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(80px)' }} />
+      <div style={{ position: 'absolute', right: '20%', top: '30%', width: 300, height: 300, background: 'radial-gradient(circle, rgba(45,212,191,0.08) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(60px)' }} />
       <W style={{ textAlign: 'center', position: 'relative', zIndex: 10 }}>
         <h2 className="reveal" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 5vw, 3rem)', fontWeight: 300, color: '#fff', marginBottom: 24 }}>{t('cta.title')}</h2>
         <p className="reveal rv-d1" style={{ color: 'rgba(255,255,255,0.7)', maxWidth: 500, margin: '0 auto 40px', fontSize: 'clamp(1rem, 2vw, 1.125rem)', lineHeight: 1.7 }}>{t('cta.sub')}</p>
