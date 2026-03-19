@@ -1,6 +1,10 @@
-export function StaufLogo({ size = 28, colors }: { size?: number; colors?: any }) {
-  const textColor = colors?.white || '#ffffff';
-  const dotColor = colors?.brand || '#2dd4bf';
+import { useTheme } from '../hooks/useTheme';
+
+export function StaufLogo({ size = 28, colors: colorsProp }: { size?: number; colors?: any }) {
+  const theme = useTheme();
+  const colors = colorsProp || theme.colors;
+  const textColor = colors.white || '#ffffff';
+  const dotColor = colors.brand || '#2dd4bf';
   const iconSize = size * 1.2;
   return (
     <span style={{

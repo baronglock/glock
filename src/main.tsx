@@ -8,12 +8,14 @@ import { ServicePage } from './pages/ServicePage'
 import { WebsitesPage } from './pages/WebsitesPage'
 import { servicesData } from './pages/services'
 import { LanguageProvider } from './hooks/useLanguage'
+import { ThemeProvider } from './hooks/useTheme'
 import { PrivacyPage } from './pages/PrivacyPage'
 import { HelmetProvider } from 'react-helmet-async'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HelmetProvider>
+    <ThemeProvider>
     <LanguageProvider>
       <BrowserRouter>
         <Routes>
@@ -34,6 +36,7 @@ createRoot(document.getElementById('root')!).render(
         </Routes>
       </BrowserRouter>
     </LanguageProvider>
+    </ThemeProvider>
     </HelmetProvider>
   </StrictMode>,
 )

@@ -1,6 +1,12 @@
-import { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, createContext, useContext } from 'react';
 
 export type Theme = 'dark' | 'light';
+
+const ThemeContext = createContext<{
+  theme: Theme;
+  colors: typeof dark;
+  toggleTheme: () => void;
+} | null>(null);
 
 /* ══════════════════════════════════════════════════════
    COSMIC NEURAL PATTERN
@@ -235,7 +241,38 @@ export const light = {
   footerBorder: '#94a3b8',
 };
 
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('stauf-theme');
+      if (saved === 'light' || saved === 'dark') return saved;
+    }
+    return 'dark';
+  });
+
+  const colors = theme === 'dark' ? dark : light;
+
+  const toggleTheme = useCallback(() => {
+    setTheme((prev) => {
+      const next = prev === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('stauf-theme', next);
+      return next;
+    });
+  }, []);
+
+  useEffect(() => {
+    document.body.style.backgroundColor = colors.bg;
+    document.body.style.color = colors.text;
+  }, [colors]);
+
+  return React.createElement(ThemeContext.Provider, { value: { theme, colors, toggleTheme } }, children);
+}
+
 export function useTheme() {
+  const ctx = useContext(ThemeContext);
+  if (ctx) return ctx;
+
+  /* Fallback — should not happen if ThemeProvider wraps app */
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('stauf-theme');
