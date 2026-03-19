@@ -144,7 +144,9 @@ function W({ children, className = '', style }: { children: React.ReactNode; cla
 function Section({ children, className = '', id, alt, style, colors }: { children: React.ReactNode; className?: string; id?: string; alt?: boolean; style?: React.CSSProperties; colors: any }) {
   const ref = useReveal();
   return (
-    <section ref={ref} id={id} className={className} style={{ width: '100%', ...(alt ? { background: colors.bgAlt } : {}), ...style }}>
+    <section ref={ref} id={id} className={className} style={{ width: '100%', position: 'relative', ...(alt ? { background: colors.bgAlt } : {}), ...style }}>
+      {alt && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 80, background: `linear-gradient(to bottom, ${colors.bg}, transparent)`, pointerEvents: 'none', zIndex: 1 }} />}
+      {alt && <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 80, background: `linear-gradient(to top, ${colors.bg}, transparent)`, pointerEvents: 'none', zIndex: 1 }} />}
       {children}
     </section>
   );
@@ -467,13 +469,13 @@ function Process({ lang, colors }: any) {
 /* ═══════════════ GRADIENT DIVIDER ═══════════════ */
 function ImageDivider({ colors }: any) {
   return (
-    <div style={{ position: 'relative', width: '100%', height: 200, overflow: 'hidden' }}>
+    <div style={{ position: 'relative', width: '100%', height: 200, overflow: 'visible' }}>
       <div style={{
-        position: 'absolute', inset: 0,
-        background: `linear-gradient(135deg, ${colors.bg} 0%, rgba(13,148,136,0.08) 30%, rgba(45,212,191,0.05) 50%, rgba(13,148,136,0.08) 70%, ${colors.bgAlt} 100%)`,
+        position: 'absolute', inset: '-40px 0',
+        background: `linear-gradient(180deg, transparent 0%, ${colors.bg}00 10%, rgba(13,148,136,0.04) 40%, rgba(13,148,136,0.04) 60%, ${colors.bgAlt}00 90%, transparent 100%)`,
       }} />
-      <div style={{ position: 'absolute', left: '30%', top: '50%', transform: 'translate(-50%,-50%)', width: 300, height: 300, background: `radial-gradient(circle, ${colors.orbBrand} 0%, transparent 70%)`, borderRadius: '50%', filter: 'blur(60px)' }} />
-      <div style={{ position: 'absolute', right: '20%', top: '50%', transform: 'translate(50%,-50%)', width: 200, height: 200, background: `radial-gradient(circle, ${colors.orbGold} 0%, transparent 70%)`, borderRadius: '50%', filter: 'blur(40px)' }} />
+      <div style={{ position: 'absolute', left: '30%', top: '50%', transform: 'translate(-50%,-50%)', width: 400, height: 400, background: `radial-gradient(circle, ${colors.orbBrand} 0%, transparent 70%)`, borderRadius: '50%', filter: 'blur(100px)' }} />
+      <div style={{ position: 'absolute', right: '20%', top: '50%', transform: 'translate(50%,-50%)', width: 300, height: 300, background: `radial-gradient(circle, ${colors.orbGold} 0%, transparent 70%)`, borderRadius: '50%', filter: 'blur(80px)' }} />
     </div>
   );
 }
