@@ -8,6 +8,7 @@ import {
   Workflow, LayoutDashboard, Zap
 } from 'lucide-react';
 import { useReveal } from './hooks/useReveal';
+import { CookieBanner } from './components/CookieBanner';
 import { useLanguage } from './hooks/useLanguage';
 import { useTheme } from './hooks/useTheme';
 import { Navbar } from './components/Navbar';
@@ -716,6 +717,7 @@ export default function App() {
       <Contact lang={lang} colors={colors} />
       <Footer t={t} lang={lang} colors={colors} />
       </div>
+      <CookieBanner colors={colors} />
     </div>
   );
 }
