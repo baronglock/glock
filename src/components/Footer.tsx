@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Instagram, Linkedin, Github } from 'lucide-react';
 import { StaufLogo } from './StaufLogo';
 
-export function Footer({ t, lang, colors }: any) {
+export function Footer({ t, colors }: any) {
   return (
     <footer style={{ borderTop: `1px solid ${colors.border}`, padding: '48px 0', width: '100%' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
@@ -11,7 +11,7 @@ export function Footer({ t, lang, colors }: any) {
             <Link to="/" style={{ textDecoration: 'none' }}>
               <StaufLogo size={24} />
             </Link>
-            <p style={{ fontSize: 13, color: colors.textDim, marginTop: 12, lineHeight: 1.6 }}>{lang === 'pt' ? 'Automação, Dados e IA' : 'Automation, Data & AI'}</p>
+            <p style={{ fontSize: 13, color: colors.textDim, marginTop: 12, lineHeight: 1.6 }}>We make stuff.</p>
           </div>
           <div>
             <h4 style={{ fontSize: 13, fontWeight: 600, color: colors.text, marginBottom: 12, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{t('footer.services')}</h4>
