@@ -183,6 +183,11 @@ function Hero({ t, lang, colors }: any) {
         backgroundSize: '200% 200%',
         animation: 'bg-gradient-shift 20s ease infinite',
       }} />
+      {/* Background image — visible on sides, faded in center */}
+      <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=1400&q=80&auto=format&fit=crop&fm=webp" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.15, pointerEvents: 'none' }} loading="eager" />
+      <div style={{ position: 'absolute', inset: 0, background: `radial-gradient(ellipse at 50% 50%, ${colors.bg} 30%, transparent 70%)`, pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, ${colors.bg} 0%, transparent 25%, transparent 75%, ${colors.bg} 100%)`, pointerEvents: 'none' }} />
+
       <div style={{ position: 'absolute', top: '15%', left: '15%', width: 500, height: 500, background: `radial-gradient(circle, ${colors.orbBrand} 0%, transparent 70%)`, borderRadius: '50%', pointerEvents: 'none', filter: 'blur(80px)' }} />
       <div style={{ position: 'absolute', bottom: '20%', right: '10%', width: 400, height: 400, background: `radial-gradient(circle, ${colors.orbGold} 0%, transparent 70%)`, borderRadius: '50%', pointerEvents: 'none', filter: 'blur(80px)' }} />
 

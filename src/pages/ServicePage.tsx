@@ -81,7 +81,7 @@ export function ServicePage({ data, slug }: { data: ServicePageData; slug: strin
         {/* Background image with gradient fade */}
         {SERVICE_IMAGES[slug] && (
           <>
-            <img src={SERVICE_IMAGES[slug]} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.12 }} loading="eager" />
+            <img src={SERVICE_IMAGES[slug]} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.22 }} loading="eager" />
             <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to right, ${colors.bg} 35%, transparent 60%, ${colors.bg} 100%)` }} />
             <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, ${colors.bg} 0%, transparent 30%, transparent 70%, ${colors.bg} 100%)` }} />
           </>
