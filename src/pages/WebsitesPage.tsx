@@ -54,10 +54,11 @@ const steps = [
 
 /* ── Page ── */
 export function WebsitesPage() {
-  useLanguage();
+  const { lang } = useLanguage();
   const { colors, theme } = useTheme();
   const ref = useReveal();
   const dk = theme === 'dark';
+  const en = lang === 'en';
 
   return (
     <div ref={ref}>
@@ -94,17 +95,16 @@ export function WebsitesPage() {
                 lineHeight: 0.95, letterSpacing: '-0.03em',
                 marginBottom: 24, animationDelay: '0.15s',
               }}>
-                <span style={{ color: colors.white }}>Sites que</span>
+                <span style={{ color: colors.white }}>{en ? 'Websites that' : 'Sites que'}</span>
                 <br />
-                <span style={{ fontStyle: 'italic', fontWeight: 400, color: colors.brand }}>convertem</span>
+                <span style={{ fontStyle: 'italic', fontWeight: 400, color: colors.brand }}>{en ? 'convert' : 'convertem'}</span>
               </h1>
 
               <p className="anim-fade-up" style={{
                 fontSize: 'clamp(1rem, 2vw, 1.125rem)', color: colors.textMuted, lineHeight: 1.7,
                 maxWidth: 480, marginBottom: 40, animationDelay: '0.3s',
               }}>
-                Tecnologia de ponta, design premium, entrega rápida.
-                Transformamos negócios com presença digital de alto impacto.
+                {en ? 'Cutting-edge technology, premium design, fast delivery. We transform businesses with high-impact digital presence.' : 'Tecnologia de ponta, design premium, entrega rápida. Transformamos negócios com presença digital de alto impacto.'}
               </p>
 
               <div className="anim-fade-up" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 24, marginBottom: 48, animationDelay: '0.45s' }}>
@@ -118,13 +118,13 @@ export function WebsitesPage() {
                   onMouseEnter={e => { e.currentTarget.style.background = colors.brand; e.currentTarget.style.color = '#fff'; }}
                   onMouseLeave={e => { e.currentTarget.style.background = dk ? '#fff' : '#0f172a'; e.currentTarget.style.color = dk ? '#0f172a' : '#fff'; }}
                 >
-                  Fale conosco <ArrowRight size={16} />
+                  {en ? 'Get in touch' : 'Fale conosco'} <ArrowRight size={16} />
                 </a>
                 <a href="#planos" style={{ fontSize: 14, color: colors.textMuted, textDecoration: 'none', transition: 'color 0.3s', letterSpacing: '0.02em' }}
                   onMouseEnter={e => e.currentTarget.style.color = colors.brand}
                   onMouseLeave={e => e.currentTarget.style.color = colors.textMuted}
                 >
-                  Ver planos e preços
+                  {en ? 'See plans and pricing' : 'Ver planos e preços'}
                 </a>
               </div>
 
@@ -206,13 +206,13 @@ export function WebsitesPage() {
               color: colors.brand, background: dk ? 'rgba(13,148,136,0.08)' : 'rgba(13,148,136,0.06)',
               border: `1px solid ${dk ? 'rgba(13,148,136,0.15)' : 'rgba(13,148,136,0.1)'}`,
               marginBottom: 20,
-            }}>Nichos</span>
+            }}>{en ? 'Niches' : 'Nichos'}</span>
             <h2 style={{
               fontFamily: "'Inter', system-ui, sans-serif",
               fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 300,
               color: colors.white, lineHeight: 1.15, letterSpacing: '-0.02em',
             }}>
-              Sites para cada <span style={{ fontStyle: 'italic', fontWeight: 400, color: colors.brand }}>segmento</span>
+              {en ? 'Websites for every ' : 'Sites para cada '}<span style={{ fontStyle: 'italic', fontWeight: 400, color: colors.brand }}>{en ? 'segment' : 'segmento'}</span>
             </h2>
           </div>
 
@@ -258,13 +258,13 @@ export function WebsitesPage() {
               color: colors.brand, background: dk ? 'rgba(13,148,136,0.08)' : 'rgba(13,148,136,0.06)',
               border: `1px solid ${dk ? 'rgba(13,148,136,0.15)' : 'rgba(13,148,136,0.1)'}`,
               marginBottom: 20,
-            }}>Processo</span>
+            }}>{en ? 'Process' : 'Processo'}</span>
             <h2 style={{
               fontFamily: "'Inter', system-ui, sans-serif",
               fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 300,
               color: colors.white, lineHeight: 1.15, letterSpacing: '-0.02em',
             }}>
-              Como <span style={{ fontStyle: 'italic', fontWeight: 400, color: colors.brand }}>funciona</span>
+              {en ? 'How it ' : 'Como '}<span style={{ fontStyle: 'italic', fontWeight: 400, color: colors.brand }}>{en ? 'works' : 'funciona'}</span>
             </h2>
           </div>
 
@@ -302,16 +302,16 @@ export function WebsitesPage() {
               color: colors.brand, background: dk ? 'rgba(13,148,136,0.08)' : 'rgba(13,148,136,0.06)',
               border: `1px solid ${dk ? 'rgba(13,148,136,0.15)' : 'rgba(13,148,136,0.1)'}`,
               marginBottom: 20,
-            }}>Planos</span>
+            }}>{en ? 'Plans' : 'Planos'}</span>
             <h2 style={{
               fontFamily: "'Inter', system-ui, sans-serif",
               fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 300,
               color: colors.white, lineHeight: 1.15, letterSpacing: '-0.02em',
             }}>
-              Investimento <span style={{ fontStyle: 'italic', fontWeight: 400, color: colors.brand }}>transparente</span>
+              {en ? 'Transparent ' : 'Investimento '}<span style={{ fontStyle: 'italic', fontWeight: 400, color: colors.brand }}>{en ? 'investment' : 'transparente'}</span>
             </h2>
             <p style={{ fontSize: 15, color: colors.textMuted, marginTop: 16, maxWidth: 500, margin: '16px auto 0' }}>
-              Setup único + manutenção mensal. Sem surpresas, sem taxa escondida.
+              {en ? 'One-time setup + monthly maintenance. No surprises, no hidden fees.' : 'Setup único + manutenção mensal. Sem surpresas, sem taxa escondida.'}
             </p>
           </div>
 
@@ -367,7 +367,7 @@ export function WebsitesPage() {
                   onMouseEnter={e => { if (!p.destaque) { e.currentTarget.style.borderColor = colors.brand; e.currentTarget.style.color = colors.brand; } else { e.currentTarget.style.opacity = '0.9'; } }}
                   onMouseLeave={e => { if (!p.destaque) { e.currentTarget.style.borderColor = colors.border; e.currentTarget.style.color = colors.white; } else { e.currentTarget.style.opacity = '1'; } }}
                 >
-                  Começar agora
+                  {en ? 'Start now' : 'Começar agora'}
                 </a>
               </div>
             ))}
@@ -388,13 +388,13 @@ export function WebsitesPage() {
             color: colors.white, lineHeight: 1.15, letterSpacing: '-0.02em',
             marginBottom: 16,
           }}>
-            Pronto para ter um site que <span style={{ fontStyle: 'italic', fontWeight: 400, color: colors.brand }}>funciona</span>?
+            {en ? 'Ready for a website that ' : 'Pronto para ter um site que '}<span style={{ fontStyle: 'italic', fontWeight: 400, color: colors.brand }}>{en ? 'works' : 'funciona'}</span>?
           </h2>
           <p className="reveal rv-d1" style={{ fontSize: 'clamp(0.875rem, 1.6vw, 1rem)', color: colors.textMuted, lineHeight: 1.7, marginBottom: 40 }}>
-            Converse com a gente. Em 48 horas você terá uma proposta personalizada para o seu negócio.
+            {en ? 'Talk to us. In 48 hours you will have a customized proposal for your business.' : 'Converse com a gente. Em 48 horas você terá uma proposta personalizada para o seu negócio.'}
           </p>
           <a href="/#contato" className="btn-cta anim-pulse-glow reveal rv-d2" style={{ padding: '16px 40px', fontSize: 'clamp(0.875rem, 1.6vw, 1rem)' }}>
-            Falar com especialista <ArrowRight size={16} />
+            {en ? 'Talk to an expert' : 'Falar com especialista'} <ArrowRight size={16} />
           </a>
         </div>
       </section>
