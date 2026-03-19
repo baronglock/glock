@@ -151,20 +151,20 @@ function Section({ children, className = '', id, alt, style, colors }: { childre
 
 /* ── Image URLs ── */
 const IMG = {
-  heroAi: 'https://images.unsplash.com/photo-1639322537228-f710d846310a?w=900&q=85&auto=format&fit=crop',
-  heroTeam: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&auto=format&fit=crop',
-  about: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=700&q=80&auto=format&fit=crop',
-  caseData: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&auto=format&fit=crop',
-  caseAuto: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80&auto=format&fit=crop',
-  caseWeb: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80&auto=format&fit=crop',
-  ctaBg: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1400&q=80&auto=format&fit=crop',
-  divider: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=90&auto=format&fit=crop',
-  svcData: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80&auto=format&fit=crop',
-  svcAuto: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&q=80&auto=format&fit=crop',
-  svcChat: 'https://images.unsplash.com/photo-1531746790095-e5a2ebf3fa62?w=900&q=80&auto=format&fit=crop',
-  svcSites: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80&auto=format&fit=crop',
-  svcDash: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&q=80&auto=format&fit=crop',
-  svcConsult: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=900&q=80&auto=format&fit=crop',
+  heroAi: 'https://images.unsplash.com/photo-1639322537228-f710d846310a?w=900&q=85&auto=format&fit=crop&fm=webp',
+  heroTeam: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&auto=format&fit=crop&fm=webp',
+  about: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=700&q=80&auto=format&fit=crop&fm=webp',
+  caseData: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&auto=format&fit=crop&fm=webp',
+  caseAuto: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80&auto=format&fit=crop&fm=webp',
+  caseWeb: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80&auto=format&fit=crop&fm=webp',
+  ctaBg: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1400&q=80&auto=format&fit=crop&fm=webp',
+  divider: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=90&auto=format&fit=crop&fm=webp',
+  svcData: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80&auto=format&fit=crop&fm=webp',
+  svcAuto: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&q=80&auto=format&fit=crop&fm=webp',
+  svcChat: 'https://images.unsplash.com/photo-1531746790095-e5a2ebf3fa62?w=900&q=80&auto=format&fit=crop&fm=webp',
+  svcSites: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80&auto=format&fit=crop&fm=webp',
+  svcDash: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&q=80&auto=format&fit=crop&fm=webp',
+  svcConsult: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=900&q=80&auto=format&fit=crop&fm=webp',
 };
 
 /* ═══════════════ HERO ═══════════════ */
@@ -464,7 +464,7 @@ function Process({ lang, colors }: any) {
 function ImageDivider({ colors }: any) {
   return (
     <div style={{ position: 'relative', width: '100%', height: 360, overflow: 'hidden' }}>
-      <img src={IMG.divider} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading="lazy" />
+      <img src={IMG.divider} alt="" width={1920} height={300} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading="lazy" />
       <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, ${colors.bg}, rgba(37,99,235,0.15), ${colors.bgAlt})` }} />
     </div>
   );
@@ -479,7 +479,7 @@ function About({ t, lang, colors }: any) {
           {/* Image */}
           <div className="reveal" style={{ position: 'relative' }}>
             <div style={{ borderRadius: 20, overflow: 'hidden', boxShadow: `0 30px 60px ${colors.shadow}`, border: `1px solid ${colors.glassCardBorder}` }}>
-              <img src={IMG.about} alt="Technology workspace" style={{ width: '100%', height: 420, objectFit: 'cover', display: 'block' }} loading="lazy" />
+              <img src={IMG.about} alt="Technology workspace" width={700} height={420} style={{ width: '100%', height: 420, objectFit: 'cover', display: 'block' }} loading="lazy" />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(37,99,235,0.1), transparent 50%)' }} />
             </div>
             {/* Floating stats card */}
@@ -559,8 +559,7 @@ function Cases({ lang, colors }: any) {
             >
               {/* Case image */}
               <div style={{ position: 'relative', height: 180, overflow: 'hidden' }}>
-                <img src={caseImages[i]} alt={c.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }}
-                  loading="lazy"
+                <img src={caseImages[i]} alt={c.title} loading="lazy" width={600} height={400} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }}
                   onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
                   onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
                 />
@@ -591,7 +590,7 @@ function CtaSection({ t }: any) {
   return (
     <section style={{ position: 'relative', overflow: 'hidden', padding: '120px 0' }}>
       {/* Background image */}
-      <img src={IMG.ctaBg} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
+      <img src={IMG.ctaBg} alt="" width={1400} height={600} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(10,10,15,0.88), rgba(37,99,235,0.3), rgba(10,10,15,0.92))' }} />
       <W style={{ textAlign: 'center', position: 'relative', zIndex: 10 }}>
         <h2 className="reveal" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 5vw, 3rem)', fontWeight: 300, color: '#fff', marginBottom: 24 }}>{t('cta.title')}</h2>
