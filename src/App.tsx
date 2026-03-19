@@ -183,10 +183,24 @@ function Hero({ t, lang, colors }: any) {
         backgroundSize: '200% 200%',
         animation: 'bg-gradient-shift 20s ease infinite',
       }} />
-      {/* Background image — visible on sides, faded in center */}
-      <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=1400&q=80&auto=format&fit=crop&fm=webp" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.22, pointerEvents: 'none' }} loading="eager" />
-      <div style={{ position: 'absolute', inset: 0, background: `radial-gradient(ellipse at 50% 50%, ${colors.bg} 30%, transparent 70%)`, pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, ${colors.bg} 0%, transparent 25%, transparent 75%, ${colors.bg} 100%)`, pointerEvents: 'none' }} />
+      {/* Geometric grid — subtle lines on sides, clean center */}
+      <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }} preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="gl" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor={colors.brand} stopOpacity="0.1" />
+            <stop offset="35%" stopColor={colors.brand} stopOpacity="0" />
+          </linearGradient>
+          <linearGradient id="gr" x1="1" y1="0" x2="0" y2="0">
+            <stop offset="0%" stopColor={colors.brand} stopOpacity="0.1" />
+            <stop offset="35%" stopColor={colors.brand} stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        {[15,25,35,45,55,65,75,85].map(y => <line key={`hl${y}`} x1="0%" y1={`${y}%`} x2="100%" y2={`${y}%`} stroke="url(#gl)" strokeWidth="0.5" />)}
+        {[20,30,40,50,60,70,80].map(y => <line key={`hr${y}`} x1="0%" y1={`${y}%`} x2="100%" y2={`${y}%`} stroke="url(#gr)" strokeWidth="0.5" />)}
+        {[4,9,15,22].map(x => <line key={`vl${x}`} x1={`${x}%`} y1="0%" x2={`${x}%`} y2="100%" stroke="url(#gl)" strokeWidth="0.5" />)}
+        {[78,85,91,96].map(x => <line key={`vr${x}`} x1={`${x}%`} y1="0%" x2={`${x}%`} y2="100%" stroke="url(#gr)" strokeWidth="0.5" />)}
+        {[[9,25],[15,55],[22,75],[4,45],[78,35],[85,65],[91,25],[96,85]].map(([x,y], i) => <circle key={`nd${i}`} cx={`${x}%`} cy={`${y}%`} r="1.5" fill={colors.brand} opacity={0.12} />)}
+      </svg>
 
       <div style={{ position: 'absolute', top: '15%', left: '15%', width: 500, height: 500, background: `radial-gradient(circle, ${colors.orbBrand} 0%, transparent 70%)`, borderRadius: '50%', pointerEvents: 'none', filter: 'blur(80px)' }} />
       <div style={{ position: 'absolute', bottom: '20%', right: '10%', width: 400, height: 400, background: `radial-gradient(circle, ${colors.orbGold} 0%, transparent 70%)`, borderRadius: '50%', pointerEvents: 'none', filter: 'blur(80px)' }} />
