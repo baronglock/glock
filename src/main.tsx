@@ -8,13 +8,17 @@ import { ServicePage } from './pages/ServicePage'
 import { WebsitesPage } from './pages/WebsitesPage'
 import { servicesData } from './pages/services'
 import { LanguageProvider } from './hooks/useLanguage'
+import { PrivacyPage } from './pages/PrivacyPage'
+import { HelmetProvider } from 'react-helmet-async'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+    <HelmetProvider>
     <LanguageProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />} />
+          <Route path="/privacidade" element={<Layout><PrivacyPage /></Layout>} />
           <Route path="/servicos/sites" element={<Layout><WebsitesPage /></Layout>} />
           {Object.entries(servicesData).map(([slug, data]) => (
             <Route
@@ -30,5 +34,6 @@ createRoot(document.getElementById('root')!).render(
         </Routes>
       </BrowserRouter>
     </LanguageProvider>
+    </HelmetProvider>
   </StrictMode>,
 )

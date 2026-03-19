@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { useReveal } from '../hooks/useReveal';
 import { useLanguage } from '../hooks/useLanguage';
@@ -45,6 +46,13 @@ export function ServicePage({ data, slug }: { data: ServicePageData; slug: strin
 
   return (
     <div ref={ref}>
+      <Helmet>
+        <title>{title} — Stauf.</title>
+        <meta name="description" content={`${subtitle} — ${desc.slice(0, 140)}`} />
+        <meta property="og:title" content={`${title} — Stauf.`} />
+        <meta property="og:description" content={subtitle} />
+        <link rel="canonical" href={`https://stauf.com.br/servicos/${slug}`} />
+      </Helmet>
       {/* Hero with image */}
       <section style={{ position: 'relative', width: '100%', overflow: 'hidden' }}>
         {/* Background image */}

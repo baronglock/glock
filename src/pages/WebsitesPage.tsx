@@ -2,6 +2,7 @@ import {
   ArrowRight, CheckCircle2, Globe, Zap,
   UtensilsCrossed, Leaf, Stethoscope, Scissors, Shirt, Dog, Dumbbell, Briefcase,
 } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import { useReveal } from '../hooks/useReveal';
 import { useLanguage } from '../hooks/useLanguage';
 import { useTheme } from '../hooks/useTheme';
@@ -60,6 +61,13 @@ export function WebsitesPage() {
 
   return (
     <div ref={ref}>
+      <Helmet>
+        <title>Sites Profissionais — Stauf.</title>
+        <meta name="description" content="Sites profissionais para restaurantes, clínicas, barbearias e mais. Design premium, entrega rápida, 8 segmentos atendidos em Curitiba." />
+        <meta property="og:title" content="Sites Profissionais — Stauf." />
+        <meta property="og:description" content="Sites que convertem. Tecnologia de ponta, design premium, entrega rápida." />
+        <link rel="canonical" href="https://stauf.com.br/servicos/sites" />
+      </Helmet>
       {/* ════ HERO ════ */}
       <section style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', padding: '120px 0 80px' }}>
         {/* Subtle decorative lines */}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <rect width="180" height="180" rx="40" fill="#0a0a0f"/>
+  <text x="42" y="130" font-family="Inter, system-ui, sans-serif" font-size="120" font-weight="700">
+    <tspan fill="#2dd4bf">S</tspan>
+    <tspan fill="#0d9488" font-size="30" dy="-10">.</tspan>
+  </text>
+</svg>
