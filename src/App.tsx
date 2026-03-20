@@ -33,14 +33,14 @@ function CosmicBackground({ theme }: any) {
 
   /* Real stellar coordinates → pushed down to avoid header */
   const stars = {
-    regulus:   { x: 42.3, y: 50, name: 'Regulus' },
-    spica:     { x: 55.9, y: 75, name: 'Spica' },
-    aldebaran: { x: 19.2, y: 46, name: 'Aldebaran' },
-    vega:      { x: 77.6, y: 22, name: 'Vega' },
-    sirius:    { x: 28.1, y: 82, name: 'Sirius' },
-    capella:   { x: 22.0, y: 15, name: 'Capella' },
-    procyon:   { x: 31.9, y: 58, name: 'Procyon' },
-    antares:   { x: 68.7, y: 90, name: 'Antares' },
+    regulus:   { x: 45, y: 45, name: 'Regulus' },
+    spica:     { x: 70, y: 80, name: 'Spica' },
+    aldebaran: { x: 8, y: 40, name: 'Aldebaran' },
+    vega:      { x: 90, y: 15, name: 'Vega' },
+    sirius:    { x: 15, y: 85, name: 'Sirius' },
+    capella:   { x: 10, y: 10, name: 'Capella' },
+    procyon:   { x: 25, y: 62, name: 'Procyon' },
+    antares:   { x: 85, y: 92, name: 'Antares' },
   };
 
   /* Small background stars — scattered */
