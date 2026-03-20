@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTheme } from '../hooks/useTheme';
-// @ts-ignore
-import Delaunator from 'delaunator';
-import { darkPoints, lightPoints } from './landscapePoints';
+import { darkMesh, lightMesh } from './terrainData';
 
 export function WireframeLandscape() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -41,32 +39,45 @@ export function WireframeLandscape() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let w = 0, h = 0;
-    const srcPoints = dk ? darkPoints : lightPoints;
+    const mesh = dk ? darkMesh : lightMesh;
+    const { cols, rows, vertices } = mesh;
 
-    // Scaled points with depth
-    let scaled: { x: number; y: number; baseX: number; baseY: number; z: number }[] = [];
-    let triangles: number[] = [];
+    let w = 0, h = 0;
+
+    // Pre-computed projected positions
+    let projected: { sx: number; sy: number; height: number }[] = [];
 
     const resize = () => {
       w = window.innerWidth;
       h = window.innerHeight;
       canvas.width = w;
       canvas.height = h;
+      project();
+    };
 
-      // Scale percentage points to pixel coordinates
-      scaled = srcPoints.map(([px, py, pz]) => ({
-        x: (px / 100) * w,
-        y: (py / 100) * h,
-        baseX: (px / 100) * w,
-        baseY: (py / 100) * h,
-        z: pz,
-      }));
+    const project = () => {
+      // 3D perspective projection
+      // Camera looking slightly down at the terrain
+      const fov = 1.2;
+      const cameraY = -0.3; // slightly above
+      const cameraZ = 1.8; // distance from terrain
+      const heightScale = dk ? 0.25 : 0.35; // how much height affects Y
 
-      // Compute Delaunay triangulation once
-      const coords = scaled.flatMap(p => [p.baseX, p.baseY]);
-      const delaunay = new Delaunator(coords);
-      triangles = Array.from(delaunay.triangles);
+      projected = vertices.map(([vx, vy, vh]) => {
+        // Convert percentage to -1..1 range
+        const x3d = (vx / 100 - 0.5) * 2;
+        const y3d = (vy / 100 - 0.5) * 2;
+        const z3d = vh * heightScale;
+
+        // Simple perspective: things further (higher y3d) appear smaller/higher
+        const depth = y3d + cameraZ;
+        const perspScale = fov / Math.max(depth, 0.1);
+
+        const sx = w / 2 + x3d * perspScale * w * 0.5;
+        const sy = h / 2 + (y3d - z3d + cameraY) * perspScale * h * 0.35;
+
+        return { sx, sy, height: vh };
+      });
     };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -90,90 +101,95 @@ export function WireframeLandscape() {
     let time = 0;
 
     const draw = () => {
-      time += 0.006;
+      time += 0.004;
       ctx.clearRect(0, 0, w, h);
 
       const mx = mouseRef.current.x;
       const my = mouseRef.current.y;
       const hasPointer = mx >= 0 && my >= 0;
 
-      // Animate points — gentle wave based on depth
-      for (const p of scaled) {
-        const wave = Math.sin(time + p.baseX * 0.003 + p.baseY * 0.002) * 2 * p.z;
-        const wave2 = Math.cos(time * 0.7 - p.baseX * 0.002 + p.baseY * 0.003) * 1.5 * p.z;
-        p.x = p.baseX + wave;
-        p.y = p.baseY + wave2;
-      }
+      // Draw grid lines
+      for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+          const idx = row * cols + col;
+          const p = projected[idx];
+          if (!p) continue;
 
-      // Draw triangles
-      for (let i = 0; i < triangles.length; i += 3) {
-        const a = scaled[triangles[i]];
-        const b = scaled[triangles[i + 1]];
-        const c = scaled[triangles[i + 2]];
-        if (!a || !b || !c) continue;
+          // Gentle wave on height
+          const wave = Math.sin(time + col * 0.08 + row * 0.06) * 1.5;
+          const px = p.sx;
+          const py = p.sy + wave * (1 - p.height);
 
-        // Triangle center
-        const cx = (a.x + b.x + c.x) / 3;
-        const cy = (a.y + b.y + c.y) / 3;
-        const avgZ = (a.z + b.z + c.z) / 3;
+          // Mouse proximity
+          let mouseInf = 0;
+          if (hasPointer) {
+            const dx = px - mx;
+            const dy = py - my;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            mouseInf = Math.max(0, 1 - dist / 250);
+            mouseInf *= mouseInf;
+          }
 
-        // Mouse distance to triangle center
-        let mouseInfluence = 0;
-        if (hasPointer) {
-          const dx = cx - mx;
-          const dy = cy - my;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          mouseInfluence = Math.max(0, 1 - dist / 250);
-          mouseInfluence = mouseInfluence * mouseInfluence; // ease-in
-        }
+          // Opacity based on height (terrain visible, sky fades)
+          // For mountains: low brightness = terrain = visible | high = sky = hidden
+          // For galaxy: medium brightness = nebula = visible | dark bg = hidden
+          let terrainOpacity: number;
+          if (dk) {
+            // Galaxy: brighter areas (nebula) more visible
+            terrainOpacity = p.height > 0.15 ? p.height * 0.8 : 0;
+          } else {
+            // Mountains: darker areas (terrain) more visible, sky fades
+            terrainOpacity = p.height < 0.7 ? (1 - p.height) * 0.9 : 0;
+          }
 
-        // Opacity: stronger depth contrast + mouse boost
-        const depthFactor = (1 - avgZ); // 0=far/bright, 1=close/dark
-        const baseOp = dk ? 0.015 + depthFactor * 0.05 : 0.01 + depthFactor * 0.04;
-        const mouseOp = mouseInfluence * (dk ? 0.25 : 0.18);
-        const opacity = baseOp + mouseOp;
+          const baseOp = terrainOpacity * (dk ? 0.06 : 0.05);
+          const mouseOp = mouseInf * (dk ? 0.3 : 0.2);
+          const opacity = baseOp + mouseOp;
 
-        if (opacity < 0.01) continue;
+          if (opacity < 0.005) continue;
 
-        const color = dk
-          ? `rgba(45,212,191,${opacity.toFixed(3)})`
-          : `rgba(13,100,80,${opacity.toFixed(3)})`;
+          const color = dk
+            ? `rgba(45,212,191,${opacity.toFixed(3)})`
+            : `rgba(13,100,80,${opacity.toFixed(3)})`;
 
-        // Draw triangle edges
-        ctx.beginPath();
-        ctx.moveTo(a.x, a.y);
-        ctx.lineTo(b.x, b.y);
-        ctx.lineTo(c.x, c.y);
-        ctx.closePath();
-        ctx.strokeStyle = color;
-        ctx.lineWidth = 0.4 + mouseInfluence * 0.8;
-        ctx.stroke();
+          const lineW = 0.4 + mouseInf * 1.2;
 
-        // Fill triangle with very subtle color near mouse
-        if (mouseInfluence > 0.4) {
-          ctx.fillStyle = dk
-            ? `rgba(45,212,191,${(mouseInfluence * 0.04).toFixed(3)})`
-            : `rgba(13,100,80,${(mouseInfluence * 0.03).toFixed(3)})`;
-          ctx.fill();
-        }
-      }
-
-      // Draw vertex points near mouse
-      if (hasPointer) {
-        for (const p of scaled) {
-          const dx = p.x - mx;
-          const dy = p.y - my;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 200) {
-            const influence = Math.max(0, 1 - dist / 200);
-            if (influence > 0.2) {
+          // Horizontal line (to right neighbor)
+          if (col < cols - 1) {
+            const next = projected[idx + 1];
+            if (next) {
+              const npy = next.sy + Math.sin(time + (col+1) * 0.08 + row * 0.06) * 1.5 * (1 - next.height);
               ctx.beginPath();
-              ctx.arc(p.x, p.y, 0.8 + influence * 2.5, 0, Math.PI * 2);
-              ctx.fillStyle = dk
-                ? `rgba(45,212,191,${(influence * 0.5).toFixed(3)})`
-                : `rgba(13,100,80,${(influence * 0.4).toFixed(3)})`;
-              ctx.fill();
+              ctx.moveTo(px, py);
+              ctx.lineTo(next.sx, npy);
+              ctx.strokeStyle = color;
+              ctx.lineWidth = lineW;
+              ctx.stroke();
             }
+          }
+
+          // Vertical line (to bottom neighbor)
+          if (row < rows - 1) {
+            const below = projected[idx + cols];
+            if (below) {
+              const bpy = below.sy + Math.sin(time + col * 0.08 + (row+1) * 0.06) * 1.5 * (1 - below.height);
+              ctx.beginPath();
+              ctx.moveTo(px, py);
+              ctx.lineTo(below.sx, bpy);
+              ctx.strokeStyle = color;
+              ctx.lineWidth = lineW;
+              ctx.stroke();
+            }
+          }
+
+          // Vertex point near mouse
+          if (mouseInf > 0.3) {
+            ctx.beginPath();
+            ctx.arc(px, py, 0.8 + mouseInf * 2, 0, Math.PI * 2);
+            ctx.fillStyle = dk
+              ? `rgba(45,212,191,${(mouseInf * 0.5).toFixed(3)})`
+              : `rgba(13,100,80,${(mouseInf * 0.4).toFixed(3)})`;
+            ctx.fill();
           }
         }
       }
@@ -205,7 +221,7 @@ export function WireframeLandscape() {
       )}
       <button
         onClick={toggleWireframe}
-        aria-label={enabled ? 'Desativar efeito 3D' : 'Ativar efeito 3D'}
+        aria-label={enabled ? 'Desativar wireframe' : 'Ativar wireframe'}
         style={{
           position: 'fixed', bottom: 24, left: 24, zIndex: 50,
           width: 36, height: 36, borderRadius: '50%',
