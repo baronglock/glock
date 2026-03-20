@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTheme } from '../hooks/useTheme';
+// @ts-ignore
+import Delaunator from 'delaunator';
+import { darkPoints, lightPoints } from './landscapePoints';
 
 export function WireframeLandscape() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const mouseRef = useRef({ x: 0.5, y: 0.5 });
+  const mouseRef = useRef({ x: -1, y: -1 });
   const [enabled, setEnabled] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('stauf-wireframe') !== 'off';
@@ -25,6 +28,11 @@ export function WireframeLandscape() {
   useEffect(() => {
     if (!enabled) {
       if (animRef.current) cancelAnimationFrame(animRef.current);
+      const canvas = canvasRef.current;
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
       return;
     }
 
@@ -34,133 +42,138 @@ export function WireframeLandscape() {
     if (!ctx) return;
 
     let w = 0, h = 0;
-    const cols = 45;
-    const rows = 30;
-    const points: { x: number; y: number; baseY: number; z: number }[] = [];
+    const srcPoints = dk ? darkPoints : lightPoints;
+
+    // Scaled points with depth
+    let scaled: { x: number; y: number; baseX: number; baseY: number; z: number }[] = [];
+    let triangles: number[] = [];
 
     const resize = () => {
       w = window.innerWidth;
       h = window.innerHeight;
       canvas.width = w;
       canvas.height = h;
-      initPoints();
-    };
 
-    const initPoints = () => {
-      points.length = 0;
-      const spacingX = w / (cols - 1);
-      const spacingY = h / (rows - 1);
+      // Scale percentage points to pixel coordinates
+      scaled = srcPoints.map(([px, py, pz]) => ({
+        x: (px / 100) * w,
+        y: (py / 100) * h,
+        baseX: (px / 100) * w,
+        baseY: (py / 100) * h,
+        z: pz,
+      }));
 
-      for (let row = 0; row < rows; row++) {
-        for (let col = 0; col < cols; col++) {
-          const x = col * spacingX;
-          const baseY = row * spacingY;
-          // Create depth: center rows have more "depth" (lower z)
-          const centerDist = Math.abs(row / rows - 0.5) * 2;
-          const z = 0.3 + centerDist * 0.7; // 0.3 at center (far), 1.0 at edges (close)
-          points.push({ x, y: baseY, baseY, z });
-        }
-      }
+      // Compute Delaunay triangulation once
+      const coords = scaled.flatMap(p => [p.baseX, p.baseY]);
+      const delaunay = new Delaunator(coords);
+      triangles = Array.from(delaunay.triangles);
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current = { x: e.clientX / w, y: e.clientY / h };
+      mouseRef.current = { x: e.clientX, y: e.clientY };
     };
-
     const handleTouchMove = (e: TouchEvent) => {
       if (e.touches[0]) {
-        mouseRef.current = { x: e.touches[0].clientX / w, y: e.touches[0].clientY / h };
+        mouseRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
       }
+    };
+    const handleMouseLeave = () => {
+      mouseRef.current = { x: -1, y: -1 };
     };
 
     window.addEventListener('resize', resize);
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('touchmove', handleTouchMove, { passive: true });
+    document.addEventListener('mouseleave', handleMouseLeave);
     resize();
 
     let time = 0;
 
     const draw = () => {
-      time += 0.008;
+      time += 0.006;
       ctx.clearRect(0, 0, w, h);
 
-      const mx = mouseRef.current.x * w;
-      const my = mouseRef.current.y * h;
+      const mx = mouseRef.current.x;
+      const my = mouseRef.current.y;
+      const hasPointer = mx >= 0 && my >= 0;
 
-      // Update point positions with wave
-      for (let i = 0; i < points.length; i++) {
-        const p = points[i];
-        const col = i % cols;
-        const row = Math.floor(i / cols);
-
-        // Gentle wave animation
-        const wave = Math.sin(time + col * 0.15 + row * 0.1) * 3 * p.z;
-        const wave2 = Math.cos(time * 0.7 + col * 0.1 - row * 0.15) * 2 * p.z;
-        p.y = p.baseY + wave + wave2;
+      // Animate points — gentle wave based on depth
+      for (const p of scaled) {
+        const wave = Math.sin(time + p.baseX * 0.003 + p.baseY * 0.002) * 2 * p.z;
+        const wave2 = Math.cos(time * 0.7 - p.baseX * 0.002 + p.baseY * 0.003) * 1.5 * p.z;
+        p.x = p.baseX + wave;
+        p.y = p.baseY + wave2;
       }
 
-      // Draw connections
-      for (let row = 0; row < rows; row++) {
-        for (let col = 0; col < cols; col++) {
-          const idx = row * cols + col;
-          const p = points[idx];
+      // Draw triangles
+      for (let i = 0; i < triangles.length; i += 3) {
+        const a = scaled[triangles[i]];
+        const b = scaled[triangles[i + 1]];
+        const c = scaled[triangles[i + 2]];
+        if (!a || !b || !c) continue;
 
-          // Distance to mouse
+        // Triangle center
+        const cx = (a.x + b.x + c.x) / 3;
+        const cy = (a.y + b.y + c.y) / 3;
+        const avgZ = (a.z + b.z + c.z) / 3;
+
+        // Mouse distance to triangle center
+        let mouseInfluence = 0;
+        if (hasPointer) {
+          const dx = cx - mx;
+          const dy = cy - my;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          mouseInfluence = Math.max(0, 1 - dist / 250);
+          mouseInfluence = mouseInfluence * mouseInfluence; // ease-in
+        }
+
+        // Opacity: base + depth factor + mouse boost
+        const baseOp = dk ? 0.025 : 0.02;
+        const depthOp = (1 - avgZ) * (dk ? 0.03 : 0.02);
+        const mouseOp = mouseInfluence * (dk ? 0.2 : 0.15);
+        const opacity = baseOp + depthOp + mouseOp;
+
+        if (opacity < 0.01) continue;
+
+        const color = dk
+          ? `rgba(45,212,191,${opacity.toFixed(3)})`
+          : `rgba(13,100,80,${opacity.toFixed(3)})`;
+
+        // Draw triangle edges
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.lineTo(c.x, c.y);
+        ctx.closePath();
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 0.4 + mouseInfluence * 0.8;
+        ctx.stroke();
+
+        // Fill triangle with very subtle color near mouse
+        if (mouseInfluence > 0.4) {
+          ctx.fillStyle = dk
+            ? `rgba(45,212,191,${(mouseInfluence * 0.04).toFixed(3)})`
+            : `rgba(13,100,80,${(mouseInfluence * 0.03).toFixed(3)})`;
+          ctx.fill();
+        }
+      }
+
+      // Draw vertex points near mouse
+      if (hasPointer) {
+        for (const p of scaled) {
           const dx = p.x - mx;
           const dy = p.y - my;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          const mouseRadius = 200;
-          const mouseInfluence = Math.max(0, 1 - dist / mouseRadius);
-
-          // Base opacity + mouse boost
-          const baseOpacity = dk ? 0.04 : 0.03;
-          const opacity = baseOpacity + mouseInfluence * (dk ? 0.15 : 0.1);
-
-          const color = dk
-            ? `rgba(45,212,191,${opacity})`
-            : `rgba(13,100,80,${opacity})`;
-
-          // Horizontal line
-          if (col < cols - 1) {
-            const next = points[idx + 1];
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(next.x, next.y);
-            ctx.strokeStyle = color;
-            ctx.lineWidth = 0.5 + mouseInfluence * 1;
-            ctx.stroke();
-          }
-
-          // Vertical line
-          if (row < rows - 1) {
-            const below = points[idx + cols];
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(below.x, below.y);
-            ctx.strokeStyle = color;
-            ctx.lineWidth = 0.5 + mouseInfluence * 1;
-            ctx.stroke();
-          }
-
-          // Diagonal (creates triangles)
-          if (col < cols - 1 && row < rows - 1) {
-            const diag = points[idx + cols + 1];
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(diag.x, diag.y);
-            ctx.strokeStyle = color;
-            ctx.lineWidth = 0.3 + mouseInfluence * 0.5;
-            ctx.stroke();
-          }
-
-          // Draw node point near mouse
-          if (mouseInfluence > 0.3) {
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, 1 + mouseInfluence * 2, 0, Math.PI * 2);
-            ctx.fillStyle = dk
-              ? `rgba(45,212,191,${mouseInfluence * 0.5})`
-              : `rgba(13,100,80,${mouseInfluence * 0.4})`;
-            ctx.fill();
+          if (dist < 200) {
+            const influence = Math.max(0, 1 - dist / 200);
+            if (influence > 0.2) {
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, 0.8 + influence * 2.5, 0, Math.PI * 2);
+              ctx.fillStyle = dk
+                ? `rgba(45,212,191,${(influence * 0.5).toFixed(3)})`
+                : `rgba(13,100,80,${(influence * 0.4).toFixed(3)})`;
+              ctx.fill();
+            }
           }
         }
       }
@@ -175,6 +188,7 @@ export function WireframeLandscape() {
       window.removeEventListener('resize', resize);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, [enabled, dk]);
 
@@ -189,7 +203,6 @@ export function WireframeLandscape() {
           }}
         />
       )}
-      {/* Toggle button */}
       <button
         onClick={toggleWireframe}
         aria-label={enabled ? 'Desativar efeito 3D' : 'Ativar efeito 3D'}
@@ -199,7 +212,7 @@ export function WireframeLandscape() {
           background: enabled ? 'rgba(45,212,191,0.15)' : 'rgba(255,255,255,0.05)',
           border: `1px solid ${enabled ? 'rgba(45,212,191,0.3)' : 'rgba(255,255,255,0.1)'}`,
           color: enabled ? (dk ? '#2dd4bf' : '#0d9488') : (dk ? '#475569' : '#94a3b8'),
-          cursor: 'pointer', fontSize: 14, fontWeight: 600,
+          cursor: 'pointer', fontSize: 14,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           transition: 'all 0.3s',
         }}
