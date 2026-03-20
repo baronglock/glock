@@ -127,11 +127,11 @@ export function WireframeLandscape() {
           mouseInfluence = mouseInfluence * mouseInfluence; // ease-in
         }
 
-        // Opacity: base + depth factor + mouse boost
-        const baseOp = dk ? 0.025 : 0.02;
-        const depthOp = (1 - avgZ) * (dk ? 0.03 : 0.02);
-        const mouseOp = mouseInfluence * (dk ? 0.2 : 0.15);
-        const opacity = baseOp + depthOp + mouseOp;
+        // Opacity: stronger depth contrast + mouse boost
+        const depthFactor = (1 - avgZ); // 0=far/bright, 1=close/dark
+        const baseOp = dk ? 0.015 + depthFactor * 0.05 : 0.01 + depthFactor * 0.04;
+        const mouseOp = mouseInfluence * (dk ? 0.25 : 0.18);
+        const opacity = baseOp + mouseOp;
 
         if (opacity < 0.01) continue;
 
