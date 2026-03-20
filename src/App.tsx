@@ -696,7 +696,7 @@ function Contact({ lang, colors }: any) {
               })}
             </div>
             <div className="reveal rv-d4" style={{ display: 'flex', gap: 12, marginTop: 32 }}>
-              {[{ icon: Instagram, href: 'https://instagram.com/stauf.dev', label: 'Instagram' }, { icon: Linkedin, href: '#', label: 'LinkedIn' }, { icon: Github, href: 'https://github.com/baronglock', label: 'GitHub' }].map((s, i) => (
+              {[{ icon: Instagram, href: 'https://instagram.com/stauf.dev', label: 'Instagram' }, { icon: Linkedin, href: 'https://linkedin.com/company/staufdev', label: 'LinkedIn' }, { icon: Github, href: 'https://github.com/baronglock', label: 'GitHub' }].map((s, i) => (
                 <a key={i} href={s.href} target={s.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer"
                   style={{ width: 40, height: 40, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: colors.textMuted, textDecoration: 'none', transition: 'all 0.3s', background: colors.glass, border: `1px solid ${colors.glassBorder}` }}
                   onMouseEnter={e => { e.currentTarget.style.color = colors.brand; e.currentTarget.style.borderColor = colors.borderHover; }}
