@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { useReveal } from './hooks/useReveal';
 import { CookieBanner } from './components/CookieBanner';
+import { WireframeLandscape } from './components/WireframeLandscape';
 import { useLanguage } from './hooks/useLanguage';
 import { useTheme } from './hooks/useTheme';
 import { Navbar } from './components/Navbar';
@@ -745,6 +746,7 @@ export default function App() {
       background: colors.bg,
     }}>
       <CosmicBackground theme={theme} />
+      <WireframeLandscape />
       <div style={{ position: 'relative', zIndex: 1 }}>
       <Navbar t={t} lang={lang} toggle={toggle} colors={colors} theme={theme} toggleTheme={toggleTheme} />
       <Hero t={t} lang={lang} colors={colors} />
