@@ -17,13 +17,11 @@ export function Navbar({ t, lang, toggle, colors, theme, toggleTheme }: any) {
 
   const links = isHome ? [
     { href: '#servicos', label: t('nav.services'), isAnchor: true },
-    { href: '/servicos/sites', label: 'Sites', isAnchor: false },
     { href: '#sobre', label: t('nav.about'), isAnchor: true },
     { href: '#contato', label: t('nav.contact'), isAnchor: true },
   ] : [
     { href: '/', label: lang === 'pt' ? 'Início' : 'Home', isAnchor: false },
     { href: '/#servicos', label: t('nav.services'), isAnchor: false },
-    { href: '/servicos/sites', label: 'Sites', isAnchor: false },
     { href: '/#sobre', label: t('nav.about'), isAnchor: false },
     { href: '/#contato', label: t('nav.contact'), isAnchor: false },
   ];
