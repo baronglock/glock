@@ -9,6 +9,7 @@ import { servicesData } from './pages/services'
 import { LanguageProvider } from './hooks/useLanguage'
 import { ThemeProvider } from './hooks/useTheme'
 import { PrivacyPage } from './pages/PrivacyPage'
+import { CheckoutPage } from './pages/CheckoutPage'
 import { HelmetProvider } from 'react-helmet-async'
 
 createRoot(document.getElementById('root')!).render(
@@ -20,6 +21,7 @@ createRoot(document.getElementById('root')!).render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/privacidade" element={<Layout><PrivacyPage /></Layout>} />
+          <Route path="/checkout" element={<Layout><CheckoutPage /></Layout>} />
           {Object.entries(servicesData).map(([slug, data]) => (
             <Route
               key={slug}

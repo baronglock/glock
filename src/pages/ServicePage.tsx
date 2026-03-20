@@ -252,7 +252,7 @@ export function ServicePage({ data, slug }: { data: ServicePageData; slug: strin
                       </li>
                     ))}
                   </ul>
-                  <a href="/#contato" style={{
+                  <Link to={`/checkout?plan=${slug}-${p.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-')}`} style={{
                     display: 'block', textAlign: 'center', padding: '12px 24px',
                     background: p.highlight ? colors.brand : 'transparent',
                     color: p.highlight ? '#fff' : colors.white,
@@ -263,7 +263,7 @@ export function ServicePage({ data, slug }: { data: ServicePageData; slug: strin
                     onMouseLeave={e => { if (!p.highlight) { e.currentTarget.style.borderColor = colors.border; e.currentTarget.style.color = colors.white; } else { e.currentTarget.style.opacity = '1'; } }}
                   >
                     {en ? 'Start now' : 'Começar agora'}
-                  </a>
+                  </Link>
                 </div>
               ))}
             </div>
