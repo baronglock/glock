@@ -56,25 +56,12 @@ export function WireframeLandscape() {
     };
 
     const project = () => {
-      // 3D perspective projection
-      // Camera looking slightly down at the terrain
-      const fov = 1.2;
-      const cameraY = -0.3; // slightly above
-      const cameraZ = 1.8; // distance from terrain
-      const heightScale = dk ? 0.25 : 0.35; // how much height affects Y
+      // Map heightmap directly to screen with subtle depth displacement
+      const heightScale = dk ? 15 : 20; // pixels of vertical displacement per height unit
 
       projected = vertices.map(([vx, vy, vh]) => {
-        // Convert percentage to -1..1 range
-        const x3d = (vx / 100 - 0.5) * 2;
-        const y3d = (vy / 100 - 0.5) * 2;
-        const z3d = vh * heightScale;
-
-        // Simple perspective: things further (higher y3d) appear smaller/higher
-        const depth = y3d + cameraZ;
-        const perspScale = fov / Math.max(depth, 0.1);
-
-        const sx = w / 2 + x3d * perspScale * w * 0.5;
-        const sy = h / 2 + (y3d - z3d + cameraY) * perspScale * h * 0.35;
+        const sx = (vx / 100) * w;
+        const sy = (vy / 100) * h - vh * heightScale; // height pushes upward
 
         return { sx, sy, height: vh };
       });
@@ -130,19 +117,9 @@ export function WireframeLandscape() {
             mouseInf *= mouseInf;
           }
 
-          // Opacity based on height (terrain visible, sky fades)
-          // For mountains: low brightness = terrain = visible | high = sky = hidden
-          // For galaxy: medium brightness = nebula = visible | dark bg = hidden
-          let terrainOpacity: number;
-          if (dk) {
-            // Galaxy: brighter areas (nebula) more visible
-            terrainOpacity = p.height > 0.15 ? p.height * 0.8 : 0;
-          } else {
-            // Mountains: darker areas (terrain) more visible, sky fades
-            terrainOpacity = p.height < 0.7 ? (1 - p.height) * 0.9 : 0;
-          }
-
-          const baseOp = terrainOpacity * (dk ? 0.06 : 0.05);
+          // Opacity: all terrain visible, intensity from height variation
+          // Higher contrast areas (edges between bright/dark) glow more
+          const baseOp = dk ? 0.03 + p.height * 0.04 : 0.02 + (1 - p.height) * 0.05;
           const mouseOp = mouseInf * (dk ? 0.3 : 0.2);
           const opacity = baseOp + mouseOp;
 
