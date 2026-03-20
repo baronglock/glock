@@ -110,13 +110,13 @@ function CosmicBackground({ theme }: any) {
           [s.procyon, s.sirius, lineFaint], [s.capella, s.vega, lineFaint],
         ].map(([a, b, color], i) => (
           <line key={`cl${i}`} x1={(a as any).x} y1={(a as any).y} x2={(b as any).x} y2={(b as any).y}
-            stroke={color as string} strokeWidth="0.04" opacity={0.7} />
+            stroke={color as string} strokeWidth="0.1" opacity={0.8} />
         ))}
 
         {/* Star points — small with natural glow */}
         {Object.values(s).map((star) => (
           <g key={star.name} filter="url(#starGlow)">
-            <circle cx={star.x} cy={star.y} r="0.25"
+            <circle cx={star.x} cy={star.y} r="0.4"
               fill={star.name === 'Spica' || star.name === 'Sirius' || star.name === 'Aldebaran' ? nodeGold : nodeColor} />
             <circle cx={star.x} cy={star.y} r="0.08" fill={coreColor} />
           </g>
