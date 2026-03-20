@@ -89,38 +89,49 @@ function CosmicBackground({ theme }: any) {
       {/* SVG constellation — refined, minimal */}
       <svg viewBox="0 0 100 100" preserveAspectRatio="none" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
         <defs>
-          <filter id="starGlow">
-            <feGaussianBlur stdDeviation="0.4" result="blur" />
+          <filter id="starGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="0.6" result="blur" />
+            <feMerge><feMergeNode in="blur" /><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+          <filter id="lineGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="0.15" result="blur" />
             <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
           </filter>
         </defs>
 
-        {/* Dim background stars — tiny dots */}
+        {/* Dim background stars */}
         {dimStars.map(([x, y], i) => {
-          const o = (dk ? 0.04 + Math.sin(i * 1.7) * 0.03 : 0.08 + Math.sin(i * 1.7) * 0.05).toFixed(3);
-          return <circle key={i} cx={x} cy={y} r="0.12" fill={`${dimColor}${o})`} />;
+          const o = (dk ? 0.05 + Math.sin(i * 1.7) * 0.04 : 0.1 + Math.sin(i * 1.7) * 0.06).toFixed(3);
+          return <circle key={i} cx={x} cy={y} r="0.15" fill={`${dimColor}${o})`} />;
         })}
 
-        {/* Constellation lines — ultra thin */}
+        {/* Constellation lines with glow */}
         {[
-          [s.spica, s.sirius, lineGold], [s.sirius, s.aldebaran, lineGold], [s.aldebaran, s.spica, lineGold],
-          [s.capella, s.aldebaran, lineColor], [s.aldebaran, s.regulus, lineColor], [s.regulus, s.vega, lineColor],
-          [s.procyon, s.regulus, lineFaint], [s.regulus, s.spica, lineFaint],
-          [s.spica, s.antares, lineFaint], [s.vega, s.antares, lineFaint],
-          [s.procyon, s.sirius, lineFaint], [s.capella, s.vega, lineFaint],
-        ].map(([a, b, color], i) => (
+          [s.spica, s.sirius, lineGold, 0.14], [s.sirius, s.aldebaran, lineGold, 0.14], [s.aldebaran, s.spica, lineGold, 0.12],
+          [s.capella, s.aldebaran, lineColor, 0.12], [s.aldebaran, s.regulus, lineColor, 0.14], [s.regulus, s.vega, lineColor, 0.14],
+          [s.procyon, s.regulus, lineFaint, 0.1], [s.regulus, s.spica, lineFaint, 0.1],
+          [s.spica, s.antares, lineFaint, 0.1], [s.vega, s.antares, lineFaint, 0.08],
+          [s.procyon, s.sirius, lineFaint, 0.08], [s.capella, s.vega, lineFaint, 0.06],
+        ].map(([a, b, color, width], i) => (
           <line key={`cl${i}`} x1={(a as any).x} y1={(a as any).y} x2={(b as any).x} y2={(b as any).y}
-            stroke={color as string} strokeWidth="0.1" opacity={0.8} />
+            stroke={color as string} strokeWidth={width as number} opacity={0.85} filter="url(#lineGlow)" />
         ))}
 
-        {/* Star points — small with natural glow */}
-        {Object.values(s).map((star) => (
-          <g key={star.name} filter="url(#starGlow)">
-            <circle cx={star.x} cy={star.y} r="0.4"
-              fill={star.name === 'Spica' || star.name === 'Sirius' || star.name === 'Aldebaran' ? nodeGold : nodeColor} />
-            <circle cx={star.x} cy={star.y} r="0.08" fill={coreColor} />
-          </g>
-        ))}
+        {/* Star nodes — layered glow effect */}
+        {Object.values(s).map((star) => {
+          const isGold = star.name === 'Spica' || star.name === 'Sirius' || star.name === 'Aldebaran';
+          const color = isGold ? nodeGold : nodeColor;
+          return (
+            <g key={star.name} filter="url(#starGlow)">
+              {/* Outer glow */}
+              <circle cx={star.x} cy={star.y} r="1.2" fill={color} opacity={0.15} />
+              {/* Mid ring */}
+              <circle cx={star.x} cy={star.y} r="0.6" fill={color} opacity={0.5} />
+              {/* Core */}
+              <circle cx={star.x} cy={star.y} r="0.2" fill={coreColor} />
+            </g>
+          );
+        })}
       </svg>
     </div>
     </>
