@@ -56,15 +56,12 @@ export function WireframeLandscape() {
     };
 
     const project = () => {
-      // Map heightmap directly to screen with subtle depth displacement
-      const heightScale = dk ? 15 : 20; // pixels of vertical displacement per height unit
-
-      projected = vertices.map(([vx, vy, vh]) => {
-        const sx = (vx / 100) * w;
-        const sy = (vy / 100) * h - vh * heightScale; // height pushes upward
-
-        return { sx, sy, height: vh };
-      });
+      // Direct 1:1 screen mapping — no perspective distortion
+      projected = vertices.map(([vx, vy, vh]) => ({
+        sx: (vx / 100) * w,
+        sy: (vy / 100) * h,
+        height: vh,
+      }));
     };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -159,15 +156,6 @@ export function WireframeLandscape() {
             }
           }
 
-          // Vertex point near mouse
-          if (mouseInf > 0.3) {
-            ctx.beginPath();
-            ctx.arc(px, py, 0.8 + mouseInf * 2, 0, Math.PI * 2);
-            ctx.fillStyle = dk
-              ? `rgba(45,212,191,${(mouseInf * 0.5).toFixed(3)})`
-              : `rgba(13,100,80,${(mouseInf * 0.4).toFixed(3)})`;
-            ctx.fill();
-          }
         }
       }
 
