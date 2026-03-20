@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTheme } from '../hooks/useTheme';
-import { darkMesh, lightMesh } from './terrainData';
+import * as THREE from 'three';
+import { mountainDepth, galaxyDepth } from './depthMaps';
 
 export function WireframeLandscape() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const mouseRef = useRef({ x: -1, y: -1 });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mouseRef = useRef({ x: 0.5, y: 0.5 });
   const [enabled, setEnabled] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('stauf-wireframe') !== 'off';
@@ -13,7 +14,7 @@ export function WireframeLandscape() {
   });
   const { theme } = useTheme();
   const dk = theme === 'dark';
-  const animRef = useRef<number>(0);
+  const cleanupRef = useRef<(() => void) | null>(null);
 
   const toggleWireframe = () => {
     setEnabled(prev => {
@@ -24,165 +25,162 @@ export function WireframeLandscape() {
   };
 
   useEffect(() => {
-    if (!enabled) {
-      if (animRef.current) cancelAnimationFrame(animRef.current);
-      const canvas = canvasRef.current;
-      if (canvas) {
-        const ctx = canvas.getContext('2d');
-        if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
-      }
+    if (typeof window !== 'undefined' && window.innerWidth < 768) return;
+    if (!enabled || !containerRef.current) {
+      if (cleanupRef.current) cleanupRef.current();
       return;
     }
 
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+    const container = containerRef.current;
+    let W = window.innerWidth;
+    let H = window.innerHeight;
 
-    const mesh = dk ? darkMesh : lightMesh;
-    const { cols, rows, vertices } = mesh;
+    const depthMap = dk ? galaxyDepth : mountainDepth;
+    const dSize = depthMap.size;
 
-    let w = 0, h = 0;
+    // Scene
+    const scene = new THREE.Scene();
 
-    // Pre-computed projected positions
-    let projected: { sx: number; sy: number; height: number }[] = [];
+    // Orthographic camera — perfectly aligned with screen, no perspective distortion
+    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 10);
+    camera.position.z = 5;
 
-    const resize = () => {
-      w = window.innerWidth;
-      h = window.innerHeight;
-      canvas.width = w;
-      canvas.height = h;
-      project();
-    };
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setSize(W, H);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    renderer.setClearColor(0x000000, 0);
+    container.appendChild(renderer.domElement);
 
-    const project = () => {
-      // Direct 1:1 screen mapping — no perspective distortion
-      projected = vertices.map(([vx, vy, vh]) => ({
-        sx: (vx / 100) * w,
-        sy: (vy / 100) * h,
-        height: vh,
-      }));
-    };
+    // Plane fills entire screen (-1 to 1 in ortho)
+    const segs = dSize - 1;
+    const geometry = new THREE.PlaneGeometry(2, 2, segs, segs);
 
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY };
-    };
-    const handleTouchMove = (e: TouchEvent) => {
-      if (e.touches[0]) {
-        mouseRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-      }
-    };
-    const handleMouseLeave = () => {
-      mouseRef.current = { x: -1, y: -1 };
-    };
+    // Apply depth as Z displacement from AI depth map
+    const positions = geometry.attributes.position;
+    const baseZ = new Float32Array(positions.count);
 
-    window.addEventListener('resize', resize);
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('touchmove', handleTouchMove, { passive: true });
-    document.addEventListener('mouseleave', handleMouseLeave);
-    resize();
+    for (let i = 0; i < positions.count; i++) {
+      const col = i % dSize;
+      const row = Math.floor(i / dSize);
+      const depth = depthMap.data[row * dSize + col] || 0;
+      const z = depth * 0.15; // subtle Z push — visible when camera tilts
+      positions.setZ(i, z);
+      baseZ[i] = z;
+    }
+    positions.needsUpdate = true;
 
-    let time = 0;
-
-    const draw = () => {
-      time += 0.004;
-      ctx.clearRect(0, 0, w, h);
-
-      const mx = mouseRef.current.x;
-      const my = mouseRef.current.y;
-      const hasPointer = mx >= 0 && my >= 0;
-
-      // Draw grid lines
-      for (let row = 0; row < rows; row++) {
-        for (let col = 0; col < cols; col++) {
-          const idx = row * cols + col;
-          const p = projected[idx];
-          if (!p) continue;
-
-          // Gentle wave on height
-          const wave = Math.sin(time + col * 0.08 + row * 0.06) * 1.5;
-          const px = p.sx;
-          const py = p.sy + wave * (1 - p.height);
-
-          // Mouse proximity
-          let mouseInf = 0;
-          if (hasPointer) {
-            const dx = px - mx;
-            const dy = py - my;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            mouseInf = Math.max(0, 1 - dist / 250);
-            mouseInf *= mouseInf;
-          }
-
-          // Opacity: all terrain visible, intensity from height variation
-          // Higher contrast areas (edges between bright/dark) glow more
-          const baseOp = dk ? 0.03 + p.height * 0.04 : 0.02 + (1 - p.height) * 0.05;
-          const mouseOp = mouseInf * (dk ? 0.3 : 0.2);
-          const opacity = baseOp + mouseOp;
-
-          if (opacity < 0.005) continue;
-
-          const color = dk
-            ? `rgba(45,212,191,${opacity.toFixed(3)})`
-            : `rgba(13,100,80,${opacity.toFixed(3)})`;
-
-          const lineW = 0.4 + mouseInf * 1.2;
-
-          // Horizontal line (to right neighbor)
-          if (col < cols - 1) {
-            const next = projected[idx + 1];
-            if (next) {
-              const npy = next.sy + Math.sin(time + (col+1) * 0.08 + row * 0.06) * 1.5 * (1 - next.height);
-              ctx.beginPath();
-              ctx.moveTo(px, py);
-              ctx.lineTo(next.sx, npy);
-              ctx.strokeStyle = color;
-              ctx.lineWidth = lineW;
-              ctx.stroke();
-            }
-          }
-
-          // Vertical line (to bottom neighbor)
-          if (row < rows - 1) {
-            const below = projected[idx + cols];
-            if (below) {
-              const bpy = below.sy + Math.sin(time + col * 0.08 + (row+1) * 0.06) * 1.5 * (1 - below.height);
-              ctx.beginPath();
-              ctx.moveTo(px, py);
-              ctx.lineTo(below.sx, bpy);
-              ctx.strokeStyle = color;
-              ctx.lineWidth = lineW;
-              ctx.stroke();
-            }
-          }
-
+    // Shader material — wireframe that glows near mouse
+    const material = new THREE.ShaderMaterial({
+      wireframe: true,
+      transparent: true,
+      uniforms: {
+        uMouse: { value: new THREE.Vector2(0.5, 0.5) },
+        uColor: { value: dk ? new THREE.Color(0x2dd4bf) : new THREE.Color(0x0d6450) },
+        uBaseOpacity: { value: dk ? 0.05 : 0.035 },
+        uTime: { value: 0 },
+      },
+      vertexShader: `
+        varying vec2 vUv;
+        varying float vDepth;
+        void main() {
+          vUv = uv;
+          vDepth = position.z / 0.15;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
         }
+      `,
+      fragmentShader: `
+        uniform vec2 uMouse;
+        uniform vec3 uColor;
+        uniform float uBaseOpacity;
+        uniform float uTime;
+        varying vec2 vUv;
+        varying float vDepth;
+        void main() {
+          float dist = distance(vUv, uMouse);
+          float mouseGlow = smoothstep(0.25, 0.0, dist);
+          float depthGlow = vDepth * 0.03;
+          float pulse = sin(uTime + vUv.x * 20.0 + vUv.y * 15.0) * 0.008;
+          float opacity = uBaseOpacity + depthGlow + mouseGlow * 0.3 + pulse;
+          gl_FragColor = vec4(uColor, clamp(opacity, 0.0, 0.6));
+        }
+      `,
+    });
+
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+
+    // Mouse tracking
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseRef.current = { x: e.clientX / W, y: 1 - e.clientY / H };
+    };
+    const handleResize = () => {
+      W = window.innerWidth;
+      H = window.innerHeight;
+      renderer.setSize(W, H);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('resize', handleResize);
+
+    let animId = 0;
+    let time = 0;
+    let camAngleX = 0;
+    let camAngleY = 0;
+
+    const animate = () => {
+      time += 0.003;
+
+      // Subtle breathing on vertices
+      for (let i = 0; i < positions.count; i++) {
+        const x = positions.getX(i);
+        const y = positions.getY(i);
+        const wave = Math.sin(time * 2 + x * 8 + y * 6) * 0.002;
+        positions.setZ(i, baseZ[i] + wave);
       }
+      positions.needsUpdate = true;
 
-      animRef.current = requestAnimationFrame(draw);
+      // Camera: subtle auto-rotation to always reveal some depth
+      camAngleX = Math.sin(time * 0.5) * 0.03;
+      camAngleY = Math.cos(time * 0.4) * 0.02;
+
+      // Plus mouse influence on camera angle
+      const mx = (mouseRef.current.x - 0.5) * 0.06;
+      const my = (mouseRef.current.y - 0.5) * 0.04;
+
+      camera.position.x = camAngleX + mx;
+      camera.position.y = camAngleY + my;
+      camera.position.z = 5;
+      camera.lookAt(0, 0, 0);
+
+      // Update shader uniforms
+      material.uniforms.uMouse.value.set(mouseRef.current.x, mouseRef.current.y);
+      material.uniforms.uTime.value = time * 5;
+
+      renderer.render(scene, camera);
+      animId = requestAnimationFrame(animate);
     };
 
-    animRef.current = requestAnimationFrame(draw);
+    animId = requestAnimationFrame(animate);
 
-    return () => {
-      cancelAnimationFrame(animRef.current);
-      window.removeEventListener('resize', resize);
+    cleanupRef.current = () => {
+      cancelAnimationFrame(animId);
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('resize', handleResize);
+      geometry.dispose();
+      material.dispose();
+      renderer.dispose();
+      if (container.contains(renderer.domElement)) {
+        container.removeChild(renderer.domElement);
+      }
     };
+
+    return () => { if (cleanupRef.current) cleanupRef.current(); };
   }, [enabled, dk]);
 
   return (
     <>
       {enabled && (
-        <canvas
-          ref={canvasRef}
-          style={{
-            position: 'fixed', inset: 0, zIndex: 0,
-            pointerEvents: 'none', width: '100%', height: '100%',
-          }}
-        />
+        <div ref={containerRef} style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }} />
       )}
       <button
         onClick={toggleWireframe}
@@ -204,4 +202,3 @@ export function WireframeLandscape() {
     </>
   );
 }
-// rebuild 1773968120
