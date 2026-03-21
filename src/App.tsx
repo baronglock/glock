@@ -865,7 +865,7 @@ function Cases({ lang, colors }: any) {
   const [noTransition, setNoTransition] = useState(false);
   const dragStart = useRef(0);
   const dragOffset = useRef(0);
-  const autoplayRef = useRef<ReturnType<typeof setInterval>>();
+  const autoplayRef = useRef<ReturnType<typeof setInterval>>(undefined);
 
   const cardWidth = 340;
   const gap = 20;
