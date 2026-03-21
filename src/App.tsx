@@ -1,14 +1,17 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Database, Bot, Globe, BrainCircuit, ChevronRight, ArrowRight,
   ExternalLink, Mail, Phone, MapPin, Instagram,
   Linkedin, Github, Shield, Clock, TrendingUp,
   BarChart3, Code2, MessageSquare, Search, FileSpreadsheet,
-  Workflow, LayoutDashboard, Zap
+  Workflow, LayoutDashboard, Zap, ChevronLeft,
+  Headphones, DollarSign, Megaphone, Settings, Users,
+  CheckCircle2
 } from 'lucide-react';
 import { useReveal } from './hooks/useReveal';
 import { CookieBanner } from './components/CookieBanner';
+import { ChatWidget } from './components/ChatWidget';
 import { useLanguage } from './hooks/useLanguage';
 import { useTheme } from './hooks/useTheme';
 import { Navbar } from './components/Navbar';
@@ -581,18 +584,360 @@ function About({ t, lang, colors }: any) {
   );
 }
 
-/* ═══════════════ CASES ═══════════════ */
-function Cases({ lang, colors }: any) {
-  const caseImages = [IMG.caseData, IMG.caseAuto, IMG.caseWeb];
-  const cases = lang === 'pt' ? [
-    { title: 'Inteligência de Mercado — Base Empresarial', desc: 'Extração e organização de mais de 1.6 milhão de registros empresariais para prospecção comercial. Dados de contato, sócios, atividade econômica e situação fiscal — tudo limpo e pronto para uso.', tags: ['Dados Públicos', 'Prospecção', 'Inteligência Comercial'], metric: '1.6M+ empresas mapeadas' },
-    { title: 'Automação Inteligente para Escritório', desc: 'Sistema completo de prospecção automatizada, atendimento via WhatsApp com IA, gestão financeira automatizada e painel de acompanhamento em tempo real.', tags: ['Automação', 'WhatsApp', 'IA', 'Gestão'], metric: '70% menos trabalho manual' },
-    { title: 'Presença Digital de Alto Impacto', desc: 'Sites institucionais e landing pages com design exclusivo, carregamento ultrarrápido e otimizados para aparecer no Google. Experiência premium em qualquer dispositivo.', tags: ['Design Exclusivo', 'Performance', 'SEO'], metric: 'Nota máxima em velocidade' },
+/* ═══════════════ SECTOR AUTOMATION ═══════════════ */
+function SectorAutomation({ lang, colors }: any) {
+  const departments = lang === 'pt' ? [
+    {
+      icon: Headphones, name: 'Atendimento',
+      color: '#06b6d4',
+      tasks: [
+        'Chatbot 24/7 com IA para dúvidas frequentes',
+        'Triagem e encaminhamento automático de tickets',
+        'Respostas automáticas no WhatsApp e e-mail',
+        'Pesquisas de satisfação pós-atendimento',
+        'Relatórios de SLA e tempo de resposta',
+      ],
+    },
+    {
+      icon: DollarSign, name: 'Financeiro',
+      color: '#10b981',
+      tasks: [
+        'Conciliação bancária automática',
+        'Emissão e envio de boletos e NFs',
+        'Cobranças automáticas por WhatsApp/e-mail',
+        'Alertas de inadimplência e vencimentos',
+        'Relatórios financeiros em tempo real',
+      ],
+    },
+    {
+      icon: Megaphone, name: 'Marketing',
+      color: '#f59e0b',
+      tasks: [
+        'Disparo segmentado de e-mails e campanhas',
+        'Geração de conteúdo com IA (posts, textos)',
+        'Monitoramento de redes sociais e menções',
+        'Lead scoring e qualificação automática',
+        'Relatórios de ROI por canal',
+      ],
+    },
+    {
+      icon: Settings, name: 'Operações',
+      color: '#8b5cf6',
+      tasks: [
+        'Automação de processos repetitivos (RPA)',
+        'Integração entre sistemas e planilhas',
+        'Alertas e notificações por eventos',
+        'Controle de estoque e reposição automática',
+        'Dashboards operacionais em tempo real',
+      ],
+    },
+    {
+      icon: Users, name: 'RH',
+      color: '#ec4899',
+      tasks: [
+        'Triagem automática de currículos com IA',
+        'Onboarding digital de novos colaboradores',
+        'Controle de ponto e banco de horas',
+        'Pesquisas de clima organizacional',
+        'Avisos automáticos de férias e vencimentos',
+      ],
+    },
   ] : [
-    { title: 'Market Intelligence — Business Database', desc: 'Extraction and organization of over 1.6 million business records for commercial prospecting. Contact data, partners, economic activity and fiscal status — all clean and ready to use.', tags: ['Public Data', 'Prospecting', 'Business Intelligence'], metric: '1.6M+ companies mapped' },
-    { title: 'Intelligent Office Automation', desc: 'Complete system with automated prospecting, AI-powered WhatsApp support, automated financial management and real-time monitoring dashboard.', tags: ['Automation', 'WhatsApp', 'AI', 'Management'], metric: '70% less manual work' },
-    { title: 'High-Impact Digital Presence', desc: 'Institutional websites and landing pages with exclusive design, ultra-fast loading and optimized to rank on Google. Premium experience on any device.', tags: ['Exclusive Design', 'Performance', 'SEO'], metric: 'Top speed score' },
+    {
+      icon: Headphones, name: 'Customer Service',
+      color: '#06b6d4',
+      tasks: [
+        '24/7 AI chatbot for common questions',
+        'Automatic ticket triage and routing',
+        'Auto-replies on WhatsApp and email',
+        'Post-service satisfaction surveys',
+        'SLA and response time reports',
+      ],
+    },
+    {
+      icon: DollarSign, name: 'Finance',
+      color: '#10b981',
+      tasks: [
+        'Automatic bank reconciliation',
+        'Invoice and receipt generation & sending',
+        'Automated collections via WhatsApp/email',
+        'Delinquency and due date alerts',
+        'Real-time financial reports',
+      ],
+    },
+    {
+      icon: Megaphone, name: 'Marketing',
+      color: '#f59e0b',
+      tasks: [
+        'Segmented email and campaign blasts',
+        'AI content generation (posts, copy)',
+        'Social media and mention monitoring',
+        'Automatic lead scoring & qualification',
+        'ROI reports by channel',
+      ],
+    },
+    {
+      icon: Settings, name: 'Operations',
+      color: '#8b5cf6',
+      tasks: [
+        'Repetitive process automation (RPA)',
+        'System and spreadsheet integrations',
+        'Event-driven alerts and notifications',
+        'Inventory control and auto-restock',
+        'Real-time operational dashboards',
+      ],
+    },
+    {
+      icon: Users, name: 'HR',
+      color: '#ec4899',
+      tasks: [
+        'AI-powered resume screening',
+        'Digital onboarding for new hires',
+        'Time tracking and hour banks',
+        'Organizational climate surveys',
+        'Automatic vacation and deadline notices',
+      ],
+    },
   ];
+
+  const [expanded, setExpanded] = useState<number | null>(null);
+
+  return (
+    <Section id="automacao-setores" alt colors={colors} style={{ padding: '96px 0' }}>
+      <W>
+        {/* Header */}
+        <div style={{ textAlign: 'center', marginBottom: 32 }}>
+          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(45,212,191,0.1)', color: colors.gold, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
+            {lang === 'pt' ? 'Automação Total' : 'Full Automation'}
+          </span>
+          <h2 className="reveal rv-d1" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white, marginBottom: 16 }}>
+            {lang === 'pt' ? 'Automatize Setores Inteiros' : 'Automate Entire Departments'}
+          </h2>
+          <p className="reveal rv-d2" style={{ color: colors.textMuted, maxWidth: 640, margin: '0 auto', lineHeight: 1.8, fontSize: 'clamp(0.95rem, 1.8vw, 1.05rem)' }}>
+            {lang === 'pt'
+              ? 'Dezenas de funções que seus funcionários fazem manualmente podem ser automatizadas. Economize tempo, dinheiro e dores de cabeça.'
+              : 'Dozens of functions your employees do manually can be automated. Save time, money and headaches.'}
+          </p>
+        </div>
+
+        {/* Subtitle callout */}
+        <div className="reveal rv-d3" style={{ textAlign: 'center', marginBottom: 56 }}>
+          <p style={{ color: colors.textDim, fontSize: 14, fontStyle: 'italic', maxWidth: 500, margin: '0 auto' }}>
+            {lang === 'pt'
+              ? 'Clique em um setor para ver o que podemos automatizar →'
+              : 'Click a department to see what we can automate →'}
+          </p>
+        </div>
+
+        {/* Department cards grid */}
+        <div id="sectors-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 16 }}>
+          {departments.map((dept, i) => {
+            const DeptIcon = dept.icon;
+            const isExpanded = expanded === i;
+            return (
+              <div
+                key={dept.name}
+                className="reveal"
+                onClick={() => setExpanded(isExpanded ? null : i)}
+                style={{
+                  padding: isExpanded ? 28 : 24,
+                  borderRadius: 16,
+                  background: colors.glassCard,
+                  border: `1px solid ${isExpanded ? dept.color + '60' : colors.glassCardBorder}`,
+                  cursor: 'pointer',
+                  transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)',
+                  gridColumn: isExpanded ? 'span 2' : 'span 1',
+                  gridRow: isExpanded ? 'span 2' : 'span 1',
+                  ...(isExpanded ? { boxShadow: `0 20px 60px ${dept.color}15, 0 0 40px ${dept.color}08` } : {}),
+                }}
+                onMouseEnter={e => {
+                  if (!isExpanded) {
+                    e.currentTarget.style.transform = 'translateY(-6px) scale(1.02)';
+                    e.currentTarget.style.borderColor = dept.color + '40';
+                    e.currentTarget.style.boxShadow = `0 24px 48px ${colors.shadow}`;
+                  }
+                }}
+                onMouseLeave={e => {
+                  if (!isExpanded) {
+                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                    e.currentTarget.style.borderColor = colors.glassCardBorder;
+                    e.currentTarget.style.boxShadow = 'none';
+                  }
+                }}
+              >
+                {/* Icon + Name */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: isExpanded ? 20 : 16 }}>
+                  <div style={{
+                    width: isExpanded ? 44 : 40, height: isExpanded ? 44 : 40, borderRadius: 12,
+                    background: dept.color + '15', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    transition: 'all 0.3s',
+                  }}>
+                    <DeptIcon size={isExpanded ? 22 : 20} style={{ color: dept.color }} />
+                  </div>
+                  <div>
+                    <h3 style={{ color: colors.white, fontWeight: 600, fontSize: isExpanded ? 18 : 15, transition: 'all 0.3s' }}>{dept.name}</h3>
+                    {!isExpanded && (
+                      <span style={{ fontSize: 11, color: colors.textDim }}>
+                        {dept.tasks.length} {lang === 'pt' ? 'automações' : 'automations'}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Expanded: task list */}
+                {isExpanded && (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                    {dept.tasks.map((task, j) => (
+                      <div key={j} style={{
+                        display: 'flex', alignItems: 'flex-start', gap: 10, padding: '10px 14px',
+                        borderRadius: 10, background: colors.bgCard || colors.glassCard,
+                        border: `1px solid ${colors.glassCardBorder}`,
+                        transition: 'all 0.3s',
+                      }}>
+                        <CheckCircle2 size={16} style={{ color: dept.color, flexShrink: 0, marginTop: 2 }} />
+                        <span style={{ fontSize: 13, color: colors.text, lineHeight: 1.5 }}>{task}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Collapsed: mini preview */}
+                {!isExpanded && (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                    {dept.tasks.slice(0, 3).map((task, j) => (
+                      <div key={j} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                        <div style={{ width: 4, height: 4, borderRadius: '50%', background: dept.color + '60', flexShrink: 0 }} />
+                        <span style={{ fontSize: 11, color: colors.textDim, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{task}</span>
+                      </div>
+                    ))}
+                    <span style={{ fontSize: 11, color: dept.color, fontWeight: 500, marginTop: 4 }}>
+                      +{dept.tasks.length - 3} {lang === 'pt' ? 'mais' : 'more'}...
+                    </span>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="reveal rv-d4" style={{ textAlign: 'center', marginTop: 48 }}>
+          <a href="#contato" className="btn-cta anim-pulse-glow" style={{ padding: '14px 36px', fontSize: '0.95rem' }}>
+            {lang === 'pt' ? 'Quero automatizar meu negócio' : 'I want to automate my business'} <ArrowRight size={16} />
+          </a>
+        </div>
+
+        <style>{`
+          @media (max-width: 1024px) { #sectors-grid { grid-template-columns: repeat(3, 1fr) !important; } }
+          @media (max-width: 768px) { #sectors-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+          @media (max-width: 500px) { #sectors-grid { grid-template-columns: 1fr !important; } }
+        `}</style>
+      </W>
+    </Section>
+  );
+}
+
+/* ═══════════════ CASES CAROUSEL ═══════════════ */
+function Cases({ lang, colors }: any) {
+  const cases = lang === 'pt' ? [
+    { title: 'Inteligência de Mercado', desc: 'Extração de 1.6M+ registros empresariais com dados de contato, sócios e situação fiscal.', tags: ['Dados', 'Prospecção', 'IA'], metric: '1.6M+ empresas', img: IMG.caseData },
+    { title: 'Pet Shop Premium', desc: 'Site institucional com galeria, agendamento online e integração WhatsApp para clínica veterinária.', tags: ['Site', 'Pet Shop', 'Design'], metric: '+340% agendamentos', img: '/demos/pet-shop/banner-petshop.jpg' },
+    { title: 'Automação de Escritório', desc: 'Prospecção automatizada, atendimento WhatsApp com IA e painel de acompanhamento em tempo real.', tags: ['Automação', 'WhatsApp', 'IA'], metric: '70% menos trabalho', img: IMG.caseAuto },
+    { title: 'Restaurante & Delivery', desc: 'Cardápio digital interativo com pedidos via WhatsApp, galeria de pratos e sistema de reservas.', tags: ['Restaurante', 'Delivery', 'UX'], metric: '+85% pedidos online', img: '/demos/restaurante/dish-1.jpg' },
+    { title: 'Landing Page de Conversão', desc: 'Páginas otimizadas para captura de leads com formulários inteligentes e A/B testing.', tags: ['Landing Page', 'SEO', 'Conversão'], metric: '12% taxa conversão', img: IMG.caseWeb },
+    { title: 'Clínica Veterinária', desc: 'Plataforma completa com prontuário digital, galeria de pacientes e agendamento automatizado.', tags: ['Saúde', 'Automação', 'Dashboard'], metric: '+200 consultas/mês', img: '/demos/pet-shop/banner-vet.jpg' },
+    { title: 'Dashboard Financeiro', desc: 'Painel interativo com KPIs em tempo real, alertas automáticos e relatórios exportáveis.', tags: ['BI', 'Dashboard', 'Dados'], metric: '5h economizadas/dia', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&auto=format&fit=crop&fm=webp' },
+    { title: 'Chatbot Inteligente', desc: 'Assistente virtual com IA que qualifica leads, agenda reuniões e resolve dúvidas 24/7.', tags: ['Chatbot', 'IA', 'WhatsApp'], metric: '24/7 atendimento', img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80&auto=format&fit=crop&fm=webp' },
+  ] : [
+    { title: 'Market Intelligence', desc: 'Extraction of 1.6M+ business records with contact data, partners and fiscal status.', tags: ['Data', 'Prospecting', 'AI'], metric: '1.6M+ companies', img: IMG.caseData },
+    { title: 'Premium Pet Shop', desc: 'Institutional website with gallery, online booking and WhatsApp integration for vet clinic.', tags: ['Website', 'Pet Shop', 'Design'], metric: '+340% bookings', img: '/demos/pet-shop/banner-petshop.jpg' },
+    { title: 'Office Automation', desc: 'Automated prospecting, AI WhatsApp support and real-time monitoring dashboard.', tags: ['Automation', 'WhatsApp', 'AI'], metric: '70% less manual work', img: IMG.caseAuto },
+    { title: 'Restaurant & Delivery', desc: 'Interactive digital menu with WhatsApp orders, dish gallery and reservation system.', tags: ['Restaurant', 'Delivery', 'UX'], metric: '+85% online orders', img: '/demos/restaurante/dish-1.jpg' },
+    { title: 'Conversion Landing Page', desc: 'Pages optimized for lead capture with smart forms and A/B testing.', tags: ['Landing Page', 'SEO', 'Conversion'], metric: '12% conversion rate', img: IMG.caseWeb },
+    { title: 'Veterinary Clinic', desc: 'Full platform with digital records, patient gallery and automated scheduling.', tags: ['Health', 'Automation', 'Dashboard'], metric: '+200 visits/month', img: '/demos/pet-shop/banner-vet.jpg' },
+    { title: 'Financial Dashboard', desc: 'Interactive panel with real-time KPIs, automatic alerts and exportable reports.', tags: ['BI', 'Dashboard', 'Data'], metric: '5h saved/day', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&auto=format&fit=crop&fm=webp' },
+    { title: 'Smart Chatbot', desc: 'AI virtual assistant that qualifies leads, schedules meetings and resolves questions 24/7.', tags: ['Chatbot', 'AI', 'WhatsApp'], metric: '24/7 support', img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80&auto=format&fit=crop&fm=webp' },
+  ];
+
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [current, setCurrent] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [noTransition, setNoTransition] = useState(false);
+  const dragStart = useRef(0);
+  const dragOffset = useRef(0);
+  const autoplayRef = useRef<ReturnType<typeof setInterval>>();
+
+  const cardWidth = 340;
+  const gap = 20;
+  const step = cardWidth + gap;
+  const total = cases.length;
+
+  // Duplicate items for infinite loop: [...cases, ...cases, ...cases]
+  const loopCases = [...cases, ...cases, ...cases];
+  const startOffset = total; // start at the middle copy
+
+  // Initialize at middle copy
+  useEffect(() => {
+    setNoTransition(true);
+    setCurrent(startOffset);
+    requestAnimationFrame(() => setNoTransition(false));
+  }, []);
+
+  // When animation ends on a clone region, silently snap back to middle copy
+  const handleTransitionEnd = useCallback(() => {
+    if (current >= total * 2) {
+      setNoTransition(true);
+      setCurrent(current - total);
+      requestAnimationFrame(() => setNoTransition(false));
+    } else if (current < total) {
+      setNoTransition(true);
+      setCurrent(current + total);
+      requestAnimationFrame(() => setNoTransition(false));
+    }
+  }, [current, total]);
+
+  const slideTo = useCallback((idx: number) => {
+    setCurrent(idx);
+  }, []);
+
+  // Auto-play
+  useEffect(() => {
+    autoplayRef.current = setInterval(() => {
+      setCurrent(prev => prev + 1);
+    }, 4000);
+    return () => clearInterval(autoplayRef.current);
+  }, []);
+
+  const pauseAutoplay = () => { clearInterval(autoplayRef.current); };
+  const resumeAutoplay = () => {
+    clearInterval(autoplayRef.current);
+    autoplayRef.current = setInterval(() => {
+      setCurrent(prev => prev + 1);
+    }, 4000);
+  };
+
+  // Drag handlers
+  const onPointerDown = (e: React.PointerEvent) => {
+    setIsDragging(true);
+    dragStart.current = e.clientX;
+    dragOffset.current = 0;
+    pauseAutoplay();
+    (e.target as HTMLElement).setPointerCapture(e.pointerId);
+  };
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!isDragging) return;
+    dragOffset.current = e.clientX - dragStart.current;
+  };
+  const onPointerUp = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    if (dragOffset.current < -60) slideTo(current + 1);
+    else if (dragOffset.current > 60) slideTo(current - 1);
+    resumeAutoplay();
+  };
+
+  // Which dot is active (map back to real index)
+  const activeDot = ((current % total) + total) % total;
 
   return (
     <Section id="cases" colors={colors} style={{ padding: '96px 0' }}>
@@ -601,38 +946,82 @@ function Cases({ lang, colors }: any) {
           <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(37,99,235,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>Portfolio</span>
           <h2 className="reveal rv-d1" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white }}>Cases</h2>
         </div>
-        <div id="cases-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
-          {cases.map((c, i) => (
-            <div key={c.title} className="reveal" style={{
-              display: 'flex', flexDirection: 'column', borderRadius: 16, background: colors.glassCard, border: `1px solid ${colors.glassCardBorder}`,
-              transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)', overflow: 'hidden',
-            }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px) scale(1.02)'; e.currentTarget.style.borderColor = colors.borderHover; e.currentTarget.style.boxShadow = `0 24px 48px ${colors.shadow}`; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0) scale(1)'; e.currentTarget.style.borderColor = colors.glassCardBorder; e.currentTarget.style.boxShadow = 'none'; }}
-            >
-              {/* Case image */}
-              <div style={{ position: 'relative', height: 180, overflow: 'hidden' }}>
-                <img src={caseImages[i]} alt={`Case: ${c.title}`} loading="lazy" width={600} height={400} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }}
-                  onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
-                  onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-                />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.6), transparent 60%)' }} />
-                <span style={{ position: 'absolute', bottom: 12, left: 16, padding: '4px 12px', borderRadius: 6, background: 'rgba(56,189,248,0.2)', backdropFilter: 'blur(8px)', color: colors.gold, fontSize: 12, fontWeight: 600 }}>{c.metric}</span>
-              </div>
-              {/* Case content */}
-              <div style={{ padding: 24, display: 'flex', flexDirection: 'column', flex: 1 }}>
-                <h3 style={{ fontSize: 'clamp(0.95rem, 1.8vw, 1.1rem)', fontWeight: 600, color: colors.white, marginBottom: 12 }}>{c.title}</h3>
-                <p style={{ color: colors.textMuted, fontSize: 'clamp(0.8rem, 1.4vw, 0.875rem)', lineHeight: 1.7, marginBottom: 20, flex: 1 }}>{c.desc}</p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                  {c.tags.map((tag) => (
-                    <span key={tag} style={{ padding: '3px 10px', borderRadius: 9999, background: colors.tagBg, border: `1px solid ${colors.tagBorder}`, fontSize: 12, color: colors.textDim, fontWeight: 500 }}>{tag}</span>
-                  ))}
+
+        {/* Carousel container */}
+        <div className="reveal" style={{ position: 'relative' }}
+          onMouseEnter={pauseAutoplay} onMouseLeave={resumeAutoplay}>
+
+          {/* Arrow buttons */}
+          <button onClick={() => slideTo(current - 1)} aria-label="Previous"
+            style={{
+              position: 'absolute', left: -20, top: '50%', transform: 'translateY(-50%)', zIndex: 10,
+              width: 44, height: 44, borderRadius: '50%', border: `1px solid ${colors.glassCardBorder}`,
+              background: colors.glassCard, backdropFilter: 'blur(8px)', color: colors.white,
+              display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+              transition: 'all 0.3s',
+            }}>
+            <ChevronLeft size={20} />
+          </button>
+          <button onClick={() => slideTo(current + 1)} aria-label="Next"
+            style={{
+              position: 'absolute', right: -20, top: '50%', transform: 'translateY(-50%)', zIndex: 10,
+              width: 44, height: 44, borderRadius: '50%', border: `1px solid ${colors.glassCardBorder}`,
+              background: colors.glassCard, backdropFilter: 'blur(8px)', color: colors.white,
+              display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+              transition: 'all 0.3s',
+            }}>
+            <ChevronRight size={20} />
+          </button>
+
+          {/* Track */}
+          <div style={{ overflow: 'hidden', borderRadius: 16, cursor: isDragging ? 'grabbing' : 'grab' }}
+            onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp}>
+            <div ref={trackRef} onTransitionEnd={handleTransitionEnd} style={{
+              display: 'flex', gap, transition: isDragging || noTransition ? 'none' : 'transform 0.5s cubic-bezier(0.4,0,0.2,1)',
+              transform: `translateX(-${current * step}px)`,
+              touchAction: 'pan-y',
+            }}>
+              {loopCases.map((c, i) => (
+                <div key={`${c.title}-${i}`} style={{
+                  minWidth: cardWidth, maxWidth: cardWidth, display: 'flex', flexDirection: 'column',
+                  borderRadius: 16, background: colors.glassCard, border: `1px solid ${colors.glassCardBorder}`,
+                  transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)', overflow: 'hidden', userSelect: 'none',
+                }}
+                  onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px) scale(1.02)'; e.currentTarget.style.borderColor = colors.borderHover; e.currentTarget.style.boxShadow = `0 24px 48px ${colors.shadow}`; }}
+                  onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0) scale(1)'; e.currentTarget.style.borderColor = colors.glassCardBorder; e.currentTarget.style.boxShadow = 'none'; }}
+                >
+                  <div style={{ position: 'relative', height: 200, overflow: 'hidden' }}>
+                    <img src={c.img} alt={c.title} loading="lazy" draggable={false} width={600} height={400}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease', pointerEvents: 'none' }} />
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%)' }} />
+                    <span style={{ position: 'absolute', bottom: 12, left: 16, padding: '4px 12px', borderRadius: 6, background: 'rgba(56,189,248,0.2)', backdropFilter: 'blur(8px)', color: colors.gold, fontSize: 12, fontWeight: 600 }}>{c.metric}</span>
+                  </div>
+                  <div style={{ padding: 24, display: 'flex', flexDirection: 'column', flex: 1 }}>
+                    <h3 style={{ fontSize: 16, fontWeight: 600, color: colors.white, marginBottom: 10 }}>{c.title}</h3>
+                    <p style={{ color: colors.textMuted, fontSize: 13, lineHeight: 1.7, marginBottom: 16, flex: 1 }}>{c.desc}</p>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                      {c.tags.map((tag) => (
+                        <span key={tag} style={{ padding: '3px 10px', borderRadius: 9999, background: colors.tagBg, border: `1px solid ${colors.tagBorder}`, fontSize: 11, color: colors.textDim, fontWeight: 500 }}>{tag}</span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Dots */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginTop: 32 }}>
+            {cases.map((_, i) => (
+              <button key={i} onClick={() => slideTo(startOffset + i)} aria-label={`Case ${i + 1}`}
+                style={{
+                  width: activeDot === i ? 24 : 8, height: 8, borderRadius: 4, border: 'none',
+                  background: activeDot === i ? colors.brand : colors.glassCardBorder,
+                  transition: 'all 0.3s', cursor: 'pointer', padding: 0,
+                }} />
+            ))}
+          </div>
         </div>
-        <style>{`@media (max-width: 900px) { #cases-grid { grid-template-columns: 1fr !important; } }`}</style>
       </W>
     </Section>
   );
@@ -671,7 +1060,7 @@ function Contact({ lang, colors }: any) {
     const msg = data.get('message');
     const whats = data.get('whatsapp');
     const greeting = lang === 'pt' ? `Olá! Sou ${name}${whats ? ` (${whats})` : ''}. ${msg}` : `Hello! I'm ${name}${whats ? ` (${whats})` : ''}. ${msg}`;
-    window.open(`https://wa.me/5541987991419?text=${encodeURIComponent(greeting)}`, '_blank');
+    window.open(`https://wa.me/5541988242456?text=${encodeURIComponent(greeting)}`, '_blank');
     setSent(true);
     setTimeout(() => setSent(false), 3000);
   };
@@ -698,7 +1087,7 @@ function Contact({ lang, colors }: any) {
             </p>
             <div className="reveal rv-d3" style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               {[
-                { icon: Phone, text: '+55 (41) 98799-1419', href: 'https://wa.me/5541987991419' },
+                { icon: Phone, text: '+55 (41) 98824-2456', href: 'https://wa.me/5541988242456' },
                 { icon: Mail, text: 'contato@stauf.com.br', href: 'mailto:contato@stauf.com.br' },
                 { icon: MapPin, text: 'Curitiba, PR — Brasil', href: undefined },
               ].map((item) => {
@@ -765,12 +1154,14 @@ export default function App() {
       <Metrics lang={lang} colors={colors} />
       <Process lang={lang} colors={colors} />
       <About t={t} lang={lang} colors={colors} />
+      <SectorAutomation lang={lang} colors={colors} />
       <Cases lang={lang} colors={colors} />
       <CtaSection t={t} colors={colors} />
       <Contact lang={lang} colors={colors} />
       <Footer t={t} lang={lang} colors={colors} />
       </div>
       <CookieBanner colors={colors} />
+      <ChatWidget />
     </div>
   );
 }

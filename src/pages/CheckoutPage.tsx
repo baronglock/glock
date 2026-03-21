@@ -183,7 +183,7 @@ export function CheckoutPage() {
 
   const isConsulta = plan.price === 'Sob consulta' || plan.price === 'Custom';
   const whatsappMsg = encodeURIComponent(`Olá! Tenho interesse no plano ${plan.name} de ${plan.service}. Gostaria de mais informações.`);
-  const whatsappLink = `https://wa.me/5541987991419?text=${whatsappMsg}`;
+  const whatsappLink = `https://wa.me/5541988242456?text=${whatsappMsg}`;
 
   return (
     <div ref={ref}>
