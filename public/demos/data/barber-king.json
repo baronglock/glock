@@ -1,0 +1,55 @@
+{
+  "slug": "barber-king",
+  "name": "Barber King",
+  "niche": "barbearia",
+  "tagline": "O rei do corte em Curitiba",
+  "city": "Curitiba, PR",
+  "phone": "(41) 99999-9999",
+  "colors": {
+    "primary": "#c8a96e",
+    "secondary": "#1a1a2e",
+    "bg": "#0f0f17",
+    "text": "#f5f5f5",
+    "textMuted": "#999"
+  },
+  "hero": {
+    "title": "O corte que define seu estilo",
+    "subtitle": "Barbearia premium no coração de Curitiba. Cortes modernos, barba impecável e ambiente exclusivo.",
+    "image": "https://images.unsplash.com/photo-1585747860019-8e8ef6e96a0d?w=1400&q=85&auto=format&fit=crop"
+  },
+  "about": {
+    "text": "A Barber King nasceu da paixão por cortes de cabelo e barba de alta qualidade. Nosso espaço foi pensado pra você relaxar enquanto cuidamos do seu visual. Com profissionais experientes e produtos premium, garantimos que você saia daqui se sentindo o rei.",
+    "image": "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=80&auto=format&fit=crop"
+  },
+  "services": [
+    {"name": "Corte Masculino", "desc": "Corte personalizado com acabamento perfeito. Inclui lavagem e finalização.", "icon": "✂️"},
+    {"name": "Barba Completa", "desc": "Modelagem, aparar e hidratação com toalha quente. Experiência premium.", "icon": "🪒"},
+    {"name": "Corte + Barba", "desc": "Combo completo com corte e barba. O pacote mais pedido da casa.", "icon": "👑"},
+    {"name": "Pigmentação", "desc": "Disfarce de falhas na barba ou cabelo com técnica de micropigmentação.", "icon": "🎨"},
+    {"name": "Hidratação Capilar", "desc": "Tratamento profundo para cabelos ressecados. Brilho e maciez garantidos.", "icon": "💧"},
+    {"name": "Day Use Premium", "desc": "Corte, barba, hidratação e cerveja artesanal. A experiência completa.", "icon": "🍺"}
+  ],
+  "gallery": [
+    "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1585747860019-8e8ef6e96a0d?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1596728325395-481c7fa4e56a?w=600&q=80&auto=format&fit=crop"
+  ],
+  "reviews": [
+    {"name": "Lucas M.", "text": "Melhor barbearia que já fui. Atendimento top e o corte ficou impecável. Virei cliente fiel.", "stars": 5},
+    {"name": "Rafael S.", "text": "Ambiente incrível, cerveja gelada e um corte show. Experiência completa!", "stars": 5},
+    {"name": "Pedro H.", "text": "Sempre saio satisfeito. Os caras realmente entendem do que fazem. Recomendo demais.", "stars": 5}
+  ],
+  "features": [
+    {"label": "Clientes atendidos", "value": "2.500+"},
+    {"label": "Anos de experiência", "value": "8"},
+    {"label": "Avaliação Google", "value": "4.9 ⭐"},
+    {"label": "Profissionais", "value": "5"}
+  ],
+  "cta": {
+    "text": "Pronto pra um corte de rei?",
+    "buttonText": "Agendar agora"
+  }
+}
