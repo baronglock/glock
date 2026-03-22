@@ -50,18 +50,39 @@ function Icon({ emoji, color, size = 22 }: { emoji: string; color: string; size?
 const TIERS: Record<string, TierConfig> = {
   essencial: {
     name: 'Essencial', price: 'R$ 1.497', period: 'setup + R$ 149/mês',
-    servicesCount: 4, showGallery: false, showReviews: false, showFeatures: true,
-    showBlog: false, showFaq: false, animatedHero: false, glowEffects: false,
+    servicesCount: 4,
+    showGallery: true,       // galeria simples (fotos)
+    showReviews: false,      // sem avaliações
+    showFeatures: true,
+    showBlog: false,         // sem blog
+    showFaq: false,          // sem FAQ
+    animatedHero: false,     // hero estático
+    glowEffects: false,      // sem efeitos glow
+    // Visual: single page clean, sem animações, sem maps, sem dark mode toggle
   },
   profissional: {
     name: 'Profissional', price: 'R$ 2.997', period: 'setup + R$ 249/mês',
-    servicesCount: 6, showGallery: true, showReviews: true, showFeatures: true,
-    showBlog: false, showFaq: false, animatedHero: true, glowEffects: true,
+    servicesCount: 6,
+    showGallery: true,       // galeria com hover zoom
+    showReviews: true,       // avaliações Google
+    showFeatures: true,
+    showBlog: false,
+    showFaq: true,           // FAQ accordion
+    animatedHero: true,      // hero com parallax sutil
+    glowEffects: true,       // glow nos cards, shadows
+    // Visual: animações de scroll, Google Maps, catálogo interativo, SEO badges
   },
   premium: {
     name: 'Premium', price: 'Sob consulta', period: 'projeto personalizado',
-    servicesCount: 8, showGallery: true, showReviews: true, showFeatures: true,
-    showBlog: true, showFaq: true, animatedHero: true, glowEffects: true,
+    servicesCount: 8,
+    showGallery: true,       // galeria premium com lightbox feel
+    showReviews: true,
+    showFeatures: true,
+    showBlog: true,          // blog preview
+    showFaq: true,
+    animatedHero: true,      // hero cinematográfico
+    glowEffects: true,
+    // Visual: TUDO + blog, catálogo produtos, carrinho visual, painel admin mockup
   },
 };
 
@@ -340,8 +361,74 @@ export default function DemoPage() {
         </section>
       </Reveal>
 
+      {/* ── Google Maps (Pro+) ── */}
+      <Reveal show={t.glowEffects}>
+        <section style={{ padding: '96px 32px', background: `${c.primary}03` }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: 56 }}>
+              <span style={{ display: 'inline-block', padding: '4px 12px', background: `${c.primary}10`, color: c.primary, fontSize: 10, fontWeight: 600, letterSpacing: '0.1em', marginBottom: 14, borderRadius: 4, textTransform: 'uppercase' }}>Localização</span>
+              <h2 style={{ fontSize: 'clamp(1.7rem, 4vw, 2.4rem)', fontWeight: 300, color: c.text }}>Como chegar</h2>
+            </div>
+            <div style={{ borderRadius: 16, overflow: 'hidden', height: 350, background: `${c.primary}08`, display: 'flex', alignItems: 'center', justifyContent: 'center', border: `1px solid ${c.primary}10` }}>
+              <div style={{ textAlign: 'center', color: c.textMuted }}>
+                <div style={{ fontSize: 40, marginBottom: 12, opacity: 0.5 }}>⊙</div>
+                <p style={{ fontSize: 14 }}>Google Maps integrado</p>
+                <p style={{ fontSize: 12, opacity: 0.6 }}>{data.city}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </Reveal>
+
+      {/* ── Blog Preview (Premium) ── */}
+      <Reveal show={t.showBlog}>
+        <section style={{ padding: '96px 32px' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: 56 }}>
+              <span style={{ display: 'inline-block', padding: '4px 12px', background: `${c.primary}10`, color: c.primary, fontSize: 10, fontWeight: 600, letterSpacing: '0.1em', marginBottom: 14, borderRadius: 4, textTransform: 'uppercase' }}>Blog</span>
+              <h2 style={{ fontSize: 'clamp(1.7rem, 4vw, 2.4rem)', fontWeight: 300, color: c.text }}>Últimas novidades</h2>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 20 }}>
+              {[
+                { title: `Tendências 2026 para ${data.niche}`, excerpt: `As principais novidades do mercado de ${data.niche} que vão transformar seu negócio este ano.`, img: data.gallery[0] },
+                { title: `Como atrair mais clientes com presença digital`, excerpt: 'Descubra as estratégias que negócios locais estão usando para dobrar o faturamento.', img: data.gallery[1] },
+                { title: `${data.name}: nossa história e missão`, excerpt: `Conheça a trajetória da ${data.name} e o que nos motiva a oferecer o melhor serviço.`, img: data.about.image },
+              ].map((post, i) => (
+                <Reveal key={i} delay={i * 100}>
+                  <div style={{ borderRadius: 14, overflow: 'hidden', background: c.bg, border: `1px solid ${c.primary}08`, transition: 'all 0.4s', cursor: 'pointer' }}
+                    onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = `0 12px 32px ${c.primary}10`; }}
+                    onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = 'none'; }}
+                  >
+                    <div style={{ height: 180, overflow: 'hidden' }}>
+                      <img src={post.img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        onError={e => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80&auto=format&fit=crop'; }} />
+                    </div>
+                    <div style={{ padding: 22 }}>
+                      <span style={{ fontSize: 11, color: c.primary, fontWeight: 600 }}>ARTIGO</span>
+                      <h3 style={{ fontSize: 16, fontWeight: 600, color: c.text, marginTop: 8, marginBottom: 10 }}>{post.title}</h3>
+                      <p style={{ fontSize: 13, color: c.textMuted, lineHeight: 1.7 }}>{post.excerpt}</p>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      </Reveal>
+
+      {/* ── CTA Section (Pro+ tem mais impacto) ── */}
+      <Reveal>
+        <section style={{ padding: '80px 32px', textAlign: 'center', background: t.glowEffects ? `linear-gradient(135deg, ${c.primary}08 0%, transparent 50%)` : 'transparent' }}>
+          <div style={{ maxWidth: 600, margin: '0 auto' }}>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, marginBottom: 16, color: c.text }}>{data.cta.text}</h2>
+            <p style={{ color: c.textMuted, marginBottom: 32, fontSize: 15 }}>Entre em contato e transforme seu negócio.</p>
+            <button style={{ padding: '16px 40px', background: c.primary, color: c.bg, border: 'none', borderRadius: 12, fontSize: 16, fontWeight: 700, cursor: 'pointer', boxShadow: t.glowEffects ? `0 8px 32px ${c.primary}30` : 'none' }}>{data.cta.buttonText}</button>
+          </div>
+        </section>
+      </Reveal>
+
       {/* ── Contact ── */}
-      <section id="contato" style={{ padding: '96px 32px', background: t.showFaq ? `${c.primary}03` : 'transparent' }}>
+      <section id="contato" style={{ padding: '96px 32px', background: `${c.primary}03` }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56 }} className="demo-grid">
           <Reveal>
             <div>
