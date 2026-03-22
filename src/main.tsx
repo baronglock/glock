@@ -11,6 +11,7 @@ import { ThemeProvider } from './hooks/useTheme'
 import { PrivacyPage } from './pages/PrivacyPage'
 import { CheckoutPage } from './pages/CheckoutPage'
 import DemoPage from './pages/DemoPage'
+import DemoListPage from './pages/DemoListPage'
 import { HelmetProvider } from 'react-helmet-async'
 
 createRoot(document.getElementById('root')!).render(
@@ -23,6 +24,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/" element={<App />} />
           <Route path="/privacidade" element={<Layout><PrivacyPage /></Layout>} />
           <Route path="/checkout" element={<Layout><CheckoutPage /></Layout>} />
+          <Route path="/demo" element={<DemoListPage />} />
           <Route path="/demo/:slug" element={<DemoPage />} />
           {Object.entries(servicesData).map(([slug, data]) => (
             <Route
