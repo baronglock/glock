@@ -153,7 +153,7 @@ export default function DemoPage() {
           <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(160deg, ${c.bg} 0%, ${c.bg}d0 35%, ${c.bg}60 65%, ${c.bg}30 100%)` }} />
           {lv >= 2 && <div style={{ position: 'absolute', bottom: '-20%', right: '-10%', width: '60%', height: '60%', background: `radial-gradient(circle, ${c.primary}12 0%, transparent 70%)`, pointerEvents: 'none' }} />}
         </div>
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: 800, padding: '140px 32px 120px', marginLeft: '8%' }}>
+        <div className="demo-hero-content" style={{ position: 'relative', zIndex: 2, maxWidth: 800, padding: '140px 32px 120px', marginLeft: '8%' }}>
           <div style={{ display: 'inline-block', padding: '6px 16px', background: `${c.primary}15`, border: `1px solid ${c.primary}25`, borderRadius: 6, marginBottom: 28 }}>
             <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.12em', color: c.primary, textTransform: 'uppercase' }}>{data.tagline}</span>
           </div>
@@ -227,7 +227,7 @@ export default function DemoPage() {
       {/* ══ BOOKING MODAL (Pro+) ══ */}
       {lv >= 2 && bookingService && (
         <div style={{ position: 'fixed', inset: 0, zIndex: 200, background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }} onClick={() => !bookingDone && setBookingService(null)}>
-          <div style={{ background: c.bg, border: `1px solid ${c.primary}20`, borderRadius: 20, padding: 32, maxWidth: 500, width: '100%', maxHeight: '90vh', overflowY: 'auto' }} onClick={e => e.stopPropagation()}>
+          <div style={{ background: c.bg, border: `1px solid ${c.primary}20`, borderRadius: 20, padding: 'clamp(20px, 4vw, 32px)', maxWidth: 500, width: 'calc(100% - 32px)', maxHeight: '90vh', overflowY: 'auto' }} onClick={e => e.stopPropagation()}>
             {bookingDone ? (
               <div style={{ textAlign: 'center', padding: '40px 0' }}>
                 <div style={{ fontSize: 48, marginBottom: 16 }}>✓</div>
@@ -435,7 +435,26 @@ export default function DemoPage() {
       </div>
 
       <style>{`
-        @media(max-width:768px){.demo-nav-links{display:none!important}.demo-hamburger{display:block!important}.demo-grid{grid-template-columns:1fr!important}.demo-gallery{grid-template-columns:1fr 1fr!important}.demo-gallery>div{grid-column:span 1!important;aspect-ratio:1/1!important}.demo-banner-text{display:none}}
+        @media(max-width:768px){
+          .demo-nav-links{display:none!important}
+          .demo-hamburger{display:block!important}
+          .demo-grid{grid-template-columns:1fr!important}
+          .demo-gallery{grid-template-columns:1fr 1fr!important}
+          .demo-gallery>div{grid-column:span 1!important;aspect-ratio:1/1!important}
+          .demo-banner-text{display:none}
+          .demo-hero-content{margin-left:0!important;padding:120px 20px 80px!important;text-align:center}
+          .demo-hero-content>div:last-of-type{justify-content:center}
+          section{padding-left:16px!important;padding-right:16px!important}
+          nav{padding:12px 16px!important}
+          h1{font-size:2.2rem!important}
+          h2{font-size:1.5rem!important}
+        }
+        @media(max-width:480px){
+          .demo-gallery{grid-template-columns:1fr!important}
+          section{padding-top:56px!important;padding-bottom:56px!important}
+          h1{font-size:1.8rem!important}
+          h2{font-size:1.3rem!important}
+        }
       `}</style>
     </div>
   );
