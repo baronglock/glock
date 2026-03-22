@@ -78,6 +78,7 @@ export default function DemoPage() {
   const [bookingTime, setBookingTime] = useState('');
   const [bookingDone, setBookingDone] = useState(false);
   const [loyaltyPoints] = useState(1250);
+  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
 
   useEffect(() => {
     fetch(`/demos/data/${slug}.json`)
@@ -324,21 +325,51 @@ export default function DemoPage() {
         </section>
       </R>
 
-      {/* ══ GALLERY ══ */}
+      {/* ══ GALLERY — grid 3x2 uniforme + lightbox ══ */}
       <R><section id="galeria" style={{ padding: '96px 32px', background: `${c.primary}03` }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 56 }}><SectionLabel text="Galeria" /><SectionTitle text="Nosso espaço" /></div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }} className="demo-gallery">
-            {data.gallery.map((img, i) => (
-              <div key={i} style={{ borderRadius: 16, overflow: 'hidden', gridColumn: (i === 0 || i === 3) ? 'span 2' : 'span 1', aspectRatio: (i === 0 || i === 3) ? '2/1' : '1/1' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }} className="demo-gallery">
+            {data.gallery.slice(0, 6).map((img, i) => (
+              <div key={i} onClick={() => setLightboxIdx(i)} style={{ borderRadius: 16, overflow: 'hidden', aspectRatio: '4/3', cursor: 'pointer', position: 'relative' }}>
                 <img src={img} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s' }}
-                  onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'} onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+                  onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.08)'} onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
                   onError={e => { (e.target as HTMLImageElement).src = fallbackImg.replace('1400', '600'); }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0)', transition: 'background 0.3s', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                  onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.25)'}
+                  onMouseLeave={e => e.currentTarget.style.background = 'rgba(0,0,0,0)'}>
+                  <span style={{ opacity: 0, transition: 'opacity 0.3s', fontSize: 24, color: '#fff' }}
+                    ref={el => { if (el) { el.parentElement!.onmouseenter = () => el.style.opacity = '1'; el.parentElement!.onmouseleave = () => el.style.opacity = '0'; } }}>⊕</span>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section></R>
+
+      {/* ══ LIGHTBOX ══ */}
+      {lightboxIdx !== null && (
+        <div style={{ position: 'fixed', inset: 0, zIndex: 300, background: 'rgba(0,0,0,0.92)', backdropFilter: 'blur(16px)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          onClick={() => setLightboxIdx(null)}>
+          {/* Prev */}
+          <button onClick={e => { e.stopPropagation(); setLightboxIdx(lightboxIdx > 0 ? lightboxIdx - 1 : data.gallery.length - 1); }}
+            style={{ position: 'absolute', left: 20, top: '50%', transform: 'translateY(-50%)', width: 48, height: 48, borderRadius: '50%', background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', fontSize: 24, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.2s' }}
+            onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'} onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}>‹</button>
+          {/* Image */}
+          <img src={data.gallery[lightboxIdx]} alt="" onClick={e => e.stopPropagation()}
+            style={{ maxWidth: '85vw', maxHeight: '85vh', objectFit: 'contain', borderRadius: 12 }}
+            onError={e => { (e.target as HTMLImageElement).src = fallbackImg; }} />
+          {/* Next */}
+          <button onClick={e => { e.stopPropagation(); setLightboxIdx(lightboxIdx < data.gallery.length - 1 ? lightboxIdx + 1 : 0); }}
+            style={{ position: 'absolute', right: 20, top: '50%', transform: 'translateY(-50%)', width: 48, height: 48, borderRadius: '50%', background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', fontSize: 24, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.2s' }}
+            onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'} onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}>›</button>
+          {/* Close */}
+          <button onClick={() => setLightboxIdx(null)}
+            style={{ position: 'absolute', top: 20, right: 20, width: 40, height: 40, borderRadius: '50%', background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', fontSize: 20, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>✕</button>
+          {/* Counter */}
+          <div style={{ position: 'absolute', bottom: 24, left: '50%', transform: 'translateX(-50%)', color: 'rgba(255,255,255,0.6)', fontSize: 13 }}>{lightboxIdx + 1} / {data.gallery.length}</div>
+        </div>
+      )}
 
       {/* ══ REVIEWS (Pro+) ══ */}
       <R show={lv >= 2}><section id="avaliações" style={{ padding: '96px 32px' }}>
