@@ -79,8 +79,8 @@ export default function DemoPage() {
   const [bookingDone, setBookingDone] = useState(false);
   const [loyaltyPoints] = useState(1250);
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
-  const [cart, setCart] = useState<{ name: string; price: string }[]>([]);
-  const [showCart, setShowCart] = useState(false);
+  const [cart, setCart] = useState<{ name: string; price: string; type: 'produto' | 'servico'; detail?: string }[]>([]);
+  const [cartOpen, setCartOpen] = useState(false);
 
   useEffect(() => {
     fetch(`/demos/data/${slug}.json`)
@@ -117,8 +117,17 @@ export default function DemoPage() {
   const times = ['09:00', '09:45', '10:30', '11:15', '14:00', '14:45', '15:30', '16:15', '17:00'];
 
   const handleBook = () => {
+    if (bookingService && bookingStaff && bookingDate && bookingTime) {
+      setCart(prev => [...prev, {
+        name: bookingService.name,
+        price: bookingService.price || 'Sob consulta',
+        type: 'servico',
+        detail: `${bookingStaff.name} · ${bookingDate} às ${bookingTime}`,
+      }]);
+      setCartOpen(true);
+    }
     setBookingDone(true);
-    setTimeout(() => { setBookingDone(false); setBookingService(null); setBookingStaff(null); setBookingDate(''); setBookingTime(''); }, 3000);
+    setTimeout(() => { setBookingDone(false); setBookingService(null); setBookingStaff(null); setBookingDate(''); setBookingTime(''); }, 2500);
   };
 
   const fallbackImg = 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=85&auto=format&fit=crop';
@@ -449,7 +458,7 @@ export default function DemoPage() {
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 56 }}>
             <div><SectionLabel text="Loja" /><SectionTitle text="Nossos produtos" /></div>
-            <button onClick={() => setShowCart(true)} style={{ position: 'relative', padding: '10px 20px', ...glass(c.primary), borderRadius: 12, cursor: 'pointer', color: c.text, fontSize: 13, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8 }}>
+            <button onClick={() => setCartOpen(true)} style={{ position: 'relative', padding: '10px 20px', ...glass(c.primary), borderRadius: 12, cursor: 'pointer', color: c.text, fontSize: 13, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8 }}>
               ◇ Carrinho
               {cart.length > 0 && <span style={{ position: 'absolute', top: -6, right: -6, width: 20, height: 20, borderRadius: '50%', background: c.primary, color: c.bg, fontSize: 11, fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{cart.length}</span>}
             </button>
@@ -474,7 +483,7 @@ export default function DemoPage() {
                     <h4 style={{ fontSize: 14, fontWeight: 600, color: c.text, marginBottom: 8 }}>{product.name}</h4>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <span style={{ fontSize: 20, fontWeight: 800, color: c.primary }}>{product.price}</span>
-                      <button onClick={() => setCart(prev => [...prev, { name: product.name, price: product.price }])}
+                      <button onClick={() => { setCart(prev => [...prev, { name: product.name, price: product.price, type: 'produto' as const }]); setCartOpen(true); }}
                         style={{ padding: '8px 16px', background: `${c.primary}15`, color: c.primary, border: `1px solid ${c.primary}25`, borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s' }}
                         onMouseEnter={e => { e.currentTarget.style.background = c.primary; e.currentTarget.style.color = c.bg; }}
                         onMouseLeave={e => { e.currentTarget.style.background = `${c.primary}15`; e.currentTarget.style.color = c.primary; }}>
@@ -489,42 +498,92 @@ export default function DemoPage() {
         </div>
       </section></R>
 
-      {/* ══ CART MODAL (Premium) ══ */}
-      {showCart && (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 250, background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}
-          onClick={() => setShowCart(false)}>
-          <div style={{ background: c.bg, border: `1px solid ${c.primary}20`, borderRadius: 20, padding: 'clamp(20px, 4vw, 32px)', maxWidth: 420, width: 'calc(100% - 32px)' }}
-            onClick={e => e.stopPropagation()}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
-              <h3 style={{ fontSize: 18, fontWeight: 600, color: c.text }}>Carrinho ({cart.length})</h3>
-              <button onClick={() => setShowCart(false)} style={{ background: 'none', border: 'none', color: c.textMuted, fontSize: 18, cursor: 'pointer' }}>✕</button>
-            </div>
+      {/* ══ CART SIDEBAR (Premium — lateral fixa) ══ */}
+      {lv >= 3 && (<>
+        {/* Overlay */}
+        {cartOpen && <div onClick={() => setCartOpen(false)} style={{ position: 'fixed', inset: 0, zIndex: 249, background: 'rgba(0,0,0,0.5)', transition: 'opacity 0.3s' }} />}
+
+        {/* Cart button fixo */}
+        {!cartOpen && cart.length > 0 && (
+          <button onClick={() => setCartOpen(true)} style={{
+            position: 'fixed', top: '50%', right: 0, transform: 'translateY(-50%)', zIndex: 248,
+            padding: '14px 12px', background: c.primary, color: c.bg, border: 'none',
+            borderRadius: '12px 0 0 12px', cursor: 'pointer', fontSize: 13, fontWeight: 700,
+            display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6,
+            boxShadow: `0 4px 20px ${c.primary}40`, writingMode: 'vertical-lr',
+          }}>
+            ◇ {cart.length}
+          </button>
+        )}
+
+        {/* Sidebar */}
+        <div style={{
+          position: 'fixed', top: 0, right: 0, bottom: 0, zIndex: 250,
+          width: 'clamp(300px, 30vw, 380px)',
+          background: c.bg, borderLeft: `1px solid ${c.primary}15`,
+          transform: cartOpen ? 'translateX(0)' : 'translateX(100%)',
+          transition: 'transform 0.35s cubic-bezier(0.4,0,0.2,1)',
+          display: 'flex', flexDirection: 'column',
+          boxShadow: cartOpen ? `-8px 0 40px rgba(0,0,0,0.4)` : 'none',
+        }}>
+          {/* Header */}
+          <div style={{ padding: '20px 24px', borderBottom: `1px solid ${c.primary}10`, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <h3 style={{ fontSize: 16, fontWeight: 700, color: c.text }}>Carrinho ({cart.length})</h3>
+            <button onClick={() => setCartOpen(false)} style={{ background: 'none', border: 'none', color: c.textMuted, fontSize: 18, cursor: 'pointer' }}>✕</button>
+          </div>
+
+          {/* Items */}
+          <div style={{ flex: 1, overflowY: 'auto', padding: '16px 24px' }}>
             {cart.length === 0 ? (
-              <p style={{ color: c.textMuted, fontSize: 14, textAlign: 'center', padding: '32px 0' }}>Carrinho vazio</p>
-            ) : (<>
-              {cart.map((item, i) => (
-                <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 0', borderBottom: `1px solid ${c.primary}08` }}>
-                  <span style={{ fontSize: 14, color: c.text }}>{item.name}</span>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <div style={{ textAlign: 'center', padding: '48px 0' }}>
+                <div style={{ fontSize: 36, opacity: 0.3, marginBottom: 12 }}>◇</div>
+                <p style={{ color: c.textMuted, fontSize: 14 }}>Carrinho vazio</p>
+                <p style={{ color: `${c.textMuted}80`, fontSize: 12, marginTop: 4 }}>Adicione serviços ou produtos</p>
+              </div>
+            ) : (
+              cart.map((item, i) => (
+                <div key={i} style={{ padding: '14px 0', borderBottom: `1px solid ${c.primary}06`, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                      <span style={{ padding: '2px 8px', background: item.type === 'servico' ? `${c.primary}15` : `${c.primary}08`, color: c.primary, fontSize: 9, fontWeight: 700, borderRadius: 4, textTransform: 'uppercase' }}>
+                        {item.type === 'servico' ? 'Serviço' : 'Produto'}
+                      </span>
+                    </div>
+                    <p style={{ fontSize: 14, fontWeight: 600, color: c.text, marginBottom: 2 }}>{item.name}</p>
+                    {item.detail && <p style={{ fontSize: 11, color: c.textMuted }}>{item.detail}</p>}
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
                     <span style={{ fontSize: 14, fontWeight: 700, color: c.primary }}>{item.price}</span>
                     <button onClick={() => setCart(prev => prev.filter((_, idx) => idx !== i))}
-                      style={{ background: 'none', border: 'none', color: c.textMuted, cursor: 'pointer', fontSize: 16 }}>✕</button>
+                      style={{ background: `${c.primary}08`, border: 'none', color: c.textMuted, cursor: 'pointer', fontSize: 14, width: 24, height: 24, borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>✕</button>
                   </div>
                 </div>
-              ))}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 20, paddingTop: 16, borderTop: `1px solid ${c.primary}15` }}>
-                <span style={{ fontSize: 14, fontWeight: 600, color: c.text }}>Total</span>
-                <span style={{ fontSize: 22, fontWeight: 800, color: c.primary }}>
-                  R$ {cart.reduce((sum, item) => sum + parseFloat(item.price.replace('R$ ', '').replace(',', '.')), 0).toFixed(0)}
+              ))
+            )}
+          </div>
+
+          {/* Footer */}
+          {cart.length > 0 && (
+            <div style={{ padding: '20px 24px', borderTop: `1px solid ${c.primary}12` }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+                <span style={{ fontSize: 14, color: c.textMuted }}>Total</span>
+                <span style={{ fontSize: 24, fontWeight: 800, color: c.primary }}>
+                  R$ {cart.reduce((sum, item) => {
+                    const val = parseFloat((item.price || '0').replace('R$ ', '').replace('.', '').replace(',', '.'));
+                    return sum + (isNaN(val) ? 0 : val);
+                  }, 0).toFixed(0)}
                 </span>
               </div>
-              <button style={{ width: '100%', marginTop: 20, padding: '14px', background: c.primary, color: c.bg, border: 'none', borderRadius: 10, fontSize: 15, fontWeight: 700, cursor: 'pointer' }}>
-                Finalizar compra
+              <button style={{ width: '100%', padding: '14px', background: c.primary, color: c.bg, border: 'none', borderRadius: 10, fontSize: 14, fontWeight: 700, cursor: 'pointer', marginBottom: 8, transition: 'all 0.2s', boxShadow: `0 4px 16px ${c.primary}30` }}>
+                Pagar online
               </button>
-            </>)}
-          </div>
+              <button style={{ width: '100%', padding: '12px', background: 'transparent', color: c.textMuted, border: `1px solid ${c.primary}15`, borderRadius: 10, fontSize: 13, fontWeight: 500, cursor: 'pointer' }}>
+                Pagar presencialmente
+              </button>
+            </div>
+          )}
         </div>
-      )}
+      </>)}
 
       {/* ══ FAQ (Pro+) ══ */}
       <R show={lv >= 2 && !!data.faq?.length}><section style={{ padding: '96px 32px', background: `${c.primary}03` }}>
