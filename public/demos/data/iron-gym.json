@@ -1,0 +1,82 @@
+{
+  "slug": "iron-gym",
+  "name": "Iron Gym",
+  "niche": "academia",
+  "tagline": "Força que transforma vidas",
+  "city": "Curitiba, PR",
+  "phone": "(41) 99888-7766",
+  "colors": {
+    "primary": "#22c55e",
+    "secondary": "#1a1a2e",
+    "bg": "#0a0f0a",
+    "text": "#f0f5f0",
+    "textMuted": "#7a9a7a"
+  },
+  "hero": {
+    "title": "Supere seus limites aqui",
+    "subtitle": "Academia completa com equipamentos de última geração, personal trainers certificados e ambiente que inspira resultados reais.",
+    "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1400&q=85&auto=format&fit=crop"
+  },
+  "about": {
+    "text": "A Iron Gym nasceu pra quem leva treino a sério. Nosso espaço de 800m² foi projetado pra oferecer a melhor experiência de treino de Curitiba. Com equipamentos importados, área funcional, salas de spinning e yoga, e profissionais que realmente se importam com seu resultado.",
+    "image": "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&q=80&auto=format&fit=crop"
+  },
+  "services": [
+    {"name": "Musculação", "desc": "Área completa com equipamentos de última geração pra todos os níveis.", "icon": "🏋️", "price": "Incluso", "time": "Livre", "category": "Treino", "popular": true},
+    {"name": "Personal Trainer", "desc": "Acompanhamento individual com plano personalizado de treino.", "icon": "🎯", "price": "R$ 180/mês", "time": "60 min", "category": "Personal"},
+    {"name": "Spinning", "desc": "Aulas de ciclismo indoor com música e energia contagiante.", "icon": "🏋️", "price": "Incluso", "time": "45 min", "category": "Aulas"},
+    {"name": "Funcional", "desc": "Treino funcional em grupo com circuitos dinâmicos e desafiadores.", "icon": "🏋️", "price": "Incluso", "time": "50 min", "category": "Aulas", "popular": true},
+    {"name": "Yoga", "desc": "Equilíbrio corpo e mente com instrutora certificada internacionalmente.", "icon": "🌿", "price": "R$ 90/mês", "time": "60 min", "category": "Aulas"},
+    {"name": "Avaliação Física", "desc": "Bioimpedância, medidas corporais e definição de metas com nutricionista.", "icon": "📋", "price": "R$ 120", "time": "45 min", "category": "Avaliação"},
+    {"name": "Boxe", "desc": "Treino de boxe pra condicionamento, defesa pessoal e queima calórica.", "icon": "🏋️", "price": "R$ 110/mês", "time": "60 min", "category": "Luta"},
+    {"name": "Consultoria Online", "desc": "Treino e dieta acompanhados à distância pelo app da academia.", "icon": "📱", "price": "R$ 150/mês", "time": "Remoto", "category": "Personal"}
+  ],
+  "staff": [
+    {"name": "Ricardo Alves", "role": "Personal Trainer", "rating": 4.9, "reviews": 287, "available": true},
+    {"name": "Camila Santos", "role": "Instrutora de Yoga", "rating": 4.8, "reviews": 195, "available": true},
+    {"name": "Lucas Ferreira", "role": "Coach Funcional", "rating": 4.9, "reviews": 342, "available": false},
+    {"name": "Amanda Lima", "role": "Nutricionista", "rating": 4.7, "reviews": 163, "available": true}
+  ],
+  "plans": [
+    {"name": "Basic", "price": "R$ 89/mês", "features": ["Musculação livre", "Horário comercial", "1 avaliação trimestral", "Acesso ao app"]},
+    {"name": "Pro", "price": "R$ 149/mês", "features": ["Musculação 24h", "Todas as aulas em grupo", "Avaliação mensal", "Armário pessoal", "Acesso área funcional", "Desconto em produtos"], "popular": true},
+    {"name": "Black", "price": "R$ 249/mês", "features": ["Acesso irrestrito 24h", "Personal 2x/semana", "Nutricionista incluso", "Todas as modalidades", "Toalha e suplemento", "Prioridade total", "Área VIP"]}
+  ],
+  "products": [
+    {"name": "Whey Protein 900g", "price": "R$ 129", "img": "https://images.unsplash.com/photo-1598289431512-b97b0917affc?w=300&q=80&auto=format&fit=crop"},
+    {"name": "Squeeze Iron Gym", "price": "R$ 45", "img": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=300&q=80&auto=format&fit=crop"},
+    {"name": "Luvas de Treino", "price": "R$ 79", "img": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=300&q=80&auto=format&fit=crop"},
+    {"name": "Camiseta Iron Gym", "price": "R$ 69", "img": "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=300&q=80&auto=format&fit=crop", "popular": true}
+  ],
+  "gallery": [
+    "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1576678927484-cc907957088c?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1558611848-73f7eb4001a1?w=600&q=80&auto=format&fit=crop"
+  ],
+  "reviews": [
+    {"name": "Marcos T.", "text": "Melhor academia de Curitiba sem dúvida. Equipamentos novos e profissionais muito atenciosos.", "stars": 5, "time": "1 semana atrás"},
+    {"name": "Juliana R.", "text": "O personal do Ricardo mudou minha vida. Perdi 15kg em 6 meses com acompanhamento top.", "stars": 5, "time": "2 semanas atrás"},
+    {"name": "Felipe M.", "text": "Ambiente incrível, nunca lotado. A área funcional é a melhor que já treinei.", "stars": 5, "time": "1 mês atrás"},
+    {"name": "Ana C.", "text": "As aulas de yoga da Camila são perfeitas. Saio renovada toda vez.", "stars": 5, "time": "1 mês atrás"}
+  ],
+  "features": [
+    {"label": "Alunos ativos", "value": "1.200+"},
+    {"label": "Área de treino", "value": "800m²"},
+    {"label": "Avaliação Google", "value": "4.8 ★"},
+    {"label": "Aberto desde", "value": "2019"}
+  ],
+  "cta": {
+    "text": "Pronto pra transformação?",
+    "buttonText": "Começar agora"
+  },
+  "faq": [
+    {"q": "Posso fazer aula experimental?", "a": "Sim! Oferecemos 1 dia grátis pra você conhecer toda a estrutura e experimentar as aulas."},
+    {"q": "Tem estacionamento?", "a": "Sim, temos estacionamento próprio gratuito para alunos."},
+    {"q": "Qual o horário de funcionamento?", "a": "Plano Basic: 6h-22h (seg-sex), 8h-14h (sáb). Plano Pro e Black: 24 horas."},
+    {"q": "Posso cancelar a qualquer momento?", "a": "Sim, sem multa e sem fidelidade. Basta avisar com 30 dias de antecedência."},
+    {"q": "Tem acompanhamento nutricional?", "a": "O plano Black inclui nutricionista. Nos outros planos, o serviço está disponível à parte."}
+  ]
+}
