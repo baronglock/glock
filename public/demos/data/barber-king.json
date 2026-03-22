@@ -231,5 +231,28 @@
       "q": "Como funciona a assinatura?",
       "a": "Você escolhe o plano, faz o pagamento mensal e agenda seus cortes pelo app ou WhatsApp. Sem fidelidade."
     }
+  ],
+  "products": [
+    {
+      "name": "Pomada Modeladora",
+      "price": "R$ 65",
+      "img": "https://images.unsplash.com/photo-1608979048467-6194eabd0ada?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Óleo para Barba",
+      "price": "R$ 45",
+      "img": "https://images.unsplash.com/photo-1626808642875-0aa545482dfb?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Shampoo Premium",
+      "price": "R$ 55",
+      "img": "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Kit Barba Completo",
+      "price": "R$ 149",
+      "img": "https://images.unsplash.com/photo-1621607512214-68297480165e?w=300&q=80&auto=format&fit=crop",
+      "popular": true
+    }
   ]
 }

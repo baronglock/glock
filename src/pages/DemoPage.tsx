@@ -7,6 +7,7 @@ interface ReviewItem { name: string; text: string; stars: number; time?: string 
 interface FeatureItem { label: string; value: string }
 interface StaffItem { name: string; role: string; rating: number; reviews: number; available: boolean }
 interface PlanItem { name: string; price: string; features: string[]; popular?: boolean }
+interface ProductItem { name: string; price: string; img: string; popular?: boolean }
 interface DemoData {
   slug: string; name: string; niche: string; tagline: string; city: string; phone: string;
   logo?: string;
@@ -20,6 +21,7 @@ interface DemoData {
   cta: { text: string; buttonText: string };
   faq?: { q: string; a: string }[];
   staff?: StaffItem[];
+  products?: ProductItem[];
   plans?: PlanItem[];
 }
 
@@ -464,12 +466,12 @@ export default function DemoPage() {
             </button>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 18 }}>
-            {[
-              { name: 'Pomada Modeladora', price: 'R$ 65', img: 'https://images.unsplash.com/photo-1585747860019-8e8ef6e96a0d?w=300&q=80&auto=format&fit=crop' },
-              { name: 'Óleo para Barba', price: 'R$ 45', img: 'https://images.unsplash.com/photo-1596728325395-481c7fa4e56a?w=300&q=80&auto=format&fit=crop' },
-              { name: 'Shampoo Premium', price: 'R$ 55', img: 'https://images.unsplash.com/photo-1585747860019-8e8ef6e96a0d?w=300&q=80&auto=format&fit=crop' },
-              { name: 'Kit Barba Completo', price: 'R$ 149', img: 'https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=300&q=80&auto=format&fit=crop', popular: true },
-            ].map((product, i) => (
+            {(data.products || [
+              { name: 'Produto 1', price: 'R$ 50', img: fallbackImg.replace('1400', '300') },
+              { name: 'Produto 2', price: 'R$ 75', img: fallbackImg.replace('1400', '300') },
+              { name: 'Produto 3', price: 'R$ 60', img: fallbackImg.replace('1400', '300') },
+              { name: 'Produto 4', price: 'R$ 120', img: fallbackImg.replace('1400', '300'), popular: true },
+            ]).map((product, i) => (
               <R key={product.name} d={i * 80}>
                 <div style={{ ...glass(c.primary), borderRadius: 16, overflow: 'hidden', transition: 'all 0.4s' }}
                   onMouseEnter={e => { e.currentTarget.style.borderColor = `${c.primary}30`; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = `0 0 24px ${c.primary}12`; }}
