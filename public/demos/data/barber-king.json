@@ -22,12 +22,46 @@
     "image": "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=80&auto=format&fit=crop"
   },
   "services": [
-    {"name": "Corte Masculino", "desc": "Corte personalizado com acabamento perfeito. Inclui lavagem e finalização.", "icon": "✂️"},
-    {"name": "Barba Completa", "desc": "Modelagem, aparar e hidratação com toalha quente. Experiência premium.", "icon": "🪒"},
-    {"name": "Corte + Barba", "desc": "Combo completo com corte e barba. O pacote mais pedido da casa.", "icon": "👑"},
-    {"name": "Pigmentação", "desc": "Disfarce de falhas na barba ou cabelo com técnica de micropigmentação.", "icon": "🎨"},
-    {"name": "Hidratação Capilar", "desc": "Tratamento profundo para cabelos ressecados. Brilho e maciez garantidos.", "icon": "💧"},
-    {"name": "Day Use Premium", "desc": "Corte, barba, hidratação e cerveja artesanal. A experiência completa.", "icon": "🍺"}
+    {
+      "name": "Corte Masculino",
+      "desc": "Corte personalizado com acabamento perfeito. Inclui lavagem e finalização.",
+      "icon": "✂️"
+    },
+    {
+      "name": "Barba Completa",
+      "desc": "Modelagem, aparar e hidratação com toalha quente. Experiência premium.",
+      "icon": "🪒"
+    },
+    {
+      "name": "Corte + Barba",
+      "desc": "Combo completo com corte e barba. O pacote mais pedido da casa.",
+      "icon": "👑"
+    },
+    {
+      "name": "Pigmentação",
+      "desc": "Disfarce de falhas na barba ou cabelo com técnica de micropigmentação.",
+      "icon": "🎨"
+    },
+    {
+      "name": "Hidratação Capilar",
+      "desc": "Tratamento profundo para cabelos ressecados. Brilho e maciez garantidos.",
+      "icon": "💧"
+    },
+    {
+      "name": "Day Use Premium",
+      "desc": "Corte, barba, hidratação e cerveja artesanal. A experiência completa.",
+      "icon": "🍺"
+    },
+    {
+      "name": "Design de Sobrancelha",
+      "desc": "Alinhamento e design com técnica precisa. Visual limpo e definido.",
+      "icon": "🎯"
+    },
+    {
+      "name": "Relaxamento Capilar",
+      "desc": "Tratamento para redução de volume e frizz. Resultado natural e duradouro.",
+      "icon": "💇"
+    }
   ],
   "gallery": [
     "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80&auto=format&fit=crop",
@@ -38,18 +72,60 @@
     "https://images.unsplash.com/photo-1596728325395-481c7fa4e56a?w=600&q=80&auto=format&fit=crop"
   ],
   "reviews": [
-    {"name": "Lucas M.", "text": "Melhor barbearia que já fui. Atendimento top e o corte ficou impecável. Virei cliente fiel.", "stars": 5},
-    {"name": "Rafael S.", "text": "Ambiente incrível, cerveja gelada e um corte show. Experiência completa!", "stars": 5},
-    {"name": "Pedro H.", "text": "Sempre saio satisfeito. Os caras realmente entendem do que fazem. Recomendo demais.", "stars": 5}
+    {
+      "name": "Lucas M.",
+      "text": "Melhor barbearia que já fui. Atendimento top e o corte ficou impecável. Virei cliente fiel.",
+      "stars": 5
+    },
+    {
+      "name": "Rafael S.",
+      "text": "Ambiente incrível, cerveja gelada e um corte show. Experiência completa!",
+      "stars": 5
+    },
+    {
+      "name": "Pedro H.",
+      "text": "Sempre saio satisfeito. Os caras realmente entendem do que fazem. Recomendo demais.",
+      "stars": 5
+    }
   ],
   "features": [
-    {"label": "Clientes atendidos", "value": "2.500+"},
-    {"label": "Anos de experiência", "value": "8"},
-    {"label": "Avaliação Google", "value": "4.9 ⭐"},
-    {"label": "Profissionais", "value": "5"}
+    {
+      "label": "Clientes atendidos",
+      "value": "2.500+"
+    },
+    {
+      "label": "Anos de experiência",
+      "value": "8"
+    },
+    {
+      "label": "Avaliação Google",
+      "value": "4.9 ⭐"
+    },
+    {
+      "label": "Profissionais",
+      "value": "5"
+    }
   ],
   "cta": {
     "text": "Pronto pra um corte de rei?",
     "buttonText": "Agendar agora"
-  }
+  },
+  "faq": [
+    {
+      "q": "Preciso agendar ou posso ir direto?",
+      "a": "Recomendamos agendar pelo WhatsApp pra garantir seu horário, mas aceitamos clientes sem agendamento quando há disponibilidade."
+    },
+    {
+      "q": "Quanto tempo dura um corte completo?",
+      "a": "Um corte masculino leva em média 40 minutos. O combo corte + barba, cerca de 1 hora."
+    },
+    {
+      "q": "Vocês atendem crianças?",
+      "a": "Sim! Temos experiência com cortes infantis e um ambiente descontraído pra os pequenos."
+    },
+    {
+      "q": "Quais formas de pagamento aceitam?",
+      "a": "Aceitamos PIX, cartões de débito e crédito, e dinheiro."
+    }
+  ]
 }
