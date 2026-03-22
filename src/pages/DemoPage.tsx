@@ -79,6 +79,8 @@ export default function DemoPage() {
   const [bookingDone, setBookingDone] = useState(false);
   const [loyaltyPoints] = useState(1250);
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
+  const [cart, setCart] = useState<{ name: string; price: string }[]>([]);
+  const [showCart, setShowCart] = useState(false);
 
   useEffect(() => {
     fetch(`/demos/data/${slug}.json`)
@@ -145,7 +147,7 @@ export default function DemoPage() {
           <span style={{ fontSize: 22, fontWeight: 700, color: c.primary, letterSpacing: '-0.02em' }}>{data.name}</span>
         </div>
         <div className="demo-nav-links" style={{ display: 'flex', gap: 24, fontSize: 13, fontWeight: 500 }}>
-          {['Sobre', 'Serviços', ...(lv >= 2 ? ['Equipe', 'Avaliações'] : []), ...(lv >= 3 ? ['Planos'] : []), 'Contato'].map(i => (
+          {['Sobre', 'Serviços', ...(lv >= 2 ? ['Equipe', 'Avaliações'] : []), ...(lv >= 3 ? ['Planos', 'Loja'] : []), 'Contato'].map(i => (
             <a key={i} href={`#${i.toLowerCase()}`} style={{ color: c.textMuted, textDecoration: 'none', transition: 'color 0.3s' }}
               onMouseEnter={e => e.currentTarget.style.color = c.primary} onMouseLeave={e => e.currentTarget.style.color = c.textMuted}>{i}</a>
           ))}
@@ -441,6 +443,88 @@ export default function DemoPage() {
           </div>
         </div>
       </section></R>
+
+      {/* ══ LOJA / E-COMMERCE (Premium) ══ */}
+      <R show={lv >= 3}><section id="loja" style={{ padding: '96px 32px', background: `${c.primary}03` }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 56 }}>
+            <div><SectionLabel text="Loja" /><SectionTitle text="Nossos produtos" /></div>
+            <button onClick={() => setShowCart(true)} style={{ position: 'relative', padding: '10px 20px', ...glass(c.primary), borderRadius: 12, cursor: 'pointer', color: c.text, fontSize: 13, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8 }}>
+              ◇ Carrinho
+              {cart.length > 0 && <span style={{ position: 'absolute', top: -6, right: -6, width: 20, height: 20, borderRadius: '50%', background: c.primary, color: c.bg, fontSize: 11, fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{cart.length}</span>}
+            </button>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 18 }}>
+            {[
+              { name: 'Pomada Modeladora', price: 'R$ 65', img: 'https://images.unsplash.com/photo-1585747860019-8e8ef6e96a0d?w=300&q=80&auto=format&fit=crop' },
+              { name: 'Óleo para Barba', price: 'R$ 45', img: 'https://images.unsplash.com/photo-1596728325395-481c7fa4e56a?w=300&q=80&auto=format&fit=crop' },
+              { name: 'Shampoo Premium', price: 'R$ 55', img: 'https://images.unsplash.com/photo-1585747860019-8e8ef6e96a0d?w=300&q=80&auto=format&fit=crop' },
+              { name: 'Kit Barba Completo', price: 'R$ 149', img: 'https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=300&q=80&auto=format&fit=crop', popular: true },
+            ].map((product, i) => (
+              <R key={product.name} d={i * 80}>
+                <div style={{ ...glass(c.primary), borderRadius: 16, overflow: 'hidden', transition: 'all 0.4s' }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = `${c.primary}30`; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = `0 0 24px ${c.primary}12`; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = `${c.primary}14`; e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = 'none'; }}>
+                  <div style={{ height: 180, overflow: 'hidden', position: 'relative' }}>
+                    <img src={product.img} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      onError={e => { (e.target as HTMLImageElement).src = fallbackImg.replace('1400', '300'); }} />
+                    {(product as any).popular && <div style={{ position: 'absolute', top: 10, right: 10, padding: '3px 10px', background: `linear-gradient(135deg, ${c.primary}, ${c.primary}cc)`, color: c.bg, fontSize: 10, fontWeight: 700, borderRadius: 6 }}>MAIS VENDIDO</div>}
+                  </div>
+                  <div style={{ padding: 18 }}>
+                    <h4 style={{ fontSize: 14, fontWeight: 600, color: c.text, marginBottom: 8 }}>{product.name}</h4>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <span style={{ fontSize: 20, fontWeight: 800, color: c.primary }}>{product.price}</span>
+                      <button onClick={() => setCart(prev => [...prev, { name: product.name, price: product.price }])}
+                        style={{ padding: '8px 16px', background: `${c.primary}15`, color: c.primary, border: `1px solid ${c.primary}25`, borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s' }}
+                        onMouseEnter={e => { e.currentTarget.style.background = c.primary; e.currentTarget.style.color = c.bg; }}
+                        onMouseLeave={e => { e.currentTarget.style.background = `${c.primary}15`; e.currentTarget.style.color = c.primary; }}>
+                        + Carrinho
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </R>
+            ))}
+          </div>
+        </div>
+      </section></R>
+
+      {/* ══ CART MODAL (Premium) ══ */}
+      {showCart && (
+        <div style={{ position: 'fixed', inset: 0, zIndex: 250, background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}
+          onClick={() => setShowCart(false)}>
+          <div style={{ background: c.bg, border: `1px solid ${c.primary}20`, borderRadius: 20, padding: 'clamp(20px, 4vw, 32px)', maxWidth: 420, width: 'calc(100% - 32px)' }}
+            onClick={e => e.stopPropagation()}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
+              <h3 style={{ fontSize: 18, fontWeight: 600, color: c.text }}>Carrinho ({cart.length})</h3>
+              <button onClick={() => setShowCart(false)} style={{ background: 'none', border: 'none', color: c.textMuted, fontSize: 18, cursor: 'pointer' }}>✕</button>
+            </div>
+            {cart.length === 0 ? (
+              <p style={{ color: c.textMuted, fontSize: 14, textAlign: 'center', padding: '32px 0' }}>Carrinho vazio</p>
+            ) : (<>
+              {cart.map((item, i) => (
+                <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 0', borderBottom: `1px solid ${c.primary}08` }}>
+                  <span style={{ fontSize: 14, color: c.text }}>{item.name}</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                    <span style={{ fontSize: 14, fontWeight: 700, color: c.primary }}>{item.price}</span>
+                    <button onClick={() => setCart(prev => prev.filter((_, idx) => idx !== i))}
+                      style={{ background: 'none', border: 'none', color: c.textMuted, cursor: 'pointer', fontSize: 16 }}>✕</button>
+                  </div>
+                </div>
+              ))}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 20, paddingTop: 16, borderTop: `1px solid ${c.primary}15` }}>
+                <span style={{ fontSize: 14, fontWeight: 600, color: c.text }}>Total</span>
+                <span style={{ fontSize: 22, fontWeight: 800, color: c.primary }}>
+                  R$ {cart.reduce((sum, item) => sum + parseFloat(item.price.replace('R$ ', '').replace(',', '.')), 0).toFixed(0)}
+                </span>
+              </div>
+              <button style={{ width: '100%', marginTop: 20, padding: '14px', background: c.primary, color: c.bg, border: 'none', borderRadius: 10, fontSize: 15, fontWeight: 700, cursor: 'pointer' }}>
+                Finalizar compra
+              </button>
+            </>)}
+          </div>
+        </div>
+      )}
 
       {/* ══ FAQ (Pro+) ══ */}
       <R show={lv >= 2 && !!data.faq?.length}><section style={{ padding: '96px 32px', background: `${c.primary}03` }}>
