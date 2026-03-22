@@ -14,7 +14,7 @@
   },
   "hero": {
     "title": "O corte que define seu estilo",
-    "subtitle": "Barbearia premium no coração de Curitiba. Cortes modernos, barba impecável e ambiente exclusivo.",
+    "subtitle": "Barbearia premium no coração de Curitiba. Cortes modernos, barba impecável e ambiente exclusivo para quem exige o melhor.",
     "image": "https://images.unsplash.com/photo-1585747860019-8e8ef6e96a0d?w=1400&q=85&auto=format&fit=crop"
   },
   "about": {
@@ -22,46 +22,25 @@
     "image": "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=80&auto=format&fit=crop"
   },
   "services": [
-    {
-      "name": "Corte Masculino",
-      "desc": "Corte personalizado com acabamento perfeito. Inclui lavagem e finalização.",
-      "icon": "✂️"
-    },
-    {
-      "name": "Barba Completa",
-      "desc": "Modelagem, aparar e hidratação com toalha quente. Experiência premium.",
-      "icon": "🪒"
-    },
-    {
-      "name": "Corte + Barba",
-      "desc": "Combo completo com corte e barba. O pacote mais pedido da casa.",
-      "icon": "👑"
-    },
-    {
-      "name": "Pigmentação",
-      "desc": "Disfarce de falhas na barba ou cabelo com técnica de micropigmentação.",
-      "icon": "🎨"
-    },
-    {
-      "name": "Hidratação Capilar",
-      "desc": "Tratamento profundo para cabelos ressecados. Brilho e maciez garantidos.",
-      "icon": "💧"
-    },
-    {
-      "name": "Day Use Premium",
-      "desc": "Corte, barba, hidratação e cerveja artesanal. A experiência completa.",
-      "icon": "🍺"
-    },
-    {
-      "name": "Design de Sobrancelha",
-      "desc": "Alinhamento e design com técnica precisa. Visual limpo e definido.",
-      "icon": "🎯"
-    },
-    {
-      "name": "Relaxamento Capilar",
-      "desc": "Tratamento para redução de volume e frizz. Resultado natural e duradouro.",
-      "icon": "💇"
-    }
+    {"name": "Corte Signature", "desc": "Corte personalizado com consultoria de estilo e acabamento perfeito.", "icon": "✂️", "price": "R$ 85", "time": "45 min", "category": "Cortes", "popular": true},
+    {"name": "Barba Sculpting", "desc": "Modelagem precisa com produtos premium e toalha quente.", "icon": "🪒", "price": "R$ 65", "time": "30 min", "category": "Barba"},
+    {"name": "Hot Towel Shave", "desc": "Barbear clássico com toalhas quentes e óleos essenciais.", "icon": "🪒", "price": "R$ 95", "time": "45 min", "category": "Barba", "popular": true},
+    {"name": "Corte + Barba VIP", "desc": "Experiência completa com bebida inclusa. O melhor da casa.", "icon": "👑", "price": "R$ 140", "time": "75 min", "category": "Combos"},
+    {"name": "Tratamento Capilar", "desc": "Hidratação profunda com massagem craniana relaxante.", "icon": "💧", "price": "R$ 120", "time": "60 min", "category": "Tratamentos"},
+    {"name": "Pigmentação Barba", "desc": "Cobertura de falhas com pigmento natural e resultado discreto.", "icon": "🎨", "price": "R$ 150", "time": "45 min", "category": "Tratamentos"},
+    {"name": "Kids Cut", "desc": "Corte infantil com paciência e ambiente descontraído.", "icon": "✂️", "price": "R$ 55", "time": "30 min", "category": "Cortes"},
+    {"name": "Design de Sobrancelha", "desc": "Alinhamento e design masculino com técnica precisa.", "icon": "🎯", "price": "R$ 35", "time": "15 min", "category": "Extras"}
+  ],
+  "staff": [
+    {"name": "Marcus Silva", "role": "Cortes Clássicos", "rating": 4.9, "reviews": 234, "available": true},
+    {"name": "Rafael Costa", "role": "Barbas & Shaving", "rating": 4.8, "reviews": 189, "available": true},
+    {"name": "Diego Martins", "role": "Degradês & Fades", "rating": 4.9, "reviews": 312, "available": false},
+    {"name": "Bruno Almeida", "role": "Estilos Modernos", "rating": 4.7, "reviews": 156, "available": true}
+  ],
+  "plans": [
+    {"name": "Gentleman", "price": "R$ 140/mês", "features": ["2 cortes por mês", "Agendamento prioritário", "Desconto em produtos"]},
+    {"name": "Executive", "price": "R$ 260/mês", "features": ["4 cortes por mês", "Barba mensal inclusa", "Bebidas inclusas", "Prioridade total", "Desconto 20% em extras"], "popular": true},
+    {"name": "VIP Club", "price": "R$ 450/mês", "features": ["Cortes ilimitados", "Barba ilimitada", "Todos os tratamentos", "Prioridade máxima", "Área VIP exclusiva", "Produtos premium grátis"]}
   ],
   "gallery": [
     "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80&auto=format&fit=crop",
@@ -72,60 +51,26 @@
     "https://images.unsplash.com/photo-1596728325395-481c7fa4e56a?w=600&q=80&auto=format&fit=crop"
   ],
   "reviews": [
-    {
-      "name": "Lucas M.",
-      "text": "Melhor barbearia que já fui. Atendimento top e o corte ficou impecável. Virei cliente fiel.",
-      "stars": 5
-    },
-    {
-      "name": "Rafael S.",
-      "text": "Ambiente incrível, cerveja gelada e um corte show. Experiência completa!",
-      "stars": 5
-    },
-    {
-      "name": "Pedro H.",
-      "text": "Sempre saio satisfeito. Os caras realmente entendem do que fazem. Recomendo demais.",
-      "stars": 5
-    }
+    {"name": "Fernando A.", "text": "Melhor barbearia de Curitiba. Atendimento premium e ambiente incrível.", "stars": 5, "time": "1 semana atrás"},
+    {"name": "Ricardo M.", "text": "Marcus é um artista! Meu corte nunca ficou tão bom. Virei cliente fiel.", "stars": 5, "time": "2 semanas atrás"},
+    {"name": "Gustavo L.", "text": "Assinatura Executive vale cada centavo. Recomendo demais!", "stars": 5, "time": "1 mês atrás"},
+    {"name": "Pedro H.", "text": "Hot towel shave é uma experiência incrível. Voltarei sempre.", "stars": 5, "time": "1 mês atrás"}
   ],
   "features": [
-    {
-      "label": "Clientes atendidos",
-      "value": "2.500+"
-    },
-    {
-      "label": "Anos de experiência",
-      "value": "8"
-    },
-    {
-      "label": "Avaliação Google",
-      "value": "4.9 ⭐"
-    },
-    {
-      "label": "Profissionais",
-      "value": "5"
-    }
+    {"label": "Clientes atendidos", "value": "2.500+"},
+    {"label": "Anos de experiência", "value": "8"},
+    {"label": "Avaliação Google", "value": "4.9 ★"},
+    {"label": "Profissionais", "value": "5"}
   ],
   "cta": {
     "text": "Pronto pra um corte de rei?",
     "buttonText": "Agendar agora"
   },
   "faq": [
-    {
-      "q": "Preciso agendar ou posso ir direto?",
-      "a": "Recomendamos agendar pelo WhatsApp pra garantir seu horário, mas aceitamos clientes sem agendamento quando há disponibilidade."
-    },
-    {
-      "q": "Quanto tempo dura um corte completo?",
-      "a": "Um corte masculino leva em média 40 minutos. O combo corte + barba, cerca de 1 hora."
-    },
-    {
-      "q": "Vocês atendem crianças?",
-      "a": "Sim! Temos experiência com cortes infantis e um ambiente descontraído pra os pequenos."
-    },
-    {
-      "q": "Quais formas de pagamento aceitam?",
-      "a": "Aceitamos PIX, cartões de débito e crédito, e dinheiro."
-    }
+    {"q": "Preciso agendar ou posso ir direto?", "a": "Recomendamos agendar pelo WhatsApp pra garantir seu horário, mas aceitamos clientes sem agendamento quando há disponibilidade."},
+    {"q": "Quanto tempo dura um corte completo?", "a": "Um corte masculino leva em média 40 minutos. O combo corte + barba, cerca de 1 hora."},
+    {"q": "Vocês atendem crianças?", "a": "Sim! Temos experiência com cortes infantis e um ambiente descontraído pra os pequenos."},
+    {"q": "Quais formas de pagamento aceitam?", "a": "Aceitamos PIX, cartões de débito e crédito, e dinheiro."},
+    {"q": "Como funciona a assinatura?", "a": "Você escolhe o plano, faz o pagamento mensal e agenda seus cortes pelo app ou WhatsApp. Sem fidelidade."}
   ]
 }
