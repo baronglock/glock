@@ -22,31 +22,162 @@
     "image": "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&q=80&auto=format&fit=crop"
   },
   "services": [
-    {"name": "Musculação Livre", "desc": "Área pesada com equipamentos importados. Halteres até 60kg, barras olímpicas, racks.", "icon": "△", "price": "Incluso", "time": "Livre", "category": "Treino", "popular": true},
-    {"name": "Personal Trainer", "desc": "Acompanhamento individual com periodização e controle de carga.", "icon": "◎", "price": "R$ 180/mês", "time": "60 min", "category": "Personal"},
-    {"name": "Spinning", "desc": "Aulas de ciclismo indoor com alta intensidade e queima calórica.", "icon": "◈", "price": "Incluso", "time": "45 min", "category": "Aulas"},
-    {"name": "Funcional", "desc": "Circuitos intensos em grupo com corda, kettlebell e peso corporal.", "icon": "◇", "price": "Incluso", "time": "50 min", "category": "Aulas", "popular": true},
-    {"name": "Yoga", "desc": "Equilíbrio e recuperação com instrutora certificada.", "icon": "❦", "price": "R$ 90/mês", "time": "60 min", "category": "Aulas"},
-    {"name": "Avaliação Física", "desc": "Bioimpedância, medidas corporais e definição de metas.", "icon": "▤", "price": "R$ 120", "time": "45 min", "category": "Avaliação"},
-    {"name": "Boxe", "desc": "Treino de boxe pra condicionamento, potência e queima calórica.", "icon": "◉", "price": "R$ 110/mês", "time": "60 min", "category": "Luta"},
-    {"name": "Consultoria Online", "desc": "Treino e dieta acompanhados à distância pelo app.", "icon": "☎", "price": "R$ 150/mês", "time": "Remoto", "category": "Personal"}
+    {
+      "name": "Musculação Livre",
+      "desc": "Área pesada com equipamentos importados. Halteres até 60kg, barras olímpicas, racks.",
+      "icon": "△",
+      "price": "Incluso",
+      "time": "Livre",
+      "category": "Treino",
+      "popular": true
+    },
+    {
+      "name": "Personal Trainer",
+      "desc": "Acompanhamento individual com periodização e controle de carga.",
+      "icon": "◎",
+      "price": "R$ 180/mês",
+      "time": "60 min",
+      "category": "Personal"
+    },
+    {
+      "name": "Spinning",
+      "desc": "Aulas de ciclismo indoor com alta intensidade e queima calórica.",
+      "icon": "◈",
+      "price": "Incluso",
+      "time": "45 min",
+      "category": "Aulas"
+    },
+    {
+      "name": "Funcional",
+      "desc": "Circuitos intensos em grupo com corda, kettlebell e peso corporal.",
+      "icon": "◇",
+      "price": "Incluso",
+      "time": "50 min",
+      "category": "Aulas",
+      "popular": true
+    },
+    {
+      "name": "Yoga",
+      "desc": "Equilíbrio e recuperação com instrutora certificada.",
+      "icon": "❦",
+      "price": "R$ 90/mês",
+      "time": "60 min",
+      "category": "Aulas"
+    },
+    {
+      "name": "Avaliação Física",
+      "desc": "Bioimpedância, medidas corporais e definição de metas.",
+      "icon": "▤",
+      "price": "R$ 120",
+      "time": "45 min",
+      "category": "Avaliação"
+    },
+    {
+      "name": "Boxe",
+      "desc": "Treino de boxe pra condicionamento, potência e queima calórica.",
+      "icon": "◉",
+      "price": "R$ 110/mês",
+      "time": "60 min",
+      "category": "Luta"
+    },
+    {
+      "name": "Consultoria Online",
+      "desc": "Treino e dieta acompanhados à distância pelo app.",
+      "icon": "☎",
+      "price": "R$ 150/mês",
+      "time": "Remoto",
+      "category": "Personal"
+    }
   ],
   "staff": [
-    {"name": "Ricardo Alves", "role": "Personal Trainer", "rating": 4.9, "reviews": 287, "available": true},
-    {"name": "Camila Santos", "role": "Instrutora de Yoga", "rating": 4.8, "reviews": 195, "available": true},
-    {"name": "Lucas Ferreira", "role": "Coach Funcional", "rating": 4.9, "reviews": 342, "available": false},
-    {"name": "Amanda Lima", "role": "Nutricionista", "rating": 4.7, "reviews": 163, "available": true}
+    {
+      "name": "Ricardo Alves",
+      "role": "Personal Trainer",
+      "rating": 4.9,
+      "reviews": 287,
+      "available": true
+    },
+    {
+      "name": "Camila Santos",
+      "role": "Instrutora de Yoga",
+      "rating": 4.8,
+      "reviews": 195,
+      "available": true
+    },
+    {
+      "name": "Lucas Ferreira",
+      "role": "Coach Funcional",
+      "rating": 4.9,
+      "reviews": 342,
+      "available": false
+    },
+    {
+      "name": "Amanda Lima",
+      "role": "Nutricionista",
+      "rating": 4.7,
+      "reviews": 163,
+      "available": true
+    }
   ],
   "plans": [
-    {"name": "Recruta", "price": "R$ 89/mês", "features": ["Musculação horário comercial", "1 avaliação trimestral", "Acesso ao app"]},
-    {"name": "Soldado", "price": "R$ 149/mês", "features": ["Musculação 24h", "Todas as aulas", "Avaliação mensal", "Armário pessoal", "Área funcional", "Desconto em suplementos"], "popular": true},
-    {"name": "General", "price": "R$ 249/mês", "features": ["Acesso total 24h", "Personal 2x/semana", "Nutricionista incluso", "Todas as modalidades", "Toalha e suplemento", "Prioridade máxima", "Área VIP"]}
+    {
+      "name": "Recruta",
+      "price": "R$ 89/mês",
+      "features": [
+        "Musculação horário comercial",
+        "1 avaliação trimestral",
+        "Acesso ao app"
+      ]
+    },
+    {
+      "name": "Soldado",
+      "price": "R$ 149/mês",
+      "features": [
+        "Musculação 24h",
+        "Todas as aulas",
+        "Avaliação mensal",
+        "Armário pessoal",
+        "Área funcional",
+        "Desconto em suplementos"
+      ],
+      "popular": true
+    },
+    {
+      "name": "General",
+      "price": "R$ 249/mês",
+      "features": [
+        "Acesso total 24h",
+        "Personal 2x/semana",
+        "Nutricionista incluso",
+        "Todas as modalidades",
+        "Toalha e suplemento",
+        "Prioridade máxima",
+        "Área VIP"
+      ]
+    }
   ],
   "products": [
-    {"name": "Whey Protein 900g", "price": "R$ 129", "img": "https://images.unsplash.com/photo-1598289431512-b97b0917affc?w=300&q=80&auto=format&fit=crop"},
-    {"name": "Squeeze Iron Gym", "price": "R$ 45", "img": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=300&q=80&auto=format&fit=crop"},
-    {"name": "Luvas de Treino", "price": "R$ 79", "img": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=300&q=80&auto=format&fit=crop"},
-    {"name": "Camiseta Iron Gym", "price": "R$ 69", "img": "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=300&q=80&auto=format&fit=crop", "popular": true}
+    {
+      "name": "Whey Protein 900g",
+      "price": "R$ 129",
+      "img": "https://images.unsplash.com/photo-1598289431512-b97b0917affc?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Squeeze Iron Gym",
+      "price": "R$ 45",
+      "img": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Luvas de Treino",
+      "price": "R$ 79",
+      "img": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Camiseta Iron Gym",
+      "price": "R$ 69",
+      "img": "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=300&q=80&auto=format&fit=crop",
+      "popular": true
+    }
   ],
   "gallery": [
     "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=600&q=80&auto=format&fit=crop",
@@ -57,26 +188,74 @@
     "https://images.unsplash.com/photo-1558611848-73f7eb4001a1?w=600&q=80&auto=format&fit=crop"
   ],
   "reviews": [
-    {"name": "Marcos T.", "text": "Melhor academia de Curitiba. Equipamentos de verdade, sem frescura. Ambiente que motiva.", "stars": 5, "time": "1 semana atrás"},
-    {"name": "Juliana R.", "text": "O personal do Ricardo mudou minha vida. Perdi 15kg em 6 meses com acompanhamento sério.", "stars": 5, "time": "2 semanas atrás"},
-    {"name": "Felipe M.", "text": "Área funcional insana. Nunca lotada. Os caras sabem o que fazem.", "stars": 5, "time": "1 mês atrás"},
-    {"name": "Ana C.", "text": "As aulas de yoga da Camila são o equilíbrio perfeito pro treino pesado.", "stars": 5, "time": "1 mês atrás"}
+    {
+      "name": "Marcos T.",
+      "text": "Melhor academia de Curitiba. Equipamentos de verdade, sem frescura. Ambiente que motiva.",
+      "stars": 5,
+      "time": "1 semana atrás"
+    },
+    {
+      "name": "Juliana R.",
+      "text": "O personal do Ricardo mudou minha vida. Perdi 15kg em 6 meses com acompanhamento sério.",
+      "stars": 5,
+      "time": "2 semanas atrás"
+    },
+    {
+      "name": "Felipe M.",
+      "text": "Área funcional insana. Nunca lotada. Os caras sabem o que fazem.",
+      "stars": 5,
+      "time": "1 mês atrás"
+    },
+    {
+      "name": "Ana C.",
+      "text": "As aulas de yoga da Camila são o equilíbrio perfeito pro treino pesado.",
+      "stars": 5,
+      "time": "1 mês atrás"
+    }
   ],
   "features": [
-    {"label": "Alunos ativos", "value": "1.200+"},
-    {"label": "Área de treino", "value": "800m²"},
-    {"label": "Avaliação Google", "value": "4.8 ★"},
-    {"label": "Aberto desde", "value": "2019"}
+    {
+      "label": "Alunos ativos",
+      "value": "1.200+"
+    },
+    {
+      "label": "Área de treino",
+      "value": "800m²"
+    },
+    {
+      "label": "Avaliação Google",
+      "value": "4.8 ★"
+    },
+    {
+      "label": "Aberto desde",
+      "value": "2019"
+    }
   ],
   "cta": {
     "text": "Pronto pra treinar de verdade?",
     "buttonText": "Começar agora"
   },
   "faq": [
-    {"q": "Posso fazer aula experimental?", "a": "1 dia grátis pra conhecer a estrutura e experimentar na pele."},
-    {"q": "Tem estacionamento?", "a": "Estacionamento próprio gratuito pra alunos."},
-    {"q": "Qual o horário?", "a": "Recruta: 6h-22h (seg-sex), 8h-14h (sáb). Soldado e General: 24 horas."},
-    {"q": "Posso cancelar quando quiser?", "a": "Sem multa, sem fidelidade. Avisa com 30 dias e pronto."},
-    {"q": "Tem nutricionista?", "a": "Plano General inclui. Nos outros, disponível à parte."}
-  ]
+    {
+      "q": "Posso fazer aula experimental?",
+      "a": "1 dia grátis pra conhecer a estrutura e experimentar na pele."
+    },
+    {
+      "q": "Tem estacionamento?",
+      "a": "Estacionamento próprio gratuito pra alunos."
+    },
+    {
+      "q": "Qual o horário?",
+      "a": "Recruta: 6h-22h (seg-sex), 8h-14h (sáb). Soldado e General: 24 horas."
+    },
+    {
+      "q": "Posso cancelar quando quiser?",
+      "a": "Sem multa, sem fidelidade. Avisa com 30 dias e pronto."
+    },
+    {
+      "q": "Tem nutricionista?",
+      "a": "Plano General inclui. Nos outros, disponível à parte."
+    }
+  ],
+  "theme": "industrial"
 }

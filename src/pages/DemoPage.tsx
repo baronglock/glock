@@ -23,6 +23,7 @@ interface DemoData {
   staff?: StaffItem[];
   products?: ProductItem[];
   plans?: PlanItem[];
+  theme?: string;
 }
 
 /* ── Outline Icons ── */
@@ -54,15 +55,89 @@ function R({ children, d = 0, show = true }: { children: React.ReactNode; d?: nu
   return <div ref={ref} style={{ opacity: v && show ? 1 : 0, transform: v && show ? 'translateY(0)' : 'translateY(24px)', transition: `all 0.6s cubic-bezier(0.4,0,0.2,1) ${d}ms`, maxHeight: show ? 9999 : 0, overflow: show ? 'visible' : 'hidden' }}>{children}</div>;
 }
 
-/* ── Glass helper ── */
+/* ── Theme system per niche ── */
+interface ThemeStyle {
+  cardRadius: number;
+  btnRadius: number;
+  inputRadius: number;
+  sectionRadius: number;
+  pattern: string;
+  fontStyle: string;
+  heroAlign: 'left' | 'center';
+  heroWeight: number;
+  cardBg: (p: string) => React.CSSProperties;
+  sectionBg: (p: string) => string;
+  accent: (p: string) => string;
+  texture: (p: string) => React.CSSProperties;
+}
+
+const THEMES: Record<string, ThemeStyle> = {
+  clean: {
+    cardRadius: 16, btnRadius: 12, inputRadius: 8, sectionRadius: 0,
+    pattern: `url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0L40 20L20 40L0 20Z' fill='none' stroke='white' stroke-width='0.5' opacity='0.04'/%3E%3C/svg%3E")`,
+    fontStyle: "'Inter', system-ui, sans-serif",
+    heroAlign: 'left', heroWeight: 800,
+    cardBg: (p) => ({ background: `${p}0a`, backdropFilter: 'blur(12px)', border: `1px solid ${p}14` }),
+    sectionBg: (p) => `${p}03`,
+    accent: (p) => `${p}15`,
+    texture: () => ({}),
+  },
+  industrial: {
+    cardRadius: 2, btnRadius: 2, inputRadius: 2, sectionRadius: 0,
+    pattern: `url("data:image/svg+xml,%3Csvg width='4' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1' height='1' fill='white' opacity='0.03'/%3E%3C/svg%3E")`,
+    fontStyle: "'Inter', 'Impact', system-ui, sans-serif",
+    heroAlign: 'left', heroWeight: 900,
+    cardBg: (p) => ({ background: `linear-gradient(145deg, rgba(30,30,30,0.9), rgba(15,15,15,0.95))`, border: `1px solid ${p}30`, borderTop: `2px solid ${p}50` }),
+    sectionBg: (p) => `${p}05`,
+    accent: (p) => `${p}20`,
+    texture: (p) => ({
+      backgroundImage: `
+        repeating-linear-gradient(0deg, transparent, transparent 2px, ${p}04 2px, ${p}04 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, ${p}03 2px, ${p}03 4px)
+      `,
+    }),
+  },
+  elegant: {
+    cardRadius: 20, btnRadius: 24, inputRadius: 12, sectionRadius: 0,
+    pattern: `url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='white' opacity='0.03'/%3E%3C/svg%3E")`,
+    fontStyle: "'Inter', 'Georgia', serif",
+    heroAlign: 'center', heroWeight: 300,
+    cardBg: (p) => ({ background: `${p}06`, backdropFilter: 'blur(20px)', border: `1px solid ${p}10`, boxShadow: `0 4px 24px ${p}08` }),
+    sectionBg: (p) => `${p}02`,
+    accent: (p) => `${p}10`,
+    texture: () => ({}),
+  },
+  energetic: {
+    cardRadius: 8, btnRadius: 6, inputRadius: 4, sectionRadius: 0,
+    pattern: `url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='0' y1='20' x2='20' y2='0' stroke='white' stroke-width='0.3' opacity='0.05'/%3E%3C/svg%3E")`,
+    fontStyle: "'Inter', system-ui, sans-serif",
+    heroAlign: 'center', heroWeight: 900,
+    cardBg: (p) => ({ background: `linear-gradient(135deg, ${p}08, ${p}03)`, border: `1px solid ${p}18` }),
+    sectionBg: (p) => `${p}04`,
+    accent: (p) => `${p}18`,
+    texture: (p) => ({
+      backgroundImage: `linear-gradient(180deg, transparent 0%, ${p}05 100%)`,
+    }),
+  },
+};
+
+const NICHE_THEME: Record<string, string> = {
+  barbearia: 'clean',
+  academia: 'industrial',
+  restaurante: 'elegant',
+  clinica: 'clean',
+  pet_shop: 'energetic',
+  loja: 'energetic',
+  escritorio: 'clean',
+  imobiliaria: 'elegant',
+  salao: 'elegant',
+};
+
 const glass = (primary: string, hover = false) => ({
   background: `${primary}0a`,
   backdropFilter: 'blur(12px)',
   border: `1px solid ${primary}${hover ? '40' : '14'}`,
 });
-
-/* ── SVG diamond pattern ── */
-const DIAMOND_SVG = `url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0L40 20L20 40L0 20Z' fill='none' stroke='white' stroke-width='0.5' opacity='0.04'/%3E%3C/svg%3E")`;
 
 /* ══════════════════ MAIN ══════════════════ */
 export default function DemoPage() {
@@ -97,8 +172,10 @@ export default function DemoPage() {
 
   const c = data.colors;
   const lv = TIERS[tier].level;
-  const t = TIERS[tier];
-  const font = "'Inter',system-ui,sans-serif";
+  const tp = TIERS[tier];
+  const themeName = data.theme || NICHE_THEME[data.niche] || 'clean';
+  const th = THEMES[themeName] || THEMES.clean;
+  const font = th.fontStyle;
 
   const categories = ['Todos', ...new Set(data.services.map(s => s.category || 'Geral'))];
   const filteredServices = activeCat === 'Todos' ? data.services : data.services.filter(s => (s.category || 'Geral') === activeCat);
@@ -142,10 +219,12 @@ export default function DemoPage() {
   );
 
   return (
-    <div style={{ background: c.bg, color: c.text, fontFamily: font, minHeight: '100vh', paddingBottom: 56 }}>
+    <div style={{ background: c.bg, color: c.text, fontFamily: font, minHeight: '100vh', paddingBottom: 56, ...th.texture(c.primary) }}>
+      {/* Theme pattern overlay */}
+      <div style={{ position: 'fixed', inset: 0, backgroundImage: th.pattern, backgroundRepeat: 'repeat', pointerEvents: 'none', zIndex: 0 }} />
 
       {/* ── Tier Switcher (pill glass) ── */}
-      <div style={{ position: 'fixed', top: 68, left: '50%', transform: 'translateX(-50%)', zIndex: 101, display: 'flex', gap: 2, padding: 4, ...glass(c.primary), background: `${c.bg}e0`, borderRadius: 16, boxShadow: `0 8px 32px ${c.bg}90` }}>
+      <div style={{ position: 'fixed', top: 68, left: '50%', transform: 'translateX(-50%)', zIndex: 101, display: 'flex', gap: 2, padding: 4, ...glass(c.primary), background: `${c.bg}e0`, borderRadius: th.cardRadius, boxShadow: `0 8px 32px ${c.bg}90` }}>
         {(Object.entries(TIERS) as [string, typeof TIERS['essencial']][]).map(([key, val]) => (
           <button key={key} onClick={() => { setTier(key as typeof tier); setActiveCat('Todos'); }} style={{ padding: '7px 20px', fontSize: 11, fontWeight: tier === key ? 700 : 500, background: tier === key ? c.primary : 'transparent', color: tier === key ? c.bg : c.textMuted, border: 'none', borderRadius: 12, cursor: 'pointer', transition: 'all 0.3s', boxShadow: tier === key ? `0 2px 12px ${c.primary}40` : 'none' }}>{val.name}</button>
         ))}
@@ -177,17 +256,17 @@ export default function DemoPage() {
           <img src={data.hero.image} alt="" loading="eager" style={{ width: '100%', height: '100%', objectFit: 'cover', transform: lv >= 2 ? 'scale(1.08)' : 'scale(1.02)', transition: 'transform 12s ease' }}
             onError={e => { (e.target as HTMLImageElement).src = fallbackImg; }} />
           <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(160deg, ${c.bg} 0%, ${c.bg}d0 35%, ${c.bg}60 65%, ${c.bg}30 100%)` }} />
-          {/* Diamond pattern overlay */}
-          <div style={{ position: 'absolute', inset: 0, backgroundImage: DIAMOND_SVG, backgroundRepeat: 'repeat', opacity: 0.5, pointerEvents: 'none' }} />
+          {/* Theme pattern overlay */}
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: th.pattern, backgroundRepeat: 'repeat', opacity: 0.5, pointerEvents: 'none' }} />
           {/* Radial glow behind title */}
           <div style={{ position: 'absolute', top: '30%', left: '20%', width: '50%', height: '50%', background: `radial-gradient(ellipse, ${c.primary}18 0%, transparent 70%)`, pointerEvents: 'none', filter: 'blur(40px)' }} />
           {lv >= 2 && <div style={{ position: 'absolute', bottom: '-20%', right: '-10%', width: '60%', height: '60%', background: `radial-gradient(circle, ${c.primary}12 0%, transparent 70%)`, pointerEvents: 'none' }} />}
         </div>
-        <div className="demo-hero-content" style={{ position: 'relative', zIndex: 2, maxWidth: 800, padding: '140px 32px 120px', marginLeft: '8%', opacity: heroVisible ? 1 : 0, transform: heroVisible ? 'translateY(0)' : 'translateY(32px)', transition: 'all 0.8s cubic-bezier(0.4,0,0.2,1)' }}>
+        <div className="demo-hero-content" style={{ position: 'relative', zIndex: 2, maxWidth: 800, padding: '140px 32px 120px', marginLeft: th.heroAlign === 'center' ? 'auto' : '8%', marginRight: th.heroAlign === 'center' ? 'auto' : undefined, textAlign: th.heroAlign, opacity: heroVisible ? 1 : 0, transform: heroVisible ? 'translateY(0)' : 'translateY(32px)', transition: 'all 0.8s cubic-bezier(0.4,0,0.2,1)' }}>
           <div style={{ display: 'inline-block', padding: '6px 18px', ...glass(c.primary), borderRadius: 20, marginBottom: 28 }}>
             <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.12em', color: c.primary, textTransform: 'uppercase' }}>{data.tagline}</span>
           </div>
-          <h1 style={{ fontSize: 'clamp(2.8rem,7vw,4.8rem)', fontWeight: 800, lineHeight: 1.0, marginBottom: 28, letterSpacing: '-0.03em' }}>
+          <h1 style={{ fontSize: 'clamp(2.8rem,7vw,4.8rem)', fontWeight: th.heroWeight, lineHeight: 1.0, marginBottom: 28, letterSpacing: '-0.03em', textTransform: themeName === 'industrial' ? 'uppercase' as const : 'none' as const }}>
             {data.hero.title.split(' ').map((w, i) => (
               <span key={i} style={{ color: i === 0 ? c.primary : c.text, ...(i > 0 ? { backgroundImage: `linear-gradient(135deg, ${c.text}, ${c.textMuted})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' } : {}) }}>{w} </span>
             ))}
@@ -203,7 +282,7 @@ export default function DemoPage() {
           </div>
           <div style={{ marginTop: 28, display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 16px', ...glass(c.primary), borderRadius: 20 }}>
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: c.primary, boxShadow: `0 0 8px ${c.primary}60` }} />
-            <span style={{ fontSize: 11, color: c.textMuted }}>Plano {t.name} — {t.price}</span>
+            <span style={{ fontSize: 11, color: c.textMuted }}>Plano {tp.name} — {tp.price}</span>
           </div>
         </div>
       </section>
@@ -219,7 +298,7 @@ export default function DemoPage() {
       <section id="sobre" style={{ padding: '96px 32px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'center' }} className="demo-grid">
           <R><div><SectionLabel text="Sobre nós" /><SectionTitle text={`Conheça a ${data.name}`} /><p style={{ color: c.textMuted, fontSize: 15, lineHeight: 1.9, marginTop: 20 }}>{data.about.text}</p></div></R>
-          <R d={200}><div style={{ borderRadius: 16, overflow: 'hidden', aspectRatio: '4/3', boxShadow: `0 20px 50px ${c.primary}12`, border: `1px solid ${c.primary}10` }}><img src={data.about.image} alt={data.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { (e.target as HTMLImageElement).src = fallbackImg.replace('1400', '800'); }} /></div></R>
+          <R d={200}><div style={{ borderRadius: th.cardRadius, overflow: 'hidden', aspectRatio: '4/3', boxShadow: `0 20px 50px ${c.primary}12`, border: `1px solid ${c.primary}10` }}><img src={data.about.image} alt={data.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { (e.target as HTMLImageElement).src = fallbackImg.replace('1400', '800'); }} /></div></R>
         </div>
       </section>
 
@@ -230,7 +309,7 @@ export default function DemoPage() {
 
           {/* Category filter (Pro+) */}
           {lv >= 2 && categories.length > 2 && (
-            <R><div style={{ display: 'flex', justifyContent: 'center', gap: 6, marginBottom: 40, flexWrap: 'wrap', padding: 4, background: `${c.primary}06`, borderRadius: 16, maxWidth: 'fit-content', margin: '0 auto 40px' }}>
+            <R><div style={{ display: 'flex', justifyContent: 'center', gap: 6, marginBottom: 40, flexWrap: 'wrap', padding: 4, background: `${c.primary}06`, borderRadius: th.cardRadius, maxWidth: 'fit-content', margin: '0 auto 40px' }}>
               {categories.map(cat => (
                 <button key={cat} onClick={() => setActiveCat(cat)} style={{ padding: '8px 20px', fontSize: 12, fontWeight: activeCat === cat ? 700 : 500, background: activeCat === cat ? c.primary : 'transparent', color: activeCat === cat ? c.bg : c.textMuted, border: 'none', borderRadius: 12, cursor: 'pointer', transition: 'all 0.3s', boxShadow: activeCat === cat ? `0 2px 12px ${c.primary}30` : 'none' }}>{cat}</button>
               ))}
@@ -240,7 +319,7 @@ export default function DemoPage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 18 }}>
             {displayServices.map((s, i) => (
               <R key={s.name} d={i * 60}>
-                <div style={{ padding: 24, ...glass(c.primary), borderRadius: 16, transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)', cursor: lv >= 2 ? 'pointer' : 'default', position: 'relative', display: 'flex', flexDirection: 'column', height: '100%' }}
+                <div style={{ padding: 24, ...th.cardBg(c.primary), borderRadius: th.cardRadius, transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)', cursor: lv >= 2 ? 'pointer' : 'default', position: 'relative', display: 'flex', flexDirection: 'column', height: '100%' }}
                   onClick={() => lv >= 2 && setBookingService(s)}
                   onMouseEnter={e => { e.currentTarget.style.borderColor = `${c.primary}40`; e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = `0 0 30px ${c.primary}15`; }}
                   onMouseLeave={e => { e.currentTarget.style.borderColor = `${c.primary}14`; e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = 'none'; }}>
@@ -314,7 +393,7 @@ export default function DemoPage() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 18 }}>
               {staff.map((s, i) => (
                 <R key={s.name} d={i * 100}>
-                  <div style={{ padding: 28, ...glass(c.primary), borderRadius: 16, textAlign: 'center', position: 'relative', transition: 'all 0.3s' }}
+                  <div style={{ padding: 28, ...th.cardBg(c.primary), borderRadius: th.cardRadius, textAlign: 'center', position: 'relative', transition: 'all 0.3s' }}
                     onMouseEnter={e => { e.currentTarget.style.borderColor = `${c.primary}30`; e.currentTarget.style.transform = 'translateY(-4px)'; }}
                     onMouseLeave={e => { e.currentTarget.style.borderColor = `${c.primary}14`; e.currentTarget.style.transform = 'none'; }}>
                     {!s.available && <div style={{ position: 'absolute', top: 12, right: 12, padding: '3px 10px', background: '#ef444420', color: '#ef4444', fontSize: 9, fontWeight: 700, borderRadius: 20, border: '1px solid #ef444430' }}>INDISPONÍVEL</div>}
@@ -344,7 +423,7 @@ export default function DemoPage() {
           <div style={{ textAlign: 'center', marginBottom: 56 }}><SectionLabel text="Galeria" /><SectionTitle text="Nosso espaço" /></div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }} className="demo-gallery">
             {data.gallery.slice(0, 6).map((img, i) => (
-              <div key={i} onClick={() => setLightboxIdx(i)} style={{ borderRadius: 16, overflow: 'hidden', aspectRatio: '4/3', cursor: 'pointer', position: 'relative' }}>
+              <div key={i} onClick={() => setLightboxIdx(i)} style={{ borderRadius: th.cardRadius, overflow: 'hidden', aspectRatio: '4/3', cursor: 'pointer', position: 'relative' }}>
                 <img src={img} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s' }}
                   onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.08)'} onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
                   onError={e => { (e.target as HTMLImageElement).src = fallbackImg.replace('1400', '600'); }} />
@@ -390,7 +469,7 @@ export default function DemoPage() {
           <div style={{ textAlign: 'center', marginBottom: 56 }}><SectionLabel text="Avaliações" /><SectionTitle text="O que dizem sobre nós" /></div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 18 }}>
             {data.reviews.map((rv, i) => (
-              <R key={i} d={i * 100}><div style={{ padding: 26, ...glass(c.primary), borderRadius: 16, borderLeft: `3px solid ${c.primary}`, position: 'relative', transition: 'all 0.3s' }}
+              <R key={i} d={i * 100}><div style={{ padding: 26, ...th.cardBg(c.primary), borderRadius: th.cardRadius, borderLeft: `3px solid ${c.primary}`, position: 'relative', transition: 'all 0.3s' }}
                 onMouseEnter={e => e.currentTarget.style.borderColor = c.primary}
                 onMouseLeave={e => e.currentTarget.style.borderColor = `${c.primary}14`}>
                 {/* Decorative quote */}
@@ -414,7 +493,7 @@ export default function DemoPage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 18, alignItems: 'center' }}>
             {plans.map((p, i) => (
               <R key={p.name} d={i * 100}>
-                <div style={{ padding: p.popular ? 32 : 28, ...glass(c.primary, p.popular), background: p.popular ? `linear-gradient(160deg, ${c.primary}0c, ${c.primary}04)` : `${c.primary}0a`, borderRadius: 16, position: 'relative', transition: 'all 0.3s', transform: p.popular ? 'scale(1.05)' : 'scale(1)', boxShadow: p.popular ? `0 16px 48px ${c.primary}15` : 'none' }}
+                <div style={{ padding: p.popular ? 32 : 28, ...glass(c.primary, p.popular), background: p.popular ? `linear-gradient(160deg, ${c.primary}0c, ${c.primary}04)` : `${c.primary}0a`, borderRadius: th.cardRadius, position: 'relative', transition: 'all 0.3s', transform: p.popular ? 'scale(1.05)' : 'scale(1)', boxShadow: p.popular ? `0 16px 48px ${c.primary}15` : 'none' }}
                   onMouseEnter={e => { e.currentTarget.style.transform = p.popular ? 'scale(1.07)' : 'translateY(-4px)'; e.currentTarget.style.boxShadow = `0 16px 48px ${c.primary}20`; }}
                   onMouseLeave={e => { e.currentTarget.style.transform = p.popular ? 'scale(1.05)' : 'scale(1)'; e.currentTarget.style.boxShadow = p.popular ? `0 16px 48px ${c.primary}15` : 'none'; }}>
                   {p.popular && <div style={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)', padding: '4px 18px', background: `linear-gradient(135deg, ${c.primary}, ${c.primary}c0)`, color: c.bg, fontSize: 10, fontWeight: 700, borderRadius: 20, letterSpacing: '0.04em', boxShadow: `0 4px 16px ${c.primary}40` }}>MAIS POPULAR</div>}
@@ -441,7 +520,7 @@ export default function DemoPage() {
       <R show={lv >= 3}><section style={{ padding: '96px 32px' }}>
         <div style={{ maxWidth: 600, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 40 }}><SectionLabel text="Fidelidade" /><SectionTitle text="Programa de pontos" /></div>
-          <div style={{ padding: 32, ...glass(c.primary), borderRadius: 16 }}>
+          <div style={{ padding: 32, ...th.cardBg(c.primary), borderRadius: th.cardRadius }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
               <div><div style={{ fontSize: 12, color: c.textMuted, marginBottom: 4 }}>Seus pontos</div><div style={{ fontSize: 32, fontWeight: 800, color: c.primary }}>{loyaltyPoints}</div></div>
               <div style={{ padding: '8px 18px', background: `${c.primary}15`, borderRadius: 20, border: `1px solid ${c.primary}20`, boxShadow: `0 0 20px ${c.primary}10` }}><span style={{ fontSize: 12, fontWeight: 700, color: c.primary }}>Nível Ouro ★</span></div>
@@ -473,7 +552,7 @@ export default function DemoPage() {
               { name: 'Produto 4', price: 'R$ 120', img: fallbackImg.replace('1400', '300'), popular: true },
             ]).map((product, i) => (
               <R key={product.name} d={i * 80}>
-                <div style={{ ...glass(c.primary), borderRadius: 16, overflow: 'hidden', transition: 'all 0.4s' }}
+                <div style={{ ...th.cardBg(c.primary), borderRadius: th.cardRadius, overflow: 'hidden', transition: 'all 0.4s' }}
                   onMouseEnter={e => { e.currentTarget.style.borderColor = `${c.primary}30`; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = `0 0 24px ${c.primary}12`; }}
                   onMouseLeave={e => { e.currentTarget.style.borderColor = `${c.primary}14`; e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = 'none'; }}>
                   <div style={{ height: 180, overflow: 'hidden', position: 'relative' }}>
@@ -617,11 +696,11 @@ export default function DemoPage() {
                 </div>
               ))}
             </div>
-            {lv >= 2 && <div style={{ marginTop: 28, height: 200, borderRadius: 16, ...glass(c.primary), display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            {lv >= 2 && <div style={{ marginTop: 28, height: 200, borderRadius: th.cardRadius, ...glass(c.primary), display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ textAlign: 'center', color: c.textMuted }}><div style={{ fontSize: 32, marginBottom: 8, opacity: 0.4 }}>⊙</div><p style={{ fontSize: 12 }}>Google Maps integrado</p></div>
             </div>}
           </div></R>
-          <R d={150}><div style={{ padding: 28, ...glass(c.primary), borderRadius: 16 }}>
+          <R d={150}><div style={{ padding: 28, ...th.cardBg(c.primary), borderRadius: th.cardRadius }}>
             <h3 style={{ fontSize: 16, fontWeight: 600, color: c.text, marginBottom: 20 }}>Envie uma mensagem</h3>
             {['Seu nome', 'WhatsApp'].map(ph => <input key={ph} placeholder={ph} style={{ width: '100%', padding: '13px 16px', background: `${c.primary}05`, border: `1px solid ${c.primary}12`, borderRadius: 8, color: c.text, fontSize: 13, outline: 'none', marginBottom: 12, boxSizing: 'border-box', transition: 'all 0.3s' }}
               onFocus={e => { e.currentTarget.style.borderColor = c.primary; e.currentTarget.style.boxShadow = `0 0 0 3px ${c.primary}15`; }}
