@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <!-- RS entrelaçado -->
+  <text x="100" y="130" font-family="Georgia, 'Times New Roman', serif" font-size="120" font-weight="400" font-style="italic" fill="#d4a843" letter-spacing="-8">
+    RS
+  </text>
+  <!-- Linha decorativa -->
+  <line x1="80" y1="148" x2="320" y2="148" stroke="#d4a843" stroke-width="0.8" opacity="0.5"/>
+  <!-- Subtexto -->
+  <text x="200" y="172" font-family="'Inter', 'Helvetica', sans-serif" font-size="14" font-weight="400" fill="#d4a843" text-anchor="middle" letter-spacing="6" opacity="0.8">
+    SALÃO | BARBEARIA
+  </text>
+  <text x="200" y="190" font-family="'Inter', 'Helvetica', sans-serif" font-size="10" font-weight="300" fill="#d4a843" text-anchor="middle" letter-spacing="4" opacity="0.6">
+    ESTÉTICA CAPILAR
+  </text>
+</svg>

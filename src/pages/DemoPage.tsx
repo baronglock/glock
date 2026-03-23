@@ -24,6 +24,8 @@ interface DemoData {
   products?: ProductItem[];
   plans?: PlanItem[];
   theme?: string;
+  siblingDemo?: string;
+  siblingLabel?: string;
 }
 
 /* ── Outline Icons ── */
@@ -133,11 +135,32 @@ const NICHE_THEME: Record<string, string> = {
   salao: 'elegant',
 };
 
-const glass = (primary: string, hover = false) => ({
-  background: `${primary}0a`,
-  backdropFilter: 'blur(12px)',
-  border: `1px solid ${primary}${hover ? '40' : '14'}`,
-});
+/* ── Light/Dark background detection ── */
+function isLightBg(hex: string): boolean {
+  const h = hex.replace('#', '').slice(0, 6);
+  if (h.length < 6) return false;
+  const r = parseInt(h.slice(0, 2), 16);
+  const g = parseInt(h.slice(2, 4), 16);
+  const b = parseInt(h.slice(4, 6), 16);
+  return (r * 299 + g * 587 + b * 114) / 1000 > 150;
+}
+
+const glass = (primary: string, hover = false, bg?: string) => {
+  const light = bg ? isLightBg(bg) : false;
+  if (light) {
+    return {
+      background: 'rgba(255,255,255,0.7)',
+      backdropFilter: 'blur(12px)',
+      border: `1px solid rgba(0,0,0,${hover ? 0.12 : 0.06})`,
+      boxShadow: `0 2px 8px rgba(0,0,0,0.04)`,
+    };
+  }
+  return {
+    background: `${primary}0a`,
+    backdropFilter: 'blur(12px)',
+    border: `1px solid ${primary}${hover ? '40' : '14'}`,
+  };
+};
 
 /* ══════════════════ MAIN ══════════════════ */
 export default function DemoPage() {
@@ -158,6 +181,7 @@ export default function DemoPage() {
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
   const [cart, setCart] = useState<{ name: string; price: string; type: 'produto' | 'servico'; detail?: string }[]>([]);
   const [cartOpen, setCartOpen] = useState(false);
+  const [navScrolled, setNavScrolled] = useState(false);
 
   useEffect(() => {
     fetch(`/demos/data/${slug}.json`)
@@ -166,6 +190,13 @@ export default function DemoPage() {
   }, [slug]);
 
   useEffect(() => { if (data) { const t = setTimeout(() => setHeroVisible(true), 100); return () => clearTimeout(t); } }, [data]);
+
+  // Navbar scroll opacity
+  useEffect(() => {
+    const onScroll = () => setNavScrolled(window.scrollY > 60);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   if (err) return <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0a0f', color: '#fff', fontFamily: "'Inter',sans-serif" }}><div style={{ textAlign: 'center' }}><h1 style={{ fontSize: 48, fontWeight: 200, marginBottom: 16 }}>404</h1><p style={{ color: '#888', marginBottom: 32 }}>{err}</p><Link to="/" style={{ color: '#2dd4bf', textDecoration: 'none' }}>← Stauf.</Link></div></div>;
   if (!data) return <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0a0f' }}><div style={{ width: 40, height: 40, border: '3px solid #333', borderTopColor: '#2dd4bf', borderRadius: '50%', animation: 'spin 1s linear infinite' }} /><style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style></div>;
@@ -211,11 +242,15 @@ export default function DemoPage() {
 
   const fallbackImg = 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=85&auto=format&fit=crop';
 
-  const SectionLabel = ({ text }: { text: string }) => (
-    <span style={{ display: 'inline-block', padding: '5px 14px', background: `${c.primary}10`, color: c.primary, fontSize: 10, fontWeight: 600, letterSpacing: '0.12em', marginBottom: 14, borderRadius: 20, textTransform: 'uppercase', border: `1px solid ${c.primary}15` }}>{text}</span>
+  const lightBg = isLightBg(c.bg);
+
+  const SectionLabel = ({ text, center }: { text: string; center?: boolean }) => (
+    <div style={{ textAlign: center || th.heroAlign === 'center' ? 'center' : undefined }}>
+      <span style={{ display: 'inline-block', padding: '5px 14px', background: lightBg ? `${c.primary}0c` : `${c.primary}10`, color: c.primary, fontSize: 10, fontWeight: 600, letterSpacing: '0.12em', marginBottom: 14, borderRadius: 20, textTransform: 'uppercase', border: `1px solid ${lightBg ? `${c.primary}15` : `${c.primary}15`}` }}>{text}</span>
+    </div>
   );
-  const SectionTitle = ({ text }: { text: string }) => (
-    <h2 style={{ fontSize: 'clamp(1.7rem,4vw,2.4rem)', fontWeight: 300, color: c.text, letterSpacing: '-0.02em' }}>{text}</h2>
+  const SectionTitle = ({ text, center }: { text: string; center?: boolean }) => (
+    <h2 style={{ fontSize: 'clamp(1.7rem,4vw,2.4rem)', fontWeight: 300, color: c.text, letterSpacing: '-0.02em', textAlign: center || th.heroAlign === 'center' ? 'center' : undefined }}>{text}</h2>
   );
 
   return (
@@ -224,65 +259,259 @@ export default function DemoPage() {
       <div style={{ position: 'fixed', inset: 0, backgroundImage: th.pattern, backgroundRepeat: 'repeat', pointerEvents: 'none', zIndex: 0 }} />
 
       {/* ── Tier Switcher (pill glass) ── */}
-      <div style={{ position: 'fixed', top: 68, left: '50%', transform: 'translateX(-50%)', zIndex: 101, display: 'flex', gap: 2, padding: 4, ...glass(c.primary), background: `${c.bg}e0`, borderRadius: th.cardRadius, boxShadow: `0 8px 32px ${c.bg}90` }}>
+      <div style={{ position: 'fixed', top: navScrolled ? 58 : 80, left: '50%', transform: 'translateX(-50%)', zIndex: 101, display: 'flex', gap: 2, padding: 4, ...glass(c.primary, false, c.bg), background: lightBg ? 'rgba(255,255,255,0.9)' : `${c.bg}e0`, borderRadius: th.cardRadius, boxShadow: lightBg ? '0 4px 24px rgba(0,0,0,0.08)' : `0 8px 32px ${c.bg}90`, transition: 'top 0.4s cubic-bezier(0.4,0,0.2,1)' }}>
         {(Object.entries(TIERS) as [string, typeof TIERS['essencial']][]).map(([key, val]) => (
           <button key={key} onClick={() => { setTier(key as typeof tier); setActiveCat('Todos'); }} style={{ padding: '7px 20px', fontSize: 11, fontWeight: tier === key ? 700 : 500, background: tier === key ? c.primary : 'transparent', color: tier === key ? c.bg : c.textMuted, border: 'none', borderRadius: 12, cursor: 'pointer', transition: 'all 0.3s', boxShadow: tier === key ? `0 2px 12px ${c.primary}40` : 'none' }}>{val.name}</button>
         ))}
       </div>
 
       {/* ── Navbar ── */}
-      <nav style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, padding: '14px 32px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: `${c.bg}e8`, backdropFilter: 'blur(20px)', borderBottom: `1px solid ${c.primary}10` }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          {data.logo && <img src={data.logo} alt="" style={{ height: 28, borderRadius: 4 }} onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }} />}
-          <span style={{ fontSize: 22, fontWeight: 700, color: c.primary, letterSpacing: '-0.02em' }}>{data.name}</span>
+      <nav style={{
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+        padding: navScrolled ? '10px 32px' : '16px 32px',
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        background: navScrolled
+          ? (lightBg ? 'rgba(255,255,255,0.92)' : `${c.bg}f0`)
+          : (lightBg ? 'rgba(255,255,255,0.3)' : `${c.bg}40`),
+        backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
+        borderBottom: navScrolled
+          ? `1px solid ${lightBg ? 'rgba(0,0,0,0.06)' : `${c.primary}12`}`
+          : '1px solid transparent',
+        transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <span style={{
+            fontSize: 18, fontWeight: 300, color: c.primary, letterSpacing: '0.15em',
+            fontFamily: "'Georgia', 'Times New Roman', serif", textTransform: 'uppercase',
+          }}>{data.name}</span>
         </div>
-        <div className="demo-nav-links" style={{ display: 'flex', gap: 24, fontSize: 13, fontWeight: 500 }}>
+
+        <div className="demo-nav-links" style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
           {['Sobre', 'Serviços', ...(lv >= 2 ? ['Equipe', 'Avaliações'] : []), ...(lv >= 3 ? ['Planos', 'Loja'] : []), 'Contato'].map(i => (
-            <a key={i} href={`#${i.toLowerCase()}`} style={{ color: c.textMuted, textDecoration: 'none', transition: 'color 0.3s' }}
-              onMouseEnter={e => e.currentTarget.style.color = c.primary} onMouseLeave={e => e.currentTarget.style.color = c.textMuted}>{i}</a>
+            <a key={i} href={`#${i.toLowerCase()}`} style={{
+              color: lightBg ? 'rgba(0,0,0,0.45)' : c.textMuted,
+              textDecoration: 'none', transition: 'color 0.3s',
+              fontSize: 11, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase' as const,
+            }}
+              onMouseEnter={e => e.currentTarget.style.color = c.primary}
+              onMouseLeave={e => e.currentTarget.style.color = lightBg ? 'rgba(0,0,0,0.45)' : c.textMuted}>{i}</a>
           ))}
+          {data.siblingDemo && (
+            <div style={{
+              display: 'inline-flex', gap: 2, padding: 3,
+              background: lightBg ? 'rgba(0,0,0,0.05)' : `${c.primary}0c`,
+              borderRadius: 20, border: `1px solid ${lightBg ? 'rgba(0,0,0,0.06)' : `${c.primary}15`}`,
+            }}>
+              <span style={{
+                padding: '5px 16px', fontSize: 11, fontWeight: 700, borderRadius: 16,
+                background: c.primary, color: c.bg, letterSpacing: '0.04em',
+              }}>{data.niche === 'barbearia' ? 'Barbearia' : 'Salão'}</span>
+              <Link to={`/demo/${data.siblingDemo}`} style={{
+                padding: '5px 16px', fontSize: 11, fontWeight: 600, borderRadius: 16,
+                background: 'transparent', color: lightBg ? 'rgba(0,0,0,0.4)' : c.textMuted,
+                textDecoration: 'none', transition: 'all 0.3s', letterSpacing: '0.04em',
+              }}
+                onMouseEnter={e => { e.currentTarget.style.background = `${c.primary}15`; e.currentTarget.style.color = c.primary; }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = lightBg ? 'rgba(0,0,0,0.4)' : c.textMuted; }}>
+                {data.niche === 'barbearia' ? 'Salão' : 'Barbearia'}
+              </Link>
+            </div>
+          )}
         </div>
-        <button onClick={() => setMenuOpen(!menuOpen)} className="demo-hamburger" style={{ display: 'none', background: 'none', border: 'none', color: c.text, fontSize: 22, cursor: 'pointer' }}>☰</button>
+
+        <button onClick={() => setMenuOpen(!menuOpen)} className="demo-hamburger" style={{
+          display: 'none', background: 'none', border: 'none',
+          color: lightBg ? 'rgba(0,0,0,0.6)' : c.text,
+          fontSize: 24, cursor: 'pointer', padding: 4,
+        }}>{menuOpen ? '✕' : '☰'}</button>
       </nav>
 
-      {menuOpen && <div style={{ position: 'fixed', top: 56, left: 0, right: 0, zIndex: 99, background: `${c.bg}f5`, backdropFilter: 'blur(20px)', padding: 24, display: 'flex', flexDirection: 'column', gap: 20, borderBottom: `1px solid ${c.primary}15` }}>
-        {['Sobre', 'Serviços', 'Contato'].map(i => <a key={i} href={`#${i.toLowerCase()}`} onClick={() => setMenuOpen(false)} style={{ color: c.textMuted, textDecoration: 'none', fontSize: 16 }}>{i}</a>)}
-      </div>}
+      {/* Mobile menu overlay */}
+      {menuOpen && (
+        <div style={{
+          position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 99,
+          background: lightBg ? 'rgba(255,255,255,0.97)' : `${c.bg}f8`,
+          backdropFilter: 'blur(24px)',
+          display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 32,
+        }}>
+          {['Sobre', 'Serviços', ...(lv >= 2 ? ['Equipe', 'Avaliações'] : []), ...(lv >= 3 ? ['Planos', 'Loja'] : []), 'Contato'].map(i => (
+            <a key={i} href={`#${i.toLowerCase()}`} onClick={() => setMenuOpen(false)} style={{
+              color: lightBg ? 'rgba(0,0,0,0.6)' : c.textMuted,
+              textDecoration: 'none', fontSize: 18, fontWeight: 400, letterSpacing: '0.15em', textTransform: 'uppercase' as const,
+              transition: 'color 0.3s',
+            }}
+              onMouseEnter={e => e.currentTarget.style.color = c.primary}
+              onMouseLeave={e => e.currentTarget.style.color = lightBg ? 'rgba(0,0,0,0.6)' : c.textMuted}>{i}</a>
+          ))}
+          {data.siblingDemo && (
+            <div style={{
+              display: 'inline-flex', gap: 2, padding: 4, marginTop: 8,
+              background: lightBg ? 'rgba(0,0,0,0.05)' : `${c.primary}0c`,
+              borderRadius: 24, border: `1px solid ${lightBg ? 'rgba(0,0,0,0.06)' : `${c.primary}15`}`,
+            }}>
+              <span style={{
+                padding: '8px 24px', fontSize: 13, fontWeight: 700, borderRadius: 20,
+                background: c.primary, color: c.bg,
+              }}>{data.niche === 'barbearia' ? 'Barbearia' : 'Salão'}</span>
+              <Link to={`/demo/${data.siblingDemo}`} onClick={() => setMenuOpen(false)} style={{
+                padding: '8px 24px', fontSize: 13, fontWeight: 600, borderRadius: 20,
+                background: 'transparent', color: lightBg ? 'rgba(0,0,0,0.4)' : c.textMuted,
+                textDecoration: 'none', transition: 'all 0.3s',
+              }}>
+                {data.niche === 'barbearia' ? 'Salão' : 'Barbearia'}
+              </Link>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* ══ HERO ══ */}
-      <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
-        {/* Background image */}
+      <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+        {/* Background image with strong gradient overlay */}
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img src={data.hero.image} alt="" loading="eager" style={{ width: '100%', height: '100%', objectFit: 'cover', transform: lv >= 2 ? 'scale(1.08)' : 'scale(1.02)', transition: 'transform 12s ease' }}
-            onError={e => { (e.target as HTMLImageElement).src = fallbackImg; }} />
-          <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(160deg, ${c.bg} 0%, ${c.bg}d0 35%, ${c.bg}60 65%, ${c.bg}30 100%)` }} />
+          <img src={data.hero.image} alt="" loading="eager" style={{
+            width: '100%', height: '100%', objectFit: 'cover',
+            transform: lv >= 2 ? 'scale(1.08)' : 'scale(1.02)',
+            transition: 'transform 14s ease',
+          }} onError={e => { (e.target as HTMLImageElement).src = fallbackImg; }} />
+          {/* Strong gradient overlay */}
+          <div style={{
+            position: 'absolute', inset: 0,
+            background: lightBg
+              ? `linear-gradient(180deg, ${c.bg}f0 0%, ${c.bg}c8 30%, ${c.bg}90 55%, ${c.bg}60 100%)`
+              : `linear-gradient(180deg, ${c.bg}f5 0%, ${c.bg}d0 30%, ${c.bg}80 60%, ${c.bg}50 100%)`,
+          }} />
           {/* Theme pattern overlay */}
           <div style={{ position: 'absolute', inset: 0, backgroundImage: th.pattern, backgroundRepeat: 'repeat', opacity: 0.5, pointerEvents: 'none' }} />
-          {/* Radial glow behind title */}
-          <div style={{ position: 'absolute', top: '30%', left: '20%', width: '50%', height: '50%', background: `radial-gradient(ellipse, ${c.primary}18 0%, transparent 70%)`, pointerEvents: 'none', filter: 'blur(40px)' }} />
-          {lv >= 2 && <div style={{ position: 'absolute', bottom: '-20%', right: '-10%', width: '60%', height: '60%', background: `radial-gradient(circle, ${c.primary}12 0%, transparent 70%)`, pointerEvents: 'none' }} />}
+          {/* Centered radial glow behind title area */}
+          <div style={{
+            position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)',
+            width: '70%', height: '60%',
+            background: `radial-gradient(ellipse, ${c.primary}${lightBg ? '0c' : '1a'} 0%, transparent 65%)`,
+            pointerEvents: 'none', filter: 'blur(50px)',
+          }} />
+          {lv >= 2 && <div style={{
+            position: 'absolute', bottom: '-15%', left: '50%', transform: 'translateX(-50%)',
+            width: '80%', height: '50%',
+            background: `radial-gradient(circle, ${c.primary}${lightBg ? '08' : '10'} 0%, transparent 70%)`,
+            pointerEvents: 'none',
+          }} />}
         </div>
-        <div className="demo-hero-content" style={{ position: 'relative', zIndex: 2, maxWidth: 800, padding: '140px 32px 120px', marginLeft: th.heroAlign === 'center' ? 'auto' : '8%', marginRight: th.heroAlign === 'center' ? 'auto' : undefined, textAlign: th.heroAlign, opacity: heroVisible ? 1 : 0, transform: heroVisible ? 'translateY(0)' : 'translateY(32px)', transition: 'all 0.8s cubic-bezier(0.4,0,0.2,1)' }}>
-          <div style={{ display: 'inline-block', padding: '6px 18px', ...glass(c.primary), borderRadius: 20, marginBottom: 28 }}>
-            <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.12em', color: c.primary, textTransform: 'uppercase' }}>{data.tagline}</span>
+
+        {/* Hero content - EVERYTHING CENTERED */}
+        <div className="demo-hero-content" style={{
+          position: 'relative', zIndex: 2, maxWidth: 800, width: '100%',
+          padding: '160px 32px 120px',
+          margin: '0 auto', textAlign: 'center',
+          display: 'flex', flexDirection: 'column', alignItems: 'center',
+          opacity: heroVisible ? 1 : 0, transform: heroVisible ? 'translateY(0)' : 'translateY(32px)',
+          transition: 'all 0.8s cubic-bezier(0.4,0,0.2,1)',
+        }}>
+          {/* Logo — SVG if available, else CSS text logo */}
+          {data.logo && data.logo.endsWith('.svg') ? (
+            <img src={data.logo} alt={data.name} style={{
+              height: 'clamp(100px, 18vw, 180px)', objectFit: 'contain', marginBottom: 32,
+            }} onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+          ) : (
+            <div style={{ marginBottom: 32, textAlign: 'center' }}>
+              <div style={{ fontSize: 'clamp(60px, 14vw, 120px)', fontFamily: "'Georgia', 'Times New Roman', serif", fontWeight: 400, fontStyle: 'italic', color: c.primary, lineHeight: 1, letterSpacing: '-0.04em', textShadow: `0 4px 24px ${c.primary}40` }}>
+                {data.name.split(' ')[0].substring(0, 2).toUpperCase()}
+              </div>
+              <div style={{ width: 'clamp(100px, 20vw, 200px)', height: 1, background: `${c.primary}40`, margin: '12px auto' }} />
+              <div style={{ fontSize: 'clamp(10px, 1.5vw, 14px)', fontFamily: "'Inter', sans-serif", fontWeight: 400, color: c.primary, letterSpacing: '0.2em', textTransform: 'uppercase', opacity: 0.8 }}>
+                {data.tagline}
+              </div>
+            </div>
+          )}
+
+          {/* Toggle sibling pill under logo */}
+          {data.siblingDemo && (
+            <div style={{
+              display: 'inline-flex', gap: 4, padding: 4,
+              background: lightBg ? 'rgba(0,0,0,0.05)' : `${c.primary}0c`,
+              borderRadius: 28, marginBottom: 28,
+              border: `1px solid ${lightBg ? 'rgba(0,0,0,0.06)' : `${c.primary}12`}`,
+              backdropFilter: 'blur(12px)',
+            }}>
+              <span style={{
+                padding: '8px 26px', background: c.primary, color: c.bg,
+                borderRadius: 22, fontSize: 13, fontWeight: 700, cursor: 'default',
+                boxShadow: `0 2px 12px ${c.primary}40`,
+              }}>{data.niche === 'barbearia' ? 'Barbearia' : 'Salão'}</span>
+              <Link to={`/demo/${data.siblingDemo}`} style={{
+                padding: '8px 26px', background: 'transparent',
+                color: lightBg ? 'rgba(0,0,0,0.4)' : c.textMuted,
+                borderRadius: 22, fontSize: 13, fontWeight: 600, textDecoration: 'none', transition: 'all 0.3s',
+              }}
+                onMouseEnter={e => { e.currentTarget.style.background = `${c.primary}15`; e.currentTarget.style.color = c.primary; }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = lightBg ? 'rgba(0,0,0,0.4)' : c.textMuted; }}>
+                {data.niche === 'barbearia' ? 'Salão Feminino' : 'Barbearia'}
+              </Link>
+            </div>
+          )}
+
+          {/* Tagline pill */}
+          <div style={{
+            display: 'inline-block', padding: '6px 20px', marginBottom: 28,
+            ...glass(c.primary, false, c.bg), borderRadius: 24,
+          }}>
+            <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.14em', color: c.primary, textTransform: 'uppercase' }}>{data.tagline}</span>
           </div>
-          <h1 style={{ fontSize: 'clamp(2.8rem,7vw,4.8rem)', fontWeight: th.heroWeight, lineHeight: 1.0, marginBottom: 28, letterSpacing: '-0.03em', textTransform: themeName === 'industrial' ? 'uppercase' as const : 'none' as const }}>
+
+          {/* Title - large, centered */}
+          <h1 style={{
+            fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: th.heroWeight,
+            lineHeight: 1.05, marginBottom: 24, letterSpacing: '-0.03em',
+            textAlign: 'center',
+            textTransform: themeName === 'industrial' ? 'uppercase' as const : 'none' as const,
+          }}>
             {data.hero.title.split(' ').map((w, i) => (
-              <span key={i} style={{ color: i === 0 ? c.primary : c.text, ...(i > 0 ? { backgroundImage: `linear-gradient(135deg, ${c.text}, ${c.textMuted})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' } : {}) }}>{w} </span>
+              <span key={i} style={{
+                color: i === 0 ? c.primary : c.text,
+                ...(i > 0 ? {
+                  backgroundImage: `linear-gradient(135deg, ${c.text}, ${c.textMuted})`,
+                  WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                } : {}),
+              }}>{w} </span>
             ))}
           </h1>
-          <p style={{ fontSize: 'clamp(1rem,2vw,1.15rem)', color: c.textMuted, lineHeight: 1.8, marginBottom: 44, maxWidth: 520 }}>{data.hero.subtitle}</p>
-          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-            <button style={{ padding: '15px 34px', background: c.primary, color: c.bg, border: 'none', borderRadius: 12, fontSize: 14, fontWeight: 700, cursor: 'pointer', boxShadow: `0 8px 28px ${c.primary}35`, transition: 'all 0.3s' }}
-              onMouseEnter={e => { e.currentTarget.style.boxShadow = `0 12px 40px ${c.primary}50`; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-              onMouseLeave={e => { e.currentTarget.style.boxShadow = `0 8px 28px ${c.primary}35`; e.currentTarget.style.transform = 'translateY(0)'; }}>{data.cta.buttonText}</button>
-            <button style={{ padding: '15px 34px', ...glass(c.primary), color: c.primary, borderRadius: 12, fontSize: 14, fontWeight: 600, cursor: 'pointer', transition: 'all 0.3s' }}
+
+          {/* Subtitle - centered, max-width 550, margin auto */}
+          <p style={{
+            fontSize: 'clamp(1rem, 2vw, 1.15rem)', color: c.textMuted,
+            lineHeight: 1.8, maxWidth: 550, margin: '0 auto 44px', textAlign: 'center',
+          }}>{data.hero.subtitle}</p>
+
+          {/* CTA buttons - centered */}
+          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', justifyContent: 'center' }}>
+            <button style={{
+              padding: '16px 38px', background: c.primary, color: c.bg,
+              border: 'none', borderRadius: th.btnRadius, fontSize: 14, fontWeight: 700,
+              cursor: 'pointer', boxShadow: `0 8px 32px ${c.primary}40`,
+              transition: 'all 0.3s', letterSpacing: '0.02em',
+            }}
+              onMouseEnter={e => { e.currentTarget.style.boxShadow = `0 14px 44px ${c.primary}55`; e.currentTarget.style.transform = 'translateY(-3px)'; }}
+              onMouseLeave={e => { e.currentTarget.style.boxShadow = `0 8px 32px ${c.primary}40`; e.currentTarget.style.transform = 'translateY(0)'; }}>
+              {data.cta.buttonText}
+            </button>
+            <button style={{
+              padding: '16px 38px', ...glass(c.primary, false, c.bg),
+              color: c.primary, borderRadius: th.btnRadius, fontSize: 14, fontWeight: 600,
+              cursor: 'pointer', transition: 'all 0.3s',
+            }}
               onMouseEnter={e => e.currentTarget.style.borderColor = `${c.primary}40`}
-              onMouseLeave={e => e.currentTarget.style.borderColor = `${c.primary}14`}>Saiba mais ↓</button>
+              onMouseLeave={e => e.currentTarget.style.borderColor = lightBg ? 'rgba(0,0,0,0.06)' : `${c.primary}14`}>
+              Saiba mais ↓
+            </button>
           </div>
-          <div style={{ marginTop: 28, display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 16px', ...glass(c.primary), borderRadius: 20 }}>
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: c.primary, boxShadow: `0 0 8px ${c.primary}60` }} />
-            <span style={{ fontSize: 11, color: c.textMuted }}>Plano {tp.name} — {tp.price}</span>
+
+          {/* Tier badge - centered */}
+          <div style={{
+            marginTop: 28, display: 'inline-flex', alignItems: 'center', gap: 8,
+            padding: '6px 18px', ...glass(c.primary, false, c.bg), borderRadius: 22,
+          }}>
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: c.primary, boxShadow: `0 0 10px ${c.primary}60` }} />
+            <span style={{ fontSize: 11, color: lightBg ? 'rgba(0,0,0,0.45)' : c.textMuted, fontWeight: 500 }}>Plano {tp.name} — {tp.price}</span>
           </div>
         </div>
       </section>
@@ -724,8 +953,17 @@ export default function DemoPage() {
         onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 4px 20px rgba(37,211,102,0.4)'; }}>◯</a>
 
       {/* ── Banner Stauf ── */}
-      <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 999, padding: '9px 24px', background: 'rgba(10,10,15,0.94)', backdropFilter: 'blur(16px)', borderTop: '1px solid rgba(45,212,191,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}><span style={{ color: '#2dd4bf', fontSize: 13, fontWeight: 700 }}>STAUF.</span><span style={{ color: '#666', fontSize: 11 }} className="demo-banner-text">Demo visual — Quer um site assim?</span></div>
+      <div style={{
+        position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 999, padding: '9px 24px',
+        background: lightBg ? 'rgba(255,255,255,0.94)' : 'rgba(10,10,15,0.94)',
+        backdropFilter: 'blur(16px)',
+        borderTop: lightBg ? '1px solid rgba(0,0,0,0.06)' : '1px solid rgba(45,212,191,0.12)',
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span style={{ color: '#2dd4bf', fontSize: 13, fontWeight: 700 }}>STAUF.</span>
+          <span style={{ color: lightBg ? '#888' : '#666', fontSize: 11 }} className="demo-banner-text">Demo visual — Quer um site assim?</span>
+        </div>
         <Link to="/" style={{ padding: '6px 16px', background: '#2dd4bf', color: '#0a0a0f', borderRadius: 6, fontSize: 11, fontWeight: 700, textDecoration: 'none', transition: 'all 0.3s' }}
           onMouseEnter={e => e.currentTarget.style.boxShadow = '0 2px 12px rgba(45,212,191,0.4)'}
           onMouseLeave={e => e.currentTarget.style.boxShadow = 'none'}>Conheça a Stauf.</Link>
@@ -741,8 +979,9 @@ export default function DemoPage() {
           .demo-gallery{grid-template-columns:1fr 1fr!important}
           .demo-gallery>div{grid-column:span 1!important;aspect-ratio:1/1!important}
           .demo-banner-text{display:none}
-          .demo-hero-content{margin-left:0!important;padding:120px 20px 80px!important;text-align:center}
+          .demo-hero-content{margin-left:0!important;padding:140px 20px 80px!important;text-align:center}
           .demo-hero-content>div:last-of-type{justify-content:center}
+          .demo-hero-content img:first-child{height:clamp(80px,25vw,140px)!important}
           section{padding-left:16px!important;padding-right:16px!important}
           nav{padding:12px 16px!important}
           h1{font-size:2.2rem!important}

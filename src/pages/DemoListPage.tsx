@@ -10,7 +10,7 @@ interface DemoEntry {
   hero: { image: string };
 }
 
-const DEMO_SLUGS = ['barber-king', 'iron-gym'];
+const DEMO_SLUGS = ['rs-salao', 'barber-king', 'iron-gym'];
 
 export default function DemoListPage() {
   const [demos, setDemos] = useState<DemoEntry[]>([]);

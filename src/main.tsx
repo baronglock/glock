@@ -10,7 +10,7 @@ import { LanguageProvider } from './hooks/useLanguage'
 import { ThemeProvider } from './hooks/useTheme'
 import { PrivacyPage } from './pages/PrivacyPage'
 import { CheckoutPage } from './pages/CheckoutPage'
-import DemoPage from './pages/DemoPage'
+import DemoSplashPage from './pages/DemoSplashPage'
 import DemoListPage from './pages/DemoListPage'
 import { HelmetProvider } from 'react-helmet-async'
 
@@ -25,7 +25,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/privacidade" element={<Layout><PrivacyPage /></Layout>} />
           <Route path="/checkout" element={<Layout><CheckoutPage /></Layout>} />
           <Route path="/demo" element={<DemoListPage />} />
-          <Route path="/demo/:slug" element={<DemoPage />} />
+          <Route path="/demo/:slug" element={<DemoSplashPage />} />
           {Object.entries(servicesData).map(([slug, data]) => (
             <Route
               key={slug}

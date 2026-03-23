@@ -1,0 +1,255 @@
+{
+  "slug": "rs-salao-feminino",
+  "name": "RS Salão",
+  "niche": "salao",
+  "theme": "elegant",
+  "tagline": "Estética Capilar Feminina",
+  "city": "Curitiba, PR",
+  "phone": "(41) 99999-0000",
+  "logo": "",
+  "siblingDemo": "rs-barbearia",
+  "siblingLabel": "Conheça a Barbearia →",
+  "colors": {
+    "primary": "#c47d8a",
+    "secondary": "#f5ede8",
+    "bg": "#faf6f4",
+    "text": "#2a1f1f",
+    "textMuted": "#8a7070"
+  },
+  "hero": {
+    "title": "Beleza que transforma",
+    "subtitle": "Salão de estética capilar feminina em Curitiba. Coloração, tratamentos e cuidados que realçam sua beleza natural.",
+    "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1400&q=85&auto=format&fit=crop"
+  },
+  "about": {
+    "text": "O RS Salão é o espaço feminino do nosso universo. Aqui cada mulher recebe atenção total — desde a consultoria de estilo até a finalização perfeita. Trabalhamos com os melhores produtos do mercado e técnicas avançadas de coloração, tratamento e transformação capilar. Seu cabelo merece esse cuidado.",
+    "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80&auto=format&fit=crop"
+  },
+  "services": [
+    {
+      "name": "Corte Feminino",
+      "desc": "Corte sob medida respeitando seu tipo de fio e formato de rosto.",
+      "icon": "◊",
+      "price": "R$ 90",
+      "time": "50 min",
+      "category": "Corte",
+      "popular": true
+    },
+    {
+      "name": "Coloração",
+      "desc": "Técnicas avançadas com produtos de alta performance. Resultado natural.",
+      "icon": "◎",
+      "price": "A partir de R$ 150",
+      "time": "90 min",
+      "category": "Cor"
+    },
+    {
+      "name": "Mechas & Luzes",
+      "desc": "Iluminação personalizada que valoriza seu tom de pele.",
+      "icon": "◈",
+      "price": "A partir de R$ 200",
+      "time": "120 min",
+      "category": "Cor",
+      "popular": true
+    },
+    {
+      "name": "Escova Progressiva",
+      "desc": "Alisamento profissional com resultado natural e duradouro.",
+      "icon": "◇",
+      "price": "R$ 200",
+      "time": "120 min",
+      "category": "Tratamento"
+    },
+    {
+      "name": "Hidratação Profunda",
+      "desc": "Reconstrução e nutrição dos fios com produtos premium.",
+      "icon": "◇",
+      "price": "R$ 120",
+      "time": "60 min",
+      "category": "Tratamento"
+    },
+    {
+      "name": "Cauterização",
+      "desc": "Selagem de cutículas danificadas. Brilho e maciez imediatos.",
+      "icon": "◈",
+      "price": "R$ 140",
+      "time": "60 min",
+      "category": "Tratamento"
+    },
+    {
+      "name": "Design Sobrancelha",
+      "desc": "Modelagem feminina com henna ou design simples.",
+      "icon": "◎",
+      "price": "R$ 45",
+      "time": "20 min",
+      "category": "Estética"
+    },
+    {
+      "name": "Penteado Evento",
+      "desc": "Penteado especial pra festas, formaturas e casamentos.",
+      "icon": "♛",
+      "price": "R$ 150",
+      "time": "60 min",
+      "category": "Especial"
+    }
+  ],
+  "staff": [
+    {
+      "name": "Proprietária RS",
+      "role": "Cabeleireira & Colorista",
+      "rating": 4.9,
+      "reviews": 198,
+      "available": true
+    },
+    {
+      "name": "Fernanda",
+      "role": "Especialista em Mechas",
+      "rating": 4.8,
+      "reviews": 156,
+      "available": true
+    },
+    {
+      "name": "Patricia",
+      "role": "Tratamentos Capilares",
+      "rating": 4.9,
+      "reviews": 134,
+      "available": true
+    }
+  ],
+  "plans": [
+    {
+      "name": "Cuidado",
+      "price": "R$ 150/mês",
+      "features": [
+        "1 corte por mês",
+        "1 hidratação mensal",
+        "Agendamento prioritário"
+      ]
+    },
+    {
+      "name": "Beleza",
+      "price": "R$ 280/mês",
+      "features": [
+        "2 cortes por mês",
+        "2 tratamentos mensais",
+        "Retoque de cor mensal",
+        "Prioridade total",
+        "Desconto 15% em produtos"
+      ],
+      "popular": true
+    },
+    {
+      "name": "Diva",
+      "price": "R$ 420/mês",
+      "features": [
+        "Cortes ilimitados",
+        "Tratamentos ilimitados",
+        "Coloração mensal inclusa",
+        "Prioridade máxima",
+        "Produtos premium grátis",
+        "Penteado pra eventos"
+      ]
+    }
+  ],
+  "products": [
+    {
+      "name": "Máscara Capilar",
+      "price": "R$ 89",
+      "img": "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Sérum Reparador",
+      "price": "R$ 65",
+      "img": "https://images.unsplash.com/photo-1626808642875-0aa545482dfb?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Shampoo Profissional",
+      "price": "R$ 75",
+      "img": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Kit Tratamento Completo",
+      "price": "R$ 189",
+      "img": "https://images.unsplash.com/photo-1621607512214-68297480165e?w=300&q=80&auto=format&fit=crop",
+      "popular": true
+    }
+  ],
+  "gallery": [
+    "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=600&q=80&auto=format&fit=crop"
+  ],
+  "reviews": [
+    {
+      "name": "Carla M.",
+      "text": "Melhor salão de Curitiba. Coloração perfeita e atendimento impecável.",
+      "stars": 5,
+      "time": "1 semana atrás"
+    },
+    {
+      "name": "Juliana S.",
+      "text": "Progressiva ficou incrível. Natural e duradoura. Super recomendo.",
+      "stars": 5,
+      "time": "2 semanas atrás"
+    },
+    {
+      "name": "Ana P.",
+      "text": "Mechas que fiz aqui foram elogiadas por todo mundo. Profissionais de verdade.",
+      "stars": 5,
+      "time": "3 semanas atrás"
+    },
+    {
+      "name": "Beatriz R.",
+      "text": "Penteado do meu casamento ficou perfeito. Chorei de emoção.",
+      "stars": 5,
+      "time": "1 mês atrás"
+    }
+  ],
+  "features": [
+    {
+      "label": "Clientes atendidas",
+      "value": "2.500+"
+    },
+    {
+      "label": "Anos de experiência",
+      "value": "8+"
+    },
+    {
+      "label": "Avaliação Google",
+      "value": "4.9 ★"
+    },
+    {
+      "label": "Profissionais",
+      "value": "3"
+    }
+  ],
+  "cta": {
+    "text": "Pronta pra se transformar?",
+    "buttonText": "Agendar agora"
+  },
+  "faq": [
+    {
+      "q": "Preciso agendar?",
+      "a": "Sim, recomendamos agendar pelo WhatsApp. Procedimentos de cor exigem reserva antecipada."
+    },
+    {
+      "q": "Quanto tempo dura uma coloração?",
+      "a": "Depende da técnica. Coloração simples ~90min, mechas ~2h, transformação ~3h."
+    },
+    {
+      "q": "Atendem homens também?",
+      "a": "O salão é focado no público feminino. Pra serviços masculinos, conheça nossa Barbearia!"
+    },
+    {
+      "q": "Fazem teste de mecha?",
+      "a": "Sim, pra procedimentos químicos sempre fazemos teste de mecha antes."
+    },
+    {
+      "q": "Quais produtos usam?",
+      "a": "Trabalhamos com as melhores marcas profissionais do mercado."
+    }
+  ]
+}

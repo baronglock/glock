@@ -1,0 +1,254 @@
+{
+  "slug": "rs-barbearia",
+  "name": "RS Barbearia",
+  "niche": "barbearia",
+  "theme": "clean",
+  "tagline": "Barbearia Premium",
+  "city": "Curitiba, PR",
+  "phone": "(41) 99999-0000",
+  "logo": "",
+  "siblingDemo": "rs-salao-feminino",
+  "siblingLabel": "Salão Feminino",
+  "colors": {
+    "primary": "#d4a843",
+    "secondary": "#1a1510",
+    "bg": "#0d0b08",
+    "text": "#f5f0e8",
+    "textMuted": "#998b75"
+  },
+  "hero": {
+    "title": "O corte que fala por você",
+    "subtitle": "Barbearia premium no coração de Curitiba. Cortes sob medida, barba impecável e ambiente exclusivo.",
+    "image": "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1400&q=85&auto=format&fit=crop"
+  },
+  "about": {
+    "text": "A RS Barbearia é comandada por Rafael, barbeiro com mais de 10 anos de experiência. Nosso espaço foi pensado pra quem valoriza um corte bem feito, um ambiente tranquilo e atendimento de primeira. Aqui cada detalhe importa.",
+    "image": "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=800&q=80&auto=format&fit=crop"
+  },
+  "services": [
+    {
+      "name": "Corte Signature",
+      "desc": "Corte personalizado com consultoria de estilo.",
+      "icon": "✂",
+      "price": "R$ 70",
+      "time": "40 min",
+      "category": "Cortes",
+      "popular": true
+    },
+    {
+      "name": "Barba Sculpting",
+      "desc": "Modelagem precisa com toalha quente e óleos.",
+      "icon": "⌇",
+      "price": "R$ 55",
+      "time": "30 min",
+      "category": "Barba"
+    },
+    {
+      "name": "Corte + Barba",
+      "desc": "O combo mais pedido da casa.",
+      "icon": "♛",
+      "price": "R$ 110",
+      "time": "60 min",
+      "category": "Combos",
+      "popular": true
+    },
+    {
+      "name": "Hot Towel Shave",
+      "desc": "Barbear clássico com toalhas quentes.",
+      "icon": "◈",
+      "price": "R$ 80",
+      "time": "40 min",
+      "category": "Barba"
+    },
+    {
+      "name": "Pigmentação",
+      "desc": "Disfarce natural de falhas.",
+      "icon": "◎",
+      "price": "R$ 130",
+      "time": "45 min",
+      "category": "Tratamentos"
+    },
+    {
+      "name": "Hidratação",
+      "desc": "Tratamento profundo pra cabelos.",
+      "icon": "◇",
+      "price": "R$ 90",
+      "time": "45 min",
+      "category": "Tratamentos"
+    },
+    {
+      "name": "Sobrancelha",
+      "desc": "Design masculino preciso.",
+      "icon": "◎",
+      "price": "R$ 35",
+      "time": "15 min",
+      "category": "Extras"
+    },
+    {
+      "name": "Combo Noivo",
+      "desc": "Corte, barba, hidratação pro grande dia.",
+      "icon": "♛",
+      "price": "R$ 180",
+      "time": "90 min",
+      "category": "Combos"
+    }
+  ],
+  "staff": [
+    {
+      "name": "Rafael",
+      "role": "Barbeiro & Proprietário",
+      "rating": 4.9,
+      "reviews": 215,
+      "available": true
+    },
+    {
+      "name": "Diego",
+      "role": "Degradês & Fades",
+      "rating": 4.8,
+      "reviews": 167,
+      "available": true
+    },
+    {
+      "name": "Lucas",
+      "role": "Barba & Shaving",
+      "rating": 4.8,
+      "reviews": 143,
+      "available": true
+    }
+  ],
+  "plans": [
+    {
+      "name": "Gentleman",
+      "price": "R$ 120/mês",
+      "features": [
+        "2 cortes por mês",
+        "Agendamento prioritário",
+        "Desconto em produtos"
+      ]
+    },
+    {
+      "name": "Executive",
+      "price": "R$ 200/mês",
+      "features": [
+        "4 cortes por mês",
+        "1 barba mensal",
+        "Prioridade total",
+        "Desconto 15%",
+        "Bebida inclusa"
+      ],
+      "popular": true
+    },
+    {
+      "name": "VIP Club",
+      "price": "R$ 320/mês",
+      "features": [
+        "Cortes ilimitados",
+        "Barba ilimitada",
+        "Todos os tratamentos",
+        "Prioridade máxima",
+        "Produtos grátis"
+      ]
+    }
+  ],
+  "products": [
+    {
+      "name": "Pomada Modeladora",
+      "price": "R$ 65",
+      "img": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Óleo para Barba",
+      "price": "R$ 55",
+      "img": "https://images.unsplash.com/photo-1626808642875-0aa545482dfb?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Shampoo Premium",
+      "price": "R$ 75",
+      "img": "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Kit Barba",
+      "price": "R$ 149",
+      "img": "https://images.unsplash.com/photo-1621607512214-68297480165e?w=300&q=80&auto=format&fit=crop",
+      "popular": true
+    }
+  ],
+  "gallery": [
+    "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1596728325395-481c7fa4e56a?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80&auto=format&fit=crop"
+  ],
+  "reviews": [
+    {
+      "name": "Marcos R.",
+      "text": "Rafael é craque. Corte sempre impecável.",
+      "stars": 5,
+      "time": "1 semana atrás"
+    },
+    {
+      "name": "Pedro L.",
+      "text": "Combo noivo foi experiência incrível. Nota 10.",
+      "stars": 5,
+      "time": "2 semanas atrás"
+    },
+    {
+      "name": "Fernando A.",
+      "text": "Melhor barbearia de Curitiba. Preço justo.",
+      "stars": 5,
+      "time": "1 mês atrás"
+    },
+    {
+      "name": "Lucas M.",
+      "text": "Hot towel shave imperdível. Saio renovado.",
+      "stars": 5,
+      "time": "1 mês atrás"
+    }
+  ],
+  "features": [
+    {
+      "label": "Clientes",
+      "value": "3.000+"
+    },
+    {
+      "label": "Experiência",
+      "value": "10+ anos"
+    },
+    {
+      "label": "Google",
+      "value": "4.9 ★"
+    },
+    {
+      "label": "Profissionais",
+      "value": "3"
+    }
+  ],
+  "cta": {
+    "text": "Pronto pra um corte de respeito?",
+    "buttonText": "Agendar agora"
+  },
+  "faq": [
+    {
+      "q": "Preciso agendar?",
+      "a": "Recomendamos agendar pelo WhatsApp."
+    },
+    {
+      "q": "Atendem mulheres?",
+      "a": "A barbearia é masculina. Pra feminino, conheça nosso Salão!"
+    },
+    {
+      "q": "Tempo de um corte?",
+      "a": "Corte ~40min. Combo corte+barba ~1h."
+    },
+    {
+      "q": "Estacionamento?",
+      "a": "Conveniado ao lado com desconto."
+    },
+    {
+      "q": "Formas de pagamento?",
+      "a": "PIX, cartões e dinheiro."
+    }
+  ]
+}
