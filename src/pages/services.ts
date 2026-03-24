@@ -119,13 +119,13 @@ export const servicesData: Record<string, ServicePageData> = {
       { title: 'Activation', desc: 'We deploy, train the team and monitor.' },
     ],
     plansPt: [
-      { name: 'Starter', subtitle: 'Uma automação pontual', price: 'R$ 797', period: 'por automação', features: ['1 fluxo automatizado', 'Integração com até 2 sistemas', 'Documentação completa', 'Suporte por 30 dias', 'Treinamento básico'] },
-      { name: 'Growth', subtitle: 'Automação contínua', price: 'R$ 1.497', period: '/mês', features: ['Até 5 fluxos automatizados', 'Integrações ilimitadas', 'Relatórios automáticos', 'Alertas por WhatsApp/email', 'Suporte prioritário', 'Manutenção mensal'], highlight: true },
+      { name: 'Pontual', subtitle: 'Uma automação específica', price: 'A partir de R$ 1.500', period: 'por projeto', features: ['1 processo automatizado', 'Integração com seus sistemas', 'Documentação completa', 'Suporte por 30 dias', 'Treinamento da equipe'] },
+      { name: 'Operação', subtitle: 'Automação contínua do setor', price: 'Sob consulta', period: 'projeto + mensalidade', features: ['Múltiplos processos automatizados', 'Integrações ilimitadas', 'Relatórios e alertas automáticos', 'Redução real de carga operacional', 'Suporte prioritário', 'Manutenção e evolução mensal'], highlight: true },
       { name: 'Scale', subtitle: 'Operação no piloto automático', price: 'R$ 2.997', period: '/mês', features: ['Fluxos ilimitados', 'Dashboards de monitoramento', 'IA embarcada nos fluxos', 'Integrações customizadas', 'Gerente de conta dedicado', 'SLA de uptime 99.9%'] },
     ],
     plansEn: [
-      { name: 'Starter', subtitle: 'A single automation', price: 'R$ 797', period: 'per automation', features: ['1 automated workflow', 'Integration with up to 2 systems', 'Complete documentation', '30-day support', 'Basic training'] },
-      { name: 'Growth', subtitle: 'Continuous automation', price: 'R$ 1,497', period: '/month', features: ['Up to 5 automated workflows', 'Unlimited integrations', 'Automatic reports', 'WhatsApp/email alerts', 'Priority support', 'Monthly maintenance'], highlight: true },
+      { name: 'One-time', subtitle: 'A specific automation', price: 'From R$ 1,500', period: 'per project', features: ['1 automated process', 'Integration with your systems', 'Complete documentation', '30-day support', 'Team training'] },
+      { name: 'Operations', subtitle: 'Continuous sector automation', price: 'Custom quote', period: 'project + monthly', features: ['Multiple automated processes', 'Unlimited integrations', 'Reports and automatic alerts', 'Real operational load reduction', 'Priority support', 'Monthly maintenance and evolution'], highlight: true },
       { name: 'Scale', subtitle: 'Operation on autopilot', price: 'R$ 2,997', period: '/month', features: ['Unlimited workflows', 'Monitoring dashboards', 'AI embedded in workflows', 'Custom integrations', 'Dedicated account manager', '99.9% uptime SLA'] },
     ],
   },
