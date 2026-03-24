@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia do Associado — Stauf.</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0a0a0f; color: #e8e8e8; font-family: 'Inter', system-ui, sans-serif; line-height: 1.7; }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header */
+    .hero { padding: 80px 0 60px; text-align: center; border-bottom: 1px solid #1a1a2a; }
+    .hero h1 { font-size: 42px; font-weight: 200; color: #2dd4bf; margin-bottom: 12px; }
+    .hero p { font-size: 16px; color: #888; max-width: 500px; margin: 0 auto; }
+    .badge { display: inline-block; padding: 4px 14px; background: #2dd4bf15; color: #2dd4bf; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; border-radius: 20px; border: 1px solid #2dd4bf25; margin-bottom: 20px; text-transform: uppercase; }
+
+    /* Progress tracker */
+    .progress { position: sticky; top: 0; z-index: 100; background: #0a0a0fee; backdrop-filter: blur(12px); border-bottom: 1px solid #1a1a2a; padding: 12px 0; }
+    .progress-bar { display: flex; gap: 4px; }
+    .progress-step { flex: 1; height: 4px; background: #1a1a2a; border-radius: 2px; transition: background 0.3s; }
+    .progress-step.active { background: #2dd4bf; }
+    .progress-step.done { background: #2dd4bf60; }
+    .progress-label { font-size: 11px; color: #888; text-align: center; margin-top: 8px; }
+
+    /* Sections */
+    .section { padding: 60px 0; border-bottom: 1px solid #1a1a2a; }
+    .section-num { font-size: 64px; font-weight: 800; color: #2dd4bf15; line-height: 1; margin-bottom: -20px; }
+    .section h2 { font-size: 28px; font-weight: 300; margin-bottom: 20px; }
+    .section h3 { font-size: 18px; font-weight: 600; color: #2dd4bf; margin: 32px 0 12px; }
+
+    /* Cards */
+    .card { background: #ffffff06; border: 1px solid #ffffff0a; border-radius: 12px; padding: 24px; margin: 16px 0; transition: border-color 0.3s; }
+    .card:hover { border-color: #2dd4bf25; }
+    .card-warn { border-left: 3px solid #f59e0b; }
+    .card-danger { border-left: 3px solid #ef4444; }
+    .card-success { border-left: 3px solid #22c55e; }
+    .card-info { border-left: 3px solid #2dd4bf; }
+
+    /* Steps */
+    .step { display: flex; gap: 20px; margin: 20px 0; }
+    .step-num { width: 36px; height: 36px; border-radius: 50%; background: #2dd4bf15; color: #2dd4bf; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
+    .step-content { flex: 1; }
+    .step-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .step-content p { font-size: 14px; color: #999; }
+
+    /* Message examples */
+    .msg-box { background: #0d1117; border: 1px solid #21262d; border-radius: 12px; padding: 16px 20px; margin: 12px 0; font-size: 14px; line-height: 1.8; position: relative; }
+    .msg-box::before { content: '💬'; position: absolute; top: -10px; left: 16px; background: #0a0a0f; padding: 0 6px; }
+    .msg-box.commercial::before { content: '🏪'; }
+    .msg-label { font-size: 11px; color: #2dd4bf; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+
+    /* Rules */
+    .rule { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; }
+    .rule-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+    .rule-text { font-size: 14px; color: #ccc; }
+
+    /* Timeline / Evolution */
+    .timeline { position: relative; padding-left: 40px; margin: 24px 0; }
+    .timeline::before { content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, #2dd4bf, #2dd4bf40, transparent); }
+    .timeline-item { position: relative; margin: 24px 0; }
+    .timeline-item::before { content: ''; position: absolute; left: -33px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #2dd4bf; border: 3px solid #0a0a0f; }
+    .timeline-item h4 { font-size: 15px; font-weight: 600; color: #2dd4bf; }
+    .timeline-item p { font-size: 14px; color: #999; margin-top: 4px; }
+    .timeline-item .commission { display: inline-block; padding: 2px 10px; background: #22c55e20; color: #22c55e; font-size: 12px; font-weight: 600; border-radius: 4px; margin-top: 6px; }
+
+    /* Table */
+    .table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+    .table th { text-align: left; padding: 10px 12px; background: #ffffff06; color: #2dd4bf; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .table td { padding: 10px 12px; border-top: 1px solid #ffffff08; color: #ccc; }
+    .table tr:hover td { background: #ffffff04; }
+
+    /* Checklist */
+    .checklist { list-style: none; }
+    .checklist li { padding: 8px 0; font-size: 14px; color: #ccc; display: flex; align-items: center; gap: 10px; }
+    .checklist li::before { content: '○'; color: #2dd4bf; font-size: 16px; }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 28px; }
+      .section-num { font-size: 40px; }
+      .step { flex-direction: column; gap: 8px; }
+    }
+
+    /* Accordion */
+    details { margin: 8px 0; }
+    details summary { cursor: pointer; padding: 12px 16px; background: #ffffff06; border: 1px solid #ffffff0a; border-radius: 8px; font-size: 14px; font-weight: 500; color: #ddd; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    details summary::after { content: '+'; color: #2dd4bf; font-size: 20px; transition: transform 0.3s; }
+    details[open] summary::after { transform: rotate(45deg); }
+    details[open] summary { border-radius: 8px 8px 0 0; border-bottom: none; }
+    details .detail-content { padding: 16px; background: #ffffff04; border: 1px solid #ffffff0a; border-top: none; border-radius: 0 0 8px 8px; font-size: 14px; color: #aaa; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="badge">Manual do Associado</div>
+    <h1>Stauf.</h1>
+    <p>Guia completo pra prospectar, vender e evoluir dentro da operação.</p>
+  </div>
+
+  <!-- INTRO -->
+  <div class="section">
+    <div class="section-num">00</div>
+    <h2>Contexto — O que estamos fazendo</h2>
+
+    <div class="card card-info">
+      <p><strong>A Stauf</strong> cria sites profissionais otimizados pra aparecer no Google. Nosso diferencial: entregamos uma <strong>demo grátis personalizada</strong> pro cliente ver antes de fechar.</p>
+    </div>
+
+    <h3>Como chegamos aqui</h3>
+    <p>Extraímos mais de <strong>23.000 contatos</strong> de empresas reais da Receita Federal — com nome do sócio, WhatsApp, email, cidade. Depois filtramos os melhores: só os que têm WhatsApp + nome do dono + região de Curitiba.</p>
+    <p style="margin-top:12px">Pra cada lead, pesquisamos automaticamente no Google Maps: quem são os concorrentes da região, se tem site ou não, qual a nota no Google. <strong>Tudo real, zero inventado.</strong></p>
+    <p style="margin-top:12px">A mensagem de cada lead já vem pronta na planilha com dados concretos — nome do concorrente, nota, avaliações. Você lê, ajusta se precisar, e manda.</p>
+
+    <div class="card card-warn">
+      <p><strong>Por que manual e não robô?</strong></p>
+      <p style="margin-top:8px;color:#999">No começo, precisamos de experiência real. Entender o que converte, o que não converte, como as pessoas respondem. Bot disparando msg em massa não é orgânico, não é natural, e queima o número. Vamos escalonar automação DEPOIS de validar o processo na mão.</p>
+    </div>
+  </div>
+
+  <!-- STEP 1: PLANILHA -->
+  <div class="section">
+    <div class="section-num">01</div>
+    <h2>A Planilha de Leads</h2>
+
+    <p>Sua ferramenta principal. Tudo acontece aqui.</p>
+
+    <h3>Colunas importantes</h3>
+    <table class="table">
+      <tr><th>Coluna</th><th>O que é</th><th>Quem preenche</th></tr>
+      <tr><td><strong>A — nicho</strong></td><td>Tipo de negócio (barbearia, estética, salão...)</td><td>Automático</td></tr>
+      <tr><td><strong>B — nome</strong></td><td>Nome do dono/sócio</td><td>Automático</td></tr>
+      <tr><td><strong>C — negócio</strong></td><td>Nome da empresa</td><td>Automático</td></tr>
+      <tr><td><strong>D — whatsapp</strong></td><td>Número pessoal do dono</td><td>Automático</td></tr>
+      <tr><td><strong>E — Pessoal</strong></td><td>✓ quando mandou msg no pessoal</td><td>VOCÊ</td></tr>
+      <tr><td><strong>F — Empresa</strong></td><td>✓ quando mandou msg no comercial</td><td>VOCÊ</td></tr>
+      <tr><td><strong>G — tem_site</strong></td><td>Se a empresa tem site real</td><td>Automático</td></tr>
+      <tr><td><strong>H — retorno</strong></td><td>Status do lead (dropdown)</td><td>VOCÊ</td></tr>
+      <tr><td><strong>M — msg_pessoal</strong></td><td>Mensagem pronta pro WhatsApp pessoal</td><td>Automático (você revisa)</td></tr>
+      <tr><td><strong>N — msg_comercial</strong></td><td>Mensagem pro número comercial</td><td>Automático (você revisa)</td></tr>
+      <tr><td><strong>O — concorrentes</strong></td><td>Top 3 concorrentes reais da região</td><td>Automático</td></tr>
+      <tr><td><strong>P — observações</strong></td><td>Bairro, nota, detalhes, defeitos do site</td><td>Automático + VOCÊ</td></tr>
+    </table>
+
+    <h3>Status do lead (coluna H)</h3>
+    <table class="table">
+      <tr><th>Status</th><th>Quando usar</th></tr>
+      <tr><td>sem_resposta</td><td>Mandou msg, ninguém respondeu</td></tr>
+      <tr><td>respondeu</td><td>Respondeu qualquer coisa</td></tr>
+      <tr><td>interessado</td><td>Demonstrou interesse real</td></tr>
+      <tr><td>recusou</td><td>Disse não</td></tr>
+      <tr><td>demo_aceita</td><td>Quer ver a demo grátis</td></tr>
+      <tr><td>demo_enviada</td><td>Gabriel criou e mandou o link</td></tr>
+      <tr><td>reuniao</td><td>Reunião agendada</td></tr>
+      <tr><td style="color:#22c55e;font-weight:700">fechou</td><td>VENDEU!</td></tr>
+      <tr><td>perdido</td><td>Desistiu depois da demo</td></tr>
+    </table>
+  </div>
+
+  <!-- STEP 2: ENVIAR MSGS -->
+  <div class="section">
+    <div class="section-num">02</div>
+    <h2>Enviando Mensagens</h2>
+
+    <h3>Passo a passo pra cada lead (~3 min)</h3>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Leia a msg pronta (coluna M)</h4>
+        <p>Confere se faz sentido: o nicho tá certo? O concorrente parece real? O nome do dono tá correto? Se algo estiver estranho, ajusta antes de mandar.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Pesquise rápido no Google (30 seg)</h4>
+        <p>Digita o nome do negócio + cidade. Confirma que existe, vê se tem Instagram, se tem número comercial. Se não achar nada, pula esse lead.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Manda no pessoal (WhatsApp da coluna D)</h4>
+        <p>Copia a msg, cola, revisa uma última vez e manda. Marca ✓ na coluna E.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Manda no comercial</h4>
+        <p>Se achou número comercial no Google, manda a msg da coluna N. É curta — só pede pra falar com o dono. Marca ✓ na coluna F.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h4>Atualiza a planilha</h4>
+        <p>Coluna H → "sem_resposta" por enquanto. Próximo lead.</p>
+      </div>
+    </div>
+
+    <h3>Exemplo de msg pessoal</h3>
+    <div class="msg-box">
+      <div class="msg-label">WhatsApp Pessoal</div>
+      Oi Douglas, tudo bem? Pesquisei barbearia em Almirante Tamandaré e a Cordeiro Barbershop aparece primeiro no Google com 5★ e 62 avaliações. A DFerreira Barbearia não aparece. Com um site otimizado isso muda rápido. Posso montar uma prévia grátis de como ficaria pra vocês. Quer ver?
+    </div>
+
+    <h3>Exemplo de msg comercial</h3>
+    <div class="msg-box commercial">
+      <div class="msg-label">WhatsApp Comercial</div>
+      Boa tarde! Gostaria de falar com Douglas. Tenho uma proposta de presença digital pra DFerreira Barbearia. Está disponível?
+    </div>
+
+    <div class="card card-warn">
+      <p><strong>Sobre erros nas mensagens</strong></p>
+      <p style="margin-top:8px;color:#999">Algumas msgs podem ter o nicho errado ou concorrente estranho. Isso é normal — a pesquisa automática não é perfeita. SEMPRE leia antes de mandar. Se algo parecer falso ou estranho, ajusta. Melhor mandar uma msg simples e certa do que uma elaborada e errada.</p>
+    </div>
+  </div>
+
+  <!-- STEP 3: QUANDO RESPONDEREM -->
+  <div class="section">
+    <div class="section-num">03</div>
+    <h2>Quando Alguém Responder</h2>
+
+    <div class="card card-danger">
+      <p><strong>REGRA #1: Avisa o Gabriel IMEDIATAMENTE</strong></p>
+      <p style="margin-top:8px;color:#999">Manda no WhatsApp do Gabriel: nome do cliente, número da linha na planilha, e print da conversa. O Gabriel te diz o que responder. No começo, TODA resposta passa pelo Gabriel.</p>
+    </div>
+
+    <h3>Respostas prontas</h3>
+
+    <details>
+      <summary>"Quanto custa?"</summary>
+      <div class="detail-content">
+        <strong>Avisa o Gabriel primeiro.</strong> Se ele não responder rápido:<br><br>
+        "O valor depende do que você precisa, mas a gente tem planos acessíveis. Posso montar a prévia grátis primeiro pra você ver a qualidade, e depois a gente conversa sobre valores. Topa?"
+      </div>
+    </details>
+
+    <details>
+      <summary>"Já tenho site"</summary>
+      <div class="detail-content">
+        "Massa! Qual é o endereço? Posso dar uma olhada e te mostrar o que dá pra melhorar. Muitos sites feitos há 2-3 anos não aparecem no Google hoje."
+      </div>
+    </details>
+
+    <details>
+      <summary>"Não tenho interesse"</summary>
+      <div class="detail-content">
+        "Sem problemas! Se mudar de ideia, é só chamar. Boa semana!"<br><br>
+        Marca "recusou" na planilha. Próximo lead.
+      </div>
+    </details>
+
+    <details>
+      <summary>"Quem são vocês?"</summary>
+      <div class="detail-content">
+        "Somos a Stauf, empresa de tecnologia aqui de Curitiba. Criamos sites profissionais otimizados pra aparecer no Google. Pode ver nosso site: stauf.com.br"
+      </div>
+    </details>
+
+    <details>
+      <summary>"Manda mais informações"</summary>
+      <div class="detail-content">
+        "Claro! Nosso site é stauf.com.br — lá tem tudo. Mas o melhor jeito de entender é ver a prévia personalizada pro seu negócio. Posso montar uma grátis?"
+      </div>
+    </details>
+
+    <details>
+      <summary>"Vou pensar"</summary>
+      <div class="detail-content">
+        "Tranquilo! A prévia fica disponível pra você ver quando quiser. Qualquer dúvida é só chamar."
+      </div>
+    </details>
+
+    <details>
+      <summary>"Manda orçamento por email"</summary>
+      <div class="detail-content">
+        "Posso mandar sim! Qual o email? Mas antes, posso montar uma prévia grátis do site pra você visualizar. Assim o orçamento faz mais sentido quando você ver a qualidade."
+      </div>
+    </details>
+
+    <details>
+      <summary>Aceitou ver a demo!</summary>
+      <div class="detail-content">
+        Responde: <strong>"Show! Vou passar seus dados pro nosso time e em 1-2 horas te mando o link da prévia. Sem compromisso!"</strong><br><br>
+        Depois coleta e manda pro Gabriel:<br>
+        <ul class="checklist" style="margin-top:12px">
+          <li>Nome completo do dono</li>
+          <li>Nome do negócio</li>
+          <li>Instagram (busca e manda o @)</li>
+          <li>Cores da marca ("tem alguma cor que representa vocês?")</li>
+          <li>Logo (baixa do Instagram em qualidade boa)</li>
+          <li>Se já tem site (qual URL)</li>
+        </ul>
+      </div>
+    </details>
+
+    <h3>Follow-up</h3>
+    <div class="card">
+      <p><strong>Sem resposta em 24h:</strong><br><span style="color:#999">Manda UM follow-up: "E aí [nome], conseguiu ver a mensagem? Sem compromisso, só queria te mostrar algo que pode ajudar."</span></p>
+      <p style="margin-top:12px"><strong>Sem resposta em 3 dias:</strong><br><span style="color:#999">NÃO manda mais nada. Marca "sem_resposta". Próximo lead.</span></p>
+    </div>
+  </div>
+
+  <!-- STEP 4: REGRAS -->
+  <div class="section">
+    <div class="section-num">04</div>
+    <h2>Regras que Não Quebram</h2>
+
+    <div class="rule"><div class="rule-icon">🚫</div><div class="rule-text"><strong>NUNCA</strong> mencionar IA, agentes, automação, Claude na mensagem</div></div>
+    <div class="rule"><div class="rule-icon">🚫</div><div class="rule-text"><strong>NUNCA</strong> mandar msg genérica — cada uma tem concorrente real</div></div>
+    <div class="rule"><div class="rule-icon">🚫</div><div class="rule-text"><strong>NUNCA</strong> ligar sem a pessoa ter respondido primeiro</div></div>
+    <div class="rule"><div class="rule-icon">🚫</div><div class="rule-text"><strong>NUNCA</strong> insistir mais de 2x se não respondeu</div></div>
+    <div class="rule"><div class="rule-icon">🚫</div><div class="rule-text"><strong>NUNCA</strong> falar preço sem combinar com o Gabriel</div></div>
+    <div class="rule"><div class="rule-icon">🚫</div><div class="rule-text"><strong>NUNCA</strong> mandar mais de 20-30 msgs novas por dia (risco de ban)</div></div>
+    <div class="rule"><div class="rule-icon">🚫</div><div class="rule-text"><strong>NUNCA</strong> responder o cliente sem avisar o Gabriel primeiro</div></div>
+    <div class="rule"><div class="rule-icon">✅</div><div class="rule-text"><strong>SEMPRE</strong> ler a msg antes de mandar e ajustar se necessário</div></div>
+    <div class="rule"><div class="rule-icon">✅</div><div class="rule-text"><strong>SEMPRE</strong> atualizar a planilha depois de cada ação</div></div>
+    <div class="rule"><div class="rule-icon">✅</div><div class="rule-text"><strong>SEMPRE</strong> ser natural — como se tivesse pesquisado você mesmo</div></div>
+
+    <h3>Horários ideais</h3>
+    <table class="table">
+      <tr><th>Nicho</th><th>Melhor horário</th></tr>
+      <tr><td>Barbearias / Salões</td><td>9h - 11h</td></tr>
+      <tr><td>Restaurantes</td><td>14h - 16h</td></tr>
+      <tr><td>Clínicas</td><td>8h - 10h</td></tr>
+      <tr><td>Pet Shops</td><td>9h - 11h</td></tr>
+      <tr><td>Lojas</td><td>9h - 11h ou 14h - 16h</td></tr>
+    </table>
+    <p style="font-size:13px;color:#666;margin-top:8px">Evitar: antes das 8h, depois das 19h, domingos.</p>
+  </div>
+
+  <!-- STEP 5: EVOLUÇÃO -->
+  <div class="section">
+    <div class="section-num">05</div>
+    <h2>Sua Evolução</h2>
+
+    <p>Isso não é só mandar msg. É o começo de uma operação que vai escalar.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <h4>Fase 1 — Prospector (agora)</h4>
+        <p>Manda msgs, coleta respostas, avisa o Gabriel. Entende como o processo funciona, o que converte, o que não converte.</p>
+        <div class="commission">Comissão: 30% por venda</div>
+      </div>
+
+      <div class="timeline-item">
+        <h4>Fase 2 — Criador de Demos</h4>
+        <p>Aprende a criar os sites de demonstração usando as ferramentas da Stauf. Cada demo que você cria e que vende, sua comissão sobe.</p>
+        <div class="commission">Comissão: 50% por venda</div>
+      </div>
+
+      <div class="timeline-item">
+        <h4>Fase 3 — Produtor Completo</h4>
+        <p>Cria o site completo do cliente do início ao fim. Conversa, negocia, fecha e entrega. Operação autônoma.</p>
+        <div class="commission">Comissão: 80% por venda</div>
+      </div>
+    </div>
+
+    <div class="card card-success">
+      <p><strong>O objetivo final</strong></p>
+      <p style="margin-top:8px;color:#999">Conforme o processo for validado, vamos escalonar com automação — chips múltiplos, disparo inteligente, criação de sites semi-automática. Mas isso só vem depois que a gente entender na pele o que funciona. Por isso o começo é manual, humano, real.</p>
+    </div>
+  </div>
+
+  <!-- STEP 6: DICAS -->
+  <div class="section">
+    <div class="section-num">06</div>
+    <h2>Dicas de Ouro</h2>
+
+    <div class="card">
+      <h3 style="margin-top:0">Sobre a abordagem</h3>
+      <p style="color:#999;font-size:14px">Depois que o cliente responder a msg de texto, vale mandar um <strong>áudio curto</strong> (15-20 seg) pra dar um tom mais pessoal. Algo como: "E aí [nome], beleza? Mandei uma mensagem aí, é sobre o site de vocês. Fiz uma pesquisa rápida e vi que dá pra melhorar bastante a presença de vocês no Google. Posso te mostrar rapidinho."</p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0">Sobre naturalidade</h3>
+      <p style="color:#999;font-size:14px">A msg da planilha é um rascunho. Adapte pro seu jeito de falar. Se você é mais informal, muda o tom. Se a msg parece robótica, reescreve. O importante é: <strong>concorrente real + oferta de demo grátis + parecer humano.</strong></p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0">Sobre escalar</h3>
+      <p style="color:#999;font-size:14px">Conforme for pegando confiança, pode marcar <strong>ligações</strong> com quem respondeu, <strong>reuniões no Google Meet</strong> pra apresentar a demo, e até visitar o negócio pessoalmente. Cada nível de contato pessoal aumenta a chance de fechar.</p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0">Meta diária</h3>
+      <p style="color:#999;font-size:14px"><strong>20-30 mensagens</strong> enviadas por dia. Não mais (risco de ban). Espera-se <strong>3-5 respostas</strong> e <strong>1-2 demos aceitas</strong>. Consistência > volume.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="padding: 40px 0; text-align: center; border-top: 1px solid #1a1a2a;">
+    <p style="color: #2dd4bf; font-size: 18px; font-weight: 200; letter-spacing: 0.1em;">STAUF.</p>
+    <p style="color: #555; font-size: 12px; margin-top: 8px;">We make stuff. — Documento interno e confidencial.</p>
+  </div>
+</div>
+
+</body>
+</html>
