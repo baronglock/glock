@@ -110,7 +110,7 @@ export default function BarbeariaExtras({ colors: c, name: _name, gallery, cardR
           <div style={{ width: 40, height: 1, background: `${c.primary}50`, margin: '0 auto 48px' }} />
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             {styles.map(s => (
-              <StyleBadge key={s.name} name={s.name} icon={s.icon} primary={c.primary} bg={c.bg} />
+              <StyleBadge key={s.name} name={s.name} icon={s.icon} primary={c.primary} />
             ))}
           </div>
         </div>

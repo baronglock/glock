@@ -129,7 +129,7 @@ export default function AcademiaExtras({ colors: c, name: _name, cardRadius }: A
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }} className="demo-grid">
             {stats.map(s => (
-              <AnimatedCounter key={s.label} value={s.value} label={s.label} suffix={s.suffix} primary={c.primary} text={c.text} textMuted={c.textMuted} />
+              <AnimatedCounter key={s.label} value={s.value} label={s.label} suffix={s.suffix} primary={c.primary} textMuted={c.textMuted} />
             ))}
           </div>
         </div>
@@ -147,7 +147,7 @@ export default function AcademiaExtras({ colors: c, name: _name, cardRadius }: A
           <div style={{ width: 60, height: 4, background: c.primary, borderRadius: 2, marginBottom: 48, boxShadow: `0 0 12px ${c.primary}60` }} />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 14 }}>
             {classes.map(cl => (
-              <ClassCard key={cl.name} {...cl} primary={c.primary} bg={c.bg} cardRadius={cardRadius} />
+              <ClassCard key={cl.name} {...cl} primary={c.primary} cardRadius={cardRadius} />
             ))}
           </div>
         </div>
