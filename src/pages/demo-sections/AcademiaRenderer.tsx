@@ -65,7 +65,7 @@ export default function AcademiaRenderer({ data }: { data: DemoData }) {
   useEffect(() => { setTimeout(() => setHeroVis(true), 80); }, []);
   useEffect(() => { const fn = () => setNavScroll(window.scrollY > 50); window.addEventListener('scroll', fn, { passive: true }); return () => window.removeEventListener('scroll', fn); }, []);
 
-  const _staff = data.staff || [];
+  
   const plans = data.plans || [];
   const fallback = 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1400&q=85';
 

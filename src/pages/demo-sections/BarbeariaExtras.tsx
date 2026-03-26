@@ -37,7 +37,7 @@ function BeforeAfter({ before, after, primary, radius }: { before: string; after
 }
 
 /* ── Style Badge ── */
-function StyleBadge({ name, icon, primary, _bg }: { name: string; icon: string; primary: string; bg: string }) {
+function StyleBadge({ name, icon, primary }: { name: string; icon: string; primary: string }) {
   const [hovered, setHovered] = useState(false);
   return (
     <div

@@ -77,7 +77,6 @@ export default function KillSpyAdmin() {
     setLicenses(l.data || []);
     setPayments(p.data || []);
     setWithdrawals(w.data || []);
-    setReferrals(r.data || []);
   };
 
   const revokeLicense = async (key: string) => {

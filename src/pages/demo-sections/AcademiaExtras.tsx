@@ -8,8 +8,8 @@ interface AcademiaExtrasProps {
 }
 
 /* ── Animated Counter ── */
-function AnimatedCounter({ value, label, suffix, primary, _text, textMuted }: {
-  value: number; label: string; suffix?: string; primary: string; text: string; textMuted: string;
+function AnimatedCounter({ value, label, suffix, primary, textMuted }: {
+  value: number; label: string; suffix?: string; primary: string; textMuted: string;
 }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
@@ -57,8 +57,8 @@ function AnimatedCounter({ value, label, suffix, primary, _text, textMuted }: {
 }
 
 /* ── Workout Class Card ── */
-function ClassCard({ name, time, intensity, icon, primary, _bg, cardRadius }: {
-  name: string; time: string; intensity: number; icon: string; primary: string; bg: string; cardRadius: number;
+function ClassCard({ name, time, intensity, icon, primary, cardRadius }: {
+  name: string; time: string; intensity: number; icon: string; primary: string; cardRadius: number;
 }) {
   const [hovered, setHovered] = useState(false);
   return (
