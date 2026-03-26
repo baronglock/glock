@@ -3,10 +3,20 @@
   "name": "Iron Gym",
   "niche": "academia",
   "tagline": "Forjado no ferro desde 2019",
+  "design": {
+    "heroStyle": "split",
+    "cardStyle": "solid",
+    "galleryLayout": "featured",
+    "sectionDivider": "diagonal",
+    "aboutLayout": "reverse",
+    "effects": ["grain", "neon"],
+    "heroDecoration": "lines",
+    "titleStyle": "accent"
+  },
   "city": "Curitiba, PR",
   "phone": "(41) 99888-7766",
   "colors": {
-    "primary": "#e63946",
+    "primary": "#d4790e",
     "secondary": "#1d1d1d",
     "bg": "#0d0d0d",
     "text": "#e8e8e8",

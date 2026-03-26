@@ -1,5 +1,10 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, lazy, Suspense } from 'react';
 import { useParams, Link } from 'react-router-dom';
+
+/* ── Niche-specific FULL renderers (lazy loaded) ── */
+const BarbeariaRenderer = lazy(() => import('./demo-sections/BarbeariaRenderer'));
+const AcademiaRenderer = lazy(() => import('./demo-sections/AcademiaRenderer'));
+const ClinicaEsteticaRenderer = lazy(() => import('./demo-sections/ClinicaEsteticaRenderer'));
 
 /* ── Types ── */
 interface ServiceItem { name: string; desc: string; icon: string; price?: string; time?: string; category?: string; popular?: boolean }
@@ -8,6 +13,16 @@ interface FeatureItem { label: string; value: string }
 interface StaffItem { name: string; role: string; rating: number; reviews: number; available: boolean }
 interface PlanItem { name: string; price: string; features: string[]; popular?: boolean }
 interface ProductItem { name: string; price: string; img: string; popular?: boolean }
+interface DesignTokens {
+  heroStyle?: 'fullscreen' | 'split' | 'minimal';
+  cardStyle?: 'glass' | 'solid' | 'bordered' | 'elevated';
+  galleryLayout?: 'grid' | 'masonry' | 'featured';
+  sectionDivider?: 'none' | 'line' | 'gradient' | 'diagonal';
+  aboutLayout?: 'default' | 'reverse' | 'centered';
+  effects?: ('glow' | 'grain' | 'neon' | 'gradient-text')[];
+  heroDecoration?: 'none' | 'geometric' | 'circles' | 'lines' | 'dots';
+  titleStyle?: 'underline' | 'accent' | 'gradient' | 'plain';
+}
 interface DemoData {
   slug: string; name: string; niche: string; tagline: string; city: string; phone: string;
   logo?: string;
@@ -24,6 +39,7 @@ interface DemoData {
   products?: ProductItem[];
   plans?: PlanItem[];
   theme?: string;
+  design?: DesignTokens;
   siblingDemo?: string;
   siblingLabel?: string;
 }
@@ -135,6 +151,55 @@ const NICHE_THEME: Record<string, string> = {
   salao: 'elegant',
 };
 
+/* ── Default design tokens per niche — overridable via JSON design field ── */
+const NICHE_DESIGN: Record<string, DesignTokens> = {
+  barbearia: {
+    heroStyle: 'fullscreen', cardStyle: 'glass', galleryLayout: 'masonry',
+    sectionDivider: 'line', aboutLayout: 'default', effects: ['glow'],
+    heroDecoration: 'geometric', titleStyle: 'underline',
+  },
+  academia: {
+    heroStyle: 'split', cardStyle: 'solid', galleryLayout: 'featured',
+    sectionDivider: 'diagonal', aboutLayout: 'reverse', effects: ['grain', 'neon'],
+    heroDecoration: 'lines', titleStyle: 'accent',
+  },
+  restaurante: {
+    heroStyle: 'minimal', cardStyle: 'elevated', galleryLayout: 'masonry',
+    sectionDivider: 'gradient', aboutLayout: 'centered', effects: ['glow'],
+    heroDecoration: 'dots', titleStyle: 'gradient',
+  },
+  clinica: {
+    heroStyle: 'split', cardStyle: 'bordered', galleryLayout: 'grid',
+    sectionDivider: 'line', aboutLayout: 'reverse', effects: [],
+    heroDecoration: 'circles', titleStyle: 'plain',
+  },
+  pet_shop: {
+    heroStyle: 'fullscreen', cardStyle: 'elevated', galleryLayout: 'featured',
+    sectionDivider: 'gradient', aboutLayout: 'default', effects: ['glow'],
+    heroDecoration: 'dots', titleStyle: 'accent',
+  },
+  loja: {
+    heroStyle: 'minimal', cardStyle: 'bordered', galleryLayout: 'grid',
+    sectionDivider: 'line', aboutLayout: 'reverse', effects: ['gradient-text'],
+    heroDecoration: 'geometric', titleStyle: 'underline',
+  },
+  salao: {
+    heroStyle: 'minimal', cardStyle: 'glass', galleryLayout: 'masonry',
+    sectionDivider: 'gradient', aboutLayout: 'centered', effects: ['glow'],
+    heroDecoration: 'circles', titleStyle: 'gradient',
+  },
+  imobiliaria: {
+    heroStyle: 'split', cardStyle: 'elevated', galleryLayout: 'featured',
+    sectionDivider: 'gradient', aboutLayout: 'default', effects: ['gradient-text'],
+    heroDecoration: 'lines', titleStyle: 'accent',
+  },
+  escritorio: {
+    heroStyle: 'minimal', cardStyle: 'bordered', galleryLayout: 'grid',
+    sectionDivider: 'line', aboutLayout: 'reverse', effects: [],
+    heroDecoration: 'none', titleStyle: 'plain',
+  },
+};
+
 /* ── Light/Dark background detection ── */
 function isLightBg(hex: string): boolean {
   const h = hex.replace('#', '').slice(0, 6);
@@ -201,12 +266,31 @@ export default function DemoPage() {
   if (err) return <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0a0f', color: '#fff', fontFamily: "'Inter',sans-serif" }}><div style={{ textAlign: 'center' }}><h1 style={{ fontSize: 48, fontWeight: 200, marginBottom: 16 }}>404</h1><p style={{ color: '#888', marginBottom: 32 }}>{err}</p><Link to="/" style={{ color: '#2dd4bf', textDecoration: 'none' }}>← Stauf.</Link></div></div>;
   if (!data) return <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0a0f' }}><div style={{ width: 40, height: 40, border: '3px solid #333', borderTopColor: '#2dd4bf', borderRadius: '50%', animation: 'spin 1s linear infinite' }} /><style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style></div>;
 
+  /* ── Delegate to niche-specific FULL renderer if available ── */
+  if (data.niche === 'barbearia') return <Suspense fallback={<div style={{ minHeight: '100vh', background: '#0a0a0f' }} />}><BarbeariaRenderer data={data} /></Suspense>;
+  if (data.niche === 'academia') return <Suspense fallback={<div style={{ minHeight: '100vh', background: '#0a0a0a' }} />}><AcademiaRenderer data={data} /></Suspense>;
+  if (data.niche === 'clinica_estetica') return <Suspense fallback={<div style={{ minHeight: '100vh', background: '#faf7f5' }} />}><ClinicaEsteticaRenderer data={data} /></Suspense>;
+
   const c = data.colors;
   const lv = TIERS[tier].level;
   const tp = TIERS[tier];
   const themeName = data.theme || NICHE_THEME[data.niche] || 'clean';
   const th = THEMES[themeName] || THEMES.clean;
   const font = th.fontStyle;
+
+  // Design tokens — JSON overrides niche defaults
+  const nicheDefaults = NICHE_DESIGN[data.niche] || NICHE_DESIGN.barbearia;
+  const ds: Required<DesignTokens> = {
+    heroStyle: data.design?.heroStyle || nicheDefaults.heroStyle || 'fullscreen',
+    cardStyle: data.design?.cardStyle || nicheDefaults.cardStyle || 'glass',
+    galleryLayout: data.design?.galleryLayout || nicheDefaults.galleryLayout || 'grid',
+    sectionDivider: data.design?.sectionDivider || nicheDefaults.sectionDivider || 'none',
+    aboutLayout: data.design?.aboutLayout || nicheDefaults.aboutLayout || 'default',
+    effects: data.design?.effects || nicheDefaults.effects || [],
+    heroDecoration: data.design?.heroDecoration || nicheDefaults.heroDecoration || 'none',
+    titleStyle: data.design?.titleStyle || nicheDefaults.titleStyle || 'plain',
+  };
+  const hasEffect = (e: string) => ds.effects.includes(e as any);
 
   const categories = ['Todos', ...new Set(data.services.map(s => s.category || 'Geral'))];
   const filteredServices = activeCat === 'Todos' ? data.services : data.services.filter(s => (s.category || 'Geral') === activeCat);
@@ -249,14 +333,70 @@ export default function DemoPage() {
       <span style={{ display: 'inline-block', padding: '5px 14px', background: lightBg ? `${c.primary}0c` : `${c.primary}10`, color: c.primary, fontSize: 10, fontWeight: 600, letterSpacing: '0.12em', marginBottom: 14, borderRadius: 20, textTransform: 'uppercase', border: `1px solid ${lightBg ? `${c.primary}15` : `${c.primary}15`}` }}>{text}</span>
     </div>
   );
-  const SectionTitle = ({ text, center }: { text: string; center?: boolean }) => (
-    <h2 style={{ fontSize: 'clamp(1.7rem,4vw,2.4rem)', fontWeight: 300, color: c.text, letterSpacing: '-0.02em', textAlign: center || th.heroAlign === 'center' ? 'center' : undefined }}>{text}</h2>
-  );
+  const SectionTitle = ({ text, center }: { text: string; center?: boolean }) => {
+    const align = center || th.heroAlign === 'center' ? 'center' : undefined;
+    const base: React.CSSProperties = { fontSize: 'clamp(1.7rem,4vw,2.4rem)', fontWeight: 300, color: c.text, letterSpacing: '-0.02em', textAlign: align };
+    if (ds.titleStyle === 'gradient') return <h2 style={{ ...base, backgroundImage: `linear-gradient(135deg, ${c.primary}, ${c.text})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: 600 }}>{text}</h2>;
+    if (ds.titleStyle === 'accent') return <div style={{ textAlign: align }}><h2 style={{ ...base, fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em' }}>{text}</h2><div style={{ width: 60, height: 4, background: c.primary, borderRadius: 2, margin: align === 'center' ? '12px auto 0' : '12px 0 0', boxShadow: `0 0 12px ${c.primary}60` }} /></div>;
+    if (ds.titleStyle === 'underline') return <div style={{ textAlign: align }}><h2 style={base}>{text}</h2><div style={{ width: 40, height: 1, background: `${c.primary}50`, margin: align === 'center' ? '10px auto 0' : '10px 0 0' }} /></div>;
+    return <h2 style={base}>{text}</h2>;
+  };
+
+  /* ── Section Divider ── */
+  const Divider = () => {
+    if (ds.sectionDivider === 'none') return null;
+    if (ds.sectionDivider === 'line') return <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 32px' }}><div style={{ height: 1, background: `linear-gradient(90deg, transparent, ${c.primary}20, transparent)` }} /></div>;
+    if (ds.sectionDivider === 'gradient') return <div style={{ height: 2, background: `linear-gradient(90deg, transparent, ${c.primary}40, ${c.primary}, ${c.primary}40, transparent)` }} />;
+    if (ds.sectionDivider === 'diagonal') return <div style={{ height: 60, background: `${c.primary}05`, clipPath: 'polygon(0 0, 100% 100%, 100% 100%, 0 100%)', marginTop: -30 }} />;
+    return null;
+  };
+
+  /* ── Hero Decoration SVG overlays ── */
+  const HeroDecoration = () => {
+    if (ds.heroDecoration === 'none') return null;
+    if (ds.heroDecoration === 'geometric') return (
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden', zIndex: 1 }}>
+        <div style={{ position: 'absolute', top: '15%', right: '8%', width: 120, height: 120, border: `1px solid ${c.primary}15`, transform: 'rotate(45deg)' }} />
+        <div style={{ position: 'absolute', top: '25%', right: '12%', width: 80, height: 80, border: `1px solid ${c.primary}10`, transform: 'rotate(45deg)' }} />
+        <div style={{ position: 'absolute', bottom: '20%', left: '5%', width: 150, height: 150, border: `1px solid ${c.primary}08`, borderRadius: '50%' }} />
+      </div>
+    );
+    if (ds.heroDecoration === 'circles') return (
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden', zIndex: 1 }}>
+        <div style={{ position: 'absolute', top: '10%', right: '10%', width: 200, height: 200, borderRadius: '50%', background: `radial-gradient(circle, ${c.primary}08, transparent 70%)` }} />
+        <div style={{ position: 'absolute', bottom: '15%', left: '8%', width: 160, height: 160, borderRadius: '50%', background: `radial-gradient(circle, ${c.primary}06, transparent 70%)` }} />
+        <div style={{ position: 'absolute', top: '40%', left: '50%', width: 300, height: 300, borderRadius: '50%', border: `1px solid ${c.primary}06`, transform: 'translate(-50%, -50%)' }} />
+      </div>
+    );
+    if (ds.heroDecoration === 'lines') return (
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden', zIndex: 1 }}>
+        {[15, 35, 55, 75, 95].map(p => (
+          <div key={p} style={{ position: 'absolute', top: 0, bottom: 0, left: `${p}%`, width: 1, background: `linear-gradient(180deg, transparent, ${c.primary}08, transparent)` }} />
+        ))}
+        {[20, 50, 80].map(p => (
+          <div key={p} style={{ position: 'absolute', left: 0, right: 0, top: `${p}%`, height: 1, background: `linear-gradient(90deg, transparent, ${c.primary}06, transparent)` }} />
+        ))}
+      </div>
+    );
+    if (ds.heroDecoration === 'dots') return (
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden', zIndex: 1, backgroundImage: `radial-gradient(${c.primary}0a 1px, transparent 1px)`, backgroundSize: '24px 24px' }} />
+    );
+    return null;
+  };
+
+  /* ── Grain overlay effect ── */
+  const GrainOverlay = hasEffect('grain') ? (
+    <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 9999, opacity: 0.035, mixBlendMode: 'overlay', backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`, backgroundRepeat: 'repeat', backgroundSize: '128px 128px' }} />
+  ) : null;
 
   return (
     <div style={{ background: c.bg, color: c.text, fontFamily: font, minHeight: '100vh', paddingBottom: 56, ...th.texture(c.primary) }}>
       {/* Theme pattern overlay */}
       <div style={{ position: 'fixed', inset: 0, backgroundImage: th.pattern, backgroundRepeat: 'repeat', pointerEvents: 'none', zIndex: 0 }} />
+      {/* Grain effect */}
+      {GrainOverlay}
+      {/* Neon ambient glow */}
+      {hasEffect('neon') && <div style={{ position: 'fixed', top: 0, left: '50%', transform: 'translateX(-50%)', width: '60%', height: '40vh', background: `radial-gradient(ellipse, ${c.primary}12 0%, transparent 70%)`, pointerEvents: 'none', zIndex: 0, filter: 'blur(60px)' }} />}
 
       {/* ── Tier Switcher (pill glass) ── */}
       <div style={{ position: 'fixed', top: navScrolled ? 58 : 80, left: '50%', transform: 'translateX(-50%)', zIndex: 101, display: 'flex', gap: 2, padding: 4, ...glass(c.primary, false, c.bg), background: lightBg ? 'rgba(255,255,255,0.9)' : `${c.bg}e0`, borderRadius: th.cardRadius, boxShadow: lightBg ? '0 4px 24px rgba(0,0,0,0.08)' : `0 8px 32px ${c.bg}90`, transition: 'top 0.4s cubic-bezier(0.4,0,0.2,1)' }}>
@@ -366,155 +506,208 @@ export default function DemoPage() {
       )}
 
       {/* ══ HERO ══ */}
-      <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-        {/* Background image with strong gradient overlay */}
-        <div style={{ position: 'absolute', inset: 0 }}>
-          <img src={data.hero.image} alt="" loading="eager" style={{
-            width: '100%', height: '100%', objectFit: 'cover',
-            transform: lv >= 2 ? 'scale(1.08)' : 'scale(1.02)',
-            transition: 'transform 14s ease',
-          }} onError={e => { (e.target as HTMLImageElement).src = fallbackImg; }} />
-          {/* Strong gradient overlay */}
-          <div style={{
-            position: 'absolute', inset: 0,
-            background: lightBg
-              ? `linear-gradient(180deg, ${c.bg}f0 0%, ${c.bg}c8 30%, ${c.bg}90 55%, ${c.bg}60 100%)`
-              : `linear-gradient(180deg, ${c.bg}f5 0%, ${c.bg}d0 30%, ${c.bg}80 60%, ${c.bg}50 100%)`,
-          }} />
-          {/* Theme pattern overlay */}
-          <div style={{ position: 'absolute', inset: 0, backgroundImage: th.pattern, backgroundRepeat: 'repeat', opacity: 0.5, pointerEvents: 'none' }} />
-          {/* Centered radial glow behind title area */}
-          <div style={{
-            position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)',
-            width: '70%', height: '60%',
-            background: `radial-gradient(ellipse, ${c.primary}${lightBg ? '0c' : '1a'} 0%, transparent 65%)`,
-            pointerEvents: 'none', filter: 'blur(50px)',
-          }} />
-          {lv >= 2 && <div style={{
-            position: 'absolute', bottom: '-15%', left: '50%', transform: 'translateX(-50%)',
-            width: '80%', height: '50%',
-            background: `radial-gradient(circle, ${c.primary}${lightBg ? '08' : '10'} 0%, transparent 70%)`,
-            pointerEvents: 'none',
-          }} />}
-        </div>
-
-        {/* Hero content - EVERYTHING CENTERED */}
-        <div className="demo-hero-content" style={{
-          position: 'relative', zIndex: 2, maxWidth: 800, width: '100%',
-          padding: '160px 32px 120px',
-          margin: '0 auto', textAlign: 'center',
-          display: 'flex', flexDirection: 'column', alignItems: 'center',
-          opacity: heroVisible ? 1 : 0, transform: heroVisible ? 'translateY(0)' : 'translateY(32px)',
-          transition: 'all 0.8s cubic-bezier(0.4,0,0.2,1)',
-        }}>
-          {/* Logo — SVG if available, else CSS text logo */}
-          {data.logo && data.logo.endsWith('.svg') ? (
-            <img src={data.logo} alt={data.name} style={{
-              height: 'clamp(100px, 18vw, 180px)', objectFit: 'contain', marginBottom: 32,
-            }} onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }} />
-          ) : (
-            <div style={{ marginBottom: 32, textAlign: 'center' }}>
-              <div style={{ fontSize: 'clamp(60px, 14vw, 120px)', fontFamily: "'Georgia', 'Times New Roman', serif", fontWeight: 400, fontStyle: 'italic', color: c.primary, lineHeight: 1, letterSpacing: '-0.04em', textShadow: `0 4px 24px ${c.primary}40` }}>
-                {data.name.split(' ')[0].substring(0, 2).toUpperCase()}
+      {ds.heroStyle === 'split' ? (
+        /* ── SPLIT HERO — image right, content left ── */
+        <section style={{ position: 'relative', minHeight: '100vh', display: 'grid', gridTemplateColumns: '1fr 1fr', overflow: 'hidden' }} className="demo-hero-split">
+          <HeroDecoration />
+          {/* Left — content */}
+          <div className="demo-hero-content" style={{
+            display: 'flex', flexDirection: 'column', justifyContent: 'center',
+            padding: '160px 56px 120px 56px', position: 'relative', zIndex: 2,
+            opacity: heroVisible ? 1 : 0, transform: heroVisible ? 'translateX(0)' : 'translateX(-32px)',
+            transition: 'all 0.8s cubic-bezier(0.4,0,0.2,1)',
+          }}>
+            {/* Logo */}
+            {data.logo && data.logo.endsWith('.svg') ? (
+              <img src={data.logo} alt={data.name} style={{ height: 80, objectFit: 'contain', marginBottom: 32, alignSelf: 'flex-start' }} onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+            ) : (
+              <div style={{ marginBottom: 24 }}>
+                <div style={{ fontSize: 48, fontFamily: "'Georgia', 'Times New Roman', serif", fontWeight: 400, fontStyle: 'italic', color: c.primary, lineHeight: 1, letterSpacing: '-0.04em' }}>{data.name.split(' ')[0].substring(0, 2).toUpperCase()}</div>
+                <div style={{ width: 60, height: 1, background: `${c.primary}40`, margin: '8px 0' }} />
               </div>
-              <div style={{ width: 'clamp(100px, 20vw, 200px)', height: 1, background: `${c.primary}40`, margin: '12px auto' }} />
-              <div style={{ fontSize: 'clamp(10px, 1.5vw, 14px)', fontFamily: "'Inter', sans-serif", fontWeight: 400, color: c.primary, letterSpacing: '0.2em', textTransform: 'uppercase', opacity: 0.8 }}>
-                {data.tagline}
+            )}
+            {/* Sibling toggle */}
+            {data.siblingDemo && (
+              <div style={{ display: 'inline-flex', gap: 4, padding: 4, background: `${c.primary}0c`, borderRadius: 28, marginBottom: 20, alignSelf: 'flex-start', border: `1px solid ${c.primary}12` }}>
+                <span style={{ padding: '6px 20px', background: c.primary, color: c.bg, borderRadius: 22, fontSize: 12, fontWeight: 700 }}>{data.niche === 'barbearia' ? 'Barbearia' : 'Salão'}</span>
+                <Link to={`/demo/${data.siblingDemo}`} style={{ padding: '6px 20px', color: c.textMuted, borderRadius: 22, fontSize: 12, fontWeight: 600, textDecoration: 'none' }}>{data.niche === 'barbearia' ? 'Salão Feminino' : 'Barbearia'}</Link>
               </div>
-            </div>
-          )}
-
-          {/* Toggle sibling pill under logo */}
-          {data.siblingDemo && (
-            <div style={{
-              display: 'inline-flex', gap: 4, padding: 4,
-              background: lightBg ? 'rgba(0,0,0,0.05)' : `${c.primary}0c`,
-              borderRadius: 28, marginBottom: 28,
-              border: `1px solid ${lightBg ? 'rgba(0,0,0,0.06)' : `${c.primary}12`}`,
-              backdropFilter: 'blur(12px)',
+            )}
+            {/* Tagline */}
+            <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', color: c.primary, textTransform: 'uppercase', marginBottom: 20 }}>{data.tagline}</span>
+            {/* Title */}
+            <h1 style={{
+              fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', fontWeight: th.heroWeight,
+              lineHeight: 1.05, marginBottom: 24, letterSpacing: '-0.03em',
+              textTransform: themeName === 'industrial' ? 'uppercase' as const : 'none' as const,
             }}>
-              <span style={{
-                padding: '8px 26px', background: c.primary, color: c.bg,
-                borderRadius: 22, fontSize: 13, fontWeight: 700, cursor: 'default',
-                boxShadow: `0 2px 12px ${c.primary}40`,
-              }}>{data.niche === 'barbearia' ? 'Barbearia' : 'Salão'}</span>
-              <Link to={`/demo/${data.siblingDemo}`} style={{
-                padding: '8px 26px', background: 'transparent',
-                color: lightBg ? 'rgba(0,0,0,0.4)' : c.textMuted,
-                borderRadius: 22, fontSize: 13, fontWeight: 600, textDecoration: 'none', transition: 'all 0.3s',
-              }}
-                onMouseEnter={e => { e.currentTarget.style.background = `${c.primary}15`; e.currentTarget.style.color = c.primary; }}
-                onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = lightBg ? 'rgba(0,0,0,0.4)' : c.textMuted; }}>
-                {data.niche === 'barbearia' ? 'Salão Feminino' : 'Barbearia'}
-              </Link>
+              {data.hero.title.split(' ').map((w, i) => (
+                <span key={i} style={{ color: i === 0 ? c.primary : c.text, ...(i > 0 && hasEffect('gradient-text') ? { backgroundImage: `linear-gradient(135deg, ${c.text}, ${c.textMuted})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' } : {}) }}>{w} </span>
+              ))}
+            </h1>
+            <p style={{ fontSize: 'clamp(0.95rem, 1.8vw, 1.1rem)', color: c.textMuted, lineHeight: 1.8, maxWidth: 480, marginBottom: 36 }}>{data.hero.subtitle}</p>
+            {/* CTA */}
+            <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+              <button style={{ padding: '16px 38px', background: c.primary, color: c.bg, border: 'none', borderRadius: th.btnRadius, fontSize: 14, fontWeight: 700, cursor: 'pointer', boxShadow: `0 8px 32px ${c.primary}40`, transition: 'all 0.3s' }}
+                onMouseEnter={e => { e.currentTarget.style.boxShadow = `0 14px 44px ${c.primary}55`; e.currentTarget.style.transform = 'translateY(-3px)'; }}
+                onMouseLeave={e => { e.currentTarget.style.boxShadow = `0 8px 32px ${c.primary}40`; e.currentTarget.style.transform = 'translateY(0)'; }}>{data.cta.buttonText}</button>
+              <button style={{ padding: '16px 38px', ...glass(c.primary, false, c.bg), color: c.primary, borderRadius: th.btnRadius, fontSize: 14, fontWeight: 600, cursor: 'pointer', transition: 'all 0.3s' }}>Saiba mais ↓</button>
             </div>
-          )}
-
-          {/* Tagline pill */}
-          <div style={{
-            display: 'inline-block', padding: '6px 20px', marginBottom: 28,
-            ...glass(c.primary, false, c.bg), borderRadius: 24,
-          }}>
-            <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.14em', color: c.primary, textTransform: 'uppercase' }}>{data.tagline}</span>
+            {/* Tier badge */}
+            <div style={{ marginTop: 28, display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 18px', ...glass(c.primary, false, c.bg), borderRadius: 22, alignSelf: 'flex-start' }}>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: c.primary, boxShadow: `0 0 10px ${c.primary}60` }} />
+              <span style={{ fontSize: 11, color: c.textMuted, fontWeight: 500 }}>Plano {tp.name} — {tp.price}</span>
+            </div>
           </div>
-
-          {/* Title - large, centered */}
-          <h1 style={{
-            fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: th.heroWeight,
-            lineHeight: 1.05, marginBottom: 24, letterSpacing: '-0.03em',
-            textAlign: 'center',
-            textTransform: themeName === 'industrial' ? 'uppercase' as const : 'none' as const,
-          }}>
-            {data.hero.title.split(' ').map((w, i) => (
-              <span key={i} style={{
-                color: i === 0 ? c.primary : c.text,
-                ...(i > 0 ? {
-                  backgroundImage: `linear-gradient(135deg, ${c.text}, ${c.textMuted})`,
-                  WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-                } : {}),
-              }}>{w} </span>
-            ))}
-          </h1>
-
-          {/* Subtitle - centered, max-width 550, margin auto */}
-          <p style={{
-            fontSize: 'clamp(1rem, 2vw, 1.15rem)', color: c.textMuted,
-            lineHeight: 1.8, maxWidth: 550, margin: '0 auto 44px', textAlign: 'center',
-          }}>{data.hero.subtitle}</p>
-
-          {/* CTA buttons - centered */}
-          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', justifyContent: 'center' }}>
-            <button style={{
-              padding: '16px 38px', background: c.primary, color: c.bg,
-              border: 'none', borderRadius: th.btnRadius, fontSize: 14, fontWeight: 700,
-              cursor: 'pointer', boxShadow: `0 8px 32px ${c.primary}40`,
-              transition: 'all 0.3s', letterSpacing: '0.02em',
-            }}
-              onMouseEnter={e => { e.currentTarget.style.boxShadow = `0 14px 44px ${c.primary}55`; e.currentTarget.style.transform = 'translateY(-3px)'; }}
-              onMouseLeave={e => { e.currentTarget.style.boxShadow = `0 8px 32px ${c.primary}40`; e.currentTarget.style.transform = 'translateY(0)'; }}>
-              {data.cta.buttonText}
-            </button>
-            <button style={{
-              padding: '16px 38px', ...glass(c.primary, false, c.bg),
-              color: c.primary, borderRadius: th.btnRadius, fontSize: 14, fontWeight: 600,
-              cursor: 'pointer', transition: 'all 0.3s',
-            }}
-              onMouseEnter={e => e.currentTarget.style.borderColor = `${c.primary}40`}
-              onMouseLeave={e => e.currentTarget.style.borderColor = lightBg ? 'rgba(0,0,0,0.06)' : `${c.primary}14`}>
-              Saiba mais ↓
-            </button>
+          {/* Right — image */}
+          <div style={{ position: 'relative', overflow: 'hidden' }}>
+            <img src={data.hero.image} alt="" loading="eager" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 14s ease', transform: heroVisible ? 'scale(1.05)' : 'scale(1.15)' }}
+              onError={e => { (e.target as HTMLImageElement).src = fallbackImg; }} />
+            <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(90deg, ${c.bg} 0%, ${c.bg}80 8%, transparent 40%)` }} />
+            <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(180deg, ${c.bg}40 0%, transparent 30%, transparent 70%, ${c.bg}60 100%)` }} />
+            {hasEffect('neon') && <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg, ${c.primary}, ${c.primary}60, transparent)`, boxShadow: `0 0 20px ${c.primary}60` }} />}
           </div>
-
-          {/* Tier badge - centered */}
-          <div style={{
-            marginTop: 28, display: 'inline-flex', alignItems: 'center', gap: 8,
-            padding: '6px 18px', ...glass(c.primary, false, c.bg), borderRadius: 22,
+        </section>
+      ) : ds.heroStyle === 'minimal' ? (
+        /* ── MINIMAL HERO — no background image, typography-focused ── */
+        <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+          <HeroDecoration />
+          {/* Subtle gradient bg instead of image */}
+          <div style={{ position: 'absolute', inset: 0, background: `radial-gradient(ellipse at 50% 30%, ${c.primary}08 0%, transparent 50%)` }} />
+          {hasEffect('glow') && <div style={{ position: 'absolute', top: '30%', left: '50%', transform: 'translate(-50%, -50%)', width: '40%', height: '40%', background: `radial-gradient(circle, ${c.primary}15 0%, transparent 60%)`, filter: 'blur(80px)', pointerEvents: 'none' }} />}
+          <div className="demo-hero-content" style={{
+            position: 'relative', zIndex: 2, maxWidth: 900, width: '100%',
+            padding: '180px 32px 140px', margin: '0 auto', textAlign: 'center',
+            display: 'flex', flexDirection: 'column', alignItems: 'center',
+            opacity: heroVisible ? 1 : 0, transform: heroVisible ? 'translateY(0)' : 'translateY(32px)',
+            transition: 'all 0.8s cubic-bezier(0.4,0,0.2,1)',
           }}>
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: c.primary, boxShadow: `0 0 10px ${c.primary}60` }} />
-            <span style={{ fontSize: 11, color: lightBg ? 'rgba(0,0,0,0.45)' : c.textMuted, fontWeight: 500 }}>Plano {tp.name} — {tp.price}</span>
+            {/* Logo */}
+            {data.logo && data.logo.endsWith('.svg') ? (
+              <img src={data.logo} alt={data.name} style={{ height: 'clamp(80px, 14vw, 140px)', objectFit: 'contain', marginBottom: 40 }} onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+            ) : (
+              <div style={{ marginBottom: 40 }}>
+                <div style={{ fontSize: 'clamp(12px, 2vw, 16px)', fontWeight: 500, letterSpacing: '0.3em', color: c.primary, textTransform: 'uppercase', marginBottom: 16 }}>{data.name}</div>
+                <div style={{ width: 40, height: 1, background: `${c.primary}40`, margin: '0 auto' }} />
+              </div>
+            )}
+            {/* Sibling toggle */}
+            {data.siblingDemo && (
+              <div style={{ display: 'inline-flex', gap: 4, padding: 4, background: `${c.primary}0c`, borderRadius: 28, marginBottom: 28, border: `1px solid ${c.primary}12` }}>
+                <span style={{ padding: '8px 26px', background: c.primary, color: c.bg, borderRadius: 22, fontSize: 13, fontWeight: 700, boxShadow: `0 2px 12px ${c.primary}40` }}>{data.niche === 'barbearia' ? 'Barbearia' : 'Salão'}</span>
+                <Link to={`/demo/${data.siblingDemo}`} style={{ padding: '8px 26px', color: c.textMuted, borderRadius: 22, fontSize: 13, fontWeight: 600, textDecoration: 'none' }}>{data.niche === 'barbearia' ? 'Salão Feminino' : 'Barbearia'}</Link>
+              </div>
+            )}
+            {/* Giant title — typography is the hero */}
+            <h1 style={{
+              fontSize: 'clamp(3rem, 8vw, 6rem)', fontWeight: th.heroWeight,
+              lineHeight: 0.95, marginBottom: 28, letterSpacing: '-0.04em',
+            }}>
+              {data.hero.title.split(' ').map((w, i) => (
+                <span key={i} style={{
+                  display: i > 0 ? 'block' : undefined,
+                  color: i === 0 ? c.primary : c.text,
+                  ...(hasEffect('gradient-text') && i > 0 ? { backgroundImage: `linear-gradient(135deg, ${c.text}, ${c.textMuted})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' } : {}),
+                }}>{w} </span>
+              ))}
+            </h1>
+            <p style={{ fontSize: 'clamp(1rem, 2vw, 1.2rem)', color: c.textMuted, lineHeight: 1.8, maxWidth: 500, margin: '0 auto 44px' }}>{data.hero.subtitle}</p>
+            {/* CTA */}
+            <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', justifyContent: 'center' }}>
+              <button style={{ padding: '16px 38px', background: c.primary, color: c.bg, border: 'none', borderRadius: th.btnRadius, fontSize: 14, fontWeight: 700, cursor: 'pointer', boxShadow: `0 8px 32px ${c.primary}40`, transition: 'all 0.3s' }}
+                onMouseEnter={e => { e.currentTarget.style.boxShadow = `0 14px 44px ${c.primary}55`; e.currentTarget.style.transform = 'translateY(-3px)'; }}
+                onMouseLeave={e => { e.currentTarget.style.boxShadow = `0 8px 32px ${c.primary}40`; e.currentTarget.style.transform = 'translateY(0)'; }}>{data.cta.buttonText}</button>
+              <button style={{ padding: '16px 38px', ...glass(c.primary, false, c.bg), color: c.primary, borderRadius: th.btnRadius, fontSize: 14, fontWeight: 600, cursor: 'pointer', transition: 'all 0.3s' }}>Saiba mais ↓</button>
+            </div>
+            {/* Tier badge */}
+            <div style={{ marginTop: 28, display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 18px', ...glass(c.primary, false, c.bg), borderRadius: 22 }}>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: c.primary, boxShadow: `0 0 10px ${c.primary}60` }} />
+              <span style={{ fontSize: 11, color: c.textMuted, fontWeight: 500 }}>Plano {tp.name} — {tp.price}</span>
+            </div>
+            {/* Hero image as horizontal strip below */}
+            <div style={{ marginTop: 56, width: '100%', maxWidth: 800, borderRadius: th.cardRadius, overflow: 'hidden', aspectRatio: '21/9', boxShadow: `0 20px 60px ${c.primary}15`, border: `1px solid ${c.primary}10` }}>
+              <img src={data.hero.image} alt="" loading="eager" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { (e.target as HTMLImageElement).src = fallbackImg; }} />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        /* ── FULLSCREEN HERO — original style with decorations ── */
+        <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+          <HeroDecoration />
+          <div style={{ position: 'absolute', inset: 0 }}>
+            <img src={data.hero.image} alt="" loading="eager" style={{
+              width: '100%', height: '100%', objectFit: 'cover',
+              transform: lv >= 2 ? 'scale(1.08)' : 'scale(1.02)',
+              transition: 'transform 14s ease',
+            }} onError={e => { (e.target as HTMLImageElement).src = fallbackImg; }} />
+            <div style={{
+              position: 'absolute', inset: 0,
+              background: lightBg
+                ? `linear-gradient(180deg, ${c.bg}f0 0%, ${c.bg}c8 30%, ${c.bg}90 55%, ${c.bg}60 100%)`
+                : `linear-gradient(180deg, ${c.bg}f5 0%, ${c.bg}d0 30%, ${c.bg}80 60%, ${c.bg}50 100%)`,
+            }} />
+            <div style={{ position: 'absolute', inset: 0, backgroundImage: th.pattern, backgroundRepeat: 'repeat', opacity: 0.5, pointerEvents: 'none' }} />
+            {hasEffect('glow') && <div style={{
+              position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)',
+              width: '70%', height: '60%',
+              background: `radial-gradient(ellipse, ${c.primary}1a 0%, transparent 65%)`,
+              pointerEvents: 'none', filter: 'blur(50px)',
+            }} />}
+          </div>
+          <div className="demo-hero-content" style={{
+            position: 'relative', zIndex: 2, maxWidth: 800, width: '100%',
+            padding: '160px 32px 120px', margin: '0 auto', textAlign: 'center',
+            display: 'flex', flexDirection: 'column', alignItems: 'center',
+            opacity: heroVisible ? 1 : 0, transform: heroVisible ? 'translateY(0)' : 'translateY(32px)',
+            transition: 'all 0.8s cubic-bezier(0.4,0,0.2,1)',
+          }}>
+            {data.logo && data.logo.endsWith('.svg') ? (
+              <img src={data.logo} alt={data.name} style={{ height: 'clamp(100px, 18vw, 180px)', objectFit: 'contain', marginBottom: 32 }} onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+            ) : (
+              <div style={{ marginBottom: 32, textAlign: 'center' }}>
+                <div style={{ fontSize: 'clamp(60px, 14vw, 120px)', fontFamily: "'Georgia', 'Times New Roman', serif", fontWeight: 400, fontStyle: 'italic', color: c.primary, lineHeight: 1, letterSpacing: '-0.04em', textShadow: `0 4px 24px ${c.primary}40` }}>
+                  {data.name.split(' ')[0].substring(0, 2).toUpperCase()}
+                </div>
+                <div style={{ width: 'clamp(100px, 20vw, 200px)', height: 1, background: `${c.primary}40`, margin: '12px auto' }} />
+                <div style={{ fontSize: 'clamp(10px, 1.5vw, 14px)', fontFamily: "'Inter', sans-serif", fontWeight: 400, color: c.primary, letterSpacing: '0.2em', textTransform: 'uppercase', opacity: 0.8 }}>{data.tagline}</div>
+              </div>
+            )}
+            {data.siblingDemo && (
+              <div style={{ display: 'inline-flex', gap: 4, padding: 4, background: `${c.primary}0c`, borderRadius: 28, marginBottom: 28, border: `1px solid ${c.primary}12`, backdropFilter: 'blur(12px)' }}>
+                <span style={{ padding: '8px 26px', background: c.primary, color: c.bg, borderRadius: 22, fontSize: 13, fontWeight: 700, boxShadow: `0 2px 12px ${c.primary}40` }}>{data.niche === 'barbearia' ? 'Barbearia' : 'Salão'}</span>
+                <Link to={`/demo/${data.siblingDemo}`} style={{ padding: '8px 26px', color: c.textMuted, borderRadius: 22, fontSize: 13, fontWeight: 600, textDecoration: 'none', transition: 'all 0.3s' }}
+                  onMouseEnter={e => { e.currentTarget.style.background = `${c.primary}15`; e.currentTarget.style.color = c.primary; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = c.textMuted; }}>{data.niche === 'barbearia' ? 'Salão Feminino' : 'Barbearia'}</Link>
+              </div>
+            )}
+            <div style={{ display: 'inline-block', padding: '6px 20px', marginBottom: 28, ...glass(c.primary, false, c.bg), borderRadius: 24 }}>
+              <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.14em', color: c.primary, textTransform: 'uppercase' }}>{data.tagline}</span>
+            </div>
+            <h1 style={{
+              fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: th.heroWeight,
+              lineHeight: 1.05, marginBottom: 24, letterSpacing: '-0.03em', textAlign: 'center',
+              textTransform: themeName === 'industrial' ? 'uppercase' as const : 'none' as const,
+            }}>
+              {data.hero.title.split(' ').map((w, i) => (
+                <span key={i} style={{ color: i === 0 ? c.primary : c.text, ...(i > 0 ? { backgroundImage: `linear-gradient(135deg, ${c.text}, ${c.textMuted})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' } : {}) }}>{w} </span>
+              ))}
+            </h1>
+            <p style={{ fontSize: 'clamp(1rem, 2vw, 1.15rem)', color: c.textMuted, lineHeight: 1.8, maxWidth: 550, margin: '0 auto 44px', textAlign: 'center' }}>{data.hero.subtitle}</p>
+            <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', justifyContent: 'center' }}>
+              <button style={{ padding: '16px 38px', background: c.primary, color: c.bg, border: 'none', borderRadius: th.btnRadius, fontSize: 14, fontWeight: 700, cursor: 'pointer', boxShadow: `0 8px 32px ${c.primary}40`, transition: 'all 0.3s' }}
+                onMouseEnter={e => { e.currentTarget.style.boxShadow = `0 14px 44px ${c.primary}55`; e.currentTarget.style.transform = 'translateY(-3px)'; }}
+                onMouseLeave={e => { e.currentTarget.style.boxShadow = `0 8px 32px ${c.primary}40`; e.currentTarget.style.transform = 'translateY(0)'; }}>{data.cta.buttonText}</button>
+              <button style={{ padding: '16px 38px', ...glass(c.primary, false, c.bg), color: c.primary, borderRadius: th.btnRadius, fontSize: 14, fontWeight: 600, cursor: 'pointer', transition: 'all 0.3s' }}
+                onMouseEnter={e => e.currentTarget.style.borderColor = `${c.primary}40`}
+                onMouseLeave={e => e.currentTarget.style.borderColor = lightBg ? 'rgba(0,0,0,0.06)' : `${c.primary}14`}>Saiba mais ↓</button>
+            </div>
+            <div style={{ marginTop: 28, display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 18px', ...glass(c.primary, false, c.bg), borderRadius: 22 }}>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: c.primary, boxShadow: `0 0 10px ${c.primary}60` }} />
+              <span style={{ fontSize: 11, color: lightBg ? 'rgba(0,0,0,0.45)' : c.textMuted, fontWeight: 500 }}>Plano {tp.name} — {tp.price}</span>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ══ FEATURES STRIP ══ */}
       <R><section style={{ padding: '48px 32px', background: `${c.primary}05`, borderTop: `1px solid ${c.primary}08`, borderBottom: `1px solid ${c.primary}08` }}>
@@ -523,13 +716,27 @@ export default function DemoPage() {
         </div>
       </section></R>
 
+      <Divider />
+
       {/* ══ ABOUT ══ */}
-      <section id="sobre" style={{ padding: '96px 32px' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'center' }} className="demo-grid">
-          <R><div><SectionLabel text="Sobre nós" /><SectionTitle text={`Conheça a ${data.name}`} /><p style={{ color: c.textMuted, fontSize: 15, lineHeight: 1.9, marginTop: 20 }}>{data.about.text}</p></div></R>
-          <R d={200}><div style={{ borderRadius: th.cardRadius, overflow: 'hidden', aspectRatio: '4/3', boxShadow: `0 20px 50px ${c.primary}12`, border: `1px solid ${c.primary}10` }}><img src={data.about.image} alt={data.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { (e.target as HTMLImageElement).src = fallbackImg.replace('1400', '800'); }} /></div></R>
-        </div>
-      </section>
+      {ds.aboutLayout === 'centered' ? (
+        <section id="sobre" style={{ padding: '96px 32px' }}>
+          <div style={{ maxWidth: 800, margin: '0 auto', textAlign: 'center' }}>
+            <R><div><SectionLabel text="Sobre nós" center /><SectionTitle text={`Conheça a ${data.name}`} center /></div></R>
+            <R d={100}><div style={{ borderRadius: th.cardRadius, overflow: 'hidden', aspectRatio: '21/9', margin: '32px 0', boxShadow: `0 20px 50px ${c.primary}12`, border: `1px solid ${c.primary}10` }}><img src={data.about.image} alt={data.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { (e.target as HTMLImageElement).src = fallbackImg.replace('1400', '800'); }} /></div></R>
+            <R d={200}><p style={{ color: c.textMuted, fontSize: 16, lineHeight: 2, maxWidth: 600, margin: '0 auto' }}>{data.about.text}</p></R>
+          </div>
+        </section>
+      ) : (
+        <section id="sobre" style={{ padding: '96px 32px' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'center', direction: ds.aboutLayout === 'reverse' ? 'rtl' : 'ltr' }} className="demo-grid">
+            <R><div style={{ direction: 'ltr' }}><SectionLabel text="Sobre nós" /><SectionTitle text={`Conheça a ${data.name}`} /><p style={{ color: c.textMuted, fontSize: 15, lineHeight: 1.9, marginTop: 20 }}>{data.about.text}</p></div></R>
+            <R d={200}><div style={{ direction: 'ltr', borderRadius: th.cardRadius, overflow: 'hidden', aspectRatio: '4/3', boxShadow: `0 20px 50px ${c.primary}12`, border: `1px solid ${c.primary}10` }}><img src={data.about.image} alt={data.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { (e.target as HTMLImageElement).src = fallbackImg.replace('1400', '800'); }} /></div></R>
+          </div>
+        </section>
+      )}
+
+      <Divider />
 
       {/* ══ SERVICES ══ */}
       <section id="serviços" style={{ padding: '96px 32px', background: `${c.primary}03` }}>
@@ -548,10 +755,10 @@ export default function DemoPage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 18 }}>
             {displayServices.map((s, i) => (
               <R key={s.name} d={i * 60}>
-                <div style={{ padding: 24, ...th.cardBg(c.primary), borderRadius: th.cardRadius, transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)', cursor: lv >= 2 ? 'pointer' : 'default', position: 'relative', display: 'flex', flexDirection: 'column', height: '100%' }}
+                <div style={{ padding: 24, ...th.cardBg(c.primary), borderRadius: th.cardRadius, transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)', cursor: lv >= 2 ? 'pointer' : 'default', position: 'relative', display: 'flex', flexDirection: 'column', height: '100%', ...(ds.cardStyle === 'elevated' ? { boxShadow: `0 8px 32px ${c.primary}0a` } : {}), ...(ds.cardStyle === 'bordered' ? { borderLeft: `3px solid ${c.primary}30` } : {}) }}
                   onClick={() => lv >= 2 && setBookingService(s)}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = `${c.primary}40`; e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = `0 0 30px ${c.primary}15`; }}
-                  onMouseLeave={e => { e.currentTarget.style.borderColor = `${c.primary}14`; e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = 'none'; }}>
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = `${c.primary}40`; e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = hasEffect('neon') ? `0 0 30px ${c.primary}30, inset 0 0 20px ${c.primary}05` : `0 0 30px ${c.primary}15`; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = ds.cardStyle === 'bordered' ? `${c.primary}30` : `${c.primary}14`; e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = ds.cardStyle === 'elevated' ? `0 8px 32px ${c.primary}0a` : 'none'; }}>
                   {s.popular && <div style={{ position: 'absolute', top: 12, right: 12, padding: '3px 12px', background: `linear-gradient(135deg, ${c.primary}, ${c.primary}c0)`, color: c.bg, fontSize: 10, fontWeight: 700, borderRadius: 20, letterSpacing: '0.04em' }}>POPULAR</div>}
                   <div style={{ width: 46, height: 46, borderRadius: 12, background: `${c.primary}0a`, border: `1px solid ${c.primary}12`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}><Ic e={s.icon} c={c.primary} /></div>
                   <h3 style={{ fontSize: 16, fontWeight: 600, color: c.text, marginBottom: 6 }}>{s.name}</h3>
@@ -646,25 +853,63 @@ export default function DemoPage() {
         </section>
       </R>
 
-      {/* ══ GALLERY — grid 3x2 uniforme + lightbox ══ */}
+      <Divider />
+
+      {/* ══ GALLERY ══ */}
       <R><section id="galeria" style={{ padding: '96px 32px', background: `${c.primary}03` }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: 56 }}><SectionLabel text="Galeria" /><SectionTitle text="Nosso espaço" /></div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }} className="demo-gallery">
-            {data.gallery.slice(0, 6).map((img, i) => (
-              <div key={i} onClick={() => setLightboxIdx(i)} style={{ borderRadius: th.cardRadius, overflow: 'hidden', aspectRatio: '4/3', cursor: 'pointer', position: 'relative' }}>
-                <img src={img} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s' }}
-                  onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.08)'} onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-                  onError={e => { (e.target as HTMLImageElement).src = fallbackImg.replace('1400', '600'); }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0)', transition: 'background 0.3s', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                  onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.25)'}
-                  onMouseLeave={e => e.currentTarget.style.background = 'rgba(0,0,0,0)'}>
-                  <span style={{ opacity: 0, transition: 'opacity 0.3s', fontSize: 24, color: '#fff' }}
-                    ref={el => { if (el) { el.parentElement!.onmouseenter = () => el.style.opacity = '1'; el.parentElement!.onmouseleave = () => el.style.opacity = '0'; } }}>⊕</span>
+          <div style={{ textAlign: 'center', marginBottom: 56 }}><SectionLabel text="Galeria" /><SectionTitle text="Nosso espaço" center /></div>
+          {ds.galleryLayout === 'masonry' ? (
+            /* Masonry — 3 columns, alternating heights */
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, gridAutoRows: 8 }} className="demo-gallery">
+              {data.gallery.slice(0, 6).map((img, i) => (
+                <div key={i} onClick={() => setLightboxIdx(i)} style={{ borderRadius: th.cardRadius, overflow: 'hidden', cursor: 'pointer', position: 'relative', gridRow: `span ${i % 3 === 0 ? 28 : i % 3 === 1 ? 22 : 25}` }}>
+                  <img src={img} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s' }}
+                    onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.06)'} onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+                    onError={e => { (e.target as HTMLImageElement).src = fallbackImg.replace('1400', '600'); }} />
+                  <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0)', transition: 'background 0.3s' }}
+                    onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.2)'}
+                    onMouseLeave={e => e.currentTarget.style.background = 'rgba(0,0,0,0)'} />
                 </div>
+              ))}
+            </div>
+          ) : ds.galleryLayout === 'featured' ? (
+            /* Featured — first image large, rest in grid */
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }} className="demo-gallery">
+              <div onClick={() => setLightboxIdx(0)} style={{ gridColumn: '1 / -1', borderRadius: th.cardRadius, overflow: 'hidden', aspectRatio: '21/9', cursor: 'pointer', position: 'relative' }}>
+                <img src={data.gallery[0]} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s' }}
+                  onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.04)'} onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+                  onError={e => { (e.target as HTMLImageElement).src = fallbackImg.replace('1400', '600'); }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0)', transition: 'background 0.3s' }}
+                  onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.15)'}
+                  onMouseLeave={e => e.currentTarget.style.background = 'rgba(0,0,0,0)'} />
               </div>
-            ))}
-          </div>
+              {data.gallery.slice(1, 5).map((img, i) => (
+                <div key={i + 1} onClick={() => setLightboxIdx(i + 1)} style={{ borderRadius: th.cardRadius, overflow: 'hidden', aspectRatio: '4/3', cursor: 'pointer', position: 'relative' }}>
+                  <img src={img} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s' }}
+                    onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.06)'} onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+                    onError={e => { (e.target as HTMLImageElement).src = fallbackImg.replace('1400', '600'); }} />
+                  <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0)', transition: 'background 0.3s' }}
+                    onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.2)'}
+                    onMouseLeave={e => e.currentTarget.style.background = 'rgba(0,0,0,0)'} />
+                </div>
+              ))}
+            </div>
+          ) : (
+            /* Default grid 3x2 */
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }} className="demo-gallery">
+              {data.gallery.slice(0, 6).map((img, i) => (
+                <div key={i} onClick={() => setLightboxIdx(i)} style={{ borderRadius: th.cardRadius, overflow: 'hidden', aspectRatio: '4/3', cursor: 'pointer', position: 'relative' }}>
+                  <img src={img} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s' }}
+                    onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.08)'} onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+                    onError={e => { (e.target as HTMLImageElement).src = fallbackImg.replace('1400', '600'); }} />
+                  <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0)', transition: 'background 0.3s' }}
+                    onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.25)'}
+                    onMouseLeave={e => e.currentTarget.style.background = 'rgba(0,0,0,0)'} />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section></R>
 
@@ -692,6 +937,10 @@ export default function DemoPage() {
         </div>
       )}
 
+      {/* Niche-specific extras are handled by full renderers now (BarbeariaRenderer, AcademiaRenderer) */}
+
+      <Divider />
+
       {/* ══ REVIEWS (Pro+) ══ */}
       <R show={lv >= 2}><section id="avaliações" style={{ padding: '96px 32px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
@@ -714,6 +963,8 @@ export default function DemoPage() {
           </div>
         </div>
       </section></R>
+
+      <Divider />
 
       {/* ══ SUBSCRIPTION PLANS (Premium) ══ */}
       <R show={lv >= 3}><section id="planos" style={{ padding: '96px 32px', background: `${c.primary}03` }}>
@@ -913,6 +1164,8 @@ export default function DemoPage() {
         </div>
       </section></R>
 
+      <Divider />
+
       {/* ══ CONTACT ══ */}
       <section id="contato" style={{ padding: '96px 32px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56 }} className="demo-grid">
@@ -975,13 +1228,16 @@ export default function DemoPage() {
         @media(max-width:768px){
           .demo-nav-links{display:none!important}
           .demo-hamburger{display:block!important}
-          .demo-grid{grid-template-columns:1fr!important}
+          .demo-grid{grid-template-columns:1fr!important;direction:ltr!important}
           .demo-gallery{grid-template-columns:1fr 1fr!important}
-          .demo-gallery>div{grid-column:span 1!important;aspect-ratio:1/1!important}
+          .demo-gallery>div{grid-column:span 1!important;aspect-ratio:1/1!important;grid-row:span 1!important}
           .demo-banner-text{display:none}
-          .demo-hero-content{margin-left:0!important;padding:140px 20px 80px!important;text-align:center}
+          .demo-hero-split{grid-template-columns:1fr!important}
+          .demo-hero-split>div:last-child{max-height:40vh}
+          .demo-hero-content{margin-left:0!important;padding:140px 20px 80px!important;text-align:center;align-items:center!important}
           .demo-hero-content>div:last-of-type{justify-content:center}
           .demo-hero-content img:first-child{height:clamp(80px,25vw,140px)!important}
+          .demo-hero-content span[style*="align-self"]{align-self:center!important}
           section{padding-left:16px!important;padding-right:16px!important}
           nav{padding:12px 16px!important}
           h1{font-size:2.2rem!important}
@@ -989,6 +1245,7 @@ export default function DemoPage() {
         }
         @media(max-width:480px){
           .demo-gallery{grid-template-columns:1fr!important}
+          .demo-gallery>div{grid-row:span 1!important}
           section{padding-top:56px!important;padding-bottom:56px!important}
           h1{font-size:1.8rem!important}
           h2{font-size:1.3rem!important}

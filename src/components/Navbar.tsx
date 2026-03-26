@@ -1,13 +1,21 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Languages, Sun, Moon, ArrowLeft } from 'lucide-react';
+import { Menu, X, Languages, Sun, Moon, ArrowLeft, User } from 'lucide-react';
 import { StaufLogo } from './StaufLogo';
+import { supabase } from '../pages/killspy/killspy-api';
 
 export function Navbar({ t, lang, toggle, colors, theme, toggleTheme }: any) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === '/';
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => setLoggedIn(!!data.session));
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => setLoggedIn(!!session));
+    return () => { listener.subscription.unsubscribe(); };
+  }, []);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 40);
@@ -17,11 +25,13 @@ export function Navbar({ t, lang, toggle, colors, theme, toggleTheme }: any) {
 
   const links = isHome ? [
     { href: '#servicos', label: t('nav.services'), isAnchor: true },
+    { href: '/killspy', label: lang === 'pt' ? 'Segurança' : 'Security', isAnchor: false },
     { href: '#sobre', label: t('nav.about'), isAnchor: true },
     { href: '#contato', label: t('nav.contact'), isAnchor: true },
   ] : [
     { href: '/', label: lang === 'pt' ? 'Início' : 'Home', isAnchor: false },
     { href: '/#servicos', label: t('nav.services'), isAnchor: false },
+    { href: '/killspy', label: lang === 'pt' ? 'Segurança' : 'Security', isAnchor: false },
     { href: '/#sobre', label: t('nav.about'), isAnchor: false },
     { href: '/#contato', label: t('nav.contact'), isAnchor: false },
   ];
@@ -72,6 +82,11 @@ export function Navbar({ t, lang, toggle, colors, theme, toggleTheme }: any) {
                 <Languages size={14} />
                 {lang === 'pt' ? 'EN' : 'PT'}
               </button>
+              <Link to={loggedIn ? '/conta/dashboard' : '/conta/login'} style={{ fontSize: 14, color: loggedIn ? colors.brand : colors.textMuted, textDecoration: 'none', transition: 'color 0.3s', display: 'flex', alignItems: 'center', gap: 5 }}
+                onMouseEnter={e => (e.currentTarget.style.color = colors.white)}
+                onMouseLeave={e => (e.currentTarget.style.color = loggedIn ? colors.brand : colors.textMuted)}>
+                {loggedIn ? <><User size={14} /> {lang === 'pt' ? 'Minha conta' : 'My account'}</> : (lang === 'pt' ? 'Entrar' : 'Login')}
+              </Link>
               <a href={isHome ? '#contato' : '/#contato'} className="btn-cta" style={{ padding: '9px 22px', fontSize: 14 }}>
                 {t('hero.cta')}
               </a>
@@ -94,21 +109,67 @@ export function Navbar({ t, lang, toggle, colors, theme, toggleTheme }: any) {
 
       {open && (
         <div className="anim-fade-in" style={{ position: 'fixed', inset: 0, zIndex: 60, backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)', background: theme === 'dark' ? 'rgba(10,10,15,0.8)' : 'rgba(0,0,0,0.3)' }} onClick={() => setOpen(false)}>
-          <div className="anim-slide-right" style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 280, padding: 24, background: colors.bg, borderLeft: `1px solid ${colors.border}` }} onClick={e => e.stopPropagation()}>
-            <button onClick={() => setOpen(false)} aria-label="Fechar menu" style={{ position: 'absolute', top: 20, right: 20, background: 'none', border: 'none', color: colors.textMuted, cursor: 'pointer' }}>
-              <X size={22} />
-            </button>
-            <div style={{ marginTop: 56, display: 'flex', flexDirection: 'column', gap: 24 }}>
-              {links.map((l) =>
-                l.isAnchor ? (
-                  <a key={l.href} href={l.href} onClick={() => setOpen(false)} style={{ fontSize: 18, color: colors.text, textDecoration: 'none' }}>{l.label}</a>
-                ) : (
-                  <Link key={l.href} to={l.href} onClick={() => setOpen(false)} style={{ fontSize: 18, color: colors.text, textDecoration: 'none' }}>{l.label}</Link>
-                )
-              )}
-              <a href={isHome ? '#contato' : '/#contato'} onClick={() => setOpen(false)} className="btn-cta" style={{ padding: '12px 20px', marginTop: 16, textAlign: 'center', fontSize: 14 }}>
+          <div className="anim-slide-right" style={{
+            position: 'absolute', right: 0, top: 0, bottom: 0, width: 300, padding: '0 28px',
+            background: colors.bg, borderLeft: `1px solid ${colors.border}`,
+            display: 'flex', flexDirection: 'column',
+            boxShadow: '-8px 0 32px rgba(0,0,0,0.3)',
+          }} onClick={e => e.stopPropagation()}>
+            {/* Header */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 0', borderBottom: `1px solid ${colors.border}` }}>
+              <StaufLogo size={18} colors={colors} />
+              <button onClick={() => setOpen(false)} aria-label="Fechar menu" style={{ background: 'none', border: 'none', color: colors.textMuted, cursor: 'pointer', padding: 4 }}>
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Links */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginTop: 20, flex: 1 }}>
+              {links.map((l) => {
+                const LinkEl = l.isAnchor ? 'a' : Link;
+                const props = l.isAnchor ? { href: l.href } : { to: l.href };
+                return (
+                  <LinkEl key={l.href} {...props as any} onClick={() => setOpen(false)} style={{
+                    fontSize: 15, color: colors.text, textDecoration: 'none', fontWeight: 500,
+                    padding: '14px 16px', borderRadius: 10, transition: 'background 0.2s',
+                    display: 'flex', alignItems: 'center', gap: 10,
+                  }}
+                    onMouseEnter={(e: any) => e.currentTarget.style.background = `${colors.brand}10`}
+                    onMouseLeave={(e: any) => e.currentTarget.style.background = 'transparent'}>
+                    {l.label}
+                  </LinkEl>
+                );
+              })}
+
+              {/* Divider */}
+              <div style={{ height: 1, background: colors.border, margin: '8px 0' }} />
+
+              {/* Account */}
+              <Link to={loggedIn ? '/conta/dashboard' : '/conta/login'} onClick={() => setOpen(false)} style={{
+                fontSize: 15, color: colors.brand, textDecoration: 'none', fontWeight: 600,
+                padding: '14px 16px', borderRadius: 10, transition: 'background 0.2s',
+                display: 'flex', alignItems: 'center', gap: 8,
+              }}
+                onMouseEnter={(e: any) => e.currentTarget.style.background = `${colors.brand}10`}
+                onMouseLeave={(e: any) => e.currentTarget.style.background = 'transparent'}>
+                <User size={16} />
+                {loggedIn ? (lang === 'pt' ? 'Minha conta' : 'My account') : (lang === 'pt' ? 'Entrar' : 'Login')}
+              </Link>
+            </div>
+
+            {/* Bottom CTA */}
+            <div style={{ padding: '20px 0', borderTop: `1px solid ${colors.border}` }}>
+              <a href={isHome ? '#contato' : '/#contato'} onClick={() => setOpen(false)} className="btn-cta" style={{ padding: '14px 20px', textAlign: 'center', fontSize: 14, display: 'block', borderRadius: 10 }}>
                 {t('hero.cta')}
               </a>
+              <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginTop: 14 }}>
+                <button onClick={() => { toggleTheme(); }} style={{ background: 'none', border: 'none', color: colors.textDim, cursor: 'pointer', padding: 4 }}>
+                  {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+                </button>
+                <button onClick={() => { toggle(); }} style={{ background: 'none', border: 'none', color: colors.textDim, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4, fontSize: 12 }}>
+                  <Languages size={14} /> {lang === 'pt' ? 'EN' : 'PT'}
+                </button>
+              </div>
             </div>
           </div>
         </div>

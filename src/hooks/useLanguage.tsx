@@ -60,6 +60,11 @@ const translations = {
     pt: 'Diagnóstico de processos e implementação de soluções de inteligência artificial personalizadas para sua operação.',
     en: 'Process diagnostics and implementation of customized artificial intelligence solutions for your operation.',
   },
+  'svc.security.title': { pt: 'Segurança Mobile', en: 'Mobile Security' },
+  'svc.security.desc': {
+    pt: 'KillSpy — app próprio que detecta e elimina espionagem no celular. Protege microfone, câmera e dados em tempo real.',
+    en: 'KillSpy — proprietary app that detects and eliminates phone spyware. Protects microphone, camera and data in real time.',
+  },
 
   // Metrics
   'metrics.tag': { pt: 'Resultados', en: 'Results' },

@@ -89,8 +89,7 @@ export function ServicePage({ data, slug }: { data: ServicePageData; slug: strin
         {/* Gradient orbs */}
         <div style={{ position: 'absolute', top: '15%', left: '15%', width: 500, height: 500, background: `radial-gradient(circle, ${colors.orbBrand} 0%, transparent 70%)`, borderRadius: '50%', pointerEvents: 'none', filter: 'blur(80px)' }} />
         <div style={{ position: 'absolute', bottom: '20%', right: '10%', width: 400, height: 400, background: `radial-gradient(circle, ${colors.orbGold} 0%, transparent 70%)`, borderRadius: '50%', pointerEvents: 'none', filter: 'blur(80px)' }} />
-        {/* Decorative line */}
-        <div style={{ position: 'absolute', left: 32, top: 160, width: 1, height: 200, background: `linear-gradient(to bottom, ${colors.brand}40, transparent)`, pointerEvents: 'none' }} />
+        {/* Decorative line removed — was causing visual glitch on mobile */}
 
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', width: '100%', position: 'relative', zIndex: 10 }}>
           <Link to="/" className="anim-fade-up" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: colors.textDim, textDecoration: 'none', fontSize: 13, marginBottom: 32, transition: 'color 0.3s' }}

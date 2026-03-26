@@ -3,6 +3,16 @@
   "name": "Barber King",
   "niche": "barbearia",
   "tagline": "O rei do corte em Curitiba",
+  "design": {
+    "heroStyle": "fullscreen",
+    "cardStyle": "glass",
+    "galleryLayout": "masonry",
+    "sectionDivider": "line",
+    "aboutLayout": "default",
+    "effects": ["glow"],
+    "heroDecoration": "geometric",
+    "titleStyle": "underline"
+  },
   "city": "Curitiba, PR",
   "phone": "(41) 99999-9999",
   "colors": {

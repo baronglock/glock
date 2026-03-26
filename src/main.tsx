@@ -12,6 +12,13 @@ import { PrivacyPage } from './pages/PrivacyPage'
 import { CheckoutPage } from './pages/CheckoutPage'
 import DemoSplashPage from './pages/DemoSplashPage'
 import DemoListPage from './pages/DemoListPage'
+import KillSpyLanding from './pages/killspy/KillSpyLanding'
+import KillSpyLogin from './pages/killspy/KillSpyLogin'
+import KillSpyRegister from './pages/killspy/KillSpyRegister'
+import KillSpyDashboard from './pages/killspy/KillSpyDashboard'
+import KillSpyAdmin from './pages/killspy/KillSpyAdmin'
+import KillSpyForgotPassword from './pages/killspy/KillSpyForgotPassword'
+import KillSpyResetPassword from './pages/killspy/KillSpyResetPassword'
 import { HelmetProvider } from 'react-helmet-async'
 
 createRoot(document.getElementById('root')!).render(
@@ -24,6 +31,13 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/" element={<App />} />
           <Route path="/privacidade" element={<Layout><PrivacyPage /></Layout>} />
           <Route path="/checkout" element={<Layout><CheckoutPage /></Layout>} />
+          <Route path="/killspy" element={<KillSpyLanding />} />
+          <Route path="/conta/login" element={<KillSpyLogin />} />
+          <Route path="/conta/register" element={<KillSpyRegister />} />
+          <Route path="/conta/dashboard" element={<KillSpyDashboard />} />
+          <Route path="/conta/admin" element={<KillSpyAdmin />} />
+          <Route path="/conta/forgot-password" element={<KillSpyForgotPassword />} />
+          <Route path="/conta/reset-password" element={<KillSpyResetPassword />} />
           <Route path="/demo" element={<DemoListPage />} />
           <Route path="/demo/:slug" element={<DemoSplashPage />} />
           {Object.entries(servicesData).map(([slug, data]) => (

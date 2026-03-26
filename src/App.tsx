@@ -86,6 +86,13 @@ function CosmicBackground({ theme }: any) {
       )}
     </div>
 
+    {/* Film grain texture — real photo, organic */}
+    <div style={{
+      position: 'fixed', inset: 0, zIndex: 1, pointerEvents: 'none',
+      backgroundImage: 'url(/texture-film-grain.webp)', backgroundRepeat: 'repeat', backgroundSize: '512px',
+      opacity: dk ? 0.06 : 0.03, mixBlendMode: 'overlay',
+    }} />
+
     {/* Constellation — fixed in background */}
     <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
 
@@ -327,8 +334,9 @@ function TechCarousel({ lang, colors }: any) {
 
 /* ═══════════════ SERVICE CARD ═══════════════ */
 function ServiceCard({ icon: Icon, title, desc, slug, lang, colors }: any) {
+  const href = slug.startsWith('_') ? `/${slug.slice(1)}` : `/servicos/${slug}`;
   return (
-    <Link to={`/servicos/${slug}`} className="reveal" style={{
+    <Link to={href} className="reveal" style={{
       padding: 28, borderRadius: 16, background: colors.glassCard, backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)',
       border: `1px solid ${colors.glassCardBorder}`, transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)', cursor: 'pointer',
       textDecoration: 'none', display: 'block',
@@ -357,6 +365,7 @@ function Services({ t, lang, colors }: any) {
     { icon: Globe, titleKey: 'svc.web.title', descKey: 'svc.web.desc', slug: 'sites' },
     { icon: LayoutDashboard, titleKey: 'svc.bi.title', descKey: 'svc.bi.desc', slug: 'dashboards' },
     { icon: BrainCircuit, titleKey: 'svc.consult.title', descKey: 'svc.consult.desc', slug: 'consultoria-ia' },
+    { icon: Shield, titleKey: 'svc.security.title', descKey: 'svc.security.desc', slug: '_killspy' },
   ];
 
   return (
@@ -730,7 +739,7 @@ function SectorAutomation({ lang, colors }: any) {
         </div>
 
         {/* Department cards grid */}
-        <div id="sectors-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 16 }}>
+        <div id="sectors-grid" style={{ display: 'flex', gap: 16, overflowX: 'auto', scrollSnapType: 'x mandatory', paddingBottom: 8, WebkitOverflowScrolling: 'touch' }}>
           {departments.map((dept, i) => {
             const DeptIcon = dept.icon;
             const isExpanded = expanded === i;
@@ -746,8 +755,10 @@ function SectorAutomation({ lang, colors }: any) {
                   border: `1px solid ${isExpanded ? dept.color + '60' : colors.glassCardBorder}`,
                   cursor: 'pointer',
                   transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)',
-                  gridColumn: isExpanded ? 'span 2' : 'span 1',
-                  gridRow: isExpanded ? 'span 2' : 'span 1',
+                  minWidth: isExpanded ? 340 : 200,
+                  maxWidth: isExpanded ? 400 : 240,
+                  flex: isExpanded ? '0 0 380px' : '1 1 200px',
+                  scrollSnapAlign: 'start',
                   ...(isExpanded ? { boxShadow: `0 20px 60px ${dept.color}15, 0 0 40px ${dept.color}08` } : {}),
                 }}
                 onMouseEnter={e => {
@@ -828,9 +839,9 @@ function SectorAutomation({ lang, colors }: any) {
         </div>
 
         <style>{`
-          @media (max-width: 1024px) { #sectors-grid { grid-template-columns: repeat(3, 1fr) !important; } }
-          @media (max-width: 768px) { #sectors-grid { grid-template-columns: repeat(2, 1fr) !important; } }
-          @media (max-width: 500px) { #sectors-grid { grid-template-columns: 1fr !important; } }
+          #sectors-grid::-webkit-scrollbar { height: 4px; }
+          #sectors-grid::-webkit-scrollbar-track { background: transparent; }
+          #sectors-grid::-webkit-scrollbar-thumb { background: rgba(45,212,191,0.2); border-radius: 4px; }
         `}</style>
       </W>
     </Section>
