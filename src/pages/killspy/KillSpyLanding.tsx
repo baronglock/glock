@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Mic, Camera, Wifi, MapPin, Keyboard, Eye, Download, ChevronRight, Lock, Smartphone, CheckCircle2, Search } from 'lucide-react';
+import { Shield, Mic, Camera, Wifi, MapPin, Keyboard, Eye, Download, ChevronRight, Lock, CheckCircle2, Search } from 'lucide-react';
 
 /* ── Stauf palette with security twist ── */
 const ks = {

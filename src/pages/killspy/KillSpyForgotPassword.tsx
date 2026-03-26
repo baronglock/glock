@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Mail, Check } from 'lucide-react';
+import { ArrowLeft, Mail } from 'lucide-react';
 import { supabase } from './killspy-api';
 
 const ks = {

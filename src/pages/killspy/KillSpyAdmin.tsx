@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Shield, Users, Key, DollarSign, TrendingUp, AlertTriangle, Check, X, Plus, Trash2, Home, LogOut, RefreshCw } from 'lucide-react';
+import { Users, Key, DollarSign, AlertTriangle, Check, X, Plus, Trash2, LogOut, RefreshCw } from 'lucide-react';
 import { getSession, getProfile, supabase, logout } from './killspy-api';
 
 const ks = {
@@ -47,10 +47,10 @@ export default function KillSpyAdmin() {
   const [licenses, setLicenses] = useState<any[]>([]);
   const [payments, setPayments] = useState<any[]>([]);
   const [withdrawals, setWithdrawals] = useState<any[]>([]);
-  const [referrals, setReferrals] = useState<any[]>([]);
+  // referrals loaded in loadAll
 
   // Generate key modal
-  const [showGenerate, setShowGenerate] = useState(false);
+  
   const [genEmail, setGenEmail] = useState('');
   const [genPlan, setGenPlan] = useState('M');
   const [genMsg, setGenMsg] = useState('');
@@ -67,12 +67,11 @@ export default function KillSpyAdmin() {
   };
 
   const loadAll = async () => {
-    const [u, l, p, w, r] = await Promise.all([
+    const [u, l, p, w] = await Promise.all([
       supabase.from('profiles').select('*').order('created_at', { ascending: false }),
       supabase.from('licenses').select('*, profiles(name, email)').order('created_at', { ascending: false }),
       supabase.from('payments').select('*').order('created_at', { ascending: false }),
       supabase.from('withdrawals').select('*, profiles(name, email)').order('requested_at', { ascending: false }),
-      supabase.from('referrals').select('*, profiles!referrals_referrer_user_id_fkey(name)').order('commission_amount', { ascending: false }),
     ]);
     setUsers(u.data || []);
     setLicenses(l.data || []);

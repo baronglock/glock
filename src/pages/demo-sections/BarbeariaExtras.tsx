@@ -37,7 +37,7 @@ function BeforeAfter({ before, after, primary, radius }: { before: string; after
 }
 
 /* ── Style Badge ── */
-function StyleBadge({ name, icon, primary, bg }: { name: string; icon: string; primary: string; bg: string }) {
+function StyleBadge({ name, icon, primary, _bg }: { name: string; icon: string; primary: string; bg: string }) {
   const [hovered, setHovered] = useState(false);
   return (
     <div
@@ -59,7 +59,7 @@ function StyleBadge({ name, icon, primary, bg }: { name: string; icon: string; p
 }
 
 /* ── Main Component ── */
-export default function BarbeariaExtras({ colors: c, name, gallery, cardRadius }: BarbeariaExtrasProps) {
+export default function BarbeariaExtras({ colors: c, name: _name, gallery, cardRadius }: BarbeariaExtrasProps) {
   // Use first 2 gallery images as before/after pairs (or fallbacks)
   const beforeAfterPairs = [
     { before: gallery[0] || '', after: gallery[1] || '' },

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Eye, EyeOff, Lock } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Eye, EyeOff, Lock } from 'lucide-react';
 import { supabase } from './killspy-api';
 
 const ks = {

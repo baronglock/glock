@@ -8,7 +8,7 @@ interface AcademiaExtrasProps {
 }
 
 /* ── Animated Counter ── */
-function AnimatedCounter({ value, label, suffix, primary, text, textMuted }: {
+function AnimatedCounter({ value, label, suffix, primary, _text, textMuted }: {
   value: number; label: string; suffix?: string; primary: string; text: string; textMuted: string;
 }) {
   const [count, setCount] = useState(0);
@@ -57,7 +57,7 @@ function AnimatedCounter({ value, label, suffix, primary, text, textMuted }: {
 }
 
 /* ── Workout Class Card ── */
-function ClassCard({ name, time, intensity, icon, primary, bg, cardRadius }: {
+function ClassCard({ name, time, intensity, icon, primary, _bg, cardRadius }: {
   name: string; time: string; intensity: number; icon: string; primary: string; bg: string; cardRadius: number;
 }) {
   const [hovered, setHovered] = useState(false);
@@ -99,7 +99,7 @@ function ClassCard({ name, time, intensity, icon, primary, bg, cardRadius }: {
 }
 
 /* ── Main Component ── */
-export default function AcademiaExtras({ colors: c, name, cardRadius }: AcademiaExtrasProps) {
+export default function AcademiaExtras({ colors: c, name: _name, cardRadius }: AcademiaExtrasProps) {
   const stats = [
     { value: 800, label: 'm² de área', suffix: '' },
     { value: 1250, label: 'Alunos ativos', suffix: '+' },

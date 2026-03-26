@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post 1 — Antes/Depois</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;800;900&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1080px;
+      height: 1350px;
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0f;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    .container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ===== TOP LABELS ===== */
+    .top-labels {
+      display: flex;
+      padding: 32px 40px 0;
+      gap: 20px;
+    }
+    .top-label {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .top-label.before {
+      background: #ef444420;
+      color: #ef4444;
+      border: 1px solid #ef444440;
+    }
+    .top-label.after {
+      background: #2dd4bf15;
+      color: #2dd4bf;
+      border: 1px solid #2dd4bf30;
+    }
+
+    /* ===== SPLIT ===== */
+    .split {
+      flex: 1;
+      display: flex;
+      gap: 0;
+      padding: 20px 40px;
+    }
+
+    /* ===== LEFT — UGLY SITE ===== */
+    .side-left {
+      flex: 1;
+      background: #4a86c8;
+      border-radius: 16px 0 0 16px;
+      overflow: hidden;
+      position: relative;
+      border: 2px solid #ff000040;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .ugly-stars {
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='10' y='20' font-size='8' fill='%23ffffff30'%3E✦%3C/text%3E%3Ctext x='50' y='45' font-size='6' fill='%23ffffff20'%3E★%3C/text%3E%3Ctext x='80' y='15' font-size='5' fill='%23ffffff15'%3E✧%3C/text%3E%3Ctext x='30' y='70' font-size='7' fill='%23ffffff25'%3E⭐%3C/text%3E%3Ctext x='70' y='85' font-size='6' fill='%23ffffff18'%3E✦%3C/text%3E%3C/svg%3E");
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .ugly-banner {
+      background: linear-gradient(90deg, #ff6600, #ffcc00, #ff6600);
+      width: 100%;
+      padding: 6px;
+      text-align: center;
+      font-family: 'Comic Neue', cursive;
+      font-size: 11px;
+      color: #000;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .ugly-title {
+      font-family: 'Comic Neue', cursive;
+      color: #ffff00;
+      font-size: 24px;
+      text-align: center;
+      text-shadow: 3px 3px 0 #cc0000, -1px -1px 0 #000;
+      margin: 16px 0 4px;
+      padding: 0 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .ugly-subtitle {
+      font-family: 'Comic Neue', cursive;
+      color: #fff;
+      font-size: 13px;
+      text-align: center;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .ugly-hr {
+      width: 80%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #ff0, transparent);
+      border: none;
+      margin: 4px auto;
+    }
+
+    .ugly-menu {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin: 10px 0;
+      position: relative;
+      z-index: 2;
+    }
+    .ugly-menu span {
+      background: #c0c0c0;
+      color: #000080;
+      font-family: 'Comic Neue', cursive;
+      font-size: 11px;
+      padding: 3px 10px;
+      border: 2px outset #fff;
+    }
+
+    .ugly-walter-container {
+      position: relative;
+      z-index: 2;
+      margin: 6px 0;
+      text-align: center;
+    }
+
+    .ugly-walter-box {
+      width: 180px;
+      height: 140px;
+      background: #335588;
+      border: 3px solid #ffcc00;
+      border-radius: 4px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 8px;
+    }
+
+    .ugly-walter-emoji {
+      font-size: 60px;
+      line-height: 1;
+    }
+
+    .ugly-walter-caption {
+      font-family: 'Comic Neue', cursive;
+      color: #ffcc00;
+      font-size: 11px;
+      text-align: center;
+      margin-top: 6px;
+      font-weight: 700;
+    }
+
+    .ugly-marquee {
+      background: #000;
+      color: #00ff00;
+      font-family: monospace;
+      font-size: 12px;
+      padding: 6px;
+      margin: 8px 16px;
+      text-align: center;
+      border: 1px solid #00ff00;
+      position: relative;
+      z-index: 2;
+    }
+
+    .ugly-counter {
+      font-family: monospace;
+      color: #ffcc99;
+      font-size: 11px;
+      text-align: center;
+      margin: 4px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .ugly-guestbook {
+      background: #ffff00;
+      color: #ff0000;
+      font-family: 'Comic Neue', cursive;
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+      padding: 5px;
+      margin: 6px 20px;
+      border: 2px dashed #ff0000;
+      position: relative;
+      z-index: 2;
+    }
+
+    .ugly-midi {
+      font-family: 'Comic Neue', cursive;
+      color: #fff;
+      font-size: 10px;
+      text-align: center;
+      margin: 4px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .ugly-footer {
+      margin-top: auto;
+      background: #000000aa;
+      width: 100%;
+      padding: 6px;
+      text-align: center;
+      font-family: monospace;
+      font-size: 9px;
+      color: #999;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ===== VS DIVIDER ===== */
+    .vs-divider {
+      width: 0;
+      position: relative;
+      z-index: 20;
+    }
+    .vs-badge {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 52px;
+      height: 52px;
+      background: #0a0a0f;
+      border: 2px solid #2dd4bf;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2dd4bf;
+      font-size: 15px;
+      font-weight: 900;
+      box-shadow: 0 0 20px #2dd4bf30;
+    }
+
+    /* ===== RIGHT — PREMIUM SITE ===== */
+    .side-right {
+      flex: 1;
+      background: #0d1117;
+      border-radius: 0 16px 16px 0;
+      overflow: hidden;
+      position: relative;
+      border: 2px solid #2dd4bf25;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .premium-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      background: #0a0a0fcc;
+      border-bottom: 1px solid #ffffff08;
+    }
+    .premium-logo {
+      font-size: 18px;
+      font-weight: 800;
+      color: #2dd4bf;
+      letter-spacing: 0.04em;
+    }
+    .premium-nav-links {
+      display: flex;
+      gap: 18px;
+    }
+    .premium-nav-links span {
+      font-size: 11px;
+      color: #555;
+      font-weight: 400;
+    }
+
+    .premium-hero {
+      padding: 32px 28px 24px;
+      flex: 0;
+    }
+    .premium-hero-tag {
+      font-size: 10px;
+      color: #2dd4bf;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      opacity: 0.8;
+    }
+    .premium-hero h2 {
+      font-size: 32px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.05;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+    .premium-hero p {
+      font-size: 13px;
+      color: #777;
+      line-height: 1.6;
+    }
+    .premium-cta {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .premium-btn {
+      padding: 12px 28px;
+      background: #2dd4bf;
+      color: #0a0a0f;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 8px;
+      letter-spacing: 0.03em;
+    }
+    .premium-btn-ghost {
+      padding: 12px 28px;
+      background: transparent;
+      color: #888;
+      font-size: 12px;
+      font-weight: 500;
+      border-radius: 8px;
+      border: 1px solid #ffffff15;
+    }
+
+    .premium-cards {
+      display: flex;
+      gap: 10px;
+      padding: 0 28px;
+      margin-top: 8px;
+    }
+    .premium-card {
+      flex: 1;
+      background: #ffffff04;
+      border: 1px solid #ffffff08;
+      border-radius: 12px;
+      padding: 16px;
+      transition: border-color 0.3s;
+    }
+    .premium-card-icon {
+      width: 32px;
+      height: 32px;
+      background: #2dd4bf12;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .premium-card h4 {
+      font-size: 12px;
+      font-weight: 600;
+      color: #eee;
+      margin-bottom: 4px;
+    }
+    .premium-card p {
+      font-size: 10px;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    .premium-stats {
+      display: flex;
+      gap: 0;
+      padding: 20px 28px;
+      margin-top: auto;
+    }
+    .premium-stat {
+      flex: 1;
+      text-align: center;
+      padding: 14px 0;
+      border-right: 1px solid #ffffff08;
+    }
+    .premium-stat:last-child { border-right: none; }
+    .premium-stat-num {
+      font-size: 26px;
+      font-weight: 900;
+      color: #2dd4bf;
+      letter-spacing: -0.02em;
+    }
+    .premium-stat-label {
+      font-size: 9px;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 2px;
+    }
+
+    .premium-bottom-bar {
+      background: #ffffff04;
+      border-top: 1px solid #ffffff08;
+      padding: 12px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .premium-bottom-bar span {
+      font-size: 10px;
+      color: #444;
+    }
+    .premium-rating {
+      display: flex;
+      gap: 2px;
+      align-items: center;
+      font-size: 11px;
+      color: #2dd4bf;
+      font-weight: 600;
+    }
+
+    /* ===== BOTTOM BAR ===== */
+    .bottom-bar {
+      padding: 28px 40px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .bottom-left h3 {
+      font-size: 26px;
+      font-weight: 200;
+      color: #fff;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+    .bottom-left h3 span {
+      color: #2dd4bf;
+      font-weight: 800;
+    }
+    .bottom-left p {
+      font-size: 13px;
+      color: #555;
+      margin-top: 6px;
+    }
+
+    .bottom-right {
+      text-align: right;
+    }
+    .stauf-logo {
+      font-size: 36px;
+      font-weight: 200;
+      color: #2dd4bf;
+      letter-spacing: 0.1em;
+    }
+    .stauf-tagline {
+      font-size: 11px;
+      color: #444;
+      letter-spacing: 0.12em;
+      font-weight: 300;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- TOP LABELS -->
+    <div class="top-labels">
+      <div class="top-label before">seu site antes da Stauf</div>
+      <div class="top-label after">seu site depois da Stauf</div>
+    </div>
+
+    <div class="split">
+      <!-- ===== UGLY SITE (savewalterwhite vibes) ===== -->
+      <div class="side-left">
+        <div class="ugly-stars"></div>
+        <div class="ugly-banner">★ ★ ★ PAGINA OFICIAL DA BARBEARIA ★ ★ ★</div>
+        <div class="ugly-title">✂ BARBEARIA DO ZÉ ✂</div>
+        <div class="ugly-subtitle">a melhor de curitiba e região!!!</div>
+        <hr class="ugly-hr">
+        <div class="ugly-menu">
+          <span>INÍCIO</span>
+          <span>SERVISOS</span>
+          <span>FOTOS</span>
+          <span>CONTATO</span>
+        </div>
+
+        <div class="ugly-walter-container">
+          <div class="ugly-walter-box">
+            <div class="ugly-walter-emoji">👨‍🦲</div>
+            <div class="ugly-walter-caption">ESSE SOH EU DEPOIS<br>DO CORTE DO ZÉ 😎</div>
+          </div>
+        </div>
+
+        <div class="ugly-marquee">⚠ AGENDAMENTO SÓ PELO ZAP ⚠ (41) 9XXXX-XXXX</div>
+
+        <div class="ugly-guestbook">📝 ASSINE NOSSO LIVRO DE VISITAS 📝</div>
+
+        <div class="ugly-midi">🎵 música tocando automaticamente 🎵</div>
+
+        <div class="ugly-counter">Você é o visitante nº 000.047</div>
+
+        <div class="ugly-footer">© 2009 — feito pelo sobrinho no FrontPage — melhor resolução 800x600</div>
+      </div>
+
+      <div class="vs-divider">
+        <div class="vs-badge">VS</div>
+      </div>
+
+      <!-- ===== PREMIUM SITE ===== -->
+      <div class="side-right">
+        <div class="premium-nav">
+          <div class="premium-logo">BARBEARIA ZÉ</div>
+          <div class="premium-nav-links">
+            <span>Serviços</span>
+            <span>Equipe</span>
+            <span>Agenda</span>
+            <span>Contato</span>
+          </div>
+        </div>
+
+        <div class="premium-hero">
+          <div class="premium-hero-tag">Curitiba — Desde 2018</div>
+          <h2>Estilo que<br>define você.</h2>
+          <p>Cortes premium com agendamento online.<br>Sem fila. Sem espera. Sem ligação.</p>
+          <div class="premium-cta">
+            <div class="premium-btn">AGENDAR HORÁRIO →</div>
+            <div class="premium-btn-ghost">Ver serviços</div>
+          </div>
+        </div>
+
+        <div class="premium-cards">
+          <div class="premium-card">
+            <div class="premium-card-icon">✂</div>
+            <h4>Corte Premium</h4>
+            <p>Estilo personalizado com acabamento profissional</p>
+          </div>
+          <div class="premium-card">
+            <div class="premium-card-icon">◆</div>
+            <h4>Barba Artesanal</h4>
+            <p>Toalha quente, navalha e hidratação</p>
+          </div>
+          <div class="premium-card">
+            <div class="premium-card-icon">★</div>
+            <h4>Day Use</h4>
+            <p>Corte + barba + cerveja artesanal</p>
+          </div>
+        </div>
+
+        <div class="premium-stats">
+          <div class="premium-stat">
+            <div class="premium-stat-num">4.9★</div>
+            <div class="premium-stat-label">No Google</div>
+          </div>
+          <div class="premium-stat">
+            <div class="premium-stat-num">2.4k</div>
+            <div class="premium-stat-label">Clientes</div>
+          </div>
+          <div class="premium-stat">
+            <div class="premium-stat-num">#1</div>
+            <div class="premium-stat-label">Curitiba</div>
+          </div>
+        </div>
+
+        <div class="premium-bottom-bar">
+          <span>© 2026 Barbearia Zé — Curitiba, PR</span>
+          <div class="premium-rating">★★★★★ 4.9</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM -->
+    <div class="bottom-bar">
+      <div class="bottom-left">
+        <h3>a gente faz em <span>2 horas</span><br>o que a agência cobra <span>3 meses</span>.</h3>
+        <p>demo grátis — sem compromisso — stauf.com.br</p>
+      </div>
+      <div class="bottom-right">
+        <div class="stauf-logo">STAUF.</div>
+        <div class="stauf-tagline">WE MAKE STUFF.</div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
