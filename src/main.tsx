@@ -19,6 +19,7 @@ import KillSpyDashboard from './pages/killspy/KillSpyDashboard'
 import KillSpyAdmin from './pages/killspy/KillSpyAdmin'
 import KillSpyForgotPassword from './pages/killspy/KillSpyForgotPassword'
 import KillSpyResetPassword from './pages/killspy/KillSpyResetPassword'
+import KillSpyPix from './pages/killspy/KillSpyPix'
 import { HelmetProvider } from 'react-helmet-async'
 
 createRoot(document.getElementById('root')!).render(
@@ -38,6 +39,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/conta/admin" element={<KillSpyAdmin />} />
           <Route path="/conta/forgot-password" element={<KillSpyForgotPassword />} />
           <Route path="/conta/reset-password" element={<KillSpyResetPassword />} />
+          <Route path="/conta/pix" element={<KillSpyPix />} />
           <Route path="/demo" element={<DemoListPage />} />
           <Route path="/demo/:slug" element={<DemoSplashPage />} />
           {Object.entries(servicesData).map(([slug, data]) => (

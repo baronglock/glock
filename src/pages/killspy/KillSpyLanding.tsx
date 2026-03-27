@@ -129,11 +129,12 @@ function PlanCard({ name, price, period, features, popular, cta, planType }: {
   const [hovered, setHovered] = useState(false);
   const [showPayOpts, setShowPayOpts] = useState(false);
 
-  const handlePay = async (mode: 'once' | 'recurring' | 'whatsapp') => {
-    if (mode === 'whatsapp') {
-      const prices: Record<string, string> = { S: 'R$18,50', M: 'R$37,90', A: 'R$379,99' };
-      const msg = encodeURIComponent(`Oi! Quero adquirir o KillSpy ${name} por PIX (${prices[planType] || price})`);
-      window.open(`https://wa.me/5541988242456?text=${msg}`, '_blank');
+  const handlePay = async (mode: 'once' | 'recurring' | 'pix') => {
+    if (mode === 'pix') {
+      const { getSession } = await import('./killspy-api');
+      const session = await getSession();
+      if (!session) { window.location.href = '/conta/register'; return; }
+      window.location.href = `/conta/pix?plan=${planType}`;
       return;
     }
     const { getSession, createCheckout } = await import('./killspy-api');
@@ -178,13 +179,22 @@ function PlanCard({ name, price, period, features, popular, cta, planType }: {
       ) : (
         <div style={{ marginTop: 16, display: 'flex', flexDirection: 'column', gap: 6 }}>
           <span style={{ fontSize: 10, color: ks.muted, textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600, marginBottom: 2 }}>Escolha como pagar:</span>
+          <button onClick={() => handlePay('pix')} style={{
+            width: '100%', padding: 11, background: 'rgba(37,211,102,0.06)', color: '#25d366',
+            border: '1px solid rgba(37,211,102,0.15)', borderRadius: 8,
+            fontSize: 12, fontWeight: 600, cursor: 'pointer', textAlign: 'left',
+            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          }}>
+            <span>PIX</span>
+            <span style={{ fontSize: 10, color: '#25d366' }}>~5% desconto · instantâneo</span>
+          </button>
           <button onClick={() => handlePay('once')} style={{
             width: '100%', padding: 11, background: ks.tealDim, color: ks.teal,
             border: `1px solid rgba(45,212,191,0.2)`, borderRadius: 8,
             fontSize: 12, fontWeight: 600, cursor: 'pointer', textAlign: 'left',
             display: 'flex', justifyContent: 'space-between', alignItems: 'center',
           }}>
-            <span>PIX / Boleto / Cartão</span>
+            <span>Cartão / Boleto</span>
             <span style={{ fontSize: 10, color: ks.muted }}>pagamento único</span>
           </button>
           {planType !== 'S' && (
@@ -195,18 +205,9 @@ function PlanCard({ name, price, period, features, popular, cta, planType }: {
               display: 'flex', justifyContent: 'space-between', alignItems: 'center',
             }}>
               <span>Cartão recorrente</span>
-              <span style={{ fontSize: 10, color: ks.muted }}>cobra automático</span>
+              <span style={{ fontSize: 10, color: ks.muted }}>cobra automático todo mês</span>
             </button>
           )}
-          <button onClick={() => handlePay('whatsapp')} style={{
-            width: '100%', padding: 11, background: 'rgba(37,211,102,0.06)', color: '#25d366',
-            border: '1px solid rgba(37,211,102,0.15)', borderRadius: 8,
-            fontSize: 12, fontWeight: 600, cursor: 'pointer', textAlign: 'left',
-            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-          }}>
-            <span>WhatsApp (PIX direto)</span>
-            <span style={{ fontSize: 10, color: '#25d366' }}>~5% desconto</span>
-          </button>
         </div>
       )}
     </div>
@@ -621,7 +622,7 @@ export default function KillSpyLanding() {
           </div></Rv>
 
           {[
-            { q: 'O app precisa de internet?', a: 'Precisa de conexão para ativar a licença e validar a cada 24h. O scan e a proteção em si funcionam sem internet. Se ficar offline, continua protegido por até 7 dias.' },
+            { q: 'O app precisa de internet?', a: 'Só pra ativar sua licença. Depois disso, o scan e a proteção funcionam normalmente sem internet.' },
             { q: 'Funciona em iPhone?', a: 'Não, apenas Android 11 ou superior. O iOS não permite o nível de acesso necessário para eliminar ameaças. Para Android abaixo de 11, oferecemos serviço presencial.' },
             { q: 'Modo avião não resolve?', a: 'Modo avião desliga a internet, mas o microfone e câmera continuam gravando e armazenando. Quando você desligar, enviam tudo de uma vez.' },
             { q: 'Como recebo a chave de licença?', a: 'No seu dashboard após o pagamento. Também enviamos por email. Basta digitar a chave no app.' },

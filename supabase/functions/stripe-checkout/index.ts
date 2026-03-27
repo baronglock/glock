@@ -46,9 +46,10 @@ Deno.serve(async (req) => {
       metadata: { user_id, plan_type, referred_by: referred_by || "", payment_mode: payment_mode || "once" },
     }
 
-    // PIX + boleto + cartão pra pagamento único / só cartão pra recorrente
+    // Cartão + boleto pra pagamento único / só cartão pra recorrente
+    // PIX não disponível no Stripe Brasil ainda (só por convite)
     if (!useRecurring) {
-      sessionParams.payment_method_types = ["card", "pix", "boleto"]
+      sessionParams.payment_method_types = ["card", "boleto"]
     }
 
     if (user_email) sessionParams.customer_email = user_email
