@@ -102,7 +102,6 @@ export default function KillSpyPix() {
   );
 
   // Gerar payload PIX (EMV simplified — copia e cola)
-  const pixPayload = `${PIX_KEY}`;
 
   return (
     <div style={{ background: ks.bg, minHeight: '100vh', fontFamily: ks.sans, color: ks.text, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>

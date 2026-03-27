@@ -99,8 +99,21 @@ export default function KillSpyAdmin() {
 
   const generateKey = async () => {
     setGenMsg('');
-    const user = users.find(u => u.email === genEmail.trim().toLowerCase());
-    if (!user) { setGenMsg('Email não encontrado'); return; }
+    // Search by email in auth.users via RPC, or match by name in profiles
+    const emailLower = genEmail.trim().toLowerCase();
+    let userId = '';
+
+    // Try to find by email match - profiles might have email from auth join
+    // Since profiles doesn't have email, search by matching auth user
+    const { data: authSearch } = await supabase.rpc('find_user_by_email', { p_email: emailLower });
+    if (authSearch) {
+      userId = authSearch;
+    } else {
+      // Fallback: match by name
+      const user = users.find(u => u.name?.toLowerCase() === emailLower);
+      if (user) userId = user.id;
+    }
+    if (!userId) { setGenMsg('Email não encontrado. O usuário precisa criar conta primeiro.'); return; }
 
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     const rand = Array.from({ length: 8 }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
@@ -108,7 +121,7 @@ export default function KillSpyAdmin() {
     const expires = new Date(Date.now() + days * 86400000).toISOString();
     const key = `KILL-${rand}-${genPlan}-${expires.slice(0, 10).replace(/-/g, '')}-MANU`;
 
-    const { error } = await supabase.from('licenses').insert({ user_id: user.id, key, plan_type: genPlan, expires_at: expires });
+    const { error } = await supabase.from('licenses').insert({ user_id: userId, key, plan_type: genPlan, expires_at: expires });
     if (error) { setGenMsg(error.message); return; }
     setGenMsg(`Chave gerada: ${key}`);
     setGenEmail('');
