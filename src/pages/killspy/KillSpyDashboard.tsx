@@ -314,10 +314,14 @@ export default function KillSpyDashboard() {
                 <div style={{ width: 48, height: 48, borderRadius: 12, background: ks.tealDim, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px' }}>
                   <Shield size={24} color={ks.teal} />
                 </div>
-                <p style={{ fontSize: 13, color: ks.muted, marginBottom: 12 }}>Em fase final de testes</p>
-                <div style={{ padding: '10px 16px', background: ks.amberDim, border: `1px solid ${ks.amber}20`, borderRadius: 8, fontSize: 12, color: ks.amber, fontWeight: 500 }}>
-                  Disponível em breve — Android 11+
-                </div>
+                <p style={{ fontSize: 13, color: ks.muted, marginBottom: 12 }}>Android 11+</p>
+                <a href="/killspy/KillSpy-v1.0.apk" download style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                  padding: '10px 16px', background: ks.tealDim, border: `1px solid rgba(45,212,191,0.2)`, borderRadius: 8,
+                  fontSize: 12, color: ks.teal, fontWeight: 700, textDecoration: 'none',
+                }}>
+                  <Download size={14} /> Baixar KillSpy v1.0
+                </a>
               </div>
               {license && (
                 <div style={{ marginTop: 12, padding: 12, background: ks.bg, borderRadius: 8, border: `1px solid ${ks.border}` }}>

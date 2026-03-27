@@ -267,7 +267,7 @@ export default function KillSpyLanding() {
           <a href="#ameacas" style={{ color: ks.muted, textDecoration: 'none', fontSize: 12, fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Ameaças</a>
           <a href="#protecao" style={{ color: ks.muted, textDecoration: 'none', fontSize: 12, fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Proteção</a>
           <a href="#planos" style={{ color: ks.muted, textDecoration: 'none', fontSize: 12, fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Planos</a>
-          <a href={accountUrl} className="killspy-nav-download" style={{ padding: '8px 20px', background: ks.teal, color: ks.bg, border: 'none', borderRadius: 8, fontSize: 12, fontWeight: 700, cursor: 'pointer', letterSpacing: '0.05em', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+          <a href="/killspy/KillSpy-v1.0.apk" download className="killspy-nav-download" style={{ padding: '8px 20px', background: ks.teal, color: ks.bg, border: 'none', borderRadius: 8, fontSize: 12, fontWeight: 700, cursor: 'pointer', letterSpacing: '0.05em', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
             <Download size={14} />
             Baixar APK
           </a>
@@ -303,14 +303,14 @@ export default function KillSpyLanding() {
             </p>
 
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <a href={accountUrl} style={{
+              <a href="/killspy/KillSpy-v1.0.apk" download style={{
                 display: 'flex', alignItems: 'center', gap: 8,
                 padding: '16px 32px', background: ks.teal, color: ks.bg, border: 'none', borderRadius: 10,
                 fontSize: 14, fontWeight: 700, cursor: 'pointer', boxShadow: `0 8px 32px ${ks.tealGlow}`,
                 transition: 'all 0.3s', textDecoration: 'none',
               }}>
                 <Download size={18} />
-                Começar grátis
+                Baixar APK grátis
               </a>
               <a href="#planos" style={{
                 display: 'flex', alignItems: 'center', gap: 8,
@@ -324,7 +324,7 @@ export default function KillSpyLanding() {
               </a>
             </div>
 
-            <p style={{ fontSize: 11, color: ks.muted, marginTop: 16 }}>Cadastre-se grátis. App disponível em breve para Android 11+.</p>
+            <p style={{ fontSize: 11, color: ks.muted, marginTop: 16 }}>Download gratuito. Android 11+. Scan grátis sem cadastro.</p>
           </div>
 
           {/* Right — terminal */}
@@ -653,16 +653,16 @@ export default function KillSpyLanding() {
             Descubra o que está rodando<br />no <span style={{ color: ks.red }}>seu celular</span>.
           </h2>
           <p style={{ fontSize: 15, color: ks.muted, marginBottom: 32, maxWidth: 450, margin: '0 auto 32px' }}>
-            Crie sua conta agora e seja o primeiro a testar quando lançar.
+            Scan gratuito. Sem cadastro. Sem compromisso. Só a verdade.
           </p>
-          <a href={accountUrl} style={{
+          <a href="/killspy/KillSpy-v1.0.apk" download style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
             padding: '18px 44px', background: ks.teal, color: ks.bg, border: 'none', borderRadius: 12,
             fontSize: 16, fontWeight: 700, cursor: 'pointer', boxShadow: `0 8px 40px ${ks.tealGlow}`,
             transition: 'all 0.3s', textDecoration: 'none',
           }}>
             <Download size={20} />
-            Criar conta grátis
+            Baixar KillSpy grátis
           </a>
         </Rv>
       </section>
