@@ -524,8 +524,8 @@ export default function KillSpyLanding() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <Lock size={18} color={ks.teal} />
             <div>
-              <span style={{ fontSize: 13, fontWeight: 600, color: ks.text }}>Quer proteção 100%?</span>
-              <p style={{ fontSize: 12, color: ks.muted, marginTop: 2 }}>Serviço presencial em Curitiba: Custom ROM (GrapheneOS ou LineageOS). Remove o Google completamente. Zero espionagem.</p>
+              <span style={{ fontSize: 13, fontWeight: 600, color: ks.text }}>Quer sair do vespeiro por completo?</span>
+              <p style={{ fontSize: 12, color: ks.muted, marginTop: 2 }}>O app protege enquanto você usa o Android. Mas se quiser trocar o sistema inteiro por um sem Google, fazemos presencialmente em Curitiba.</p>
             </div>
           </div>
           <span style={{ fontSize: 12, color: ks.teal, fontWeight: 600, whiteSpace: 'nowrap' }}>R$400 fixo →</span>
