@@ -399,6 +399,57 @@ export default function KillSpyLanding() {
         </div>
       </section>
 
+      {/* ═══ CONTROL — You decide ═══ */}
+      <section style={{ padding: 'clamp(80px, 10vw, 120px) clamp(24px, 5vw, 64px)', background: '#0d0d14' }}>
+        <div style={{ maxWidth: 1000, margin: '0 auto' }}>
+          <Rv><div style={{ textAlign: 'center', marginBottom: 56 }}>
+            <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.2em', color: ks.teal, textTransform: 'uppercase' }}>Controle Total</span>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 700, marginTop: 10 }}>
+              Você decide <span style={{ color: ks.teal }}>quem acessa o quê</span>
+            </h2>
+            <p style={{ fontSize: 14, color: ks.muted, marginTop: 12, maxWidth: 500, margin: '12px auto 0' }}>
+              Não é só proteção. É controle absoluto sobre cada sensor, cada permissão, cada byte que sai do seu celular.
+            </p>
+          </div></Rv>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 14 }} className="killspy-steps">
+            {[
+              { icon: '⊘', title: 'Bloqueie por app', desc: 'Escolha quais apps podem acessar microfone e câmera. Instagram gravando? Bloqueie. WhatsApp precisa? Libere.', color: ks.teal },
+              { icon: '◎', title: 'Monitor em tempo real', desc: 'Veja ao vivo quem tá usando mic, câmera, teclado ou rede. Cada tentativa de acesso registrada.', color: ks.green },
+              { icon: '⟲', title: 'Reverta com um toque', desc: 'Bloqueou algo por engano? Reverta qualquer proteção instantaneamente. Você tem o controle total.', color: '#f59e0b' },
+              { icon: '◈', title: 'Rede blindada', desc: 'Controle quais apps podem enviar dados pela internet. Bloqueie telemetria, analytics e trackers invisíveis.', color: '#a855f7' },
+              { icon: '△', title: 'Alertas instantâneos', desc: 'Receba notificação em tempo real quando qualquer app tentar acessar um sensor sem sua permissão.', color: ks.red },
+              { icon: '♛', title: 'Relatório completo', desc: 'Exporta relatório PDF com tudo que foi detectado, bloqueado e monitorado. Prova documentada.', color: ks.teal },
+            ].map((item, i) => (
+              <Rv key={i} d={i * 70}>
+                <div style={{
+                  padding: '24px 22px', background: ks.bgCard, border: `1px solid ${ks.border}`, borderRadius: 12,
+                  borderLeft: `3px solid ${item.color}25`, transition: 'all 0.3s',
+                }}
+                  onMouseEnter={(e: any) => { e.currentTarget.style.borderLeftColor = item.color; e.currentTarget.style.background = `${item.color}06`; }}
+                  onMouseLeave={(e: any) => { e.currentTarget.style.borderLeftColor = `${item.color}25`; e.currentTarget.style.background = ks.bgCard; }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
+                    <span style={{ fontSize: 22, color: item.color, lineHeight: 1 }}>{item.icon}</span>
+                    <h3 style={{ fontSize: 15, fontWeight: 600, color: ks.text }}>{item.title}</h3>
+                  </div>
+                  <p style={{ fontSize: 13, color: ks.muted, lineHeight: 1.7 }}>{item.desc}</p>
+                </div>
+              </Rv>
+            ))}
+          </div>
+
+          <Rv d={500}><div style={{
+            marginTop: 32, padding: '20px 28px', borderRadius: 12,
+            background: ks.tealDim, border: `1px solid rgba(45,212,191,0.15)`,
+            textAlign: 'center',
+          }}>
+            <span style={{ fontSize: 14, fontWeight: 600, color: ks.teal }}>
+              Por R$39,90/mês você tem controle total sobre o que seu celular faz quando você não tá olhando.
+            </span>
+          </div></Rv>
+        </div>
+      </section>
+
       {/* ═══ HOW TO START — Criar conta + fluxo ═══ */}
       <section style={{ padding: 'clamp(60px, 8vw, 80px) clamp(24px, 5vw, 64px)' }}>
         <div style={{ maxWidth: 900, margin: '0 auto' }}>
