@@ -538,7 +538,7 @@ export default function KillSpyLanding() {
           <Rv><div style={{ textAlign: 'center', marginBottom: 48 }}>
             <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.2em', color: ks.green, textTransform: 'uppercase' }}>Programa de Indicação</span>
             <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 700, marginTop: 10 }}>
-              Indique e <span style={{ color: ks.green }}>ganhe dinheiro</span>
+              Comissão de <span style={{ color: ks.green }}>30% por indicação</span>
             </h2>
             <p style={{ fontSize: 14, color: ks.muted, marginTop: 12, maxWidth: 500, margin: '12px auto 0' }}>
               Cada pessoa que assinar pelo seu link te dá comissão. O saldo acumula no seu dashboard e você saca via PIX.
