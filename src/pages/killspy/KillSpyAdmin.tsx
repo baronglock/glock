@@ -123,7 +123,14 @@ export default function KillSpyAdmin() {
 
     const { error } = await supabase.from('licenses').insert({ user_id: userId, key, plan_type: genPlan, expires_at: expires });
     if (error) { setGenMsg(error.message); return; }
-    setGenMsg(`Chave gerada: ${key}`);
+
+    // Send email with the license key
+    const userName = users.find(u => u.id === userId)?.name || '';
+    await supabase.functions.invoke('send-license-email', {
+      body: { to: emailLower, name: userName, key, plan: genPlan, expires_at: expires },
+    });
+
+    setGenMsg(`Chave gerada e email enviado: ${key}`);
     setGenEmail('');
     loadAll();
   };

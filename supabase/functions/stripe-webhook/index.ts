@@ -69,7 +69,33 @@ Deno.serve(async (req) => {
       expires_at: expiresAt.toISOString(),
     })
     if (licError) console.error("License insert error:", licError)
-    else console.log(`License created: ${key}, expires ${expiresAt.toISOString()}`)
+    else {
+      console.log(`License created: ${key}, expires ${expiresAt.toISOString()}`)
+      // Send email with license key
+      const email = session.customer_email || session.customer_details?.email
+      if (email) {
+        const RESEND_KEY = Deno.env.get("RESEND_API_KEY") || ""
+        const planNames: Record<string, string> = { S: "Limpeza (1 dia)", M: "Premium Mensal", A: "Premium Anual" }
+        await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: { "Authorization": `Bearer ${RESEND_KEY}`, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            from: "KillSpy <onboarding@resend.dev>",
+            to: [email],
+            subject: `🔐 Sua chave KillSpy está pronta — ${planNames[planType] || "KillSpy"}`,
+            html: `<div style="font-family:sans-serif;background:#0a0a0f;color:#e8e8e8;padding:40px;text-align:center;">
+              <h1 style="color:#2dd4bf;">Sua chave KillSpy</h1>
+              <div style="background:#0f1018;border:1px solid rgba(45,212,191,0.2);border-radius:12px;padding:24px;margin:24px auto;max-width:400px;">
+                <div style="font-family:monospace;font-size:20px;color:#2dd4bf;letter-spacing:0.05em;">${key}</div>
+              </div>
+              <p>Plano: ${planNames[planType] || planType} · Validade: ${expiresAt.toLocaleDateString("pt-BR")}</p>
+              <p style="color:#888;">Cole essa chave no app KillSpy pra ativar a proteção.</p>
+              <a href="https://stauf.com.br/conta/dashboard" style="display:inline-block;margin-top:16px;padding:12px 28px;background:#2dd4bf;color:#0a0a0f;border-radius:8px;text-decoration:none;font-weight:700;">Ver no dashboard</a>
+            </div>`,
+          }),
+        }).catch(e => console.error("Email send error:", e))
+      }
+    }
 
     // 2. Record payment
     const { error: payError } = await supabase.from("payments").insert({
