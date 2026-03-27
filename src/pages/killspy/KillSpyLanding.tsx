@@ -461,7 +461,7 @@ export default function KillSpyLanding() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 4 }} className="killspy-steps">
             {[
               { n: '01', title: 'Crie sua conta', desc: 'Cadastro gratuito no site. Leva 30 segundos.', icon: '◎' },
-              { n: '02', title: 'Escolha seu plano', desc: 'Scan único, mensal ou anual. Pague com PIX ou cartão.', icon: '◇' },
+              { n: '02', title: 'Escolha seu plano', desc: 'Limpeza única (1 dia), mensal ou anual. PIX ou cartão.', icon: '◇' },
               { n: '03', title: 'Receba sua chave', desc: 'A chave aparece no seu dashboard. Copie e cole no app.', icon: '◈' },
               { n: '04', title: 'Proteja seu celular', desc: 'O app desbloqueia e elimina todas as ameaças.', icon: '△' },
             ].map((s, i) => (
@@ -489,25 +489,25 @@ export default function KillSpyLanding() {
       <section id="planos" style={{ padding: 'clamp(80px, 10vw, 120px) clamp(24px, 5vw, 64px)', background: '#0d0d14' }}>
         <div style={{ maxWidth: 900, margin: '0 auto' }}>
           <Rv><div style={{ textAlign: 'center', marginBottom: 56 }}>
-            <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.2em', color: ks.teal, textTransform: 'uppercase' }}>Planos do App</span>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 700, marginTop: 10 }}>Proteja seu dispositivo</h2>
-            <p style={{ fontSize: 14, color: ks.muted, marginTop: 12 }}>Scan gratuito. Pague só se quiser ativar a proteção.</p>
+            <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.2em', color: ks.teal, textTransform: 'uppercase' }}>Planos</span>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 700, marginTop: 10 }}>Escolha seu nível de proteção</h2>
+            <p style={{ fontSize: 14, color: ks.muted, marginTop: 12 }}>Scan gratuito pra todos. Escolha o plano que faz sentido pra você.</p>
           </div></Rv>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, alignItems: 'stretch' }} className="killspy-plans">
             <Rv><PlanCard planType="S"
-              name="Varredura" price="R$19,90" period="uso único (24h)"
-              features={['1 scan completo', 'Limpeza + proteção por 24h', 'Relatório de ameaças', 'Suporte WhatsApp']}
-              cta="Começar scan"
+              name="Limpeza" price="R$19,90" period="única (1 dia)"
+              features={['1 scan + limpeza completa', 'Proteção aplicada permanece', 'Relatório PDF das ameaças', 'Sem painel de controle', 'Sem novas limpezas após 24h']}
+              cta="Limpar agora"
             /></Rv>
             <Rv d={100}><PlanCard planType="M"
-              name="Premium Mensal" price="R$39,90" period="por mês"
-              features={['Scans ilimitados', 'Proteção em tempo real', 'Frost Guard (mic/cam)', 'Monitor de processos', 'Alertas instantâneos', 'Suporte prioritário']}
-              popular cta="Assinar agora"
+              name="Premium" price="R$39,90" period="por mês"
+              features={['Limpezas ilimitadas', 'Painel de controle total', 'Bloquear/liberar apps por sensor', 'Monitor em tempo real', 'Matar processos + liberar RAM', 'Alertas de acesso não autorizado', 'Suporte prioritário']}
+              popular cta="Ter controle total"
             /></Rv>
             <Rv d={200}><PlanCard planType="A"
               name="Premium Anual" price="R$399,99" period="por ano (R$33,33/mês)"
-              features={['Tudo do Premium Mensal', '16% de desconto', 'Proteção em tempo real', 'Frost Guard (mic/cam)', 'Monitor de processos', 'Suporte VIP']}
+              features={['Tudo do Premium', '16% de desconto', 'Painel de controle total', 'Limpezas ilimitadas o ano todo', 'Monitor + alertas 24/7', 'Suporte VIP']}
               cta="Economizar 16%"
             /></Rv>
           </div>
@@ -569,7 +569,7 @@ export default function KillSpyLanding() {
               <h3 style={{ fontSize: 16, fontWeight: 600, color: ks.text, marginBottom: 20 }}>Quanto você ganha</h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {[
-                  { plan: 'Scan Único', price: 'R$19,90', you: 'R$6,00', color: ks.teal },
+                  { plan: 'Limpeza (1 dia)', price: 'R$19,90', you: 'R$6,00', color: ks.teal },
                   { plan: 'Premium Mensal', price: 'R$39,90', you: 'R$12,00', color: ks.green },
                   { plan: 'Premium Anual', price: 'R$399,99', you: 'R$120,00', color: ks.green },
                 ].map((row, i) => (
