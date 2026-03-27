@@ -621,7 +621,7 @@ export default function KillSpyLanding() {
           </div></Rv>
 
           {[
-            { q: 'O app precisa de internet?', a: 'Não. Roda 100% offline no seu celular. Nenhum dado sai do dispositivo.' },
+            { q: 'O app precisa de internet?', a: 'Precisa de conexão para ativar a licença e validar a cada 24h. O scan e a proteção em si funcionam sem internet. Se ficar offline, continua protegido por até 7 dias.' },
             { q: 'Funciona em iPhone?', a: 'Não, apenas Android 11 ou superior. O iOS não permite o nível de acesso necessário para eliminar ameaças. Para Android abaixo de 11, oferecemos serviço presencial.' },
             { q: 'Modo avião não resolve?', a: 'Modo avião desliga a internet, mas o microfone e câmera continuam gravando e armazenando. Quando você desligar, enviam tudo de uma vez.' },
             { q: 'Como recebo a chave de licença?', a: 'No seu dashboard após o pagamento. Também enviamos por email. Basta digitar a chave no app.' },
