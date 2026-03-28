@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { Shield, Mic, Camera, Wifi, MapPin, Keyboard, Eye, Download, ChevronRight, Lock, CheckCircle2, Search } from 'lucide-react';
 
@@ -235,6 +236,16 @@ export default function KillSpyLanding() {
 
   return (
     <div style={{ background: ks.bg, color: ks.text, fontFamily: ks.sans, minHeight: '100vh' }}>
+
+      <Helmet>
+        <title>KillSpy — Proteção Mobile contra Espionagem</title>
+        <meta name="description" content="Seu celular escuta tudo que você fala. O KillSpy detecta e elimina ameaças. Controle total sobre microfone, câmera e dados." />
+        <meta property="og:title" content="KillSpy — Proteção Mobile contra Espionagem" />
+        <meta property="og:description" content="Seu celular escuta tudo que você fala. O KillSpy detecta e elimina ameaças. Controle total sobre microfone, câmera e dados." />
+        <meta property="og:image" content="https://stauf.com.br/killspy-logo.png" />
+        <meta property="og:url" content="https://stauf.com.br/killspy" />
+        <meta property="og:type" content="website" />
+      </Helmet>
 
       {/* ═══ TEXTURE LAYERS — HD security/tech theme ═══ */}
       {/* Layer 1: Circuit board — tech/hardware feel, very subtle */}

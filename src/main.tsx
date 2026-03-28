@@ -9,6 +9,7 @@ import { servicesData } from './pages/services'
 import { LanguageProvider } from './hooks/useLanguage'
 import { ThemeProvider } from './hooks/useTheme'
 import { PrivacyPage } from './pages/PrivacyPage'
+import { TermosPage } from './pages/TermosPage'
 import { CheckoutPage } from './pages/CheckoutPage'
 import DemoSplashPage from './pages/DemoSplashPage'
 import DemoListPage from './pages/DemoListPage'
@@ -31,6 +32,7 @@ createRoot(document.getElementById('root')!).render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/privacidade" element={<Layout><PrivacyPage /></Layout>} />
+          <Route path="/termos" element={<Layout><TermosPage /></Layout>} />
           <Route path="/checkout" element={<Layout><CheckoutPage /></Layout>} />
           <Route path="/killspy" element={<KillSpyLanding />} />
           <Route path="/conta/login" element={<KillSpyLogin />} />
