@@ -1180,7 +1180,7 @@ export default function DemoPage() {
             </div>
             <div style={{ marginTop: 28, height: 240, borderRadius: th.cardRadius, overflow: 'hidden', border: `1px solid ${c.primary}10` }}>
               <iframe
-                src={`https://www.google.com/maps?q=${encodeURIComponent(data.name + ' ' + data.city)}&output=embed`}
+                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCdpxxgZRYNVs2cQ_X8SOZchL-iVl48tmU&q=${encodeURIComponent(data.name + ' ' + data.city)}`}
                 style={{ width: '100%', height: '100%', border: 'none', filter: c.bg.startsWith('#0') || c.bg.startsWith('#1') ? 'invert(0.9) hue-rotate(180deg) saturate(0.3)' : 'none' }}
                 loading="lazy"
                 allowFullScreen
