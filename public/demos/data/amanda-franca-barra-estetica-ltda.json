@@ -1,0 +1,248 @@
+{
+  "slug": "amanda-franca-barra-estetica-ltda",
+  "name": "Amanda Baumann Estética CLINIC & SPA",
+  "niche": "clinica_estetica",
+  "tagline": "Sua beleza, nossa missão diária",
+  "city": "Av. Archelau de Almeida Tôrres, 1479 - Iguaçu, Araucária - PR, 83701-145, Brasil",
+  "phone": "5541995830852",
+  "colors": {
+    "primary": "#b08d7a",
+    "secondary": "#655145",
+    "bg": "#faf7f5",
+    "text": "#2a2320",
+    "textMuted": "#8a7e77"
+  },
+  "hero": {
+    "title": "Transforme-se com Amanda França",
+    "subtitle": "Na Amanda França Barra Estética, cada detalhe é pensado para realçar sua beleza única. Nossa equipe de profissionais especializados oferece um atendimento personalizado, garantindo resultados que superam suas expectativas.",
+    "image": "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=1400&q=85&auto=format&fit=crop"
+  },
+  "about": {
+    "text": "Na Amanda França Barra Estética, cada detalhe é pensado para realçar sua beleza única. Nossa equipe de profissionais especializados oferece um atendimento personalizado, garantindo resultados que superam suas expectativas.",
+    "image": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80&auto=format&fit=crop"
+  },
+  "services": [
+    {
+      "name": "Harmonização Facial",
+      "desc": "Preenchimento com ácido hialurônico.",
+      "icon": "◇",
+      "price": "A partir de R$ 1.200",
+      "time": "60 min",
+      "category": "Face",
+      "popular": true
+    },
+    {
+      "name": "Botox",
+      "desc": "Suavização de linhas e rugas.",
+      "icon": "◎",
+      "price": "R$ 800",
+      "time": "30 min",
+      "category": "Face"
+    },
+    {
+      "name": "Limpeza de Pele",
+      "desc": "Limpeza profunda com extração.",
+      "icon": "◈",
+      "price": "R$ 250",
+      "time": "60 min",
+      "category": "Pele",
+      "popular": true
+    },
+    {
+      "name": "Peeling",
+      "desc": "Renovação celular profunda.",
+      "icon": "◇",
+      "price": "R$ 350",
+      "time": "45 min",
+      "category": "Pele"
+    },
+    {
+      "name": "Microagulhamento",
+      "desc": "Estímulo de colágeno com micro agulhas.",
+      "icon": "◎",
+      "price": "R$ 400",
+      "time": "40 min",
+      "category": "Pele"
+    },
+    {
+      "name": "Depilação a Laser",
+      "desc": "Redução definitiva de pelos.",
+      "icon": "◈",
+      "price": "R$ 200/área",
+      "time": "30 min",
+      "category": "Corpo"
+    },
+    {
+      "name": "Drenagem",
+      "desc": "Drenagem linfática corporal.",
+      "icon": "◇",
+      "price": "R$ 180",
+      "time": "50 min",
+      "category": "Corpo"
+    },
+    {
+      "name": "Skinbooster",
+      "desc": "Hidratação profunda da pele.",
+      "icon": "◎",
+      "price": "R$ 600",
+      "time": "30 min",
+      "category": "Face"
+    }
+  ],
+  "gallery": [
+    "https://images.unsplash.com/photo-1552693673-1bf958298935?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80&auto=format&fit=crop"
+  ],
+  "reviews": [
+    {
+      "name": "Anna Karla",
+      "text": "Super recomendo, ambiente maravilhoso impecável, atendimento espetacular. Sem falar dos resultados que obtive com os\nprocedimentos, a crio da Baumann ",
+      "stars": 5,
+      "time": "8 months ago"
+    },
+    {
+      "name": "Daiane Ribeiro",
+      "text": "Superr recomendo, Simplesmente maravilhosa!\nDesde o primeiro atendimento, fui recebida sempre com muita atenção e profissionalismo. A equipe é extrema",
+      "stars": 5,
+      "time": "8 months ago"
+    },
+    {
+      "name": "manu s",
+      "text": "Fui à clínica por indicação de uma conhecida. Perguntei oque ela tinha feito para emagrecer ela comentou que fez um tratamento. A Dr Amanda foi super ",
+      "stars": 5,
+      "time": "8 months ago"
+    },
+    {
+      "name": "Dannicler Oliveira",
+      "text": "\"Eu não poderia deixar de registrar o quanto fui bem atendida na clínica da Amanda... O cuidado, a atenção e o carinho em cada detalhe realmente me su",
+      "stars": 5,
+      "time": "8 months ago"
+    }
+  ],
+  "features": [
+    {
+      "label": "Clientes atendidos",
+      "value": "500+"
+    },
+    {
+      "label": "Anos de experiência",
+      "value": "3"
+    },
+    {
+      "label": "Avaliação Google",
+      "value": "5 ★"
+    },
+    {
+      "label": "Profissionais",
+      "value": "4"
+    }
+  ],
+  "staff": [
+    {
+      "name": "Amanda",
+      "role": "Especialista",
+      "rating": 4.9,
+      "reviews": 100,
+      "available": true
+    },
+    {
+      "name": "Profissional 2",
+      "role": "Sênior",
+      "rating": 4.8,
+      "reviews": 80,
+      "available": true
+    },
+    {
+      "name": "Profissional 3",
+      "role": "Premium",
+      "rating": 4.9,
+      "reviews": 60,
+      "available": true
+    }
+  ],
+  "plans": [
+    {
+      "name": "Básico",
+      "price": "R$ 120/mês",
+      "features": [
+        "2 atendimentos/mês",
+        "Agendamento online",
+        "Suporte WhatsApp"
+      ]
+    },
+    {
+      "name": "Pro",
+      "price": "R$ 220/mês",
+      "features": [
+        "4 atendimentos/mês",
+        "Atendimento prioritário",
+        "Descontos em produtos",
+        "Bebidas inclusas"
+      ],
+      "popular": true
+    },
+    {
+      "name": "VIP",
+      "price": "R$ 380/mês",
+      "features": [
+        "Atendimentos ilimitados",
+        "Todos os benefícios",
+        "Prioridade total",
+        "Área VIP exclusiva"
+      ]
+    }
+  ],
+  "cta": {
+    "text": "Pronto pra conhecer a Amanda Baumann Estética CLINIC & SPA?",
+    "buttonText": "Agendar agora"
+  },
+  "faq": [
+    {
+      "q": "Preciso agendar?",
+      "a": "Recomendamos agendar pelo WhatsApp pra garantir seu horário, mas aceitamos sem agendamento quando há disponibilidade."
+    },
+    {
+      "q": "Quais formas de pagamento?",
+      "a": "Aceitamos PIX, cartões de débito e crédito, e dinheiro."
+    },
+    {
+      "q": "Tem estacionamento?",
+      "a": "Sim, temos estacionamento gratuito para clientes."
+    },
+    {
+      "q": "Como funciona a assinatura?",
+      "a": "Escolha o plano, faça o pagamento mensal e agende pelo WhatsApp. Sem fidelidade."
+    },
+    {
+      "q": "Atendem crianças?",
+      "a": "Sim! Temos experiência com atendimento infantil em ambiente descontraído."
+    }
+  ],
+  "products": [
+    {
+      "name": "Sérum Vitamina C",
+      "price": "R$ 129",
+      "img": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Protetor Solar",
+      "price": "R$ 89",
+      "img": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Creme Anti-Aging",
+      "price": "R$ 179",
+      "img": "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Kit Home Care",
+      "price": "R$ 299",
+      "img": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=300&q=80&auto=format&fit=crop",
+      "popular": true
+    }
+  ]
+}

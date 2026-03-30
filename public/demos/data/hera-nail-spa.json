@@ -1,0 +1,248 @@
+{
+  "slug": "hera-nail-spa",
+  "name": "Studio Hera",
+  "niche": "salao",
+  "tagline": "Seu refúgio de beleza e estilo",
+  "city": "R. Paulo Setúbal, 4558 - lojas 1/2 - Boqueirão, Curitiba - PR, 81750-190, Brasil",
+  "phone": "5541996996411",
+  "colors": {
+    "primary": "#c47d8a",
+    "secondary": "#1a1a2e",
+    "bg": "#faf6f4",
+    "text": "#2a2320",
+    "textMuted": "#8a7e77"
+  },
+  "hero": {
+    "title": "Transforme suas unhas hoje",
+    "subtitle": "No Hera Nail Spa, priorizamos o bem-estar e a beleza das suas unhas com um atendimento personalizado e técnicas inovadoras. Nossa equipe de especialistas está pronta para proporcionar uma experiência única em um ambiente acolhedor e sofisticado.",
+    "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1400&q=85&auto=format&fit=crop"
+  },
+  "about": {
+    "text": "No Hera Nail Spa, priorizamos o bem-estar e a beleza das suas unhas com um atendimento personalizado e técnicas inovadoras. Nossa equipe de especialistas está pronta para proporcionar uma experiência única em um ambiente acolhedor e sofisticado.",
+    "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80&auto=format&fit=crop"
+  },
+  "services": [
+    {
+      "name": "Corte Feminino",
+      "desc": "Corte personalizado para o seu estilo.",
+      "icon": "✂️",
+      "price": "R$ 80",
+      "time": "45 min",
+      "category": "Cortes",
+      "popular": true
+    },
+    {
+      "name": "Escova",
+      "desc": "Modelagem com secador e escova.",
+      "icon": "💇",
+      "price": "R$ 50",
+      "time": "30 min",
+      "category": "Modelagem"
+    },
+    {
+      "name": "Coloração",
+      "desc": "Tintura profissional com produtos premium.",
+      "icon": "🎨",
+      "price": "R$ 120",
+      "time": "90 min",
+      "category": "Coloração",
+      "popular": true
+    },
+    {
+      "name": "Mechas/Luzes",
+      "desc": "Mechas naturais e iluminadas.",
+      "icon": "✨",
+      "price": "R$ 200",
+      "time": "120 min",
+      "category": "Coloração"
+    },
+    {
+      "name": "Progressiva",
+      "desc": "Alisamento duradouro e saudável.",
+      "icon": "💧",
+      "price": "R$ 180",
+      "time": "120 min",
+      "category": "Tratamentos"
+    },
+    {
+      "name": "Hidratação",
+      "desc": "Tratamento profundo para cabelos danificados.",
+      "icon": "💎",
+      "price": "R$ 60",
+      "time": "40 min",
+      "category": "Tratamentos"
+    },
+    {
+      "name": "Manicure",
+      "desc": "Unhas perfeitas com esmaltação.",
+      "icon": "💅",
+      "price": "R$ 40",
+      "time": "30 min",
+      "category": "Unhas"
+    },
+    {
+      "name": "Penteado",
+      "desc": "Penteados para festas e eventos.",
+      "icon": "👑",
+      "price": "R$ 150",
+      "time": "60 min",
+      "category": "Modelagem"
+    }
+  ],
+  "gallery": [
+    "https://images.unsplash.com/photo-1562322140-8baeacacf908?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1600948836101-f9ffda59d250?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80&auto=format&fit=crop"
+  ],
+  "reviews": [
+    {
+      "name": "Karolina Dal Pizzol",
+      "text": "Comecei a frequentar o studio em 2022 e nunca mais parei de ir. A esmaltação em gel salvou as minhas unhas, que eram sempre fraquinhos e quebradiças. ",
+      "stars": 5,
+      "time": "10 months ago"
+    },
+    {
+      "name": "Taisa Gruber",
+      "text": "Tive uma excelente experiência no Studio Hera, onde fiz design de sobrancelhas e uma limpeza de pele. Fiquei muito satisfeita com o atendimento, o cui",
+      "stars": 5,
+      "time": "a year ago"
+    },
+    {
+      "name": "gabriela soares",
+      "text": "Frequento o Studio há 2 anos, e é incrível observar como houve um aumento exponencial na qualidade dos serviços prestados, mesmo que, desde a primeira",
+      "stars": 5,
+      "time": "2 years ago"
+    },
+    {
+      "name": "Bárbara Pontarolo",
+      "text": "Sou cliente da Thaís desde 2014. Ela tem uma mão de fada para tudo o que ela faz! E a Vivi também, unhas impecáveis.\nGosto muito do trabalho das menin",
+      "stars": 5,
+      "time": "a year ago"
+    }
+  ],
+  "features": [
+    {
+      "label": "Clientes atendidos",
+      "value": "500+"
+    },
+    {
+      "label": "Anos de experiência",
+      "value": "3"
+    },
+    {
+      "label": "Avaliação Google",
+      "value": "4.8 ★"
+    },
+    {
+      "label": "Profissionais",
+      "value": "4"
+    }
+  ],
+  "staff": [
+    {
+      "name": "Clarice",
+      "role": "Especialista",
+      "rating": 4.9,
+      "reviews": 100,
+      "available": true
+    },
+    {
+      "name": "Profissional 2",
+      "role": "Sênior",
+      "rating": 4.8,
+      "reviews": 80,
+      "available": true
+    },
+    {
+      "name": "Profissional 3",
+      "role": "Premium",
+      "rating": 4.9,
+      "reviews": 60,
+      "available": true
+    }
+  ],
+  "plans": [
+    {
+      "name": "Básico",
+      "price": "R$ 120/mês",
+      "features": [
+        "2 atendimentos/mês",
+        "Agendamento online",
+        "Suporte WhatsApp"
+      ]
+    },
+    {
+      "name": "Pro",
+      "price": "R$ 220/mês",
+      "features": [
+        "4 atendimentos/mês",
+        "Atendimento prioritário",
+        "Descontos em produtos",
+        "Bebidas inclusas"
+      ],
+      "popular": true
+    },
+    {
+      "name": "VIP",
+      "price": "R$ 380/mês",
+      "features": [
+        "Atendimentos ilimitados",
+        "Todos os benefícios",
+        "Prioridade total",
+        "Área VIP exclusiva"
+      ]
+    }
+  ],
+  "cta": {
+    "text": "Pronto pra conhecer a Studio Hera?",
+    "buttonText": "Agendar agora"
+  },
+  "faq": [
+    {
+      "q": "Preciso agendar?",
+      "a": "Recomendamos agendar pelo WhatsApp pra garantir seu horário, mas aceitamos sem agendamento quando há disponibilidade."
+    },
+    {
+      "q": "Quais formas de pagamento?",
+      "a": "Aceitamos PIX, cartões de débito e crédito, e dinheiro."
+    },
+    {
+      "q": "Tem estacionamento?",
+      "a": "Sim, temos estacionamento gratuito para clientes."
+    },
+    {
+      "q": "Como funciona a assinatura?",
+      "a": "Escolha o plano, faça o pagamento mensal e agende pelo WhatsApp. Sem fidelidade."
+    },
+    {
+      "q": "Atendem crianças?",
+      "a": "Sim! Temos experiência com atendimento infantil em ambiente descontraído."
+    }
+  ],
+  "products": [
+    {
+      "name": "Shampoo Reconstrutor",
+      "price": "R$ 65",
+      "img": "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Máscara Capilar",
+      "price": "R$ 49",
+      "img": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Óleo Reparador",
+      "price": "R$ 55",
+      "img": "https://images.unsplash.com/photo-1626808642875-0aa545482dfb?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Kit Tratamento",
+      "price": "R$ 139",
+      "img": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=300&q=80&auto=format&fit=crop",
+      "popular": true
+    }
+  ]
+}

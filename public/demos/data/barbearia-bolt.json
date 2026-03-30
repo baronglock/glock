@@ -1,0 +1,248 @@
+{
+  "slug": "barbearia-bolt",
+  "name": "Barbearia Bolt",
+  "niche": "barbearia",
+  "tagline": "Seu estilo, nossa paixão",
+  "city": "R. Avestruz, 660 - Capela Velha, Araucária - PR, 83706-230, Brasil",
+  "phone": "5541996934440",
+  "colors": {
+    "primary": "#c8a96e",
+    "secondary": "#1a1a2e",
+    "bg": "#0f0f17",
+    "text": "#f5f5f5",
+    "textMuted": "#999"
+  },
+  "hero": {
+    "title": "Corte com atitude",
+    "subtitle": "Na Barbearia Bolt, transformamos cada corte em uma verdadeira obra de arte. Com profissionais experientes e um ambiente acolhedor, garantimos que cada cliente saia satisfeito e confiante.",
+    "image": "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1400&q=85&auto=format&fit=crop"
+  },
+  "about": {
+    "text": "Na Barbearia Bolt, transformamos cada corte em uma verdadeira obra de arte. Com profissionais experientes e um ambiente acolhedor, garantimos que cada cliente saia satisfeito e confiante.",
+    "image": "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=800&q=80&auto=format&fit=crop"
+  },
+  "services": [
+    {
+      "name": "Corte Masculino",
+      "desc": "Corte personalizado com acabamento perfeito.",
+      "icon": "✂️",
+      "price": "R$ 45",
+      "time": "30 min",
+      "category": "Cortes",
+      "popular": true
+    },
+    {
+      "name": "Barba",
+      "desc": "Modelagem precisa com produtos premium.",
+      "icon": "🪒",
+      "price": "R$ 35",
+      "time": "20 min",
+      "category": "Barba"
+    },
+    {
+      "name": "Corte + Barba",
+      "desc": "Combo completo com toalha quente.",
+      "icon": "👑",
+      "price": "R$ 70",
+      "time": "50 min",
+      "category": "Combos",
+      "popular": true
+    },
+    {
+      "name": "Degradê",
+      "desc": "Transição perfeita com máquina e tesoura.",
+      "icon": "✂️",
+      "price": "R$ 50",
+      "time": "35 min",
+      "category": "Cortes"
+    },
+    {
+      "name": "Sobrancelha",
+      "desc": "Design masculino com navalha.",
+      "icon": "🎯",
+      "price": "R$ 20",
+      "time": "10 min",
+      "category": "Extras"
+    },
+    {
+      "name": "Hidratação",
+      "desc": "Tratamento capilar profundo.",
+      "icon": "💧",
+      "price": "R$ 60",
+      "time": "40 min",
+      "category": "Tratamentos"
+    },
+    {
+      "name": "Pigmentação",
+      "desc": "Cobertura de falhas na barba.",
+      "icon": "🎨",
+      "price": "R$ 80",
+      "time": "30 min",
+      "category": "Tratamentos"
+    },
+    {
+      "name": "Infantil",
+      "desc": "Corte infantil com paciência.",
+      "icon": "✂️",
+      "price": "R$ 35",
+      "time": "25 min",
+      "category": "Cortes"
+    }
+  ],
+  "gallery": [
+    "https://images.unsplash.com/photo-1578253859338-ddfcbdbfb1f8?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1599351431613-18ef1fdd27e1?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1585747860019-8e8ef6e96a0d?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1634302086887-13b4281e0b04?w=600&q=80&auto=format&fit=crop"
+  ],
+  "reviews": [
+    {
+      "name": "Felipe Alves",
+      "text": "Corto lá já faz uns 3 anos, a melhor de araucaria!!!!",
+      "stars": 5,
+      "time": "11 months ago"
+    },
+    {
+      "name": "Douglas Goncalve",
+      "text": "Muito mais que apenas uma Barbearia, você entra como cliente e saí como um amigo, lugar excelente, estilo da barbearia remete a tranquilidade, mais de",
+      "stars": 5,
+      "time": "a year ago"
+    },
+    {
+      "name": "Ronaldo Carvalho",
+      "text": "Profissionais com exelente técnica e exelente recepção com ótimo ambiente.",
+      "stars": 5,
+      "time": "a year ago"
+    },
+    {
+      "name": "Juliano Barbosa Santos",
+      "text": "Ótimo atendimento. E bom profissionais.nota 10",
+      "stars": 5,
+      "time": "2 years ago"
+    }
+  ],
+  "features": [
+    {
+      "label": "Clientes atendidos",
+      "value": "500+"
+    },
+    {
+      "label": "Anos de experiência",
+      "value": "3"
+    },
+    {
+      "label": "Avaliação Google",
+      "value": "5 ★"
+    },
+    {
+      "label": "Profissionais",
+      "value": "4"
+    }
+  ],
+  "staff": [
+    {
+      "name": "Kelly",
+      "role": "Especialista",
+      "rating": 4.9,
+      "reviews": 100,
+      "available": true
+    },
+    {
+      "name": "Profissional 2",
+      "role": "Sênior",
+      "rating": 4.8,
+      "reviews": 80,
+      "available": true
+    },
+    {
+      "name": "Profissional 3",
+      "role": "Premium",
+      "rating": 4.9,
+      "reviews": 60,
+      "available": true
+    }
+  ],
+  "plans": [
+    {
+      "name": "Básico",
+      "price": "R$ 120/mês",
+      "features": [
+        "2 atendimentos/mês",
+        "Agendamento online",
+        "Suporte WhatsApp"
+      ]
+    },
+    {
+      "name": "Pro",
+      "price": "R$ 220/mês",
+      "features": [
+        "4 atendimentos/mês",
+        "Atendimento prioritário",
+        "Descontos em produtos",
+        "Bebidas inclusas"
+      ],
+      "popular": true
+    },
+    {
+      "name": "VIP",
+      "price": "R$ 380/mês",
+      "features": [
+        "Atendimentos ilimitados",
+        "Todos os benefícios",
+        "Prioridade total",
+        "Área VIP exclusiva"
+      ]
+    }
+  ],
+  "cta": {
+    "text": "Pronto pra conhecer a Barbearia Bolt?",
+    "buttonText": "Agendar agora"
+  },
+  "faq": [
+    {
+      "q": "Preciso agendar?",
+      "a": "Recomendamos agendar pelo WhatsApp pra garantir seu horário, mas aceitamos sem agendamento quando há disponibilidade."
+    },
+    {
+      "q": "Quais formas de pagamento?",
+      "a": "Aceitamos PIX, cartões de débito e crédito, e dinheiro."
+    },
+    {
+      "q": "Tem estacionamento?",
+      "a": "Sim, temos estacionamento gratuito para clientes."
+    },
+    {
+      "q": "Como funciona a assinatura?",
+      "a": "Escolha o plano, faça o pagamento mensal e agende pelo WhatsApp. Sem fidelidade."
+    },
+    {
+      "q": "Atendem crianças?",
+      "a": "Sim! Temos experiência com atendimento infantil em ambiente descontraído."
+    }
+  ],
+  "products": [
+    {
+      "name": "Pomada Modeladora",
+      "price": "R$ 45",
+      "img": "https://images.unsplash.com/photo-1608979048467-6194eabd0ada?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Óleo para Barba",
+      "price": "R$ 35",
+      "img": "https://images.unsplash.com/photo-1626808642875-0aa545482dfb?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Shampoo Premium",
+      "price": "R$ 40",
+      "img": "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Kit Barba",
+      "price": "R$ 99",
+      "img": "https://images.unsplash.com/photo-1621607512214-68297480165e?w=300&q=80&auto=format&fit=crop",
+      "popular": true
+    }
+  ]
+}

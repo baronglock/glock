@@ -1,0 +1,248 @@
+{
+  "slug": "stardente",
+  "name": "Starcliniq by Dra Fabiana Hage",
+  "niche": "salao",
+  "tagline": "Sua beleza, nosso talento",
+  "city": "R. Suzana Suckow, 81 - Centro, Araucária - PR, 83702-620, Brasil",
+  "phone": "5541999413280",
+  "colors": {
+    "primary": "#c47d8a",
+    "secondary": "#1a1a2e",
+    "bg": "#faf6f4",
+    "text": "#2a2320",
+    "textMuted": "#8a7e77"
+  },
+  "hero": {
+    "title": "Transforme-se no STARDENTE",
+    "subtitle": "No STARDENTE, oferecemos um atendimento personalizado que realça sua verdadeira essência. Nossa equipe de profissionais apaixonados está pronta para proporcionar experiências únicas em beleza e bem-estar, fazendo de cada visita um momento especial.",
+    "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1400&q=85&auto=format&fit=crop"
+  },
+  "about": {
+    "text": "No STARDENTE, oferecemos um atendimento personalizado que realça sua verdadeira essência. Nossa equipe de profissionais apaixonados está pronta para proporcionar experiências únicas em beleza e bem-estar, fazendo de cada visita um momento especial.",
+    "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80&auto=format&fit=crop"
+  },
+  "services": [
+    {
+      "name": "Corte Feminino",
+      "desc": "Corte personalizado para o seu estilo.",
+      "icon": "✂️",
+      "price": "R$ 80",
+      "time": "45 min",
+      "category": "Cortes",
+      "popular": true
+    },
+    {
+      "name": "Escova",
+      "desc": "Modelagem com secador e escova.",
+      "icon": "💇",
+      "price": "R$ 50",
+      "time": "30 min",
+      "category": "Modelagem"
+    },
+    {
+      "name": "Coloração",
+      "desc": "Tintura profissional com produtos premium.",
+      "icon": "🎨",
+      "price": "R$ 120",
+      "time": "90 min",
+      "category": "Coloração",
+      "popular": true
+    },
+    {
+      "name": "Mechas/Luzes",
+      "desc": "Mechas naturais e iluminadas.",
+      "icon": "✨",
+      "price": "R$ 200",
+      "time": "120 min",
+      "category": "Coloração"
+    },
+    {
+      "name": "Progressiva",
+      "desc": "Alisamento duradouro e saudável.",
+      "icon": "💧",
+      "price": "R$ 180",
+      "time": "120 min",
+      "category": "Tratamentos"
+    },
+    {
+      "name": "Hidratação",
+      "desc": "Tratamento profundo para cabelos danificados.",
+      "icon": "💎",
+      "price": "R$ 60",
+      "time": "40 min",
+      "category": "Tratamentos"
+    },
+    {
+      "name": "Manicure",
+      "desc": "Unhas perfeitas com esmaltação.",
+      "icon": "💅",
+      "price": "R$ 40",
+      "time": "30 min",
+      "category": "Unhas"
+    },
+    {
+      "name": "Penteado",
+      "desc": "Penteados para festas e eventos.",
+      "icon": "👑",
+      "price": "R$ 150",
+      "time": "60 min",
+      "category": "Modelagem"
+    }
+  ],
+  "gallery": [
+    "https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1559599101-f09722fb4948?w=600&q=80&auto=format&fit=crop"
+  ],
+  "reviews": [
+    {
+      "name": "Kaoani Marcon",
+      "text": "Indico de olhos fechados! Uma clínica onde você é bem recebida, atendimento maravilhoso já começa pela recepção, Dra Fabiana tem mãos de fada, toda cu",
+      "stars": 5,
+      "time": "7 months ago"
+    },
+    {
+      "name": "Pamela Cristiane",
+      "text": "Sem dúvidas a profissional mais qualificada possível que eu pude encontrar, amooo !! e as meninas do consultório são todas maravilhosas!!😍🥰",
+      "stars": 5,
+      "time": "6 months ago"
+    },
+    {
+      "name": "Elaine Busquette",
+      "text": "Clínica maravilhosa, me sinto muito à vontade, sempre fui bem tratada por todos os profissionais!! Dra Fabiana é uma querida, muito educada! Excelente",
+      "stars": 5,
+      "time": "7 months ago"
+    },
+    {
+      "name": "Tabata Rocha",
+      "text": "Dra Fabiana além de querida é uma excelente profissional…\nJá fiz preenchimento em algumas clínicas de Curitiba, mas depois que conheci a harmoniq só f",
+      "stars": 5,
+      "time": "a year ago"
+    }
+  ],
+  "features": [
+    {
+      "label": "Clientes atendidos",
+      "value": "640+"
+    },
+    {
+      "label": "Anos de experiência",
+      "value": "3"
+    },
+    {
+      "label": "Avaliação Google",
+      "value": "5 ★"
+    },
+    {
+      "label": "Profissionais",
+      "value": "4"
+    }
+  ],
+  "staff": [
+    {
+      "name": "Fabiana",
+      "role": "Especialista",
+      "rating": 4.9,
+      "reviews": 100,
+      "available": true
+    },
+    {
+      "name": "Profissional 2",
+      "role": "Sênior",
+      "rating": 4.8,
+      "reviews": 80,
+      "available": true
+    },
+    {
+      "name": "Profissional 3",
+      "role": "Premium",
+      "rating": 4.9,
+      "reviews": 60,
+      "available": true
+    }
+  ],
+  "plans": [
+    {
+      "name": "Básico",
+      "price": "R$ 120/mês",
+      "features": [
+        "2 atendimentos/mês",
+        "Agendamento online",
+        "Suporte WhatsApp"
+      ]
+    },
+    {
+      "name": "Pro",
+      "price": "R$ 220/mês",
+      "features": [
+        "4 atendimentos/mês",
+        "Atendimento prioritário",
+        "Descontos em produtos",
+        "Bebidas inclusas"
+      ],
+      "popular": true
+    },
+    {
+      "name": "VIP",
+      "price": "R$ 380/mês",
+      "features": [
+        "Atendimentos ilimitados",
+        "Todos os benefícios",
+        "Prioridade total",
+        "Área VIP exclusiva"
+      ]
+    }
+  ],
+  "cta": {
+    "text": "Pronto pra conhecer a Starcliniq by Dra Fabiana Hage?",
+    "buttonText": "Agendar agora"
+  },
+  "faq": [
+    {
+      "q": "Preciso agendar?",
+      "a": "Recomendamos agendar pelo WhatsApp pra garantir seu horário, mas aceitamos sem agendamento quando há disponibilidade."
+    },
+    {
+      "q": "Quais formas de pagamento?",
+      "a": "Aceitamos PIX, cartões de débito e crédito, e dinheiro."
+    },
+    {
+      "q": "Tem estacionamento?",
+      "a": "Sim, temos estacionamento gratuito para clientes."
+    },
+    {
+      "q": "Como funciona a assinatura?",
+      "a": "Escolha o plano, faça o pagamento mensal e agende pelo WhatsApp. Sem fidelidade."
+    },
+    {
+      "q": "Atendem crianças?",
+      "a": "Sim! Temos experiência com atendimento infantil em ambiente descontraído."
+    }
+  ],
+  "products": [
+    {
+      "name": "Shampoo Reconstrutor",
+      "price": "R$ 65",
+      "img": "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Máscara Capilar",
+      "price": "R$ 49",
+      "img": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Óleo Reparador",
+      "price": "R$ 55",
+      "img": "https://images.unsplash.com/photo-1626808642875-0aa545482dfb?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Kit Tratamento",
+      "price": "R$ 139",
+      "img": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=300&q=80&auto=format&fit=crop",
+      "popular": true
+    }
+  ]
+}

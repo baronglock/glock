@@ -1,0 +1,248 @@
+{
+  "slug": "calixto-barber-house",
+  "name": "Calixto Barber House",
+  "niche": "barbearia",
+  "tagline": "Corte que expressa sua essência",
+  "city": "R. Manoel Ribas, 3404 - Costeira, Araucária - PR, 83708-695, Brasil",
+  "phone": "5541998772802",
+  "colors": {
+    "primary": "#c8a96e",
+    "secondary": "#1a1a2e",
+    "bg": "#0f0f17",
+    "text": "#f5f5f5",
+    "textMuted": "#999"
+  },
+  "hero": {
+    "title": "Transforme seu visual hoje",
+    "subtitle": "Na Calixto Barber House, cada corte e barba são obras de arte personalizadas. Nossa equipe de profissionais qualificados está pronta para elevar seu estilo a um novo patamar, refletindo sua personalidade única em cada detalhe.",
+    "image": "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1400&q=85&auto=format&fit=crop"
+  },
+  "about": {
+    "text": "Na Calixto Barber House, cada corte e barba são obras de arte personalizadas. Nossa equipe de profissionais qualificados está pronta para elevar seu estilo a um novo patamar, refletindo sua personalidade única em cada detalhe.",
+    "image": "https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=800&q=80&auto=format&fit=crop"
+  },
+  "services": [
+    {
+      "name": "Corte Masculino",
+      "desc": "Corte personalizado com acabamento perfeito.",
+      "icon": "✂️",
+      "price": "R$ 45",
+      "time": "30 min",
+      "category": "Cortes",
+      "popular": true
+    },
+    {
+      "name": "Barba",
+      "desc": "Modelagem precisa com produtos premium.",
+      "icon": "🪒",
+      "price": "R$ 35",
+      "time": "20 min",
+      "category": "Barba"
+    },
+    {
+      "name": "Corte + Barba",
+      "desc": "Combo completo com toalha quente.",
+      "icon": "👑",
+      "price": "R$ 70",
+      "time": "50 min",
+      "category": "Combos",
+      "popular": true
+    },
+    {
+      "name": "Degradê",
+      "desc": "Transição perfeita com máquina e tesoura.",
+      "icon": "✂️",
+      "price": "R$ 50",
+      "time": "35 min",
+      "category": "Cortes"
+    },
+    {
+      "name": "Sobrancelha",
+      "desc": "Design masculino com navalha.",
+      "icon": "🎯",
+      "price": "R$ 20",
+      "time": "10 min",
+      "category": "Extras"
+    },
+    {
+      "name": "Hidratação",
+      "desc": "Tratamento capilar profundo.",
+      "icon": "💧",
+      "price": "R$ 60",
+      "time": "40 min",
+      "category": "Tratamentos"
+    },
+    {
+      "name": "Pigmentação",
+      "desc": "Cobertura de falhas na barba.",
+      "icon": "🎨",
+      "price": "R$ 80",
+      "time": "30 min",
+      "category": "Tratamentos"
+    },
+    {
+      "name": "Infantil",
+      "desc": "Corte infantil com paciência.",
+      "icon": "✂️",
+      "price": "R$ 35",
+      "time": "25 min",
+      "category": "Cortes"
+    }
+  ],
+  "gallery": [
+    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1587909209111-5097ee578ec3?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1634302086887-13b4281e0b04?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80&auto=format&fit=crop"
+  ],
+  "reviews": [
+    {
+      "name": "fabio alex coelho",
+      "text": "Top",
+      "stars": 5,
+      "time": "2 years ago"
+    },
+    {
+      "name": "Eder Padilha",
+      "text": "Top",
+      "stars": 5,
+      "time": "a year ago"
+    },
+    {
+      "name": "Luiz Felipe de Carvalho",
+      "text": "Top",
+      "stars": 5,
+      "time": "4 years ago"
+    },
+    {
+      "name": "Jothyson Cleyton",
+      "text": "Super indico , profissionais competentes e recepção excelente ✨💫",
+      "stars": 5,
+      "time": "5 months ago"
+    }
+  ],
+  "features": [
+    {
+      "label": "Clientes atendidos",
+      "value": "750+"
+    },
+    {
+      "label": "Anos de experiência",
+      "value": "3"
+    },
+    {
+      "label": "Avaliação Google",
+      "value": "5 ★"
+    },
+    {
+      "label": "Profissionais",
+      "value": "4"
+    }
+  ],
+  "staff": [
+    {
+      "name": "Wallace",
+      "role": "Especialista",
+      "rating": 4.9,
+      "reviews": 100,
+      "available": true
+    },
+    {
+      "name": "Profissional 2",
+      "role": "Sênior",
+      "rating": 4.8,
+      "reviews": 80,
+      "available": true
+    },
+    {
+      "name": "Profissional 3",
+      "role": "Premium",
+      "rating": 4.9,
+      "reviews": 60,
+      "available": true
+    }
+  ],
+  "plans": [
+    {
+      "name": "Básico",
+      "price": "R$ 120/mês",
+      "features": [
+        "2 atendimentos/mês",
+        "Agendamento online",
+        "Suporte WhatsApp"
+      ]
+    },
+    {
+      "name": "Pro",
+      "price": "R$ 220/mês",
+      "features": [
+        "4 atendimentos/mês",
+        "Atendimento prioritário",
+        "Descontos em produtos",
+        "Bebidas inclusas"
+      ],
+      "popular": true
+    },
+    {
+      "name": "VIP",
+      "price": "R$ 380/mês",
+      "features": [
+        "Atendimentos ilimitados",
+        "Todos os benefícios",
+        "Prioridade total",
+        "Área VIP exclusiva"
+      ]
+    }
+  ],
+  "cta": {
+    "text": "Pronto pra conhecer a Calixto Barber House?",
+    "buttonText": "Agendar agora"
+  },
+  "faq": [
+    {
+      "q": "Preciso agendar?",
+      "a": "Recomendamos agendar pelo WhatsApp pra garantir seu horário, mas aceitamos sem agendamento quando há disponibilidade."
+    },
+    {
+      "q": "Quais formas de pagamento?",
+      "a": "Aceitamos PIX, cartões de débito e crédito, e dinheiro."
+    },
+    {
+      "q": "Tem estacionamento?",
+      "a": "Sim, temos estacionamento gratuito para clientes."
+    },
+    {
+      "q": "Como funciona a assinatura?",
+      "a": "Escolha o plano, faça o pagamento mensal e agende pelo WhatsApp. Sem fidelidade."
+    },
+    {
+      "q": "Atendem crianças?",
+      "a": "Sim! Temos experiência com atendimento infantil em ambiente descontraído."
+    }
+  ],
+  "products": [
+    {
+      "name": "Pomada Modeladora",
+      "price": "R$ 45",
+      "img": "https://images.unsplash.com/photo-1608979048467-6194eabd0ada?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Óleo para Barba",
+      "price": "R$ 35",
+      "img": "https://images.unsplash.com/photo-1626808642875-0aa545482dfb?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Shampoo Premium",
+      "price": "R$ 40",
+      "img": "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Kit Barba",
+      "price": "R$ 99",
+      "img": "https://images.unsplash.com/photo-1621607512214-68297480165e?w=300&q=80&auto=format&fit=crop",
+      "popular": true
+    }
+  ]
+}

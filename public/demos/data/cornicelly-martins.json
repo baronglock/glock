@@ -1,0 +1,248 @@
+{
+  "slug": "cornicelly-martins",
+  "name": "Martins Distribuidora de Doces",
+  "niche": "clinica_estetica",
+  "tagline": "Estilo que reflete sua essência",
+  "city": "R. Arcione Cantador Grabowski, 252 - Fazenda Velha, Araucária - PR, 83704-582, Brasil",
+  "phone": "5541995616191",
+  "colors": {
+    "primary": "#b08d7a",
+    "secondary": "#655145",
+    "bg": "#faf7f5",
+    "text": "#2a2320",
+    "textMuted": "#8a7e77"
+  },
+  "hero": {
+    "title": "Transforme seu visual hoje",
+    "subtitle": "Na Cornicelly Martins, acreditamos que cada cliente é único e merece um atendimento personalizado. Com profissionais experientes, oferecemos serviços de beleza que vão além da estética, proporcionando confiança e autoestima em cada corte e design.",
+    "image": "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=1400&q=85&auto=format&fit=crop"
+  },
+  "about": {
+    "text": "Na Cornicelly Martins, acreditamos que cada cliente é único e merece um atendimento personalizado. Com profissionais experientes, oferecemos serviços de beleza que vão além da estética, proporcionando confiança e autoestima em cada corte e design.",
+    "image": "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800&q=80&auto=format&fit=crop"
+  },
+  "services": [
+    {
+      "name": "Harmonização Facial",
+      "desc": "Preenchimento com ácido hialurônico.",
+      "icon": "◇",
+      "price": "A partir de R$ 1.200",
+      "time": "60 min",
+      "category": "Face",
+      "popular": true
+    },
+    {
+      "name": "Botox",
+      "desc": "Suavização de linhas e rugas.",
+      "icon": "◎",
+      "price": "R$ 800",
+      "time": "30 min",
+      "category": "Face"
+    },
+    {
+      "name": "Limpeza de Pele",
+      "desc": "Limpeza profunda com extração.",
+      "icon": "◈",
+      "price": "R$ 250",
+      "time": "60 min",
+      "category": "Pele",
+      "popular": true
+    },
+    {
+      "name": "Peeling",
+      "desc": "Renovação celular profunda.",
+      "icon": "◇",
+      "price": "R$ 350",
+      "time": "45 min",
+      "category": "Pele"
+    },
+    {
+      "name": "Microagulhamento",
+      "desc": "Estímulo de colágeno com micro agulhas.",
+      "icon": "◎",
+      "price": "R$ 400",
+      "time": "40 min",
+      "category": "Pele"
+    },
+    {
+      "name": "Depilação a Laser",
+      "desc": "Redução definitiva de pelos.",
+      "icon": "◈",
+      "price": "R$ 200/área",
+      "time": "30 min",
+      "category": "Corpo"
+    },
+    {
+      "name": "Drenagem",
+      "desc": "Drenagem linfática corporal.",
+      "icon": "◇",
+      "price": "R$ 180",
+      "time": "50 min",
+      "category": "Corpo"
+    },
+    {
+      "name": "Skinbooster",
+      "desc": "Hidratação profunda da pele.",
+      "icon": "◎",
+      "price": "R$ 600",
+      "time": "30 min",
+      "category": "Face"
+    }
+  ],
+  "gallery": [
+    "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1629909615957-040e1e4b1e08?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80&auto=format&fit=crop"
+  ],
+  "reviews": [
+    {
+      "name": "Jaqueline Wrobelwski",
+      "text": "Preços acessíveis\nMercadorias bem organizadas!",
+      "stars": 5,
+      "time": "3 months ago"
+    },
+    {
+      "name": "Ezequiel Marcelo",
+      "text": "Excellent service.",
+      "stars": 5,
+      "time": "a year ago"
+    },
+    {
+      "name": "ROSANGELA PADILHA",
+      "text": "Muito bom preço justo",
+      "stars": 5,
+      "time": "9 months ago"
+    },
+    {
+      "name": "Ariane Gondim",
+      "text": "Excelente atendimento, bastante variedades, preços acessíveis.Muito bom",
+      "stars": 5,
+      "time": "4 years ago"
+    }
+  ],
+  "features": [
+    {
+      "label": "Clientes atendidos",
+      "value": "750+"
+    },
+    {
+      "label": "Anos de experiência",
+      "value": "3"
+    },
+    {
+      "label": "Avaliação Google",
+      "value": "4.8 ★"
+    },
+    {
+      "label": "Profissionais",
+      "value": "4"
+    }
+  ],
+  "staff": [
+    {
+      "name": "Thais",
+      "role": "Especialista",
+      "rating": 4.9,
+      "reviews": 100,
+      "available": true
+    },
+    {
+      "name": "Profissional 2",
+      "role": "Sênior",
+      "rating": 4.8,
+      "reviews": 80,
+      "available": true
+    },
+    {
+      "name": "Profissional 3",
+      "role": "Premium",
+      "rating": 4.9,
+      "reviews": 60,
+      "available": true
+    }
+  ],
+  "plans": [
+    {
+      "name": "Básico",
+      "price": "R$ 120/mês",
+      "features": [
+        "2 atendimentos/mês",
+        "Agendamento online",
+        "Suporte WhatsApp"
+      ]
+    },
+    {
+      "name": "Pro",
+      "price": "R$ 220/mês",
+      "features": [
+        "4 atendimentos/mês",
+        "Atendimento prioritário",
+        "Descontos em produtos",
+        "Bebidas inclusas"
+      ],
+      "popular": true
+    },
+    {
+      "name": "VIP",
+      "price": "R$ 380/mês",
+      "features": [
+        "Atendimentos ilimitados",
+        "Todos os benefícios",
+        "Prioridade total",
+        "Área VIP exclusiva"
+      ]
+    }
+  ],
+  "cta": {
+    "text": "Pronto pra conhecer a Martins Distribuidora de Doces?",
+    "buttonText": "Agendar agora"
+  },
+  "faq": [
+    {
+      "q": "Preciso agendar?",
+      "a": "Recomendamos agendar pelo WhatsApp pra garantir seu horário, mas aceitamos sem agendamento quando há disponibilidade."
+    },
+    {
+      "q": "Quais formas de pagamento?",
+      "a": "Aceitamos PIX, cartões de débito e crédito, e dinheiro."
+    },
+    {
+      "q": "Tem estacionamento?",
+      "a": "Sim, temos estacionamento gratuito para clientes."
+    },
+    {
+      "q": "Como funciona a assinatura?",
+      "a": "Escolha o plano, faça o pagamento mensal e agende pelo WhatsApp. Sem fidelidade."
+    },
+    {
+      "q": "Atendem crianças?",
+      "a": "Sim! Temos experiência com atendimento infantil em ambiente descontraído."
+    }
+  ],
+  "products": [
+    {
+      "name": "Sérum Vitamina C",
+      "price": "R$ 129",
+      "img": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Protetor Solar",
+      "price": "R$ 89",
+      "img": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Creme Anti-Aging",
+      "price": "R$ 179",
+      "img": "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Kit Home Care",
+      "price": "R$ 299",
+      "img": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=300&q=80&auto=format&fit=crop",
+      "popular": true
+    }
+  ]
+}

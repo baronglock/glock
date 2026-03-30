@@ -1,0 +1,248 @@
+{
+  "slug": "maeva-conceito-de-beleza",
+  "name": "Maêva Conceito de Beleza",
+  "niche": "salao",
+  "tagline": "Beleza que revela sua essência",
+  "city": "Rua Guadalajara, 510 - Centro, Araucária - PR, 83702-110, Brasil",
+  "phone": "5541999190743",
+  "colors": {
+    "primary": "#c47d8a",
+    "secondary": "#1a1a2e",
+    "bg": "#faf6f4",
+    "text": "#2a2320",
+    "textMuted": "#8a7e77"
+  },
+  "hero": {
+    "title": "Transforme sua imagem hoje",
+    "subtitle": "No MAEVA CONCEITO DE BELEZA, cada detalhe é pensado para realçar a sua singularidade. Nossa equipe de profissionais apaixonados está pronta para proporcionar uma experiência única, combinando tendências modernas com um toque personalizado.",
+    "image": "https://images.unsplash.com/photo-1559599101-f09722fb4948?w=1400&q=85&auto=format&fit=crop"
+  },
+  "about": {
+    "text": "No MAEVA CONCEITO DE BELEZA, cada detalhe é pensado para realçar a sua singularidade. Nossa equipe de profissionais apaixonados está pronta para proporcionar uma experiência única, combinando tendências modernas com um toque personalizado.",
+    "image": "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=800&q=80&auto=format&fit=crop"
+  },
+  "services": [
+    {
+      "name": "Corte Feminino",
+      "desc": "Corte personalizado para o seu estilo.",
+      "icon": "✂️",
+      "price": "R$ 80",
+      "time": "45 min",
+      "category": "Cortes",
+      "popular": true
+    },
+    {
+      "name": "Escova",
+      "desc": "Modelagem com secador e escova.",
+      "icon": "💇",
+      "price": "R$ 50",
+      "time": "30 min",
+      "category": "Modelagem"
+    },
+    {
+      "name": "Coloração",
+      "desc": "Tintura profissional com produtos premium.",
+      "icon": "🎨",
+      "price": "R$ 120",
+      "time": "90 min",
+      "category": "Coloração",
+      "popular": true
+    },
+    {
+      "name": "Mechas/Luzes",
+      "desc": "Mechas naturais e iluminadas.",
+      "icon": "✨",
+      "price": "R$ 200",
+      "time": "120 min",
+      "category": "Coloração"
+    },
+    {
+      "name": "Progressiva",
+      "desc": "Alisamento duradouro e saudável.",
+      "icon": "💧",
+      "price": "R$ 180",
+      "time": "120 min",
+      "category": "Tratamentos"
+    },
+    {
+      "name": "Hidratação",
+      "desc": "Tratamento profundo para cabelos danificados.",
+      "icon": "💎",
+      "price": "R$ 60",
+      "time": "40 min",
+      "category": "Tratamentos"
+    },
+    {
+      "name": "Manicure",
+      "desc": "Unhas perfeitas com esmaltação.",
+      "icon": "💅",
+      "price": "R$ 40",
+      "time": "30 min",
+      "category": "Unhas"
+    },
+    {
+      "name": "Penteado",
+      "desc": "Penteados para festas e eventos.",
+      "icon": "👑",
+      "price": "R$ 150",
+      "time": "60 min",
+      "category": "Modelagem"
+    }
+  ],
+  "gallery": [
+    "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1562322140-8baeacacf908?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1600948836101-f9ffda59d250?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=600&q=80&auto=format&fit=crop"
+  ],
+  "reviews": [
+    {
+      "name": "Anna",
+      "text": "A Maiara é a melhor profissional que encontrei para cuidar do meu cabelo, não a troco por nada! Super indico para crespas e cacheadas!",
+      "stars": 5,
+      "time": "4 months ago"
+    },
+    {
+      "name": "Sonia Almeida",
+      "text": "Muito, equipe ATENCIOSA e o PRINCIPAL o corte foi exatamente o que eu esperava, pois ela cortou só o NECESSÁRIO, pois todos o que fui, eu disse que me",
+      "stars": 5,
+      "time": "a year ago"
+    },
+    {
+      "name": "Lais Mikuska",
+      "text": "Salão maravilhoso, atendimento impecável tanto da parte do cabelo quanto da parte da estética facial, frequento desde a inauguração. Não troco vcs por",
+      "stars": 5,
+      "time": "a year ago"
+    },
+    {
+      "name": "Fernanda Rossi",
+      "text": "Lugar aconchegante, atendimento maravilhoso! Evelyn sempre incrível na sobrancelha e uma querida no atendimento ☺️",
+      "stars": 5,
+      "time": "a year ago"
+    }
+  ],
+  "features": [
+    {
+      "label": "Clientes atendidos",
+      "value": "500+"
+    },
+    {
+      "label": "Anos de experiência",
+      "value": "3"
+    },
+    {
+      "label": "Avaliação Google",
+      "value": "5 ★"
+    },
+    {
+      "label": "Profissionais",
+      "value": "4"
+    }
+  ],
+  "staff": [
+    {
+      "name": "Maiara",
+      "role": "Especialista",
+      "rating": 4.9,
+      "reviews": 100,
+      "available": true
+    },
+    {
+      "name": "Profissional 2",
+      "role": "Sênior",
+      "rating": 4.8,
+      "reviews": 80,
+      "available": true
+    },
+    {
+      "name": "Profissional 3",
+      "role": "Premium",
+      "rating": 4.9,
+      "reviews": 60,
+      "available": true
+    }
+  ],
+  "plans": [
+    {
+      "name": "Básico",
+      "price": "R$ 120/mês",
+      "features": [
+        "2 atendimentos/mês",
+        "Agendamento online",
+        "Suporte WhatsApp"
+      ]
+    },
+    {
+      "name": "Pro",
+      "price": "R$ 220/mês",
+      "features": [
+        "4 atendimentos/mês",
+        "Atendimento prioritário",
+        "Descontos em produtos",
+        "Bebidas inclusas"
+      ],
+      "popular": true
+    },
+    {
+      "name": "VIP",
+      "price": "R$ 380/mês",
+      "features": [
+        "Atendimentos ilimitados",
+        "Todos os benefícios",
+        "Prioridade total",
+        "Área VIP exclusiva"
+      ]
+    }
+  ],
+  "cta": {
+    "text": "Pronto pra conhecer a Maêva Conceito de Beleza?",
+    "buttonText": "Agendar agora"
+  },
+  "faq": [
+    {
+      "q": "Preciso agendar?",
+      "a": "Recomendamos agendar pelo WhatsApp pra garantir seu horário, mas aceitamos sem agendamento quando há disponibilidade."
+    },
+    {
+      "q": "Quais formas de pagamento?",
+      "a": "Aceitamos PIX, cartões de débito e crédito, e dinheiro."
+    },
+    {
+      "q": "Tem estacionamento?",
+      "a": "Sim, temos estacionamento gratuito para clientes."
+    },
+    {
+      "q": "Como funciona a assinatura?",
+      "a": "Escolha o plano, faça o pagamento mensal e agende pelo WhatsApp. Sem fidelidade."
+    },
+    {
+      "q": "Atendem crianças?",
+      "a": "Sim! Temos experiência com atendimento infantil em ambiente descontraído."
+    }
+  ],
+  "products": [
+    {
+      "name": "Shampoo Reconstrutor",
+      "price": "R$ 65",
+      "img": "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Máscara Capilar",
+      "price": "R$ 49",
+      "img": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Óleo Reparador",
+      "price": "R$ 55",
+      "img": "https://images.unsplash.com/photo-1626808642875-0aa545482dfb?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Kit Tratamento",
+      "price": "R$ 139",
+      "img": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=300&q=80&auto=format&fit=crop",
+      "popular": true
+    }
+  ]
+}

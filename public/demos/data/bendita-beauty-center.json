@@ -1,0 +1,248 @@
+{
+  "slug": "bendita-beauty-center",
+  "name": "Bendita Beauty Center",
+  "niche": "salao",
+  "tagline": "Beleza que reflete sua essência",
+  "city": "Av. Dr. Vítor do Amaral, 1769 - Centro, Araucária - PR, 83702-040, Brasil",
+  "phone": "5541991131313",
+  "colors": {
+    "primary": "#c47d8a",
+    "secondary": "#1a1a2e",
+    "bg": "#faf6f4",
+    "text": "#2a2320",
+    "textMuted": "#8a7e77"
+  },
+  "hero": {
+    "title": "Sua beleza, nosso compromisso",
+    "subtitle": "No BENDITA BEAUTY CENTER, transformamos sua autoestima em arte. Cada tratamento é pensado para realçar a sua beleza única, com profissionais dedicados a oferecer uma experiência exclusiva em Araucária.",
+    "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1400&q=85&auto=format&fit=crop"
+  },
+  "about": {
+    "text": "No BENDITA BEAUTY CENTER, transformamos sua autoestima em arte. Cada tratamento é pensado para realçar a sua beleza única, com profissionais dedicados a oferecer uma experiência exclusiva em Araucária.",
+    "image": "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=800&q=80&auto=format&fit=crop"
+  },
+  "services": [
+    {
+      "name": "Corte Feminino",
+      "desc": "Corte personalizado para o seu estilo.",
+      "icon": "✂️",
+      "price": "R$ 80",
+      "time": "45 min",
+      "category": "Cortes",
+      "popular": true
+    },
+    {
+      "name": "Escova",
+      "desc": "Modelagem com secador e escova.",
+      "icon": "💇",
+      "price": "R$ 50",
+      "time": "30 min",
+      "category": "Modelagem"
+    },
+    {
+      "name": "Coloração",
+      "desc": "Tintura profissional com produtos premium.",
+      "icon": "🎨",
+      "price": "R$ 120",
+      "time": "90 min",
+      "category": "Coloração",
+      "popular": true
+    },
+    {
+      "name": "Mechas/Luzes",
+      "desc": "Mechas naturais e iluminadas.",
+      "icon": "✨",
+      "price": "R$ 200",
+      "time": "120 min",
+      "category": "Coloração"
+    },
+    {
+      "name": "Progressiva",
+      "desc": "Alisamento duradouro e saudável.",
+      "icon": "💧",
+      "price": "R$ 180",
+      "time": "120 min",
+      "category": "Tratamentos"
+    },
+    {
+      "name": "Hidratação",
+      "desc": "Tratamento profundo para cabelos danificados.",
+      "icon": "💎",
+      "price": "R$ 60",
+      "time": "40 min",
+      "category": "Tratamentos"
+    },
+    {
+      "name": "Manicure",
+      "desc": "Unhas perfeitas com esmaltação.",
+      "icon": "💅",
+      "price": "R$ 40",
+      "time": "30 min",
+      "category": "Unhas"
+    },
+    {
+      "name": "Penteado",
+      "desc": "Penteados para festas e eventos.",
+      "icon": "👑",
+      "price": "R$ 150",
+      "time": "60 min",
+      "category": "Modelagem"
+    }
+  ],
+  "gallery": [
+    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1562322140-8baeacacf908?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1559599101-f09722fb4948?w=600&q=80&auto=format&fit=crop"
+  ],
+  "reviews": [
+    {
+      "name": "DÉBORA Bissoni",
+      "text": "Carol manicure top d+ ❤️",
+      "stars": 5,
+      "time": "3 years ago"
+    },
+    {
+      "name": "Cortando e aprendendo Cortes",
+      "text": "Top",
+      "stars": 5,
+      "time": "3 years ago"
+    },
+    {
+      "name": "Valesca de Freitas",
+      "text": "Fui pela primeira vez e gostei muito do lugar. A recepcionista Sthefany foi gentil e educada. Não marquei hora e fui apenas para ver se conseguia ter ",
+      "stars": 5,
+      "time": "2 months ago"
+    },
+    {
+      "name": "Thais Caroline",
+      "text": "Minha experiência no Salão Bendita foi simplesmente impecável. Um espaço sofisticado, acolhedor e com um atendimento que transmite cuidado em cada det",
+      "stars": 5,
+      "time": "a month ago"
+    }
+  ],
+  "features": [
+    {
+      "label": "Clientes atendidos",
+      "value": "3520+"
+    },
+    {
+      "label": "Anos de experiência",
+      "value": "7"
+    },
+    {
+      "label": "Avaliação Google",
+      "value": "4.7 ★"
+    },
+    {
+      "label": "Profissionais",
+      "value": "4"
+    }
+  ],
+  "staff": [
+    {
+      "name": "Ricardo",
+      "role": "Especialista",
+      "rating": 4.9,
+      "reviews": 352,
+      "available": true
+    },
+    {
+      "name": "Profissional 2",
+      "role": "Sênior",
+      "rating": 4.8,
+      "reviews": 176,
+      "available": true
+    },
+    {
+      "name": "Profissional 3",
+      "role": "Premium",
+      "rating": 4.9,
+      "reviews": 117,
+      "available": true
+    }
+  ],
+  "plans": [
+    {
+      "name": "Básico",
+      "price": "R$ 120/mês",
+      "features": [
+        "2 atendimentos/mês",
+        "Agendamento online",
+        "Suporte WhatsApp"
+      ]
+    },
+    {
+      "name": "Pro",
+      "price": "R$ 220/mês",
+      "features": [
+        "4 atendimentos/mês",
+        "Atendimento prioritário",
+        "Descontos em produtos",
+        "Bebidas inclusas"
+      ],
+      "popular": true
+    },
+    {
+      "name": "VIP",
+      "price": "R$ 380/mês",
+      "features": [
+        "Atendimentos ilimitados",
+        "Todos os benefícios",
+        "Prioridade total",
+        "Área VIP exclusiva"
+      ]
+    }
+  ],
+  "cta": {
+    "text": "Pronto pra conhecer a Bendita Beauty Center?",
+    "buttonText": "Agendar agora"
+  },
+  "faq": [
+    {
+      "q": "Preciso agendar?",
+      "a": "Recomendamos agendar pelo WhatsApp pra garantir seu horário, mas aceitamos sem agendamento quando há disponibilidade."
+    },
+    {
+      "q": "Quais formas de pagamento?",
+      "a": "Aceitamos PIX, cartões de débito e crédito, e dinheiro."
+    },
+    {
+      "q": "Tem estacionamento?",
+      "a": "Sim, temos estacionamento gratuito para clientes."
+    },
+    {
+      "q": "Como funciona a assinatura?",
+      "a": "Escolha o plano, faça o pagamento mensal e agende pelo WhatsApp. Sem fidelidade."
+    },
+    {
+      "q": "Atendem crianças?",
+      "a": "Sim! Temos experiência com atendimento infantil em ambiente descontraído."
+    }
+  ],
+  "products": [
+    {
+      "name": "Shampoo Reconstrutor",
+      "price": "R$ 65",
+      "img": "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Máscara Capilar",
+      "price": "R$ 49",
+      "img": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Óleo Reparador",
+      "price": "R$ 55",
+      "img": "https://images.unsplash.com/photo-1626808642875-0aa545482dfb?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Kit Tratamento",
+      "price": "R$ 139",
+      "img": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=300&q=80&auto=format&fit=crop",
+      "popular": true
+    }
+  ]
+}
