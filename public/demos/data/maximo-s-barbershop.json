@@ -2,7 +2,7 @@
   "slug": "maximo-s-barbershop",
   "name": "Maximo's Barber shop",
   "niche": "barbearia",
-  "tagline": "Transforme-se com estilo único",
+  "tagline": "Estilo que valoriza sua essência",
   "city": "R. Prof. Antônio Rodrigues Dias, 94 - Cachoeira, Alm. Tamandaré - PR, 83506-000, Brasil",
   "phone": "5541997626732",
   "colors": {
@@ -13,13 +13,13 @@
     "textMuted": "#999"
   },
   "hero": {
-    "title": "Beleza Masculina em Alta",
-    "subtitle": "No MAXIMO'S BARBERSHOP, cada corte é uma obra de arte feita para realçar sua personalidade. Nossa equipe de barbeiros especialistas combina técnica e criatividade para oferecer um atendimento exclusivo e cheio de estilo em Almirante Tamandaré.",
+    "title": "Corte com personalidade única",
+    "subtitle": "No MAXIMO'S BARBERSHOP, cada corte é uma obra-prima, projetada para realçar sua individualidade. Nossa equipe de barbeiros especializados combina técnicas tradicionais e modernas, garantindo que você saia sempre com um visual impecável e autêntico.",
     "image": "https://images.unsplash.com/photo-1585747860019-8e8ef6e96a0d?w=1400&q=85&auto=format&fit=crop"
   },
   "about": {
-    "text": "No MAXIMO'S BARBERSHOP, cada corte é uma obra de arte feita para realçar sua personalidade. Nossa equipe de barbeiros especialistas combina técnica e criatividade para oferecer um atendimento exclusivo e cheio de estilo em Almirante Tamandaré.",
-    "image": "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=800&q=80&auto=format&fit=crop"
+    "text": "No MAXIMO'S BARBERSHOP, cada corte é uma obra-prima, projetada para realçar sua individualidade. Nossa equipe de barbeiros especializados combina técnicas tradicionais e modernas, garantindo que você saia sempre com um visual impecável e autêntico.",
+    "image": "https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=800&q=80&auto=format&fit=crop"
   },
   "services": [
     {
@@ -91,11 +91,11 @@
   ],
   "gallery": [
     "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1599351431613-18ef1fdd27e1?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1578253859338-ddfcbdbfb1f8?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1587909209111-5097ee578ec3?w=600&q=80&auto=format&fit=crop"
   ],
   "reviews": [
     {
