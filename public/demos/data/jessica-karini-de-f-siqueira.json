@@ -2,100 +2,100 @@
   "slug": "jessica-karini-de-f-siqueira",
   "name": "Jessica Karini De F. Siqueira",
   "niche": "loja",
-  "tagline": "Loja de referência em Almirante Tamandare",
+  "tagline": "Estilo que reflete sua essência",
   "city": "Délicat Clin - R. Antônio Batista de Siqueira, 363 - Vila Rachel, Alm. Tamandaré - PR, 83501-090, Brasil",
   "phone": "5541995887633",
   "colors": {
-    "primary": "#c8a96e",
-    "secondary": "#1a1a2e",
-    "bg": "#0f0f17",
-    "text": "#f5f5f5",
-    "textMuted": "#999"
+    "primary": "#b08d7a",
+    "secondary": "#655145",
+    "bg": "#faf7f5",
+    "text": "#2a2320",
+    "textMuted": "#8a7e77"
   },
   "hero": {
-    "title": "Excelência em Loja",
-    "subtitle": "A JESSICA KARINI DE F. SIQUEIRA é referência em Loja na região de Almirante Tamandare. Com profissionais experientes e ambiente acolhedor, oferecemos o melhor atendimento para nossos clientes.",
-    "image": "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1400&q=85&auto=format&fit=crop"
+    "title": "Transforme sua Beleza Hoje",
+    "subtitle": "Na loja de Jéssica Karini, cada cliente é tratado como único. Oferecemos serviços personalizados de beleza e estética em Almirante Tamandaré, focando em realçar sua melhor versão.",
+    "image": "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1400&q=85&auto=format&fit=crop"
   },
   "about": {
-    "text": "A JESSICA KARINI DE F. SIQUEIRA é referência em Loja na região de Almirante Tamandare. Com profissionais experientes e ambiente acolhedor, oferecemos o melhor atendimento para nossos clientes.",
-    "image": "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=800&q=80&auto=format&fit=crop"
+    "text": "Na loja de Jéssica Karini, cada cliente é tratado como único. Oferecemos serviços personalizados de beleza e estética em Almirante Tamandaré, focando em realçar sua melhor versão.",
+    "image": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80&auto=format&fit=crop"
   },
   "services": [
     {
-      "name": "Corte Masculino",
-      "desc": "Corte personalizado com acabamento perfeito.",
-      "icon": "✂️",
-      "price": "R$ 45",
+      "name": "Harmonização Facial",
+      "desc": "Preenchimento com ácido hialurônico.",
+      "icon": "◇",
+      "price": "A partir de R$ 1.200",
+      "time": "60 min",
+      "category": "Face",
+      "popular": true
+    },
+    {
+      "name": "Botox",
+      "desc": "Suavização de linhas e rugas.",
+      "icon": "◎",
+      "price": "R$ 800",
       "time": "30 min",
-      "category": "Cortes",
+      "category": "Face"
+    },
+    {
+      "name": "Limpeza de Pele",
+      "desc": "Limpeza profunda com extração.",
+      "icon": "◈",
+      "price": "R$ 250",
+      "time": "60 min",
+      "category": "Pele",
       "popular": true
     },
     {
-      "name": "Barba",
-      "desc": "Modelagem precisa com produtos premium.",
-      "icon": "🪒",
-      "price": "R$ 35",
-      "time": "20 min",
-      "category": "Barba"
+      "name": "Peeling",
+      "desc": "Renovação celular profunda.",
+      "icon": "◇",
+      "price": "R$ 350",
+      "time": "45 min",
+      "category": "Pele"
     },
     {
-      "name": "Corte + Barba",
-      "desc": "Combo completo com toalha quente.",
-      "icon": "👑",
-      "price": "R$ 70",
-      "time": "50 min",
-      "category": "Combos",
-      "popular": true
-    },
-    {
-      "name": "Degradê",
-      "desc": "Transição perfeita com máquina e tesoura.",
-      "icon": "✂️",
-      "price": "R$ 50",
-      "time": "35 min",
-      "category": "Cortes"
-    },
-    {
-      "name": "Sobrancelha",
-      "desc": "Design masculino com navalha.",
-      "icon": "🎯",
-      "price": "R$ 20",
-      "time": "10 min",
-      "category": "Extras"
-    },
-    {
-      "name": "Hidratação",
-      "desc": "Tratamento capilar profundo.",
-      "icon": "💧",
-      "price": "R$ 60",
+      "name": "Microagulhamento",
+      "desc": "Estímulo de colágeno com micro agulhas.",
+      "icon": "◎",
+      "price": "R$ 400",
       "time": "40 min",
-      "category": "Tratamentos"
+      "category": "Pele"
     },
     {
-      "name": "Pigmentação",
-      "desc": "Cobertura de falhas na barba.",
-      "icon": "🎨",
-      "price": "R$ 80",
+      "name": "Depilação a Laser",
+      "desc": "Redução definitiva de pelos.",
+      "icon": "◈",
+      "price": "R$ 200/área",
       "time": "30 min",
-      "category": "Tratamentos"
+      "category": "Corpo"
     },
     {
-      "name": "Infantil",
-      "desc": "Corte infantil com paciência.",
-      "icon": "✂️",
-      "price": "R$ 35",
-      "time": "25 min",
-      "category": "Cortes"
+      "name": "Drenagem",
+      "desc": "Drenagem linfática corporal.",
+      "icon": "◇",
+      "price": "R$ 180",
+      "time": "50 min",
+      "category": "Corpo"
+    },
+    {
+      "name": "Skinbooster",
+      "desc": "Hidratação profunda da pele.",
+      "icon": "◎",
+      "price": "R$ 600",
+      "time": "30 min",
+      "category": "Face"
     }
   ],
   "gallery": [
-    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1585747860019-8e8ef6e96a0d?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=600&q=80&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1629909615957-040e1e4b1e08?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1598524374912-6b0b0bdb1f25?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&q=80&auto=format&fit=crop"
   ],
   "reviews": [
     {
@@ -224,24 +224,24 @@
   ],
   "products": [
     {
-      "name": "Pomada Modeladora",
-      "price": "R$ 45",
-      "img": "https://images.unsplash.com/photo-1608979048467-6194eabd0ada?w=300&q=80&auto=format&fit=crop"
+      "name": "Sérum Vitamina C",
+      "price": "R$ 129",
+      "img": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=300&q=80&auto=format&fit=crop"
     },
     {
-      "name": "Óleo para Barba",
-      "price": "R$ 35",
-      "img": "https://images.unsplash.com/photo-1626808642875-0aa545482dfb?w=300&q=80&auto=format&fit=crop"
+      "name": "Protetor Solar",
+      "price": "R$ 89",
+      "img": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=300&q=80&auto=format&fit=crop"
     },
     {
-      "name": "Shampoo Premium",
-      "price": "R$ 40",
-      "img": "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=300&q=80&auto=format&fit=crop"
+      "name": "Creme Anti-Aging",
+      "price": "R$ 179",
+      "img": "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=300&q=80&auto=format&fit=crop"
     },
     {
-      "name": "Kit Barba",
-      "price": "R$ 99",
-      "img": "https://images.unsplash.com/photo-1621607512214-68297480165e?w=300&q=80&auto=format&fit=crop",
+      "name": "Kit Home Care",
+      "price": "R$ 299",
+      "img": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=300&q=80&auto=format&fit=crop",
       "popular": true
     }
   ]

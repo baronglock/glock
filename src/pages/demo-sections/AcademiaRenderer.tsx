@@ -412,6 +412,18 @@ export default function AcademiaRenderer({ data }: { data: DemoData }) {
             </button>
           </div></Snap>
         </div>
+
+        {/* Google Maps */}
+        <Snap d={200}>
+          <div style={{ marginTop: 32, overflow: 'hidden', border: `1px solid ${accent}10`, height: 260 }}>
+            <iframe
+              src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCdpxxgZRYNVs2cQ_X8SOZchL-iVl48tmU&q=${encodeURIComponent(data.name + ' ' + data.city)}&zoom=15`}
+              style={{ width: '100%', height: '100%', border: 'none', filter: 'invert(0.9) hue-rotate(180deg) saturate(0.3)' }}
+              loading="lazy"
+              allowFullScreen
+            />
+          </div>
+        </Snap>
       </Sec>
 
       {/* Footer */}

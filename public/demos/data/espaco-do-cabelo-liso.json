@@ -2,7 +2,7 @@
   "slug": "espaco-do-cabelo-liso",
   "name": "Espaco Do Cabelo Liso",
   "niche": "salao",
-  "tagline": "Salão De Beleza de referência em Almirante Tamandare",
+  "tagline": "Cabelo liso, vida leve",
   "city": "Av. Francisco Kruger, 6330 - Sala 1 - Vila Formosa, Alm. Tamandaré - PR, 83504-490, Brasil",
   "phone": "5541999762757",
   "colors": {
@@ -13,13 +13,13 @@
     "textMuted": "#8a7e77"
   },
   "hero": {
-    "title": "Excelência em Salão de Beleza",
-    "subtitle": "A ESPACO DO CABELO LISO é referência em Salão de Beleza na região de Almirante Tamandare. Com profissionais experientes e ambiente acolhedor, oferecemos o melhor atendimento para nossos clientes.",
+    "title": "Transforme seu visual hoje",
+    "subtitle": "No Espaço do Cabelo Liso, oferecemos tratamentos especializados para cabelos lisos que realçam a sua beleza única. Nossa equipe de profissionais está pronta para proporcionar uma experiência relaxante e transformadora, garantindo que você saia com o cabelo dos sonhos.",
     "image": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1400&q=85&auto=format&fit=crop"
   },
   "about": {
-    "text": "A ESPACO DO CABELO LISO é referência em Salão de Beleza na região de Almirante Tamandare. Com profissionais experientes e ambiente acolhedor, oferecemos o melhor atendimento para nossos clientes.",
-    "image": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80&auto=format&fit=crop"
+    "text": "No Espaço do Cabelo Liso, oferecemos tratamentos especializados para cabelos lisos que realçam a sua beleza única. Nossa equipe de profissionais está pronta para proporcionar uma experiência relaxante e transformadora, garantindo que você saia com o cabelo dos sonhos.",
+    "image": "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=800&q=80&auto=format&fit=crop"
   },
   "services": [
     {
@@ -90,12 +90,12 @@
     }
   ],
   "gallery": [
-    "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1540555700478-4be289fbec6d?w=600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1598524374912-6b0b0bdb1f25?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1629909615957-040e1e4b1e08?w=600&q=80&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&q=80&auto=format&fit=crop"
   ],
   "reviews": [
     {

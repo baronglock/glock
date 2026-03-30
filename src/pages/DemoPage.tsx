@@ -1178,9 +1178,14 @@ export default function DemoPage() {
                 </div>
               ))}
             </div>
-            {lv >= 2 && <div style={{ marginTop: 28, height: 200, borderRadius: th.cardRadius, ...glass(c.primary), display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div style={{ textAlign: 'center', color: c.textMuted }}><div style={{ fontSize: 32, marginBottom: 8, opacity: 0.4 }}>⊙</div><p style={{ fontSize: 12 }}>Google Maps integrado</p></div>
-            </div>}
+            <div style={{ marginTop: 28, height: 240, borderRadius: th.cardRadius, overflow: 'hidden', border: `1px solid ${c.primary}10` }}>
+              <iframe
+                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCdpxxgZRYNVs2cQ_X8SOZchL-iVl48tmU&q=${encodeURIComponent(data.name + ' ' + data.city)}&zoom=15`}
+                style={{ width: '100%', height: '100%', border: 'none', filter: c.bg.startsWith('#0') || c.bg.startsWith('#1') ? 'invert(0.9) hue-rotate(180deg) saturate(0.3)' : 'none' }}
+                loading="lazy"
+                allowFullScreen
+              />
+            </div>
           </div></R>
           <R d={150}><div style={{ padding: 28, ...th.cardBg(c.primary), borderRadius: th.cardRadius }}>
             <h3 style={{ fontSize: 16, fontWeight: 600, color: c.text, marginBottom: 20 }}>Envie uma mensagem</h3>

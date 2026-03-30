@@ -416,6 +416,18 @@ export default function ClinicaEsteticaRenderer({ data }: { data: DemoData }) {
               onMouseLeave={e => e.currentTarget.style.boxShadow = `0 4px 24px ${rose}20`}>Enviar</button>
           </div></Gf>
         </div>
+
+        {/* Google Maps */}
+        <Gf d={300}>
+          <div style={{ marginTop: 40, borderRadius: 20, overflow: 'hidden', border: `1px solid ${rose}10`, height: 280 }}>
+            <iframe
+              src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCdpxxgZRYNVs2cQ_X8SOZchL-iVl48tmU&q=${encodeURIComponent(data.name + ' ' + data.city)}&zoom=15`}
+              style={{ width: '100%', height: '100%', border: 'none' }}
+              loading="lazy"
+              allowFullScreen
+            />
+          </div>
+        </Gf>
       </Sec>
 
       {/* ═══ SERVICE PICKER MODAL (from hero CTA) ═══ */}
