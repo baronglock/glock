@@ -2,7 +2,7 @@
   "slug": "studio-jaspe",
   "name": "Studio Jaspe",
   "niche": "salao",
-  "tagline": "Seu brilho, nosso toque de arte.",
+  "tagline": "Salão De Beleza de referência em Almirante Tamandare",
   "city": "R. Frei Beda de Gavello, 250 - AP 1 - Tranqueira, Alm. Tamandaré - PR, 83514-250, Brasil",
   "phone": "5541987581652",
   "colors": {
@@ -13,12 +13,12 @@
     "textMuted": "#8a7e77"
   },
   "hero": {
-    "title": "Beleza que embeleza você.",
-    "subtitle": "Studio Jaspe: onde a beleza encontra a arte. Oferecemos serviços de salão de beleza com excelência e profissionalismo, realçando sua individualidade em Almirante Tamandaré.",
+    "title": "Excelência em Salão de Beleza",
+    "subtitle": "A STUDIO JASPE é referência em Salão de Beleza na região de Almirante Tamandare. Com profissionais experientes e ambiente acolhedor, oferecemos o melhor atendimento para nossos clientes.",
     "image": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1400&q=85&auto=format&fit=crop"
   },
   "about": {
-    "text": "Studio Jaspe: onde a beleza encontra a arte. Oferecemos serviços de salão de beleza com excelência e profissionalismo, realçando sua individualidade em Almirante Tamandaré.",
+    "text": "A STUDIO JASPE é referência em Salão de Beleza na região de Almirante Tamandare. Com profissionais experientes e ambiente acolhedor, oferecemos o melhor atendimento para nossos clientes.",
     "image": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80&auto=format&fit=crop"
   },
   "services": [

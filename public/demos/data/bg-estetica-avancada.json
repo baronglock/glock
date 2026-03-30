@@ -1,10 +1,10 @@
 {
-  "slug": "em-estetica",
-  "name": "Em Estetica",
+  "slug": "bg-estetica-avancada",
+  "name": "Bg Estetica Avancada",
   "niche": "clinica_estetica",
-  "tagline": "Salão De Beleza de referência em Almirante Tamandare",
-  "city": "R. Dídio Santos, 552 - Vila Santa Terezinha, Alm. Tamandaré - PR, 83501-070, Brasil",
-  "phone": "5541996965843",
+  "tagline": "Estética Avançada de referência em Almirante Tamandare",
+  "city": "R. Barigui - Vila Alto Pinheiros, Alm. Tamandaré - PR, 83503-100, Brasil",
+  "phone": "5541996109675",
   "colors": {
     "primary": "#b08d7a",
     "secondary": "#655145",
@@ -13,12 +13,12 @@
     "textMuted": "#8a7e77"
   },
   "hero": {
-    "title": "Excelência em Salão de Beleza",
-    "subtitle": "A EM ESTETICA é referência em Salão de Beleza na região de Almirante Tamandare. Com profissionais experientes e ambiente acolhedor, oferecemos o melhor atendimento para nossos clientes.",
+    "title": "Excelência em Estética Avançada",
+    "subtitle": "A BG ESTETICA AVANCADA é referência em Estética Avançada na região de Almirante Tamandare. Com profissionais experientes e ambiente acolhedor, oferecemos o melhor atendimento para nossos clientes.",
     "image": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1400&q=85&auto=format&fit=crop"
   },
   "about": {
-    "text": "A EM ESTETICA é referência em Salão de Beleza na região de Almirante Tamandare. Com profissionais experientes e ambiente acolhedor, oferecemos o melhor atendimento para nossos clientes.",
+    "text": "A BG ESTETICA AVANCADA é referência em Estética Avançada na região de Almirante Tamandare. Com profissionais experientes e ambiente acolhedor, oferecemos o melhor atendimento para nossos clientes.",
     "image": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80&auto=format&fit=crop"
   },
   "services": [
@@ -99,28 +99,28 @@
   ],
   "reviews": [
     {
-      "name": "Rosemari Marinho",
-      "text": "Fiz meus procedimentos estéticos faciais com a Dra. Ste e estou simplesmente encantada com o resultado! ✨\nDesde o primeiro contato, ela demonstrou pro",
+      "name": "Elias Rafael",
+      "text": "Super recomendo ambiente incrível atendimento nota mil, localização acessível excelente profissional, preço justo pontual....",
       "stars": 5,
-      "time": "5 months ago"
+      "time": "2 months ago"
     },
     {
-      "name": "Gabriela Stephane",
-      "text": "Faço meus procedimentos com a Dra. Ste e não poderia estar mais satisfeita! O trabalho dela é impecável, sempre muito atenciosa, cuidadosa e profissio",
+      "name": "Leandro Cavalcante",
+      "text": "Ótimo atendimento, profissional super preparado. Adorei",
       "stars": 5,
-      "time": "6 months ago"
+      "time": "2 months ago"
     },
     {
-      "name": "Monik Luciano",
-      "text": "Conheço a Dra. Stephanie desde 2019.\nComo pessoa é um ser humano extraordinário!\nComo profissional é INCRÍVEL!!\nSeu atendimento com o público é difere",
+      "name": "Esteffany Cristini",
+      "text": "Super recomendado, Atendimento Dos melhores já recebido, Local incrivelmente Confortável, pontuação Nota mil.. E preço que cabe no bolso..faça já o se",
       "stars": 5,
-      "time": "6 months ago"
+      "time": "2 months ago"
     },
     {
-      "name": "Vanda Cardoso",
-      "text": "Atendimento  ótimo, confiável procedimentos excelentes, produtos totalmente confiável, ei recomendo com toda certeza a Dr Stefani souza , a anos  sou ",
+      "name": "Jason Eduardo de Araujo",
+      "text": "Gostei muito do procedimento feito e pelo cuidado da Dr.Bruna 👏🏻👏🏻👏🏻👏🏻",
       "stars": 5,
-      "time": "8 months ago"
+      "time": "2 months ago"
     }
   ],
   "features": [
@@ -143,7 +143,7 @@
   ],
   "staff": [
     {
-      "name": "Vinicius",
+      "name": "Bruna",
       "role": "Especialista",
       "rating": 4.9,
       "reviews": 100,
@@ -197,7 +197,7 @@
     }
   ],
   "cta": {
-    "text": "Pronto pra conhecer a Em Estetica?",
+    "text": "Pronto pra conhecer a Bg Estetica Avancada?",
     "buttonText": "Agendar agora"
   },
   "faq": [

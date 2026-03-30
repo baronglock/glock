@@ -2,7 +2,7 @@
   "slug": "dra-ariadine-campos-da-palma",
   "name": "Dra. Ariadine Campos Da Palma",
   "niche": "loja",
-  "tagline": "Seu bem-estar com confiança e cuidado.",
+  "tagline": "Loja de referência em Almirante Tamandare",
   "city": "Av. Anita Garibaldi, 850 - Sala 512 bloco B - Cabral, Curitiba - PR, 80540-180, Brasil",
   "phone": "5541995002305",
   "colors": {
@@ -13,12 +13,12 @@
     "textMuted": "#999"
   },
   "hero": {
-    "title": "Saúde e beleza em suas mãos.",
-    "subtitle": "A Dra. Ariadine Campos da Palma oferece um atendimento especializado em Almirante Tamandaré, focado em sua saúde e bem-estar. Descubra um espaço dedicado a realçar sua beleza e cuidar de você.",
+    "title": "Excelência em Loja",
+    "subtitle": "A DRA. ARIADINE CAMPOS DA PALMA é referência em Loja na região de Almirante Tamandare. Com profissionais experientes e ambiente acolhedor, oferecemos o melhor atendimento para nossos clientes.",
     "image": "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1400&q=85&auto=format&fit=crop"
   },
   "about": {
-    "text": "A Dra. Ariadine Campos da Palma oferece um atendimento especializado em Almirante Tamandaré, focado em sua saúde e bem-estar. Descubra um espaço dedicado a realçar sua beleza e cuidar de você.",
+    "text": "A DRA. ARIADINE CAMPOS DA PALMA é referência em Loja na região de Almirante Tamandare. Com profissionais experientes e ambiente acolhedor, oferecemos o melhor atendimento para nossos clientes.",
     "image": "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=800&q=80&auto=format&fit=crop"
   },
   "services": [
@@ -91,11 +91,11 @@
   ],
   "gallery": [
     "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1596728325395-481c7fa4e56a?w=600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1585747860019-8e8ef6e96a0d?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=600&q=80&auto=format&fit=crop"
   ],
   "reviews": [
     {

@@ -1,24 +1,24 @@
 {
-  "slug": "em-estetica",
-  "name": "Em Estetica",
-  "niche": "clinica_estetica",
+  "slug": "espaco-do-cabelo-liso",
+  "name": "Espaco Do Cabelo Liso",
+  "niche": "salao",
   "tagline": "Salão De Beleza de referência em Almirante Tamandare",
-  "city": "R. Dídio Santos, 552 - Vila Santa Terezinha, Alm. Tamandaré - PR, 83501-070, Brasil",
-  "phone": "5541996965843",
+  "city": "Av. Francisco Kruger, 6330 - Sala 1 - Vila Formosa, Alm. Tamandaré - PR, 83504-490, Brasil",
+  "phone": "5541999762757",
   "colors": {
-    "primary": "#b08d7a",
-    "secondary": "#655145",
-    "bg": "#faf7f5",
+    "primary": "#c47d8a",
+    "secondary": "#1a1a2e",
+    "bg": "#faf6f4",
     "text": "#2a2320",
     "textMuted": "#8a7e77"
   },
   "hero": {
     "title": "Excelência em Salão de Beleza",
-    "subtitle": "A EM ESTETICA é referência em Salão de Beleza na região de Almirante Tamandare. Com profissionais experientes e ambiente acolhedor, oferecemos o melhor atendimento para nossos clientes.",
+    "subtitle": "A ESPACO DO CABELO LISO é referência em Salão de Beleza na região de Almirante Tamandare. Com profissionais experientes e ambiente acolhedor, oferecemos o melhor atendimento para nossos clientes.",
     "image": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1400&q=85&auto=format&fit=crop"
   },
   "about": {
-    "text": "A EM ESTETICA é referência em Salão de Beleza na região de Almirante Tamandare. Com profissionais experientes e ambiente acolhedor, oferecemos o melhor atendimento para nossos clientes.",
+    "text": "A ESPACO DO CABELO LISO é referência em Salão de Beleza na região de Almirante Tamandare. Com profissionais experientes e ambiente acolhedor, oferecemos o melhor atendimento para nossos clientes.",
     "image": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80&auto=format&fit=crop"
   },
   "services": [
@@ -99,28 +99,28 @@
   ],
   "reviews": [
     {
-      "name": "Rosemari Marinho",
-      "text": "Fiz meus procedimentos estéticos faciais com a Dra. Ste e estou simplesmente encantada com o resultado! ✨\nDesde o primeiro contato, ela demonstrou pro",
+      "name": "GABRIELLI SOUZA",
+      "text": "Quero deixar registrada a minha experiência incrível com o meu cabeleireiro marcelinho, o atendimento foi impecável do início ao fim, ele tem um cuida",
       "stars": 5,
       "time": "5 months ago"
     },
     {
-      "name": "Gabriela Stephane",
-      "text": "Faço meus procedimentos com a Dra. Ste e não poderia estar mais satisfeita! O trabalho dela é impecável, sempre muito atenciosa, cuidadosa e profissio",
+      "name": "Kauane Freitas",
+      "text": "Atendimento ótimo e resultado perfeito. Recomendo demais\n> Fiquei encantada com o trabalho do Marcelo! Ele é super atencioso, entende muito de alisame",
       "stars": 5,
-      "time": "6 months ago"
+      "time": "5 months ago"
     },
     {
-      "name": "Monik Luciano",
-      "text": "Conheço a Dra. Stephanie desde 2019.\nComo pessoa é um ser humano extraordinário!\nComo profissional é INCRÍVEL!!\nSeu atendimento com o público é difere",
+      "name": "Ytallo Santos De Lima",
+      "text": "Atendimento de primeira! O salão tem um ambiente moderno e agradável, e o pessoal trabalha com muita dedicação e profissionalismo. Fui muito bem receb",
       "stars": 5,
-      "time": "6 months ago"
+      "time": "5 months ago"
     },
     {
-      "name": "Vanda Cardoso",
-      "text": "Atendimento  ótimo, confiável procedimentos excelentes, produtos totalmente confiável, ei recomendo com toda certeza a Dr Stefani souza , a anos  sou ",
+      "name": "Larissa Freitas",
+      "text": "Adorei o salão, nunca vi meu cabelo tão liso. Meu atendimento foi com o profissional Marcelo, super atencioso, simpático e ótimo profissional.",
       "stars": 5,
-      "time": "8 months ago"
+      "time": "5 months ago"
     }
   ],
   "features": [
@@ -134,7 +134,7 @@
     },
     {
       "label": "Avaliação Google",
-      "value": "5 ★"
+      "value": "4.6 ★"
     },
     {
       "label": "Profissionais",
@@ -143,7 +143,7 @@
   ],
   "staff": [
     {
-      "name": "Vinicius",
+      "name": "Cinthya",
       "role": "Especialista",
       "rating": 4.9,
       "reviews": 100,
@@ -197,7 +197,7 @@
     }
   ],
   "cta": {
-    "text": "Pronto pra conhecer a Em Estetica?",
+    "text": "Pronto pra conhecer a Espaco Do Cabelo Liso?",
     "buttonText": "Agendar agora"
   },
   "faq": [
