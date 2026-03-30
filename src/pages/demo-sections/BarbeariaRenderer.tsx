@@ -93,6 +93,8 @@ export default function BarbeariaRenderer({ data }: { data: DemoData }) {
   const [bookingDate, setBookingDate] = useState('');
   const [bookingTime, setBookingTime] = useState('');
   const [bookingDone, setBookingDone] = useState(false);
+  const [bookingName, setBookingName] = useState('');
+  const [bookingPhone, setBookingPhone] = useState('');
 
   useEffect(() => { setTimeout(() => setHeroVis(true), 150); }, []);
   useEffect(() => {
@@ -105,7 +107,7 @@ export default function BarbeariaRenderer({ data }: { data: DemoData }) {
   const times = ['09:00', '09:45', '10:30', '11:15', '14:00', '14:45', '15:30', '16:15', '17:00'];
   const fallback = 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1400&q=85';
 
-  const handleBook = () => { setBookingDone(true); setTimeout(() => { setBookingDone(false); setBookingSvc(null); setBookingPicker(false); setBookingStaff(null); setBookingDate(''); setBookingTime(''); }, 2500); };
+  const handleBook = () => { setBookingDone(true); setTimeout(() => { setBookingDone(false); setBookingSvc(null); setBookingPicker(false); setBookingStaff(null); setBookingDate(''); setBookingTime(''); setBookingName(''); setBookingPhone(''); }, 3000); };
 
   // ── DESIGN SYSTEM — inspired by world's best barbershop sites ──
   const gold = c.primary;
@@ -356,9 +358,10 @@ export default function BarbeariaRenderer({ data }: { data: DemoData }) {
         <div style={{ position: 'fixed', inset: 0, zIndex: 200, background: 'rgba(10,14,26,0.8)', backdropFilter: 'blur(16px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }} onClick={() => { if (!bookingDone) { setBookingSvc(null); setBookingPicker(false); } }}>
           <div style={{ background: navyLight, border: `1px solid ${gold}15`, borderRadius: 24, padding: 'clamp(24px, 4vw, 40px)', maxWidth: 460, width: 'calc(100% - 32px)', maxHeight: '90vh', overflowY: 'auto', boxShadow: `0 32px 80px rgba(0,0,0,0.5), 0 0 40px ${gold}06` }} onClick={e => e.stopPropagation()}>
             {bookingDone ? (
-              <div style={{ textAlign: 'center', padding: '48px 0' }}>
-                <div style={{ width: 56, height: 56, borderRadius: '50%', border: `2px solid ${gold}`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', fontSize: 24, color: gold }}>✓</div>
-                <h3 style={{ fontFamily: cursive, fontSize: 24, fontStyle: 'italic', color: cream }}>Confirmado</h3>
+              <div style={{ textAlign: 'center', padding: '40px 0' }}>
+                <div style={{ width: 56, height: 56, borderRadius: '50%', border: `2px solid ${gold}`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', fontSize: 24, color: gold }}>✓</div>
+                <h3 style={{ fontFamily: cursive, fontSize: 24, fontStyle: 'italic', color: cream, marginBottom: 8 }}>Agendamento confirmado!</h3>
+                <p style={{ fontSize: 13, color: `${cream}60`, lineHeight: 1.7 }}>Você receberá uma confirmação<br/>pelo WhatsApp em instantes.</p>
               </div>
             ) : (<>
               <h3 style={{ fontFamily: cursive, fontSize: 24, fontStyle: 'italic', color: cream, marginBottom: 4 }}>{bookingSvc.name}</h3>
@@ -384,7 +387,15 @@ export default function BarbeariaRenderer({ data }: { data: DemoData }) {
                   <button key={t} onClick={() => setBookingTime(t)} style={{ padding: 10, fontSize: 13, background: bookingTime === t ? gold : `${gold}05`, color: bookingTime === t ? navy : `${cream}50`, border: `1px solid ${bookingTime === t ? gold : `${gold}10`}`, borderRadius: 10, cursor: 'pointer', fontWeight: bookingTime === t ? 700 : 500, transition: 'all 0.2s' }}>{t}</button>
                 ))}
               </div>
-              <button onClick={handleBook} disabled={!bookingStaff || !bookingDate || !bookingTime} style={{ width: '100%', padding: 16, background: bookingStaff && bookingDate && bookingTime ? gold : `${gold}25`, color: navy, border: 'none', borderRadius: 14, fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: bookingStaff && bookingDate && bookingTime ? 'pointer' : 'not-allowed', boxShadow: bookingStaff && bookingDate && bookingTime ? `0 4px 20px ${gold}30` : 'none' }}>Confirmar</button>
+              <p style={{ fontSize: 10, fontWeight: 700, color: gold, marginBottom: 12, letterSpacing: '0.15em', textTransform: 'uppercase' }}>Seus dados</p>
+              <input placeholder="Seu nome" value={bookingName} onChange={e => setBookingName(e.target.value)}
+                style={{ width: '100%', padding: '12px 16px', background: `${gold}05`, border: `1px solid ${gold}10`, borderRadius: 10, color: cream, fontSize: 13, outline: 'none', marginBottom: 8, boxSizing: 'border-box', transition: 'border-color 0.2s' }}
+                onFocus={e => e.currentTarget.style.borderColor = gold} onBlur={e => e.currentTarget.style.borderColor = `${gold}10`} />
+              <input placeholder="WhatsApp (41) 99999-9999" value={bookingPhone} onChange={e => setBookingPhone(e.target.value)}
+                style={{ width: '100%', padding: '12px 16px', background: `${gold}05`, border: `1px solid ${gold}10`, borderRadius: 10, color: cream, fontSize: 13, outline: 'none', marginBottom: 12, boxSizing: 'border-box', transition: 'border-color 0.2s' }}
+                onFocus={e => e.currentTarget.style.borderColor = gold} onBlur={e => e.currentTarget.style.borderColor = `${gold}10`} />
+              <p style={{ fontSize: 11, color: `${cream}40`, marginBottom: 16, lineHeight: 1.6 }}>Você receberá uma confirmação automática pelo WhatsApp.</p>
+              <button onClick={handleBook} disabled={!bookingStaff || !bookingDate || !bookingTime || !bookingName || !bookingPhone} style={{ width: '100%', padding: 16, background: bookingStaff && bookingDate && bookingTime && bookingName && bookingPhone ? gold : `${gold}25`, color: navy, border: 'none', borderRadius: 14, fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: bookingStaff && bookingDate && bookingTime && bookingName && bookingPhone ? 'pointer' : 'not-allowed', boxShadow: bookingStaff && bookingDate && bookingTime && bookingName && bookingPhone ? `0 4px 20px ${gold}30` : 'none' }}>Confirmar agendamento</button>
             </>)}
           </div>
         </div>

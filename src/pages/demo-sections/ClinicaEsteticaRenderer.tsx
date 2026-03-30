@@ -52,13 +52,15 @@ export default function ClinicaEsteticaRenderer({ data }: { data: DemoData }) {
   const [bookingDate, setBookingDate] = useState('');
   const [bookingTime, setBookingTime] = useState('');
   const [bookingDone, setBookingDone] = useState(false);
+  const [bookingName, setBookingName] = useState('');
+  const [bookingPhone, setBookingPhone] = useState('');
 
   useEffect(() => { setTimeout(() => setHeroVis(true), 200); }, []);
   useEffect(() => { const fn = () => setNavScroll(window.scrollY > 60); window.addEventListener('scroll', fn, { passive: true }); return () => window.removeEventListener('scroll', fn); }, []);
 
   const staff = data.staff || [];
   const times = ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00'];
-  const handleBook = () => { setBookingDone(true); setTimeout(() => { setBookingDone(false); setBookingSvc(null); setBookingPicker(false); setBookingStaff(null); setBookingDate(''); setBookingTime(''); }, 2500); };
+  const handleBook = () => { setBookingDone(true); setTimeout(() => { setBookingDone(false); setBookingSvc(null); setBookingPicker(false); setBookingStaff(null); setBookingDate(''); setBookingTime(''); setBookingName(''); setBookingPhone(''); }, 3000); };
   const plans = data.plans || [];
   const fallback = 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1400&q=85';
 
@@ -503,9 +505,10 @@ export default function ClinicaEsteticaRenderer({ data }: { data: DemoData }) {
         <div style={{ position: 'fixed', inset: 0, zIndex: 200, background: `${cream}e0`, backdropFilter: 'blur(16px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }} onClick={() => { if (!bookingDone) { setBookingSvc(null); setBookingPicker(false); } }}>
           <div style={{ background: white, border: `1px solid ${rose}15`, borderRadius: 24, padding: 'clamp(24px, 4vw, 40px)', maxWidth: 460, width: 'calc(100% - 32px)', maxHeight: '90vh', overflowY: 'auto', boxShadow: `0 32px 80px rgba(0,0,0,0.08)` }} onClick={e => e.stopPropagation()}>
             {bookingDone ? (
-              <div style={{ textAlign: 'center', padding: '48px 0' }}>
-                <div style={{ width: 56, height: 56, borderRadius: '50%', border: `2px solid ${rose}`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', fontSize: 24, color: rose }}>✓</div>
-                <h3 style={{ fontFamily: heading, fontSize: 22, fontStyle: 'italic', color: dark }}>Agendamento confirmado</h3>
+              <div style={{ textAlign: 'center', padding: '40px 0' }}>
+                <div style={{ width: 56, height: 56, borderRadius: '50%', border: `2px solid ${gold}`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', fontSize: 24, color: gold }}>✓</div>
+                <h3 style={{ fontFamily: heading, fontSize: 22, fontStyle: 'italic', color: dark, marginBottom: 8 }}>Agendamento confirmado!</h3>
+                <p style={{ fontSize: 13, color: muted, lineHeight: 1.7 }}>Você receberá uma confirmação<br/>pelo WhatsApp em instantes.</p>
               </div>
             ) : (<>
               <h3 style={{ fontFamily: heading, fontSize: 22, fontStyle: 'italic', color: dark, marginBottom: 4 }}>{bookingSvc.name}</h3>
@@ -533,7 +536,15 @@ export default function ClinicaEsteticaRenderer({ data }: { data: DemoData }) {
                   <button key={t} onClick={() => setBookingTime(t)} style={{ padding: 10, fontSize: 13, background: bookingTime === t ? rose : `${rose}04`, color: bookingTime === t ? white : muted, border: `1px solid ${bookingTime === t ? rose : `${rose}10`}`, borderRadius: 10, cursor: 'pointer', fontWeight: bookingTime === t ? 600 : 400, transition: 'all 0.3s' }}>{t}</button>
                 ))}
               </div>
-              <button onClick={handleBook} disabled={!bookingDate || !bookingTime} style={{ width: '100%', padding: 16, background: bookingDate && bookingTime ? rose : `${rose}30`, color: white, border: 'none', borderRadius: 14, fontSize: 11, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: bookingDate && bookingTime ? 'pointer' : 'not-allowed', transition: 'all 0.3s' }}>Confirmar agendamento</button>
+              <p style={{ fontSize: 10, fontWeight: 500, color: gold, marginBottom: 12, letterSpacing: '0.15em', textTransform: 'uppercase' }}>Seus dados</p>
+              <input placeholder="Seu nome" value={bookingName} onChange={e => setBookingName(e.target.value)}
+                style={{ width: '100%', padding: '12px 16px', background: `${rose}04`, border: `1px solid ${gold}12`, borderRadius: 10, color: dark, fontSize: 13, outline: 'none', marginBottom: 8, boxSizing: 'border-box', transition: 'border-color 0.3s' }}
+                onFocus={e => e.currentTarget.style.borderColor = gold} onBlur={e => e.currentTarget.style.borderColor = `${gold}12`} />
+              <input placeholder="WhatsApp (41) 99999-9999" value={bookingPhone} onChange={e => setBookingPhone(e.target.value)}
+                style={{ width: '100%', padding: '12px 16px', background: `${rose}04`, border: `1px solid ${gold}12`, borderRadius: 10, color: dark, fontSize: 13, outline: 'none', marginBottom: 12, boxSizing: 'border-box', transition: 'border-color 0.3s' }}
+                onFocus={e => e.currentTarget.style.borderColor = gold} onBlur={e => e.currentTarget.style.borderColor = `${gold}12`} />
+              <p style={{ fontSize: 11, color: muted, marginBottom: 16, lineHeight: 1.6 }}>Você receberá uma confirmação automática pelo WhatsApp.</p>
+              <button onClick={handleBook} disabled={!bookingDate || !bookingTime || !bookingName || !bookingPhone} style={{ width: '100%', padding: 16, background: bookingDate && bookingTime && bookingName && bookingPhone ? `linear-gradient(135deg, ${gold}, ${goldLight})` : `${rose}30`, color: white, border: 'none', borderRadius: 14, fontSize: 11, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: bookingDate && bookingTime && bookingName && bookingPhone ? 'pointer' : 'not-allowed', transition: 'all 0.3s', boxShadow: bookingDate && bookingTime && bookingName && bookingPhone ? `0 4px 20px ${gold}25` : 'none' }}>Confirmar agendamento</button>
             </>)}
           </div>
         </div>
