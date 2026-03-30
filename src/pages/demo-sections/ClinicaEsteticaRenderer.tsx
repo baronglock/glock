@@ -45,11 +45,19 @@ export default function ClinicaEsteticaRenderer({ data }: { data: DemoData }) {
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
   const [navScroll, setNavScroll] = useState(false);
+  const [bookingSvc, setBookingSvc] = useState<ServiceItem | null>(null);
+  const [bookingPicker, setBookingPicker] = useState(false);
+  const [bookingStaff, setBookingStaff] = useState<StaffItem | null>(null);
+  const [bookingDate, setBookingDate] = useState('');
+  const [bookingTime, setBookingTime] = useState('');
+  const [bookingDone, setBookingDone] = useState(false);
 
   useEffect(() => { setTimeout(() => setHeroVis(true), 200); }, []);
   useEffect(() => { const fn = () => setNavScroll(window.scrollY > 60); window.addEventListener('scroll', fn, { passive: true }); return () => window.removeEventListener('scroll', fn); }, []);
 
   const staff = data.staff || [];
+  const times = ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00'];
+  const handleBook = () => { setBookingDone(true); setTimeout(() => { setBookingDone(false); setBookingSvc(null); setBookingPicker(false); setBookingStaff(null); setBookingDate(''); setBookingTime(''); }, 2500); };
   const plans = data.plans || [];
   const fallback = 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1400&q=85';
 
@@ -132,7 +140,7 @@ export default function ClinicaEsteticaRenderer({ data }: { data: DemoData }) {
           </p>
 
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-            <button style={{
+            <button onClick={() => setBookingPicker(true)} style={{
               padding: '16px 40px', background: rose, color: white, border: 'none', borderRadius: 100,
               fontSize: 11, fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase',
               cursor: 'pointer', transition: 'all 0.4s', boxShadow: `0 8px 32px ${rose}25`,
@@ -216,8 +224,8 @@ export default function ClinicaEsteticaRenderer({ data }: { data: DemoData }) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 1, background: `${rose}10`, borderRadius: 24, overflow: 'hidden' }}>
           {data.services.map((s, i) => (
             <Gf key={s.name} d={i * 60}>
-              <div style={{
-                padding: '32px 28px', background: white, cursor: 'default',
+              <div onClick={() => setBookingSvc(s)} style={{
+                padding: '32px 28px', background: white, cursor: 'pointer',
                 transition: 'all 0.4s', position: 'relative', display: 'flex', flexDirection: 'column', height: '100%',
               }}
                 onMouseEnter={e => { e.currentTarget.style.background = `${rose}04`; }}
@@ -409,6 +417,80 @@ export default function ClinicaEsteticaRenderer({ data }: { data: DemoData }) {
           </div></Gf>
         </div>
       </Sec>
+
+      {/* ═══ SERVICE PICKER MODAL (from hero CTA) ═══ */}
+      {bookingPicker && !bookingSvc && (
+        <div style={{ position: 'fixed', inset: 0, zIndex: 200, background: `${cream}e0`, backdropFilter: 'blur(16px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }} onClick={() => setBookingPicker(false)}>
+          <div style={{ background: white, border: `1px solid ${rose}15`, borderRadius: 24, padding: 'clamp(24px, 4vw, 40px)', maxWidth: 520, width: 'calc(100% - 32px)', maxHeight: '85vh', overflowY: 'auto', boxShadow: `0 32px 80px rgba(0,0,0,0.08)` }} onClick={e => e.stopPropagation()}>
+            <div style={{ textAlign: 'center', marginBottom: 28 }}>
+              <span style={{ fontFamily: body, fontSize: 10, fontWeight: 500, letterSpacing: '0.25em', color: rose, textTransform: 'uppercase' }}>Agendar</span>
+              <h3 style={{ fontFamily: heading, fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: 400, fontStyle: 'italic', color: dark, marginTop: 8 }}>Escolha o tratamento</h3>
+              <div style={{ width: 40, height: 1, background: `${rose}40`, margin: '12px auto 0' }} />
+            </div>
+            <div style={{ display: 'grid', gap: 8 }}>
+              {data.services.map(s => (
+                <button key={s.name} onClick={() => setBookingSvc(s)} style={{
+                  padding: '18px 20px', background: `${rose}04`, border: `1px solid ${rose}10`, borderRadius: 14,
+                  cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                  transition: 'all 0.4s', textAlign: 'left',
+                }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = rose; e.currentTarget.style.background = `${rose}08`; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = `${rose}10`; e.currentTarget.style.background = `${rose}04`; }}>
+                  <div>
+                    <div style={{ fontFamily: heading, fontSize: 16, fontStyle: 'italic', color: dark }}>{s.name}</div>
+                    {s.time && <div style={{ fontSize: 11, color: muted, marginTop: 2 }}>{s.time}</div>}
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                    {s.popular && <span style={{ padding: '2px 10px', background: `${rose}15`, color: rose, fontSize: 8, fontWeight: 500, borderRadius: 20 }}>Popular</span>}
+                    <span style={{ fontFamily: heading, fontSize: 18, fontStyle: 'italic', color: rose }}>{s.price}</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ═══ BOOKING MODAL ═══ */}
+      {bookingSvc && (
+        <div style={{ position: 'fixed', inset: 0, zIndex: 200, background: `${cream}e0`, backdropFilter: 'blur(16px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }} onClick={() => { if (!bookingDone) { setBookingSvc(null); setBookingPicker(false); } }}>
+          <div style={{ background: white, border: `1px solid ${rose}15`, borderRadius: 24, padding: 'clamp(24px, 4vw, 40px)', maxWidth: 460, width: 'calc(100% - 32px)', maxHeight: '90vh', overflowY: 'auto', boxShadow: `0 32px 80px rgba(0,0,0,0.08)` }} onClick={e => e.stopPropagation()}>
+            {bookingDone ? (
+              <div style={{ textAlign: 'center', padding: '48px 0' }}>
+                <div style={{ width: 56, height: 56, borderRadius: '50%', border: `2px solid ${rose}`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', fontSize: 24, color: rose }}>✓</div>
+                <h3 style={{ fontFamily: heading, fontSize: 22, fontStyle: 'italic', color: dark }}>Agendamento confirmado</h3>
+              </div>
+            ) : (<>
+              <h3 style={{ fontFamily: heading, fontSize: 22, fontStyle: 'italic', color: dark, marginBottom: 4 }}>{bookingSvc.name}</h3>
+              <p style={{ color: muted, fontSize: 13, marginBottom: 28 }}>{bookingSvc.price} · {bookingSvc.time}</p>
+              {staff.filter(s => s.available).length > 0 && <>
+                <p style={{ fontSize: 10, fontWeight: 500, color: rose, marginBottom: 12, letterSpacing: '0.15em', textTransform: 'uppercase' }}>Profissional</p>
+                <div style={{ display: 'flex', gap: 8, marginBottom: 24, flexWrap: 'wrap' }}>
+                  {staff.filter(s => s.available).map(s => (
+                    <button key={s.name} onClick={() => setBookingStaff(s)} style={{ padding: '10px 18px', background: bookingStaff?.name === s.name ? `${rose}10` : `${rose}04`, border: `1px solid ${bookingStaff?.name === s.name ? rose : `${rose}10`}`, borderRadius: 12, cursor: 'pointer', transition: 'all 0.3s' }}>
+                      <div style={{ fontSize: 13, fontWeight: 500, color: dark }}>{s.name}</div>
+                      <div style={{ fontSize: 11, color: muted }}>{s.role}</div>
+                    </button>
+                  ))}
+                </div>
+              </>}
+              <p style={{ fontSize: 10, fontWeight: 500, color: rose, marginBottom: 12, letterSpacing: '0.15em', textTransform: 'uppercase' }}>Data</p>
+              <div style={{ display: 'flex', gap: 8, marginBottom: 24, flexWrap: 'wrap' }}>
+                {['Hoje', 'Amanhã', 'Qua', 'Qui', 'Sex'].map(d => (
+                  <button key={d} onClick={() => setBookingDate(d)} style={{ padding: '8px 18px', fontSize: 12, background: bookingDate === d ? `${rose}10` : `${rose}04`, border: `1px solid ${bookingDate === d ? rose : `${rose}10`}`, borderRadius: 10, cursor: 'pointer', color: bookingDate === d ? rose : muted, fontWeight: bookingDate === d ? 600 : 400, transition: 'all 0.3s' }}>{d}</button>
+                ))}
+              </div>
+              <p style={{ fontSize: 10, fontWeight: 500, color: rose, marginBottom: 12, letterSpacing: '0.15em', textTransform: 'uppercase' }}>Horário</p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 6, marginBottom: 28 }}>
+                {times.map(t => (
+                  <button key={t} onClick={() => setBookingTime(t)} style={{ padding: 10, fontSize: 13, background: bookingTime === t ? rose : `${rose}04`, color: bookingTime === t ? white : muted, border: `1px solid ${bookingTime === t ? rose : `${rose}10`}`, borderRadius: 10, cursor: 'pointer', fontWeight: bookingTime === t ? 600 : 400, transition: 'all 0.3s' }}>{t}</button>
+                ))}
+              </div>
+              <button onClick={handleBook} disabled={!bookingDate || !bookingTime} style={{ width: '100%', padding: 16, background: bookingDate && bookingTime ? rose : `${rose}30`, color: white, border: 'none', borderRadius: 14, fontSize: 11, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: bookingDate && bookingTime ? 'pointer' : 'not-allowed', transition: 'all 0.3s' }}>Confirmar agendamento</button>
+            </>)}
+          </div>
+        </div>
+      )}
 
       {/* Footer */}
       <footer style={{ padding: '24px clamp(24px, 6vw, 80px)', textAlign: 'center', borderTop: `1px solid ${rose}08` }}>

@@ -178,7 +178,7 @@ export default function AcademiaRenderer({ data }: { data: DemoData }) {
 
           {/* CTA — skewed button like World Gym's ribbon */}
           <div style={{ display: 'flex', gap: 10 }}>
-            <button style={{
+            <button onClick={() => document.getElementById('planos')?.scrollIntoView({ behavior: 'smooth' })} style={{
               padding: '16px 44px', background: accent, color: '#000', border: 'none',
               fontFamily: heading, fontSize: 13, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em',
               cursor: 'pointer', transform: 'skewX(-6deg)',

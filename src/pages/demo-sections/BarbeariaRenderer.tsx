@@ -87,6 +87,7 @@ export default function BarbeariaRenderer({ data }: { data: DemoData }) {
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
   const [navScroll, setNavScroll] = useState(false);
   const [bookingSvc, setBookingSvc] = useState<ServiceItem | null>(null);
+  const [bookingPicker, setBookingPicker] = useState(false);
   const [bookingStaff, setBookingStaff] = useState<StaffItem | null>(null);
   const [bookingDate, setBookingDate] = useState('');
   const [bookingTime, setBookingTime] = useState('');
@@ -103,7 +104,7 @@ export default function BarbeariaRenderer({ data }: { data: DemoData }) {
   const times = ['09:00', '09:45', '10:30', '11:15', '14:00', '14:45', '15:30', '16:15', '17:00'];
   const fallback = 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1400&q=85';
 
-  const handleBook = () => { setBookingDone(true); setTimeout(() => { setBookingDone(false); setBookingSvc(null); setBookingStaff(null); setBookingDate(''); setBookingTime(''); }, 2500); };
+  const handleBook = () => { setBookingDone(true); setTimeout(() => { setBookingDone(false); setBookingSvc(null); setBookingPicker(false); setBookingStaff(null); setBookingDate(''); setBookingTime(''); }, 2500); };
 
   // ── DESIGN SYSTEM — inspired by world's best barbershop sites ──
   const gold = c.primary;
@@ -207,7 +208,7 @@ export default function BarbeariaRenderer({ data }: { data: DemoData }) {
 
           {/* CTA buttons */}
           <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap', opacity: heroVis ? 1 : 0, transition: 'opacity 1s ease 1s' }}>
-            <button style={{
+            <button onClick={() => setBookingPicker(true)} style={{
               padding: '16px 44px', background: gold, color: navy, border: 'none', borderRadius: 100,
               fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase',
               cursor: 'pointer', transition: 'all 0.3s', boxShadow: `0 8px 32px ${gold}30`,
@@ -296,9 +297,42 @@ export default function BarbeariaRenderer({ data }: { data: DemoData }) {
         </div>
       </Sec>
 
+      {/* ═══ SERVICE PICKER MODAL (from hero CTA) ═══ */}
+      {bookingPicker && !bookingSvc && (
+        <div style={{ position: 'fixed', inset: 0, zIndex: 200, background: 'rgba(10,14,26,0.85)', backdropFilter: 'blur(16px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }} onClick={() => setBookingPicker(false)}>
+          <div style={{ background: navyLight, border: `1px solid ${gold}15`, borderRadius: 24, padding: 'clamp(24px, 4vw, 40px)', maxWidth: 520, width: 'calc(100% - 32px)', maxHeight: '85vh', overflowY: 'auto', boxShadow: `0 32px 80px rgba(0,0,0,0.5), 0 0 40px ${gold}06` }} onClick={e => e.stopPropagation()}>
+            <div style={{ textAlign: 'center', marginBottom: 28 }}>
+              <span style={{ fontFamily: body, fontSize: 10, fontWeight: 600, letterSpacing: '0.2em', color: gold, textTransform: 'uppercase' }}>Agendar</span>
+              <h3 style={{ fontFamily: cursive, fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontStyle: 'italic', color: cream, marginTop: 8 }}>Escolha o serviço</h3>
+              <div style={{ width: 40, height: 1, background: `${gold}50`, margin: '12px auto 0' }} />
+            </div>
+            <div style={{ display: 'grid', gap: 10 }}>
+              {data.services.map(s => (
+                <button key={s.name} onClick={() => setBookingSvc(s)} style={{
+                  padding: '18px 20px', background: `${gold}05`, border: `1px solid ${gold}10`, borderRadius: 14,
+                  cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                  transition: 'all 0.3s', textAlign: 'left',
+                }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = gold; e.currentTarget.style.background = `${gold}0a`; e.currentTarget.style.transform = 'translateX(4px)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = `${gold}10`; e.currentTarget.style.background = `${gold}05`; e.currentTarget.style.transform = 'none'; }}>
+                  <div>
+                    <div style={{ fontFamily: cursive, fontSize: 17, fontStyle: 'italic', color: cream }}>{s.name}</div>
+                    {s.time && <div style={{ fontSize: 11, color: `${cream}45`, marginTop: 2 }}>{s.time}</div>}
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                    {s.popular && <span style={{ padding: '2px 10px', background: gold, color: navy, fontSize: 8, fontWeight: 700, borderRadius: 20 }}>POPULAR</span>}
+                    <span style={{ fontFamily: cursive, fontSize: 20, fontStyle: 'italic', color: gold }}>{s.price}</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* ═══ BOOKING MODAL ═══ */}
       {bookingSvc && (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 200, background: 'rgba(10,14,26,0.8)', backdropFilter: 'blur(16px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }} onClick={() => !bookingDone && setBookingSvc(null)}>
+        <div style={{ position: 'fixed', inset: 0, zIndex: 200, background: 'rgba(10,14,26,0.8)', backdropFilter: 'blur(16px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }} onClick={() => { if (!bookingDone) { setBookingSvc(null); setBookingPicker(false); } }}>
           <div style={{ background: navyLight, border: `1px solid ${gold}15`, borderRadius: 24, padding: 'clamp(24px, 4vw, 40px)', maxWidth: 460, width: 'calc(100% - 32px)', maxHeight: '90vh', overflowY: 'auto', boxShadow: `0 32px 80px rgba(0,0,0,0.5), 0 0 40px ${gold}06` }} onClick={e => e.stopPropagation()}>
             {bookingDone ? (
               <div style={{ textAlign: 'center', padding: '48px 0' }}>
@@ -337,14 +371,17 @@ export default function BarbeariaRenderer({ data }: { data: DemoData }) {
 
       <CurlDivider color={gold} flip />
 
-      {/* ═══ BEFORE/AFTER ═══ */}
-      <Sec>
-        <Fade><SH label="Transformações" title="Antes & Depois" center /></Fade>
-        <div style={{ display: 'flex', gap: 32, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Fade delay={100}><BeforeAfter before={data.gallery[0]} after={data.gallery[1]} accent={gold} /></Fade>
-          <Fade delay={250}><BeforeAfter before={data.gallery[2]} after={data.gallery[3]} accent={gold} /></Fade>
-        </div>
-      </Sec>
+      {/* ═══ BEFORE/AFTER — só mostra se tiver campo before_after no JSON ═══ */}
+      {(data as any).before_after && (data as any).before_after.length > 0 && (
+        <Sec>
+          <Fade><SH label="Transformações" title="Antes & Depois" center /></Fade>
+          <div style={{ display: 'flex', gap: 32, justifyContent: 'center', flexWrap: 'wrap' }}>
+            {(data as any).before_after.map((pair: any, i: number) => (
+              <Fade key={i} delay={i * 150}><BeforeAfter before={pair.before} after={pair.after} accent={gold} /></Fade>
+            ))}
+          </div>
+        </Sec>
+      )}
 
       <CurlDivider color={gold} />
 
@@ -506,6 +543,18 @@ export default function BarbeariaRenderer({ data }: { data: DemoData }) {
               onMouseLeave={e => e.currentTarget.style.boxShadow = `0 4px 20px ${gold}25`}>Enviar</button>
           </div></Fade>
         </div>
+
+        {/* Google Maps */}
+        <Fade delay={300}>
+          <div style={{ marginTop: 40, borderRadius: 16, overflow: 'hidden', border: `1px solid ${gold}08`, height: 280 }}>
+            <iframe
+              src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCdpxxgZRYNVs2cQ_X8SOZchL-iVl48tmU&q=${encodeURIComponent(data.city)}&zoom=15`}
+              style={{ width: '100%', height: '100%', border: 'none', filter: 'invert(0.9) hue-rotate(180deg) saturate(0.3)' }}
+              loading="lazy"
+              allowFullScreen
+            />
+          </div>
+        </Fade>
       </Sec>
 
       {/* ── Footer ── */}
