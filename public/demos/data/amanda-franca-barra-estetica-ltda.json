@@ -1,6 +1,6 @@
 {
   "slug": "amanda-franca-barra-estetica-ltda",
-  "name": "Amanda Baumann Estética CLINIC & SPA",
+  "name": "Amanda França Estética",
   "niche": "clinica_estetica",
   "tagline": "Sua beleza, nossa missão diária",
   "city": "Av. Archelau de Almeida Tôrres, 1479 - Iguaçu, Araucária - PR, 83701-145, Brasil",
@@ -13,12 +13,12 @@
     "textMuted": "#8a7e77"
   },
   "hero": {
-    "title": "Transforme-se com Amanda França",
-    "subtitle": "Na Amanda França Barra Estética, cada detalhe é pensado para realçar sua beleza única. Nossa equipe de profissionais especializados oferece um atendimento personalizado, garantindo resultados que superam suas expectativas.",
+    "title": "Beleza que transforma",
+    "subtitle": "A Amanda França Estética é referência em tratamentos estéticos em Araucária. Atendimento personalizado, técnicas modernas e um espaço acolhedor pensado para realçar sua beleza natural.",
     "image": "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=1400&q=85&auto=format&fit=crop"
   },
   "about": {
-    "text": "Na Amanda França Barra Estética, cada detalhe é pensado para realçar sua beleza única. Nossa equipe de profissionais especializados oferece um atendimento personalizado, garantindo resultados que superam suas expectativas.",
+    "text": "Com paixão por estética e cuidado com cada detalhe, a Amanda França Estética oferece tratamentos faciais e corporais de alta qualidade em Araucária. Nosso compromisso é proporcionar resultados reais com atendimento humanizado e protocolos individualizados.",
     "image": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80&auto=format&fit=crop"
   },
   "services": [
@@ -197,7 +197,7 @@
     }
   ],
   "cta": {
-    "text": "Pronto pra conhecer a Amanda Baumann Estética CLINIC & SPA?",
+    "text": "Agende seu horário na Amanda França Estética",
     "buttonText": "Agendar agora"
   },
   "faq": [
