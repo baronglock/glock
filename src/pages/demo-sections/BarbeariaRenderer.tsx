@@ -548,7 +548,7 @@ export default function BarbeariaRenderer({ data }: { data: DemoData }) {
         <Fade delay={300}>
           <div style={{ marginTop: 40, borderRadius: 16, overflow: 'hidden', border: `1px solid ${gold}08`, height: 280 }}>
             <iframe
-              src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCdpxxgZRYNVs2cQ_X8SOZchL-iVl48tmU&q=${encodeURIComponent(data.name + ' ' + data.city)}&zoom=15`}
+              src={`https://www.google.com/maps?q=${encodeURIComponent(data.name + ' ' + data.city)}&output=embed`}
               style={{ width: '100%', height: '100%', border: 'none', filter: 'invert(0.9) hue-rotate(180deg) saturate(0.3)' }}
               loading="lazy"
               allowFullScreen
