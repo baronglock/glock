@@ -47,6 +47,7 @@ export default function ClinicaEsteticaRenderer({ data }: { data: DemoData }) {
   const [navScroll, setNavScroll] = useState(false);
   const [bookingSvc, setBookingSvc] = useState<ServiceItem | null>(null);
   const [bookingPicker, setBookingPicker] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(false);
   const [bookingStaff, setBookingStaff] = useState<StaffItem | null>(null);
   const [bookingDate, setBookingDate] = useState('');
   const [bookingTime, setBookingTime] = useState('');
@@ -115,7 +116,25 @@ export default function ClinicaEsteticaRenderer({ data }: { data: DemoData }) {
               onMouseLeave={e => e.currentTarget.style.color = muted}>{i}</a>
           ))}
         </div>
+        <button className="clinic-burger" onClick={() => setMobileMenu(!mobileMenu)} style={{ display: 'none', background: 'none', border: 'none', cursor: 'pointer', padding: 8, zIndex: 101 }}>
+          <div style={{ width: 20, height: 1.5, background: rose, marginBottom: 5, transition: 'all 0.3s', transform: mobileMenu ? 'rotate(45deg) translate(5px, 5px)' : 'none' }} />
+          <div style={{ width: 20, height: 1.5, background: rose, marginBottom: 5, transition: 'all 0.3s', opacity: mobileMenu ? 0 : 1 }} />
+          <div style={{ width: 20, height: 1.5, background: rose, transition: 'all 0.3s', transform: mobileMenu ? 'rotate(-45deg) translate(5px, -5px)' : 'none' }} />
+        </button>
       </nav>
+
+      {mobileMenu && (
+        <div style={{ position: 'fixed', inset: 0, zIndex: 99, background: `${white}f8`, backdropFilter: 'blur(20px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 20 }}>
+          {['Tratamentos', 'Equipe', 'Galeria', 'Planos', 'Contato'].map((i, idx) => (
+            <a key={i} href={`#${i.toLowerCase()}`} onClick={() => setMobileMenu(false)}
+              style={{ fontFamily: heading, fontSize: 24, fontStyle: 'italic', color: dark, textDecoration: 'none', opacity: 0, animation: `clinicFadeIn 0.4s ease ${idx * 0.08}s forwards` }}>{i}</a>
+          ))}
+          <button onClick={() => { setMobileMenu(false); setBookingPicker(true); }}
+            style={{ marginTop: 12, padding: '14px 36px', background: rose, color: white, border: 'none', borderRadius: 100, fontSize: 11, fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', cursor: 'pointer' }}>
+            Agendar agora
+          </button>
+        </div>
+      )}
 
       {/* ═══ HERO — Split: text left, image right, light bg, ultra clean ═══ */}
       <section style={{ minHeight: '100vh', display: 'grid', gridTemplateColumns: '1fr 1fr', position: 'relative' }} className="clinic-hero-grid">
@@ -524,8 +543,10 @@ export default function ClinicaEsteticaRenderer({ data }: { data: DemoData }) {
       </div>
 
       <style>{`
+        @keyframes clinicFadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
         @media(max-width:768px){
           .clinic-nav{display:none!important}
+          .clinic-burger{display:block!important}
           .clinic-hero-grid{grid-template-columns:1fr!important}
           .clinic-hero-img{max-height:40vh}
           .clinic-hero-text{padding:140px 20px 60px!important}

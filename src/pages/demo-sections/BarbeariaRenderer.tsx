@@ -88,6 +88,7 @@ export default function BarbeariaRenderer({ data }: { data: DemoData }) {
   const [navScroll, setNavScroll] = useState(false);
   const [bookingSvc, setBookingSvc] = useState<ServiceItem | null>(null);
   const [bookingPicker, setBookingPicker] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(false);
   const [bookingStaff, setBookingStaff] = useState<StaffItem | null>(null);
   const [bookingDate, setBookingDate] = useState('');
   const [bookingTime, setBookingTime] = useState('');
@@ -165,7 +166,27 @@ export default function BarbeariaRenderer({ data }: { data: DemoData }) {
               onMouseLeave={e => e.currentTarget.style.color = `${cream}60`}>{i}</a>
           ))}
         </div>
+        {/* Hamburger — mobile only */}
+        <button className="barber-burger" onClick={() => setMobileMenu(!mobileMenu)} style={{ display: 'none', background: 'none', border: 'none', cursor: 'pointer', padding: 8, zIndex: 101 }}>
+          <div style={{ width: 22, height: 2, background: gold, marginBottom: 5, transition: 'all 0.3s', transform: mobileMenu ? 'rotate(45deg) translate(5px, 5px)' : 'none' }} />
+          <div style={{ width: 22, height: 2, background: gold, marginBottom: 5, transition: 'all 0.3s', opacity: mobileMenu ? 0 : 1 }} />
+          <div style={{ width: 22, height: 2, background: gold, transition: 'all 0.3s', transform: mobileMenu ? 'rotate(-45deg) translate(5px, -5px)' : 'none' }} />
+        </button>
       </nav>
+
+      {/* ═══ MOBILE MENU OVERLAY ═══ */}
+      {mobileMenu && (
+        <div style={{ position: 'fixed', inset: 0, zIndex: 99, background: `${navy}f8`, backdropFilter: 'blur(20px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 24 }}>
+          {['Serviços', 'Galeria', 'Equipe', 'Planos', 'Contato'].map((i, idx) => (
+            <a key={i} href={`#${i.toLowerCase()}`} onClick={() => setMobileMenu(false)}
+              style={{ fontFamily: cursive, fontSize: 28, fontStyle: 'italic', color: cream, textDecoration: 'none', opacity: 0, animation: `fadeSlideIn 0.4s ease ${idx * 0.08}s forwards` }}>{i}</a>
+          ))}
+          <button onClick={() => { setMobileMenu(false); setBookingPicker(true); }}
+            style={{ marginTop: 16, padding: '14px 40px', background: gold, color: navy, border: 'none', borderRadius: 100, fontFamily: body, fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', cursor: 'pointer' }}>
+            Agendar agora
+          </button>
+        </div>
+      )}
 
       {/* ═══ HERO — Full bleed image, centered cursive overlay, fade-in staggered ═══ */}
       <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
@@ -577,8 +598,10 @@ export default function BarbeariaRenderer({ data }: { data: DemoData }) {
       </div>
 
       <style>{`
+        @keyframes fadeSlideIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
         @media(max-width:768px){
           .barber-nav{display:none!important}
+          .barber-burger{display:block!important}
           .barber-grid{grid-template-columns:1fr!important}
           .barber-gallery{columns:2!important}
           .barber-banner-text{display:none}

@@ -61,6 +61,7 @@ export default function AcademiaRenderer({ data }: { data: DemoData }) {
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
   const [navScroll, setNavScroll] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   useEffect(() => { setTimeout(() => setHeroVis(true), 80); }, []);
   useEffect(() => { const fn = () => setNavScroll(window.scrollY > 50); window.addEventListener('scroll', fn, { passive: true }); return () => window.removeEventListener('scroll', fn); }, []);
@@ -131,7 +132,25 @@ export default function AcademiaRenderer({ data }: { data: DemoData }) {
               onMouseEnter={e => e.currentTarget.style.color = accent} onMouseLeave={e => e.currentTarget.style.color = '#555'}>{i}</a>
           ))}
         </div>
+        <button className="gym-burger" onClick={() => setMobileMenu(!mobileMenu)} style={{ display: 'none', background: 'none', border: 'none', cursor: 'pointer', padding: 8, zIndex: 101 }}>
+          <div style={{ width: 24, height: 2, background: accent, marginBottom: 5, transition: 'all 0.2s', transform: mobileMenu ? 'rotate(45deg) translate(5px, 5px)' : 'none' }} />
+          <div style={{ width: 24, height: 2, background: accent, marginBottom: 5, transition: 'all 0.2s', opacity: mobileMenu ? 0 : 1 }} />
+          <div style={{ width: 24, height: 2, background: accent, transition: 'all 0.2s', transform: mobileMenu ? 'rotate(-45deg) translate(5px, -5px)' : 'none' }} />
+        </button>
       </nav>
+
+      {mobileMenu && (
+        <div style={{ position: 'fixed', inset: 0, zIndex: 99, background: `${black}f5`, backdropFilter: 'blur(16px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 20 }}>
+          {['Treinos', 'Galeria', 'Planos', 'Contato'].map((i, idx) => (
+            <a key={i} href={`#${i.toLowerCase()}`} onClick={() => setMobileMenu(false)}
+              style={{ fontFamily: heading, fontSize: 24, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: white, textDecoration: 'none', opacity: 0, animation: `gymFadeIn 0.3s ease ${idx * 0.06}s forwards` }}>{i}</a>
+          ))}
+          <button onClick={() => { setMobileMenu(false); document.getElementById('planos')?.scrollIntoView({ behavior: 'smooth' }); }}
+            style={{ marginTop: 12, padding: '14px 36px', background: accent, color: '#000', border: 'none', fontFamily: heading, fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', cursor: 'pointer', transform: 'skewX(-4deg)' }}>
+            <span style={{ display: 'inline-block', transform: 'skewX(4deg)' }}>Ver planos</span>
+          </button>
+        </div>
+      )}
 
       {/* ═══ HERO — Full bleed image, MASSIVE serif text, skewed overlay ═══ */}
       <section style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
@@ -446,8 +465,10 @@ export default function AcademiaRenderer({ data }: { data: DemoData }) {
       </div>
 
       <style>{`
+        @keyframes gymFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
         @media(max-width:768px){
           .gym-nav{display:none!important}
+          .gym-burger{display:block!important}
           .gym-hero-content{padding:0 20px 60px!important;max-width:100%!important}
           .gym-hero-content h1 span{font-size:2.5rem!important}
           .gym-stats{grid-template-columns:1fr 1fr!important}
