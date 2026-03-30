@@ -68,6 +68,8 @@ export default function ClinicaEsteticaRenderer({ data }: { data: DemoData }) {
   const dark = c.text; // #2a2320
   const muted = c.textMuted; // #8a7e77
   const white = '#ffffff';
+  const gold = '#c9a96e'; // subtle warm gold for luxury accents
+  const goldLight = '#d4b87a';
   const heading = "'Georgia', 'Playfair Display', 'Times New Roman', serif";
   const body = "'Inter', system-ui, sans-serif";
 
@@ -78,25 +80,36 @@ export default function ClinicaEsteticaRenderer({ data }: { data: DemoData }) {
     </section>
   );
 
-  // Section header — thin, elegant, centered
+  // Section header — thin, elegant, centered with gold ornament
   const SH = ({ label, title, sub }: { label: string; title: string; sub?: string }) => (
     <div style={{ textAlign: 'center', marginBottom: 64 }}>
-      <span style={{ fontFamily: body, fontSize: 10, fontWeight: 500, letterSpacing: '0.25em', color: rose, textTransform: 'uppercase' }}>{label}</span>
+      <span style={{ fontFamily: body, fontSize: 10, fontWeight: 500, letterSpacing: '0.25em', color: gold, textTransform: 'uppercase' }}>{label}</span>
       <h2 style={{ fontFamily: heading, fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 400, fontStyle: 'italic', color: dark, marginTop: 12, lineHeight: 1.2 }}>{title}</h2>
       {sub && <p style={{ fontFamily: body, fontSize: 14, color: muted, marginTop: 14, maxWidth: 480, margin: '14px auto 0', lineHeight: 1.8 }}>{sub}</p>}
-      <div style={{ width: 40, height: 1, background: rose, opacity: 0.4, margin: '20px auto 0' }} />
+      {/* Gold ornamental divider */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginTop: 20 }}>
+        <div style={{ width: 30, height: 1, background: `linear-gradient(90deg, transparent, ${gold}60)` }} />
+        <div style={{ width: 5, height: 5, borderRadius: '50%', border: `1px solid ${gold}50`, background: 'transparent' }} />
+        <div style={{ width: 30, height: 1, background: `linear-gradient(90deg, ${gold}60, transparent)` }} />
+      </div>
     </div>
   );
 
-  // Thin line divider
-  const ThinLine = () => <div style={{ maxWidth: 1000, margin: '0 auto', padding: '0 clamp(24px, 6vw, 80px)' }}><div style={{ height: 1, background: `${rose}15` }} /></div>;
+  // Thin gold line divider
+  const ThinLine = () => <div style={{ maxWidth: 1000, margin: '0 auto', padding: '0 clamp(24px, 6vw, 80px)' }}><div style={{ height: 1, background: `linear-gradient(90deg, transparent, ${gold}20, transparent)` }} /></div>;
 
   return (
     <div style={{ background: cream, color: dark, fontFamily: body, minHeight: '100vh' }}>
 
-      {/* ═══ NO heavy textures — just a whisper of warmth ═══ */}
-      {/* Subtle warm radial — like soft light in a clinic */}
-      <div style={{ position: 'fixed', top: '10%', left: '50%', transform: 'translateX(-50%)', width: '60vw', height: '30vh', background: `radial-gradient(ellipse, ${rose}06 0%, transparent 50%)`, filter: 'blur(100px)', pointerEvents: 'none', zIndex: 0 }} />
+      {/* ═══ Subtle luxury textures ═══ */}
+      {/* Warm golden glow — top center */}
+      <div style={{ position: 'fixed', top: '5%', left: '50%', transform: 'translateX(-50%)', width: '50vw', height: '25vh', background: `radial-gradient(ellipse, ${gold}08 0%, transparent 50%)`, filter: 'blur(100px)', pointerEvents: 'none', zIndex: 0 }} />
+      {/* Rose glow — bottom */}
+      <div style={{ position: 'fixed', bottom: '10%', left: '30%', width: '40vw', height: '20vh', background: `radial-gradient(ellipse, ${rose}05 0%, transparent 50%)`, filter: 'blur(100px)', pointerEvents: 'none', zIndex: 0 }} />
+      {/* Ultra-subtle gold grain texture */}
+      <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none', opacity: 0.015, mixBlendMode: 'multiply',
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+        backgroundSize: '200px' }} />
 
       {/* ═══ NAVBAR — ultra minimal, thin, breathable ═══ */}
       <nav style={{
@@ -183,7 +196,7 @@ export default function ClinicaEsteticaRenderer({ data }: { data: DemoData }) {
           {/* Trust badges — credentials */}
           <div style={{ display: 'flex', gap: 24, marginTop: 48, flexWrap: 'wrap' }}>
             {['ANVISA', 'CRM Verificado', 'ISO 9001'].map(b => (
-              <span key={b} style={{ fontSize: 9, fontWeight: 500, letterSpacing: '0.12em', color: muted, textTransform: 'uppercase', padding: '6px 14px', border: `1px solid ${rose}15`, borderRadius: 100 }}>{b}</span>
+              <span key={b} style={{ fontSize: 9, fontWeight: 500, letterSpacing: '0.12em', color: gold, textTransform: 'uppercase', padding: '6px 14px', border: `1px solid ${gold}25`, borderRadius: 100, background: `${gold}05` }}>{b}</span>
             ))}
           </div>
         </div>
@@ -202,12 +215,12 @@ export default function ClinicaEsteticaRenderer({ data }: { data: DemoData }) {
       </section>
 
       {/* ═══ FEATURES — horizontal strip, thin and elegant ═══ */}
-      <div style={{ padding: '48px clamp(24px, 6vw, 80px)', borderTop: `1px solid ${rose}10`, borderBottom: `1px solid ${rose}10`, background: white }}>
+      <div style={{ padding: '48px clamp(24px, 6vw, 80px)', borderTop: `1px solid ${gold}12`, borderBottom: `1px solid ${gold}12`, background: white }}>
         <div style={{ maxWidth: 1000, margin: '0 auto', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 24 }}>
           {data.features.map((f, i) => (
             <Gf key={i} d={i * 150}>
               <div style={{ textAlign: 'center', flex: 1, minWidth: 120 }}>
-                <div style={{ fontFamily: heading, fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', fontStyle: 'italic', color: rose }}>{f.value}</div>
+                <div style={{ fontFamily: heading, fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', fontStyle: 'italic', color: gold }}>{f.value}</div>
                 <div style={{ fontSize: 10, color: muted, marginTop: 6, letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 400 }}>{f.label}</div>
               </div>
             </Gf>
@@ -219,13 +232,15 @@ export default function ClinicaEsteticaRenderer({ data }: { data: DemoData }) {
       <Sec>
         <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 'clamp(40px, 8vw, 100px)', alignItems: 'center' }} className="clinic-grid">
           <Gf>
-            <div style={{ borderRadius: 32, overflow: 'hidden', aspectRatio: '4/5', boxShadow: `0 24px 64px ${rose}10` }}>
+            <div style={{ borderRadius: 32, overflow: 'hidden', aspectRatio: '4/5', boxShadow: `0 24px 64px ${rose}10`, border: `1px solid ${gold}18`, position: 'relative' }}>
               <img src={data.about.image} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { (e.target as HTMLImageElement).src = fallback; }} />
+              {/* Subtle gold shimmer at bottom */}
+              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '20%', background: `linear-gradient(transparent, ${gold}08)` }} />
             </div>
           </Gf>
           <Gf d={200}>
             <div>
-              <span style={{ fontSize: 10, fontWeight: 500, letterSpacing: '0.25em', color: rose, textTransform: 'uppercase' }}>Sobre nós</span>
+              <span style={{ fontSize: 10, fontWeight: 500, letterSpacing: '0.25em', color: gold, textTransform: 'uppercase' }}>Sobre nós</span>
               <h2 style={{ fontFamily: heading, fontSize: 'clamp(1.6rem, 3.5vw, 2.4rem)', fontWeight: 400, fontStyle: 'italic', color: dark, marginTop: 12, marginBottom: 20, lineHeight: 1.25 }}>
                 Ciência e arte a serviço da sua beleza
               </h2>
@@ -240,20 +255,21 @@ export default function ClinicaEsteticaRenderer({ data }: { data: DemoData }) {
       {/* ═══ TREATMENTS — Clean grid with thin borders, no heavy cards ═══ */}
       <Sec id="tratamentos" alt>
         <Gf><SH label="Tratamentos" title="Procedimentos exclusivos" sub="Tecnologia avançada e protocolos personalizados para resultados naturais e duradouros." /></Gf>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 1, background: `${rose}10`, borderRadius: 24, overflow: 'hidden' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 1, background: `${gold}12`, borderRadius: 24, overflow: 'hidden', border: `1px solid ${gold}10` }}>
           {data.services.map((s, i) => (
             <Gf key={s.name} d={i * 60}>
               <div onClick={() => setBookingSvc(s)} style={{
                 padding: '32px 28px', background: white, cursor: 'pointer',
                 transition: 'all 0.4s', position: 'relative', display: 'flex', flexDirection: 'column', height: '100%',
+                borderBottom: `2px solid transparent`,
               }}
-                onMouseEnter={e => { e.currentTarget.style.background = `${rose}04`; }}
-                onMouseLeave={e => { e.currentTarget.style.background = white; }}>
-                {s.popular && <span style={{ position: 'absolute', top: 16, right: 16, padding: '4px 14px', background: `${rose}12`, color: rose, fontSize: 9, fontWeight: 500, borderRadius: 100, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Popular</span>}
-                <span style={{ fontSize: 10, fontWeight: 500, letterSpacing: '0.15em', color: rose, textTransform: 'uppercase', marginBottom: 10 }}>{s.category}</span>
+                onMouseEnter={e => { e.currentTarget.style.background = `${gold}04`; e.currentTarget.style.borderBottomColor = `${gold}30`; }}
+                onMouseLeave={e => { e.currentTarget.style.background = white; e.currentTarget.style.borderBottomColor = 'transparent'; }}>
+                {s.popular && <span style={{ position: 'absolute', top: 16, right: 16, padding: '4px 14px', background: `linear-gradient(135deg, ${gold}18, ${gold}08)`, color: gold, fontSize: 9, fontWeight: 600, borderRadius: 100, letterSpacing: '0.08em', textTransform: 'uppercase', border: `1px solid ${gold}15` }}>Popular</span>}
+                <span style={{ fontSize: 10, fontWeight: 500, letterSpacing: '0.15em', color: gold, textTransform: 'uppercase', marginBottom: 10 }}>{s.category}</span>
                 <h3 style={{ fontFamily: heading, fontSize: 18, fontWeight: 400, fontStyle: 'italic', color: dark, marginBottom: 8 }}>{s.name}</h3>
                 <p style={{ fontSize: 13, color: muted, lineHeight: 1.8, flex: 1, fontWeight: 300 }}>{s.desc}</p>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 18, paddingTop: 16, borderTop: `1px solid ${rose}08` }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 18, paddingTop: 16, borderTop: `1px solid ${gold}10` }}>
                   <span style={{ fontFamily: heading, fontSize: 18, fontStyle: 'italic', color: dark }}>{s.price}</span>
                   {s.time && <span style={{ fontSize: 11, color: muted, fontWeight: 300 }}>{s.time}</span>}
                 </div>
@@ -273,7 +289,7 @@ export default function ClinicaEsteticaRenderer({ data }: { data: DemoData }) {
             <Gf key={s.name} d={i * 120}>
               <div style={{ textAlign: 'center', width: 'clamp(200px, 25vw, 260px)' }}>
                 {/* Elegant circular photo with rose gold ring */}
-                <div style={{ width: 120, height: 120, borderRadius: '50%', margin: '0 auto 20px', padding: 3, background: `linear-gradient(135deg, ${rose}40, ${rose}15)` }}>
+                <div style={{ width: 120, height: 120, borderRadius: '50%', margin: '0 auto 20px', padding: 3, background: `linear-gradient(135deg, ${gold}50, ${gold}20)` }}>
                   <div style={{ width: '100%', height: '100%', borderRadius: '50%', background: `${rose}08`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: heading, fontSize: 36, fontStyle: 'italic', color: rose }}>{s.name.split(' ').pop()?.[0] || s.name[0]}</div>
                 </div>
                 {s.available && <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#4ade80', border: `3px solid ${cream}`, margin: '-16px auto 8px', position: 'relative', zIndex: 2 }} />}
@@ -281,7 +297,7 @@ export default function ClinicaEsteticaRenderer({ data }: { data: DemoData }) {
                 {/* Credential — prominently displayed */}
                 <p style={{ fontSize: 11, color: rose, fontWeight: 500, letterSpacing: '0.04em', marginBottom: 8 }}>{s.role}</p>
                 <div style={{ fontSize: 12 }}>
-                  <span style={{ color: rose }}>★ {s.rating}</span>
+                  <span style={{ color: gold }}>★ {s.rating}</span>
                   <span style={{ color: `${muted}80` }}> · {s.reviews} avaliações</span>
                 </div>
               </div>
@@ -331,7 +347,7 @@ export default function ClinicaEsteticaRenderer({ data }: { data: DemoData }) {
             <Gf key={i} d={i * 100}>
               <div style={{ padding: 28, background: white, borderRadius: 20, border: `1px solid ${rose}08`, boxShadow: `0 4px 24px ${rose}06`, position: 'relative' }}>
                 <span style={{ position: 'absolute', top: 16, right: 20, fontFamily: heading, fontSize: 48, color: `${rose}12`, lineHeight: 1, fontStyle: 'italic' }}>"</span>
-                <div style={{ fontSize: 12, color: rose, letterSpacing: 2, marginBottom: 14 }}>{'★'.repeat(rv.stars)}</div>
+                <div style={{ fontSize: 12, color: gold, letterSpacing: 2, marginBottom: 14 }}>{'★'.repeat(rv.stars)}</div>
                 <p style={{ fontFamily: heading, fontSize: 14, fontStyle: 'italic', color: `${dark}cc`, lineHeight: 2 }}>"{rv.text}"</p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 18 }}>
                   <div style={{ width: 36, height: 36, borderRadius: '50%', background: `${rose}0c`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: heading, fontStyle: 'italic', fontSize: 15, color: rose }}>{rv.name[0]}</div>
@@ -356,24 +372,24 @@ export default function ClinicaEsteticaRenderer({ data }: { data: DemoData }) {
             <Gf key={p.name} d={i * 120}>
               <div style={{
                 padding: p.popular ? 40 : 32, background: white, borderRadius: 24,
-                border: `1px solid ${p.popular ? rose : `${rose}10`}`,
-                boxShadow: p.popular ? `0 16px 56px ${rose}12` : `0 4px 24px ${rose}06`,
+                border: `1px solid ${p.popular ? gold : `${gold}12`}`,
+                boxShadow: p.popular ? `0 16px 56px ${gold}10, 0 0 0 1px ${gold}15` : `0 4px 24px ${rose}06`,
                 position: 'relative', display: 'flex', flexDirection: 'column', height: '100%',
                 transform: p.popular ? 'scale(1.03)' : 'none',
               }}>
-                {p.popular && <span style={{ position: 'absolute', top: -14, left: '50%', transform: 'translateX(-50%)', padding: '6px 24px', background: rose, color: white, fontSize: 9, fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', borderRadius: 100 }}>Mais escolhido</span>}
+                {p.popular && <span style={{ position: 'absolute', top: -14, left: '50%', transform: 'translateX(-50%)', padding: '6px 24px', background: `linear-gradient(135deg, ${gold}, ${goldLight})`, color: white, fontSize: 9, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', borderRadius: 100, boxShadow: `0 4px 16px ${gold}30` }}>Mais escolhido</span>}
                 <h3 style={{ fontFamily: heading, fontSize: 22, fontStyle: 'italic', color: dark, marginBottom: 8 }}>{p.name}</h3>
-                <div style={{ fontFamily: heading, fontSize: 34, fontStyle: 'italic', color: rose, marginBottom: 28 }}>{p.price}</div>
+                <div style={{ fontFamily: heading, fontSize: 34, fontStyle: 'italic', color: gold, marginBottom: 28 }}>{p.price}</div>
                 <ul style={{ listStyle: 'none', padding: 0, flex: 1 }}>
-                  {p.features.map((f, j) => <li key={j} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 0', fontSize: 13, color: `${dark}bb`, borderTop: j > 0 ? `1px solid ${rose}06` : 'none', fontWeight: 300 }}><span style={{ color: rose, fontSize: 11 }}>✓</span>{f}</li>)}
+                  {p.features.map((f, j) => <li key={j} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 0', fontSize: 13, color: `${dark}bb`, borderTop: j > 0 ? `1px solid ${gold}08` : 'none', fontWeight: 300 }}><span style={{ color: gold, fontSize: 11 }}>✓</span>{f}</li>)}
                 </ul>
                 <button style={{
                   width: '100%', padding: 16, marginTop: 24,
-                  background: p.popular ? rose : 'transparent', color: p.popular ? white : dark,
-                  border: p.popular ? 'none' : `1px solid ${rose}20`, borderRadius: 100,
+                  background: p.popular ? `linear-gradient(135deg, ${gold}, ${goldLight})` : 'transparent', color: p.popular ? white : dark,
+                  border: p.popular ? 'none' : `1px solid ${gold}20`, borderRadius: 100,
                   fontSize: 11, fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase',
                   cursor: 'pointer', transition: 'all 0.4s',
-                  boxShadow: p.popular ? `0 4px 24px ${rose}25` : 'none',
+                  boxShadow: p.popular ? `0 4px 24px ${gold}25` : 'none',
                 }}
                   onMouseEnter={e => { if (!p.popular) e.currentTarget.style.background = `${rose}06`; }}
                   onMouseLeave={e => { if (!p.popular) e.currentTarget.style.background = 'transparent'; }}>
