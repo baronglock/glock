@@ -269,7 +269,7 @@ export default function DemoPage() {
   /* ── Delegate to niche-specific FULL renderer if available ── */
   if (data.niche === 'barbearia') return <Suspense fallback={<div style={{ minHeight: '100vh', background: '#0a0a0f' }} />}><BarbeariaRenderer data={data} /></Suspense>;
   if (data.niche === 'academia') return <Suspense fallback={<div style={{ minHeight: '100vh', background: '#0a0a0a' }} />}><AcademiaRenderer data={data} /></Suspense>;
-  if (data.niche === 'clinica_estetica') return <Suspense fallback={<div style={{ minHeight: '100vh', background: '#faf7f5' }} />}><ClinicaEsteticaRenderer data={data} /></Suspense>;
+  if (data.niche === 'clinica_estetica' || data.niche === 'salao') return <Suspense fallback={<div style={{ minHeight: '100vh', background: '#faf7f5' }} />}><ClinicaEsteticaRenderer data={data} /></Suspense>;
 
   const c = data.colors;
   const lv = TIERS[tier].level;

@@ -2,7 +2,7 @@
   "slug": "essenza-estetica-avancada-e-saude-integrativa",
   "name": "Essenza Estetica Avancada E Saude Integrativa",
   "niche": "clinica_estetica",
-  "tagline": "Sua beleza, nossa missão",
+  "tagline": "Beleza e saúde em harmonia",
   "city": "Av. Emílio Johnson, 339 - Sala 3 - Vila Santa Terezinha, Alm. Tamandaré - PR, 83501-000, Brasil",
   "phone": "5541999305534",
   "colors": {
@@ -13,13 +13,13 @@
     "textMuted": "#8a7e77"
   },
   "hero": {
-    "title": "Transformação e bem-estar integral",
-    "subtitle": "Na Essenza Estética Avançada e Saúde Integrativa, unimos ciência e arte para oferecer tratamentos personalizados que elevam sua autoestima. Localizados em Almirante Tamandaré, trabalhamos com as mais modernas técnicas de estética e terapias integrativas, priorizando sempre o seu bem-estar e saúde.",
-    "image": "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1400&q=85&auto=format&fit=crop"
+    "title": "Estética que Renova Vidas",
+    "subtitle": "Na ESSENZA ESTETICA AVANCADA E SAUDE INTEGRATIVA, oferecemos tratamentos inovadores que unificam estética e bem-estar. Nossa equipe de especialistas está dedicada a proporcionar resultados personalizados, elevando sua autoestima e promovendo sua saúde integral.",
+    "image": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1400&q=85&auto=format&fit=crop"
   },
   "about": {
-    "text": "Na Essenza Estética Avançada e Saúde Integrativa, unimos ciência e arte para oferecer tratamentos personalizados que elevam sua autoestima. Localizados em Almirante Tamandaré, trabalhamos com as mais modernas técnicas de estética e terapias integrativas, priorizando sempre o seu bem-estar e saúde.",
-    "image": "https://images.unsplash.com/photo-1540555700478-4be289fbec6d?w=800&q=80&auto=format&fit=crop"
+    "text": "Na ESSENZA ESTETICA AVANCADA E SAUDE INTEGRATIVA, oferecemos tratamentos inovadores que unificam estética e bem-estar. Nossa equipe de especialistas está dedicada a proporcionar resultados personalizados, elevando sua autoestima e promovendo sua saúde integral.",
+    "image": "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800&q=80&auto=format&fit=crop"
   },
   "services": [
     {
@@ -90,12 +90,12 @@
     }
   ],
   "gallery": [
+    "https://images.unsplash.com/photo-1552693673-1bf958298935?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1629909615957-040e1e4b1e08?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1540555700478-4be289fbec6d?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=600&q=80&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80&auto=format&fit=crop"
   ],
   "reviews": [
     {

@@ -2,7 +2,7 @@
   "slug": "studio-jaspe",
   "name": "Studio Jaspe",
   "niche": "salao",
-  "tagline": "Sua beleza, nossa paixão diária",
+  "tagline": "Beleza que reflete sua essência",
   "city": "R. Frei Beda de Gavello, 250 - AP 1 - Tranqueira, Alm. Tamandaré - PR, 83514-250, Brasil",
   "phone": "5541987581652",
   "colors": {
@@ -13,89 +13,89 @@
     "textMuted": "#8a7e77"
   },
   "hero": {
-    "title": "Transforme-se no Studio Jaspe",
-    "subtitle": "No Studio Jaspe, em Almirante Tamandaré, unimos técnica e estilo para realçar a sua beleza única. Nossa equipe de profissionais é dedicada a oferecer um atendimento personalizado, garantindo que cada visita seja uma experiência transformadora.",
-    "image": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1400&q=85&auto=format&fit=crop"
+    "title": "Transforme seu visual hoje",
+    "subtitle": "No STUDIO JASPE, acreditamos que cada cliente é único e merece um atendimento personalizado. Nossa equipe de profissionais altamente qualificados está pronta para realçar sua beleza natural com serviços de cabelo, maquiagem e estética de alta qualidade.",
+    "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1400&q=85&auto=format&fit=crop"
   },
   "about": {
-    "text": "No Studio Jaspe, em Almirante Tamandaré, unimos técnica e estilo para realçar a sua beleza única. Nossa equipe de profissionais é dedicada a oferecer um atendimento personalizado, garantindo que cada visita seja uma experiência transformadora.",
-    "image": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80&auto=format&fit=crop"
+    "text": "No STUDIO JASPE, acreditamos que cada cliente é único e merece um atendimento personalizado. Nossa equipe de profissionais altamente qualificados está pronta para realçar sua beleza natural com serviços de cabelo, maquiagem e estética de alta qualidade.",
+    "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80&auto=format&fit=crop"
   },
   "services": [
     {
-      "name": "Harmonização Facial",
-      "desc": "Preenchimento com ácido hialurônico.",
-      "icon": "◇",
-      "price": "A partir de R$ 1.200",
-      "time": "60 min",
-      "category": "Face",
-      "popular": true
-    },
-    {
-      "name": "Botox",
-      "desc": "Suavização de linhas e rugas.",
-      "icon": "◎",
-      "price": "R$ 800",
-      "time": "30 min",
-      "category": "Face"
-    },
-    {
-      "name": "Limpeza de Pele",
-      "desc": "Limpeza profunda com extração.",
-      "icon": "◈",
-      "price": "R$ 250",
-      "time": "60 min",
-      "category": "Pele",
-      "popular": true
-    },
-    {
-      "name": "Peeling",
-      "desc": "Renovação celular profunda.",
-      "icon": "◇",
-      "price": "R$ 350",
+      "name": "Corte Feminino",
+      "desc": "Corte personalizado para o seu estilo.",
+      "icon": "✂️",
+      "price": "R$ 80",
       "time": "45 min",
-      "category": "Pele"
+      "category": "Cortes",
+      "popular": true
     },
     {
-      "name": "Microagulhamento",
-      "desc": "Estímulo de colágeno com micro agulhas.",
-      "icon": "◎",
-      "price": "R$ 400",
-      "time": "40 min",
-      "category": "Pele"
-    },
-    {
-      "name": "Depilação a Laser",
-      "desc": "Redução definitiva de pelos.",
-      "icon": "◈",
-      "price": "R$ 200/área",
+      "name": "Escova",
+      "desc": "Modelagem com secador e escova.",
+      "icon": "💇",
+      "price": "R$ 50",
       "time": "30 min",
-      "category": "Corpo"
+      "category": "Modelagem"
     },
     {
-      "name": "Drenagem",
-      "desc": "Drenagem linfática corporal.",
-      "icon": "◇",
+      "name": "Coloração",
+      "desc": "Tintura profissional com produtos premium.",
+      "icon": "🎨",
+      "price": "R$ 120",
+      "time": "90 min",
+      "category": "Coloração",
+      "popular": true
+    },
+    {
+      "name": "Mechas/Luzes",
+      "desc": "Mechas naturais e iluminadas.",
+      "icon": "✨",
+      "price": "R$ 200",
+      "time": "120 min",
+      "category": "Coloração"
+    },
+    {
+      "name": "Progressiva",
+      "desc": "Alisamento duradouro e saudável.",
+      "icon": "💧",
       "price": "R$ 180",
-      "time": "50 min",
-      "category": "Corpo"
+      "time": "120 min",
+      "category": "Tratamentos"
     },
     {
-      "name": "Skinbooster",
-      "desc": "Hidratação profunda da pele.",
-      "icon": "◎",
-      "price": "R$ 600",
+      "name": "Hidratação",
+      "desc": "Tratamento profundo para cabelos danificados.",
+      "icon": "💎",
+      "price": "R$ 60",
+      "time": "40 min",
+      "category": "Tratamentos"
+    },
+    {
+      "name": "Manicure",
+      "desc": "Unhas perfeitas com esmaltação.",
+      "icon": "💅",
+      "price": "R$ 40",
       "time": "30 min",
-      "category": "Face"
+      "category": "Unhas"
+    },
+    {
+      "name": "Penteado",
+      "desc": "Penteados para festas e eventos.",
+      "icon": "👑",
+      "price": "R$ 150",
+      "time": "60 min",
+      "category": "Modelagem"
     }
   ],
   "gallery": [
-    "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1540555700478-4be289fbec6d?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1562322140-8baeacacf908?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1600948836101-f9ffda59d250?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1559599101-f09722fb4948?w=600&q=80&auto=format&fit=crop"
   ],
   "reviews": [
     {
@@ -224,24 +224,24 @@
   ],
   "products": [
     {
-      "name": "Sérum Vitamina C",
-      "price": "R$ 129",
-      "img": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=300&q=80&auto=format&fit=crop"
+      "name": "Shampoo Reconstrutor",
+      "price": "R$ 65",
+      "img": "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=300&q=80&auto=format&fit=crop"
     },
     {
-      "name": "Protetor Solar",
-      "price": "R$ 89",
-      "img": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=300&q=80&auto=format&fit=crop"
+      "name": "Máscara Capilar",
+      "price": "R$ 49",
+      "img": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=300&q=80&auto=format&fit=crop"
     },
     {
-      "name": "Creme Anti-Aging",
-      "price": "R$ 179",
-      "img": "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=300&q=80&auto=format&fit=crop"
+      "name": "Óleo Reparador",
+      "price": "R$ 55",
+      "img": "https://images.unsplash.com/photo-1626808642875-0aa545482dfb?w=300&q=80&auto=format&fit=crop"
     },
     {
-      "name": "Kit Home Care",
-      "price": "R$ 299",
-      "img": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=300&q=80&auto=format&fit=crop",
+      "name": "Kit Tratamento",
+      "price": "R$ 139",
+      "img": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=300&q=80&auto=format&fit=crop",
       "popular": true
     }
   ]

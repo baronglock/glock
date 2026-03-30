@@ -2,7 +2,7 @@
   "slug": "em-estetica",
   "name": "Em Estetica",
   "niche": "clinica_estetica",
-  "tagline": "Realce sua beleza única",
+  "tagline": "Revele sua beleza única",
   "city": "R. Dídio Santos, 552 - Vila Santa Terezinha, Alm. Tamandaré - PR, 83501-070, Brasil",
   "phone": "5541996965843",
   "colors": {
@@ -13,13 +13,13 @@
     "textMuted": "#8a7e77"
   },
   "hero": {
-    "title": "Transforme-se com confiança",
-    "subtitle": "No EM ESTETICA, oferecemos uma experiência personalizada para realçar sua beleza natural. Nossa equipe de profissionais qualificados está pronta para atender suas necessidades com técnicas modernas e um ambiente acolhedor.",
-    "image": "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=1400&q=85&auto=format&fit=crop"
+    "title": "Estética que encanta",
+    "subtitle": "No EM ESTETICA, em Almirante Tamandaré, transformamos sua beleza em arte. Nossos profissionais altamente capacitados oferecem serviços personalizados que valorizam sua essência e bem-estar.",
+    "image": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1400&q=85&auto=format&fit=crop"
   },
   "about": {
-    "text": "No EM ESTETICA, oferecemos uma experiência personalizada para realçar sua beleza natural. Nossa equipe de profissionais qualificados está pronta para atender suas necessidades com técnicas modernas e um ambiente acolhedor.",
-    "image": "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=800&q=80&auto=format&fit=crop"
+    "text": "No EM ESTETICA, em Almirante Tamandaré, transformamos sua beleza em arte. Nossos profissionais altamente capacitados oferecem serviços personalizados que valorizam sua essência e bem-estar.",
+    "image": "https://images.unsplash.com/photo-1552693673-1bf958298935?w=800&q=80&auto=format&fit=crop"
   },
   "services": [
     {
@@ -90,12 +90,12 @@
     }
   ],
   "gallery": [
-    "https://images.unsplash.com/photo-1598524374912-6b0b0bdb1f25?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1629909615957-040e1e4b1e08?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1598524374912-6b0b0bdb1f25?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=600&q=80&auto=format&fit=crop"
   ],
   "reviews": [
     {
