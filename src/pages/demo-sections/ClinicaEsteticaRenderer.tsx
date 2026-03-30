@@ -102,7 +102,7 @@ export default function ClinicaEsteticaRenderer({ data }: { data: DemoData }) {
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
         padding: navScroll ? '14px clamp(24px, 6vw, 80px)' : '24px clamp(24px, 6vw, 80px)',
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-        background: navScroll ? `${cream}f5` : 'transparent',
+        background: navScroll ? `${cream}f5` : `${cream}cc`,
         backdropFilter: navScroll ? 'blur(20px)' : 'none',
         borderBottom: navScroll ? `1px solid ${rose}10` : 'none',
         transition: 'all 0.6s',

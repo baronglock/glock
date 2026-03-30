@@ -16,7 +16,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://*.stripe.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.supabase.co https://api.stripe.com https://*.stripe.com; frame-src https://js.stripe.com https://checkout.stripe.com; frame-ancestors 'none'; form-action 'self' https://checkout.stripe.com; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://*.stripe.com https://*.canva.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.supabase.co https://api.stripe.com https://*.stripe.com; frame-src https://js.stripe.com https://checkout.stripe.com https://www.google.com https://maps.google.com; frame-ancestors 'none'; form-action 'self' https://checkout.stripe.com; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
         },
         { "key": "Cross-Origin-Opener-Policy", "value": "same-origin" },
         { "key": "Cross-Origin-Resource-Policy", "value": "same-origin" }

@@ -1,92 +1,93 @@
 {
   "slug": "em-estetica",
-  "name": "Em Estetica",
+  "name": "EM Beauty Clinic",
   "niche": "salao",
-  "tagline": "Sua beleza em destaque!",
+  "tagline": "Beleza Natural para você",
   "city": "R. João Batista de Siqueira, 373 - Vila Rachel, Alm. Tamandaré - PR, 83501-610, Brasil",
   "phone": "5541996965843",
   "colors": {
-    "primary": "#c47d8a",
-    "secondary": "#1a1a2e",
-    "bg": "#faf6f4",
+    "primary": "#c8b7b3",
+    "secondary": "#7f7370",
+    "bg": "#f6f4f0",
     "text": "#2a2320",
-    "textMuted": "#8a7e77"
+    "textMuted": "#7f7370"
   },
   "hero": {
-    "title": "Transforme-se com confiança",
-    "subtitle": "No EM ESTETICA, oferecemos uma experiência única de beleza em Almirante Tamandaré, onde cada detalhe é pensado para realçar sua verdadeira essência. Nossos profissionais são apaixonados por estética e prontos para proporcionar a você um atendimento personalizado que vai além das expectativas.",
+    "title": "Sua beleza em boas mãos",
+    "subtitle": "A EM Beauty Clinic é especializada em design de sobrancelhas, lash lifting e estética facial. Com Emmanoelli P. Martins à frente desde 2016, oferecemos uma experiência personalizada em um ambiente acolhedor e instagramável.",
     "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1400&q=85&auto=format&fit=crop"
   },
   "about": {
-    "text": "No EM ESTETICA, oferecemos uma experiência única de beleza em Almirante Tamandaré, onde cada detalhe é pensado para realçar sua verdadeira essência. Nossos profissionais são apaixonados por estética e prontos para proporcionar a você um atendimento personalizado que vai além das expectativas.",
+    "text": "Fundada por Emmanoelli P. Martins, formada em Estética e Cosmetologia desde 2016, a EM Beauty Clinic é referência em cuidados faciais em Almirante Tamandaré. Nosso espaço foi pensado para proporcionar uma experiência única de autocuidado, com atendimento personalizado e técnicas modernas.",
     "image": "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=800&q=80&auto=format&fit=crop"
   },
   "services": [
     {
-      "name": "Corte Feminino",
-      "desc": "Corte personalizado para o seu estilo.",
-      "icon": "✂️",
-      "price": "R$ 80",
-      "time": "45 min",
-      "category": "Cortes",
-      "popular": true
-    },
-    {
-      "name": "Escova",
-      "desc": "Modelagem com secador e escova.",
-      "icon": "💇",
+      "name": "Design de Sobrancelhas",
+      "desc": "Modelagem personalizada para realçar seu olhar.",
+      "icon": "◇",
       "price": "R$ 50",
       "time": "30 min",
-      "category": "Modelagem"
-    },
-    {
-      "name": "Coloração",
-      "desc": "Tintura profissional com produtos premium.",
-      "icon": "🎨",
-      "price": "R$ 120",
-      "time": "90 min",
-      "category": "Coloração",
+      "category": "Sobrancelhas",
       "popular": true
     },
     {
-      "name": "Mechas/Luzes",
-      "desc": "Mechas naturais e iluminadas.",
-      "icon": "✨",
-      "price": "R$ 200",
-      "time": "120 min",
-      "category": "Coloração"
-    },
-    {
-      "name": "Progressiva",
-      "desc": "Alisamento duradouro e saudável.",
-      "icon": "💧",
-      "price": "R$ 180",
-      "time": "120 min",
-      "category": "Tratamentos"
-    },
-    {
-      "name": "Hidratação",
-      "desc": "Tratamento profundo para cabelos danificados.",
-      "icon": "💎",
-      "price": "R$ 60",
+      "name": "Design com Henna",
+      "desc": "Sobrancelhas definidas com henna profissional.",
+      "icon": "◎",
+      "price": "R$ 80",
       "time": "40 min",
-      "category": "Tratamentos"
+      "category": "Sobrancelhas"
     },
     {
-      "name": "Manicure",
-      "desc": "Unhas perfeitas com esmaltação.",
-      "icon": "💅",
-      "price": "R$ 40",
-      "time": "30 min",
-      "category": "Unhas"
+      "name": "Design com Tintura",
+      "desc": "Coloração duradoura para sobrancelhas perfeitas.",
+      "icon": "◈",
+      "price": "R$ 85",
+      "time": "40 min",
+      "category": "Sobrancelhas"
     },
     {
-      "name": "Penteado",
-      "desc": "Penteados para festas e eventos.",
-      "icon": "👑",
+      "name": "Brow Lamination",
+      "desc": "Efeito penteado e alinhado que dura semanas.",
+      "icon": "◇",
       "price": "R$ 150",
       "time": "60 min",
-      "category": "Modelagem"
+      "category": "Sobrancelhas",
+      "popular": true
+    },
+    {
+      "name": "Lash Lifting",
+      "desc": "Curvatura natural e duradoura nos cílios.",
+      "icon": "◎",
+      "price": "R$ 170",
+      "time": "60 min",
+      "category": "Cílios",
+      "popular": true
+    },
+    {
+      "name": "Epilação do Buço",
+      "desc": "Remoção com cera fria, sem irritação.",
+      "icon": "◈",
+      "price": "R$ 35",
+      "time": "15 min",
+      "category": "Depilação"
+    },
+    {
+      "name": "Spa Labial",
+      "desc": "Hidratação e revitalização dos lábios.",
+      "icon": "◇",
+      "price": "R$ 55",
+      "time": "30 min",
+      "category": "Facial"
+    },
+    {
+      "name": "Maquiagem Social",
+      "desc": "Make profissional para eventos e ocasiões.",
+      "icon": "◎",
+      "price": "R$ 180",
+      "time": "60 min",
+      "category": "Make"
     }
   ],
   "gallery": [
@@ -143,24 +144,17 @@
   ],
   "staff": [
     {
-      "name": "Vinicius",
-      "role": "Especialista",
-      "rating": 4.9,
-      "reviews": 100,
+      "name": "Emmanoelli Martins",
+      "role": "CEO & Esteticista",
+      "rating": 5.0,
+      "reviews": 34,
       "available": true
     },
     {
       "name": "Profissional 2",
-      "role": "Sênior",
+      "role": "Assistente",
       "rating": 4.8,
-      "reviews": 80,
-      "available": true
-    },
-    {
-      "name": "Profissional 3",
-      "role": "Premium",
-      "rating": 4.9,
-      "reviews": 60,
+      "reviews": 15,
       "available": true
     }
   ],
@@ -197,7 +191,7 @@
     }
   ],
   "cta": {
-    "text": "Pronto pra conhecer a Em Estetica?",
+    "text": "Agende seu horário na EM Beauty Clinic",
     "buttonText": "Agendar agora"
   },
   "faq": [
