@@ -1,9 +1,9 @@
 {
   "slug": "dra-ste-biomedicina-estetica",
-  "name": "Dra. Ste Souza Estética",
+  "name": "Dra. Ste Souza",
   "niche": "clinica_estetica",
-  "tagline": "Realce sua beleza única",
-  "city": "R. Dídio Santos, 552 - Vila Santa Terezinha, Alm. Tamandaré - PR, 83501-070, Brasil",
+  "tagline": "Cuidar de você também é necessidade",
+  "city": "Rua Dídio Santos, 498 - Vila Santa Terezinha, Almirante Tamandaré/PR, 83501-070",
   "phone": "5541988183258",
   "colors": {
     "primary": "#b08d7a",
@@ -13,80 +13,97 @@
     "textMuted": "#8a7e77"
   },
   "hero": {
-    "title": "Beleza e Saúde em Harmonia",
-    "subtitle": "Na DRA. STE BIOMEDICINA ESTETICA, oferecemos tratamentos personalizados que unem ciência e estética para transformar sua autoestima. Com uma equipe de profissionais altamente qualificados, garantimos resultados visíveis e duradouros em um ambiente acolhedor e seguro.",
+    "title": "Biomedicina Estética Avançada",
+    "subtitle": "A Dra. Ste Souza é especialista em biomedicina estética em Almirante Tamandaré. Com protocolos personalizados e tecnologia de ponta, oferecemos tratamentos faciais e corporais que realçam sua beleza natural com segurança e resultados comprovados.",
     "image": "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=1400&q=85&auto=format&fit=crop"
   },
   "about": {
-    "text": "Na DRA. STE BIOMEDICINA ESTETICA, oferecemos tratamentos personalizados que unem ciência e estética para transformar sua autoestima. Com uma equipe de profissionais altamente qualificados, garantimos resultados visíveis e duradouros em um ambiente acolhedor e seguro.",
+    "text": "Com formação em Biomedicina Estética, a Dra. Ste Souza atua com excelência em procedimentos faciais e corporais de alta performance. Nosso espaço foi pensado para proporcionar conforto e confiança, com atendimento personalizado e avaliação individual para cada paciente.",
     "image": "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80&auto=format&fit=crop"
   },
   "services": [
     {
-      "name": "Harmonização Facial",
-      "desc": "Preenchimento com ácido hialurônico.",
+      "name": "BOTOX",
+      "desc": "Terço superior completo (olhos, testa e glabela), incluso retoque após 15 dias.",
       "icon": "◇",
-      "price": "A partir de R$ 1.200",
+      "price": "R$ 799",
+      "time": "30 min",
+      "category": "Face",
+      "popular": true
+    },
+    {
+      "name": "Preenchimento Labial",
+      "desc": "Preenchimento com ácido hialurônico 1ML.",
+      "icon": "◎",
+      "price": "R$ 599",
       "time": "60 min",
       "category": "Face",
       "popular": true
     },
     {
-      "name": "Botox",
-      "desc": "Suavização de linhas e rugas.",
-      "icon": "◎",
-      "price": "R$ 800",
-      "time": "30 min",
+      "name": "Bioestimulador de Colágeno",
+      "desc": "Estímulo natural da produção de colágeno.",
+      "icon": "◈",
+      "price": "R$ 999",
+      "time": "60 min",
       "category": "Face"
     },
     {
-      "name": "Limpeza de Pele",
-      "desc": "Limpeza profunda com extração.",
-      "icon": "◈",
-      "price": "R$ 250",
+      "name": "Criolipólise",
+      "desc": "Redução de gordura localizada por congelamento.",
+      "icon": "◇",
+      "price": "R$ 299",
       "time": "60 min",
-      "category": "Pele",
+      "category": "Corpo",
       "popular": true
     },
     {
-      "name": "Peeling",
-      "desc": "Renovação celular profunda.",
-      "icon": "◇",
-      "price": "R$ 350",
-      "time": "45 min",
-      "category": "Pele"
-    },
-    {
-      "name": "Microagulhamento",
-      "desc": "Estímulo de colágeno com micro agulhas.",
+      "name": "Enzimas Redução de Gordura",
+      "desc": "Enzimas para redução de gordura localizada.",
       "icon": "◎",
-      "price": "R$ 400",
-      "time": "40 min",
-      "category": "Pele"
-    },
-    {
-      "name": "Depilação a Laser",
-      "desc": "Redução definitiva de pelos.",
-      "icon": "◈",
-      "price": "R$ 200/área",
+      "price": "R$ 160",
       "time": "30 min",
       "category": "Corpo"
     },
     {
-      "name": "Drenagem",
-      "desc": "Drenagem linfática corporal.",
-      "icon": "◇",
-      "price": "R$ 180",
-      "time": "50 min",
-      "category": "Corpo"
-    },
-    {
-      "name": "Skinbooster",
-      "desc": "Hidratação profunda da pele.",
-      "icon": "◎",
-      "price": "R$ 600",
+      "name": "Radiofrequência Facial",
+      "desc": "Estímulo de colágeno e firmeza da pele.",
+      "icon": "◈",
+      "price": "R$ 100",
       "time": "30 min",
       "category": "Face"
+    },
+    {
+      "name": "Radiofrequência Corporal",
+      "desc": "Tratamento corporal para flacidez e celulite.",
+      "icon": "◇",
+      "price": "R$ 100",
+      "time": "60 min",
+      "category": "Corpo"
+    },
+    {
+      "name": "Limpeza de Pele",
+      "desc": "Limpeza profunda com extração e hidratação.",
+      "icon": "◎",
+      "price": "R$ 129",
+      "time": "90 min",
+      "category": "Pele"
+    },
+    {
+      "name": "Carboxiterapia Facial",
+      "desc": "Gás carbônico para rejuvenescimento facial.",
+      "icon": "◈",
+      "price": "R$ 70",
+      "time": "30 min",
+      "category": "Face"
+    },
+    {
+      "name": "Carboxiterapia Corporal",
+      "desc": "Tratamento corporal com CO2 para celulite e estrias.",
+      "icon": "◇",
+      "price": "R$ 100",
+      "time": "30 min",
+      "category": "Corpo"
     }
   ],
   "gallery": [
@@ -129,97 +146,86 @@
       "value": "500+"
     },
     {
-      "label": "Anos de experiência",
-      "value": "3"
-    },
-    {
       "label": "Avaliação Google",
-      "value": "5 ★"
+      "value": "5.0 ★"
     },
     {
-      "label": "Profissionais",
-      "value": "4"
+      "label": "Experiência",
+      "value": "5+ anos"
+    },
+    {
+      "label": "Procedimentos",
+      "value": "10+"
     }
   ],
   "staff": [
     {
-      "name": "Stephanie",
-      "role": "Especialista",
-      "rating": 4.9,
-      "reviews": 100,
-      "available": true
-    },
-    {
-      "name": "Profissional 2",
-      "role": "Sênior",
-      "rating": 4.8,
-      "reviews": 80,
-      "available": true
-    },
-    {
-      "name": "Profissional 3",
-      "role": "Premium",
-      "rating": 4.9,
-      "reviews": 60,
+      "name": "Dra. Ste Souza",
+      "role": "Biomédica Esteta",
+      "rating": 5.0,
+      "reviews": 38,
       "available": true
     }
   ],
   "plans": [
     {
-      "name": "Básico",
-      "price": "R$ 120/mês",
+      "name": "Avaliação",
+      "price": "Gratuita",
       "features": [
-        "2 atendimentos/mês",
-        "Agendamento online",
-        "Suporte WhatsApp"
+        "Avaliação personalizada",
+        "Plano de tratamento individual",
+        "Orientação profissional",
+        "Sem compromisso"
       ]
     },
     {
-      "name": "Pro",
-      "price": "R$ 220/mês",
+      "name": "Protocolo Face",
+      "price": "R$ 1.499/sessão",
       "features": [
-        "4 atendimentos/mês",
-        "Atendimento prioritário",
-        "Descontos em produtos",
-        "Bebidas inclusas"
+        "Botox terço superior",
+        "Preenchimento labial",
+        "Radiofrequência facial",
+        "Acompanhamento mensal",
+        "Retoque incluso"
       ],
       "popular": true
     },
     {
-      "name": "VIP",
-      "price": "R$ 380/mês",
+      "name": "Protocolo Corpo",
+      "price": "R$ 899/sessão",
       "features": [
-        "Atendimentos ilimitados",
-        "Todos os benefícios",
-        "Prioridade total",
-        "Área VIP exclusiva"
+        "Criolipólise",
+        "Enzimas redução gordura",
+        "Radiofrequência corporal",
+        "Carboxiterapia",
+        "Avaliação de resultados"
       ]
     }
   ],
   "cta": {
-    "text": "Pronto pra conhecer a Dra. Ste Souza Estética?",
+    "text": "Agende sua avaliação personalizada",
     "buttonText": "Agendar agora"
   },
   "faq": [
     {
-      "q": "Preciso agendar?",
-      "a": "Recomendamos agendar pelo WhatsApp pra garantir seu horário, mas aceitamos sem agendamento quando há disponibilidade."
+      "q": "Preciso de avaliação antes?",
+      "a": "Sim! A avaliação é gratuita e essencial pra montar um protocolo personalizado pro seu caso. Cada pele e corpo são únicos."
+    },
+    {
+      "q": "O Botox dói?",
+      "a": "O desconforto é mínimo. Usamos agulhas ultrafinas e técnica apurada. O procedimento leva cerca de 30 minutos e você sai andando normalmente."
+    },
+    {
+      "q": "Quanto tempo dura o resultado?",
+      "a": "O Botox dura de 4 a 6 meses. O preenchimento labial de 8 a 12 meses. O bioestimulador de colágeno pode durar até 2 anos."
     },
     {
       "q": "Quais formas de pagamento?",
-      "a": "Aceitamos PIX, cartões de débito e crédito, e dinheiro."
+      "a": "Aceitamos PIX, cartões de débito e crédito (parcelamos), e dinheiro."
     },
     {
       "q": "Tem estacionamento?",
-      "a": "Sim, temos estacionamento gratuito para clientes."
-    },
-    {
-      "q": "Como funciona a assinatura?",
-      "a": "Escolha o plano, faça o pagamento mensal e agende pelo WhatsApp. Sem fidelidade."
-    },
-    {
-      "q": "Atendem crianças?",
-      "a": "Sim! Temos experiência com atendimento infantil em ambiente descontraído."
+      "a": "Sim, temos estacionamento gratuito para pacientes."
     }
   ],
   "products": [
@@ -229,7 +235,7 @@
       "img": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=300&q=80&auto=format&fit=crop"
     },
     {
-      "name": "Protetor Solar",
+      "name": "Protetor Solar FPS 60",
       "price": "R$ 89",
       "img": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=300&q=80&auto=format&fit=crop"
     },
