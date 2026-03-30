@@ -1,10 +1,10 @@
 {
-  "slug": "dra-ariadine-campos-da-palma",
-  "name": "Dra. Ariadine Campos Da Palma",
+  "slug": "jessica-karini-de-f-siqueira",
+  "name": "Jessica Karini De F. Siqueira",
   "niche": "clinica_estetica",
-  "tagline": "Sua beleza, nossa paixão",
-  "city": "Av. Anita Garibaldi, 850 - Sala 512 bloco B - Cabral, Curitiba - PR, 80540-180, Brasil",
-  "phone": "5541995002305",
+  "tagline": "Transforme seu visual hoje mesmo",
+  "city": "Délicat Clin - R. Antônio Batista de Siqueira, 363 - Vila Rachel, Alm. Tamandaré - PR, 83501-090, Brasil",
+  "phone": "5541995887633",
   "colors": {
     "primary": "#b08d7a",
     "secondary": "#655145",
@@ -13,13 +13,13 @@
     "textMuted": "#8a7e77"
   },
   "hero": {
-    "title": "Transforme sua aparência hoje",
-    "subtitle": "Na DRA. ARIADINE CAMPOS DA PALMA, oferecemos um atendimento personalizado que valoriza a singularidade de cada cliente. Nossa equipe é composta por profissionais altamente capacitados, prontos para realçar sua beleza com técnicas inovadoras e produtos de alta qualidade.",
-    "image": "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=1400&q=85&auto=format&fit=crop"
+    "title": "Beleza e Estilo em Almirante",
+    "subtitle": "Na JESSICA KARINI DE F. SIQUEIRA, oferecemos serviços personalizados de beleza que realçam sua essência. Com uma equipe especializada e atenta às tendências, garantimos resultados que superam suas expectativas.",
+    "image": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1400&q=85&auto=format&fit=crop"
   },
   "about": {
-    "text": "Na DRA. ARIADINE CAMPOS DA PALMA, oferecemos um atendimento personalizado que valoriza a singularidade de cada cliente. Nossa equipe é composta por profissionais altamente capacitados, prontos para realçar sua beleza com técnicas inovadoras e produtos de alta qualidade.",
-    "image": "https://images.unsplash.com/photo-1552693673-1bf958298935?w=800&q=80&auto=format&fit=crop"
+    "text": "Na JESSICA KARINI DE F. SIQUEIRA, oferecemos serviços personalizados de beleza que realçam sua essência. Com uma equipe especializada e atenta às tendências, garantimos resultados que superam suas expectativas.",
+    "image": "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80&auto=format&fit=crop"
   },
   "services": [
     {
@@ -90,37 +90,37 @@
     }
   ],
   "gallery": [
-    "https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1629909615957-040e1e4b1e08?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1598524374912-6b0b0bdb1f25?w=600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=600&q=80&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1598524374912-6b0b0bdb1f25?w=600&q=80&auto=format&fit=crop"
   ],
   "reviews": [
     {
-      "name": "Suellen Leal da silva",
-      "text": "Comecei meu acompanhamento agora e já estou amando, profissional muito atenciosa.\nAnsiosa para realizar mais procedimentos ❤️",
+      "name": "Nicole Santos Silva",
+      "text": "Uma profissional capacitada, atenciosa e com um carisma contagiante. Seu consultório nos trás aconchego e alegria. Você entra uma pessoa e sai outra t",
       "stars": 5,
-      "time": "5 months ago"
+      "time": "2 years ago"
     },
     {
-      "name": "CONSORCIO PONTO LIVRE",
-      "text": "Trabalho excepcional! Dra Aria, muito atenciosa e passa confiança na realização dos procedimentos!",
+      "name": "Renata T",
+      "text": "Imagine um lugar onde você se sente em casa?\nA Jéssica é uma excelente profissional, atensiosa, cuidadosa e está sempre disposta a ajudar e sanar noss",
       "stars": 5,
-      "time": "a year ago"
+      "time": "2 years ago"
     },
     {
-      "name": "Debora Correa",
-      "text": "Muito atenciosa e faz um trabalho incrível! Excelente profissional! Super indico!",
+      "name": "Fernanda Govatiski",
+      "text": "A clínica é muito confortável e aconchegante. O atendimento da Dra Jessica e de seus funcionários é fantástico e o conhecimento sem dúvida passa a seg",
       "stars": 5,
-      "time": "a year ago"
+      "time": "2 years ago"
     },
     {
-      "name": "Ariela Mazuim Pfeifer",
-      "text": "A dra Ariadine é uma excelente profissional, sempre se aperfeiçoando e buscando as melhores tecnicas do mercado. Melhor investimento!",
+      "name": "ives Luca Kmiec",
+      "text": "A Dra Jessica é maravilhosa, fiz alguns procedimentos com ela, mas na aplicação para vasinhos ela foi espetacular, sem dor e ótimo resultado",
       "stars": 5,
-      "time": "a year ago"
+      "time": "2 years ago"
     }
   ],
   "features": [
@@ -143,7 +143,7 @@
   ],
   "staff": [
     {
-      "name": "Ariadine",
+      "name": "Jessica",
       "role": "Especialista",
       "rating": 4.9,
       "reviews": 100,
@@ -197,7 +197,7 @@
     }
   ],
   "cta": {
-    "text": "Pronto pra conhecer a Dra. Ariadine Campos Da Palma?",
+    "text": "Pronto pra conhecer a Jessica Karini De F. Siqueira?",
     "buttonText": "Agendar agora"
   },
   "faq": [

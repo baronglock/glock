@@ -2,7 +2,7 @@
   "slug": "bg-estetica-avancada",
   "name": "Bg Estetica Avancada",
   "niche": "clinica_estetica",
-  "tagline": "Beleza que ultrapassa expectativas",
+  "tagline": "Sua beleza, nossa paixão",
   "city": "R. Barigui - Vila Alto Pinheiros, Alm. Tamandaré - PR, 83503-100, Brasil",
   "phone": "5541996109675",
   "colors": {
@@ -14,12 +14,12 @@
   },
   "hero": {
     "title": "Transforme sua autoestima hoje",
-    "subtitle": "No BG Estética Avançada, oferecemos tratamentos inovadores que realçam sua beleza única. Nossa equipe de profissionais qualificados utiliza tecnologia de ponta para garantir resultados excepcionais e duradouros em Almirante Tamandaré.",
-    "image": "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=1400&q=85&auto=format&fit=crop"
+    "subtitle": "Na BG Estética Avançada, oferecemos tratamentos personalizados que elevam sua beleza natural. Nossa equipe especializada utiliza tecnologia de ponta para garantir resultados surpreendentes e duradouros, em um ambiente acolhedor e sofisticado.",
+    "image": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1400&q=85&auto=format&fit=crop"
   },
   "about": {
-    "text": "No BG Estética Avançada, oferecemos tratamentos inovadores que realçam sua beleza única. Nossa equipe de profissionais qualificados utiliza tecnologia de ponta para garantir resultados excepcionais e duradouros em Almirante Tamandaré.",
-    "image": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80&auto=format&fit=crop"
+    "text": "Na BG Estética Avançada, oferecemos tratamentos personalizados que elevam sua beleza natural. Nossa equipe especializada utiliza tecnologia de ponta para garantir resultados surpreendentes e duradouros, em um ambiente acolhedor e sofisticado.",
+    "image": "https://images.unsplash.com/photo-1552693673-1bf958298935?w=800&q=80&auto=format&fit=crop"
   },
   "services": [
     {
@@ -90,12 +90,12 @@
     }
   ],
   "gallery": [
-    "https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1598524374912-6b0b0bdb1f25?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1629909615957-040e1e4b1e08?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1552693673-1bf958298935?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=600&q=80&auto=format&fit=crop"
   ],
   "reviews": [
     {

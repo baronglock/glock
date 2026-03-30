@@ -13,13 +13,13 @@
     "textMuted": "#8a7e77"
   },
   "hero": {
-    "title": "Transforme seu visual hoje",
-    "subtitle": "No STUDIO JASPE, acreditamos que cada cliente é único e merece um atendimento personalizado. Nossa equipe de profissionais altamente qualificados está pronta para realçar sua beleza natural com serviços de cabelo, maquiagem e estética de alta qualidade.",
-    "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1400&q=85&auto=format&fit=crop"
+    "title": "Transforme-se no STUDIO JASPE",
+    "subtitle": "No STUDIO JASPE, nossa missão é realçar sua beleza única com serviços personalizados e de alta qualidade. Localizado em Almirante Tamandaré, oferecemos uma experiência transformadora que vai além do simples cuidado estético, unindo estilo e bem-estar em cada detalhe.",
+    "image": "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=1400&q=85&auto=format&fit=crop"
   },
   "about": {
-    "text": "No STUDIO JASPE, acreditamos que cada cliente é único e merece um atendimento personalizado. Nossa equipe de profissionais altamente qualificados está pronta para realçar sua beleza natural com serviços de cabelo, maquiagem e estética de alta qualidade.",
-    "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80&auto=format&fit=crop"
+    "text": "No STUDIO JASPE, nossa missão é realçar sua beleza única com serviços personalizados e de alta qualidade. Localizado em Almirante Tamandaré, oferecemos uma experiência transformadora que vai além do simples cuidado estético, unindo estilo e bem-estar em cada detalhe.",
+    "image": "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=800&q=80&auto=format&fit=crop"
   },
   "services": [
     {
@@ -90,12 +90,12 @@
     }
   ],
   "gallery": [
-    "https://images.unsplash.com/photo-1562322140-8baeacacf908?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1600948836101-f9ffda59d250?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1559599101-f09722fb4948?w=600&q=80&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&q=80&auto=format&fit=crop"
   ],
   "reviews": [
     {
