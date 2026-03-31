@@ -1,101 +1,101 @@
 {
   "slug": "reis-do-corte",
   "name": "Barbearia Reis do Corte - Iguaçu - Araucária",
-  "niche": "salao",
-  "tagline": "Cortes que elevam sua autoestima",
+  "niche": "barbearia",
+  "tagline": "Cortes que elevam sua essência",
   "city": "Av. Archelau de Almeida Tôrres, 962 - Iguaçu, Araucária - PR, 83701-145, Brasil",
   "phone": "5541998057472",
   "colors": {
-    "primary": "#c47d8a",
+    "primary": "#c8a96e",
     "secondary": "#1a1a2e",
-    "bg": "#faf6f4",
-    "text": "#2a2320",
-    "textMuted": "#8a7e77"
+    "bg": "#0f0f17",
+    "text": "#f5f5f5",
+    "textMuted": "#999"
   },
   "hero": {
-    "title": "Transforme seu visual hoje",
-    "subtitle": "No Reis do Corte, nossa missão é realçar a beleza única de cada cliente. Com uma equipe especializada e apaixonada, oferecemos cortes e serviços personalizados que vão muito além do esperado.",
-    "image": "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=1400&q=85&auto=format&fit=crop"
+    "title": "Transforme-se com estilo",
+    "subtitle": "Na Reis do Corte, oferecemos mais do que um simples corte de cabelo; proporcionamos uma experiência de transformação. Nossa equipe de barbeiros experientes utiliza técnicas modernas e produtos de alta qualidade para garantir que cada cliente saia confiante e satisfeito.",
+    "image": "https://images.unsplash.com/photo-1585747860019-8e8ef6e96a0d?w=1400&q=85&auto=format&fit=crop"
   },
   "about": {
-    "text": "No Reis do Corte, nossa missão é realçar a beleza única de cada cliente. Com uma equipe especializada e apaixonada, oferecemos cortes e serviços personalizados que vão muito além do esperado.",
-    "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80&auto=format&fit=crop"
+    "text": "Na Reis do Corte, oferecemos mais do que um simples corte de cabelo; proporcionamos uma experiência de transformação. Nossa equipe de barbeiros experientes utiliza técnicas modernas e produtos de alta qualidade para garantir que cada cliente saia confiante e satisfeito.",
+    "image": "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=800&q=80&auto=format&fit=crop"
   },
   "services": [
     {
-      "name": "Corte Feminino",
-      "desc": "Corte personalizado para o seu estilo.",
+      "name": "Corte Masculino",
+      "desc": "Corte personalizado com acabamento perfeito.",
       "icon": "✂️",
-      "price": "R$ 80",
-      "time": "45 min",
+      "price": "R$ 45",
+      "time": "30 min",
       "category": "Cortes",
       "popular": true
     },
     {
-      "name": "Escova",
-      "desc": "Modelagem com secador e escova.",
-      "icon": "💇",
-      "price": "R$ 50",
-      "time": "30 min",
-      "category": "Modelagem"
+      "name": "Barba",
+      "desc": "Modelagem precisa com produtos premium.",
+      "icon": "🪒",
+      "price": "R$ 35",
+      "time": "20 min",
+      "category": "Barba"
     },
     {
-      "name": "Coloração",
-      "desc": "Tintura profissional com produtos premium.",
-      "icon": "🎨",
-      "price": "R$ 120",
-      "time": "90 min",
-      "category": "Coloração",
+      "name": "Corte + Barba",
+      "desc": "Combo completo com toalha quente.",
+      "icon": "👑",
+      "price": "R$ 70",
+      "time": "50 min",
+      "category": "Combos",
       "popular": true
     },
     {
-      "name": "Mechas/Luzes",
-      "desc": "Mechas naturais e iluminadas.",
-      "icon": "✨",
-      "price": "R$ 200",
-      "time": "120 min",
-      "category": "Coloração"
+      "name": "Degradê",
+      "desc": "Transição perfeita com máquina e tesoura.",
+      "icon": "✂️",
+      "price": "R$ 50",
+      "time": "35 min",
+      "category": "Cortes"
     },
     {
-      "name": "Progressiva",
-      "desc": "Alisamento duradouro e saudável.",
-      "icon": "💧",
-      "price": "R$ 180",
-      "time": "120 min",
-      "category": "Tratamentos"
+      "name": "Sobrancelha",
+      "desc": "Design masculino com navalha.",
+      "icon": "🎯",
+      "price": "R$ 20",
+      "time": "10 min",
+      "category": "Extras"
     },
     {
       "name": "Hidratação",
-      "desc": "Tratamento profundo para cabelos danificados.",
-      "icon": "💎",
+      "desc": "Tratamento capilar profundo.",
+      "icon": "💧",
       "price": "R$ 60",
       "time": "40 min",
       "category": "Tratamentos"
     },
     {
-      "name": "Manicure",
-      "desc": "Unhas perfeitas com esmaltação.",
-      "icon": "💅",
-      "price": "R$ 40",
+      "name": "Pigmentação",
+      "desc": "Cobertura de falhas na barba.",
+      "icon": "🎨",
+      "price": "R$ 80",
       "time": "30 min",
-      "category": "Unhas"
+      "category": "Tratamentos"
     },
     {
-      "name": "Penteado",
-      "desc": "Penteados para festas e eventos.",
-      "icon": "👑",
-      "price": "R$ 150",
-      "time": "60 min",
-      "category": "Modelagem"
+      "name": "Infantil",
+      "desc": "Corte infantil com paciência.",
+      "icon": "✂️",
+      "price": "R$ 35",
+      "time": "25 min",
+      "category": "Cortes"
     }
   ],
   "gallery": [
-    "https://images.unsplash.com/photo-1559599101-f09722fb4948?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1600948836101-f9ffda59d250?w=600&q=80&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1599351431613-18ef1fdd27e1?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1578253859338-ddfcbdbfb1f8?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1585747860019-8e8ef6e96a0d?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80&auto=format&fit=crop"
   ],
   "reviews": [
     {
@@ -224,24 +224,24 @@
   ],
   "products": [
     {
-      "name": "Shampoo Reconstrutor",
-      "price": "R$ 65",
-      "img": "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=300&q=80&auto=format&fit=crop"
+      "name": "Pomada Modeladora",
+      "price": "R$ 45",
+      "img": "https://images.unsplash.com/photo-1608979048467-6194eabd0ada?w=300&q=80&auto=format&fit=crop"
     },
     {
-      "name": "Máscara Capilar",
-      "price": "R$ 49",
-      "img": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=300&q=80&auto=format&fit=crop"
-    },
-    {
-      "name": "Óleo Reparador",
-      "price": "R$ 55",
+      "name": "Óleo para Barba",
+      "price": "R$ 35",
       "img": "https://images.unsplash.com/photo-1626808642875-0aa545482dfb?w=300&q=80&auto=format&fit=crop"
     },
     {
-      "name": "Kit Tratamento",
-      "price": "R$ 139",
-      "img": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=300&q=80&auto=format&fit=crop",
+      "name": "Shampoo Premium",
+      "price": "R$ 40",
+      "img": "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=300&q=80&auto=format&fit=crop"
+    },
+    {
+      "name": "Kit Barba",
+      "price": "R$ 99",
+      "img": "https://images.unsplash.com/photo-1621607512214-68297480165e?w=300&q=80&auto=format&fit=crop",
       "popular": true
     }
   ]
