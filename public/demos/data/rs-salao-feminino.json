@@ -95,24 +95,24 @@
   ],
   "staff": [
     {
-      "name": "Proprietária RS",
-      "role": "Cabeleireira & Colorista",
-      "rating": 4.9,
-      "reviews": 198,
-      "available": true
-    },
-    {
       "name": "Fernanda",
-      "role": "Especialista em Mechas",
-      "rating": 4.8,
-      "reviews": 156,
+      "role": "Colorista",
+      "rating": 4.9,
+      "reviews": 40,
       "available": true
     },
     {
-      "name": "Patricia",
-      "role": "Tratamentos Capilares",
+      "name": "Camila",
+      "role": "Hair Stylist",
       "rating": 4.9,
-      "reviews": 134,
+      "reviews": 65,
+      "available": true
+    },
+    {
+      "name": "Juliana",
+      "role": "Manicure",
+      "rating": 4.9,
+      "reviews": 90,
       "available": true
     }
   ],

@@ -143,24 +143,24 @@
   ],
   "staff": [
     {
-      "name": "Luana",
-      "role": "Especialista",
+      "name": "Dra. Isabela",
+      "role": "Esteticista",
       "rating": 4.9,
-      "reviews": 100,
+      "reviews": 40,
       "available": true
     },
     {
-      "name": "Profissional 2",
-      "role": "Sênior",
-      "rating": 4.8,
-      "reviews": 80,
+      "name": "Dra. Fernanda",
+      "role": "Dermatologista",
+      "rating": 4.7,
+      "reviews": 65,
       "available": true
     },
     {
-      "name": "Profissional 3",
-      "role": "Premium",
-      "rating": 4.9,
-      "reviews": 60,
+      "name": "Dra. Juliana",
+      "role": "Fisioterapeuta",
+      "rating": 4.7,
+      "reviews": 90,
       "available": true
     }
   ],

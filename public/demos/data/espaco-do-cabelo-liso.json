@@ -143,24 +143,24 @@
   ],
   "staff": [
     {
-      "name": "Cinthya",
-      "role": "Especialista",
-      "rating": 4.9,
-      "reviews": 100,
+      "name": "Camila",
+      "role": "Hair Stylist",
+      "rating": 5.0,
+      "reviews": 40,
       "available": true
     },
     {
-      "name": "Profissional 2",
-      "role": "Sênior",
-      "rating": 4.8,
-      "reviews": 80,
+      "name": "Isabela",
+      "role": "Hair Stylist",
+      "rating": 4.7,
+      "reviews": 65,
       "available": true
     },
     {
-      "name": "Profissional 3",
-      "role": "Premium",
+      "name": "Larissa",
+      "role": "Cabeleireira",
       "rating": 4.9,
-      "reviews": 60,
+      "reviews": 90,
       "available": true
     }
   ],

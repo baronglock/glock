@@ -45,5 +45,28 @@
   "cta": {
     "text": "",
     "buttonText": ""
-  }
+  },
+  "staff": [
+    {
+      "name": "Fernanda",
+      "role": "Colorista",
+      "rating": 4.8,
+      "reviews": 40,
+      "available": true
+    },
+    {
+      "name": "Larissa",
+      "role": "Cabeleireira",
+      "rating": 4.9,
+      "reviews": 65,
+      "available": true
+    },
+    {
+      "name": "Isabela",
+      "role": "Hair Stylist",
+      "rating": 4.9,
+      "reviews": 90,
+      "available": true
+    }
+  ]
 }

@@ -143,24 +143,24 @@
   ],
   "staff": [
     {
-      "name": "Jaqueline",
-      "role": "Especialista",
-      "rating": 4.9,
-      "reviews": 704,
-      "available": true
-    },
-    {
-      "name": "Profissional 2",
-      "role": "Sênior",
+      "name": "Lucas",
+      "role": "Barbeiro Sênior",
       "rating": 4.8,
-      "reviews": 352,
+      "reviews": 40,
       "available": true
     },
     {
-      "name": "Profissional 3",
-      "role": "Premium",
+      "name": "Pedro",
+      "role": "Barbeiro",
       "rating": 4.9,
-      "reviews": 234,
+      "reviews": 65,
+      "available": true
+    },
+    {
+      "name": "Matheus",
+      "role": "Barbeiro",
+      "rating": 4.9,
+      "reviews": 90,
       "available": true
     }
   ],

@@ -9,7 +9,9 @@
     "galleryLayout": "masonry",
     "sectionDivider": "line",
     "aboutLayout": "default",
-    "effects": ["glow"],
+    "effects": [
+      "glow"
+    ],
     "heroDecoration": "geometric",
     "titleStyle": "underline"
   },
@@ -101,31 +103,24 @@
   ],
   "staff": [
     {
-      "name": "Marcus Silva",
-      "role": "Cortes Clássicos",
+      "name": "Bruno",
+      "role": "Barbeiro",
       "rating": 4.9,
-      "reviews": 234,
+      "reviews": 40,
       "available": true
     },
     {
-      "name": "Rafael Costa",
-      "role": "Barbas & Shaving",
-      "rating": 4.8,
-      "reviews": 189,
+      "name": "Matheus",
+      "role": "Barbeiro",
+      "rating": 5.0,
+      "reviews": 65,
       "available": true
     },
     {
-      "name": "Diego Martins",
-      "role": "Degradês & Fades",
-      "rating": 4.9,
-      "reviews": 312,
-      "available": false
-    },
-    {
-      "name": "Bruno Almeida",
-      "role": "Estilos Modernos",
-      "rating": 4.7,
-      "reviews": 156,
+      "name": "Guilherme",
+      "role": "Barbeiro Sênior",
+      "rating": 5.0,
+      "reviews": 90,
       "available": true
     }
   ],

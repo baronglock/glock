@@ -95,24 +95,24 @@
   ],
   "staff": [
     {
-      "name": "Rafael",
-      "role": "Barbeiro & Proprietário",
-      "rating": 4.9,
-      "reviews": 215,
-      "available": true
-    },
-    {
-      "name": "Diego",
-      "role": "Degradês & Fades",
-      "rating": 4.8,
-      "reviews": 167,
+      "name": "Matheus",
+      "role": "Barbeiro",
+      "rating": 5.0,
+      "reviews": 40,
       "available": true
     },
     {
       "name": "Lucas",
-      "role": "Barba & Shaving",
+      "role": "Barbeiro Sênior",
       "rating": 4.8,
-      "reviews": 143,
+      "reviews": 65,
+      "available": true
+    },
+    {
+      "name": "Pedro",
+      "role": "Barbeiro",
+      "rating": 4.9,
+      "reviews": 90,
       "available": true
     }
   ],

@@ -143,24 +143,24 @@
   ],
   "staff": [
     {
-      "name": "Daiane",
-      "role": "Especialista",
+      "name": "Dra. Camila",
+      "role": "Biomédica Esteta",
       "rating": 4.9,
-      "reviews": 296,
+      "reviews": 40,
       "available": true
     },
     {
-      "name": "Profissional 2",
-      "role": "Sênior",
+      "name": "Dra. Larissa",
+      "role": "Biomédica",
       "rating": 4.8,
-      "reviews": 148,
+      "reviews": 65,
       "available": true
     },
     {
-      "name": "Profissional 3",
-      "role": "Premium",
-      "rating": 4.9,
-      "reviews": 98,
+      "name": "Dra. Juliana",
+      "role": "Fisioterapeuta",
+      "rating": 4.8,
+      "reviews": 90,
       "available": true
     }
   ],

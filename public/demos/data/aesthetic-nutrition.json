@@ -143,24 +143,24 @@
   ],
   "staff": [
     {
-      "name": "Lucas",
-      "role": "Especialista",
-      "rating": 4.9,
-      "reviews": 196,
-      "available": true
-    },
-    {
-      "name": "Profissional 2",
-      "role": "Sênior",
+      "name": "Dra. Isabela",
+      "role": "Esteticista",
       "rating": 4.8,
-      "reviews": 98,
+      "reviews": 40,
       "available": true
     },
     {
-      "name": "Profissional 3",
-      "role": "Premium",
+      "name": "Dra. Larissa",
+      "role": "Biomédica",
       "rating": 4.9,
       "reviews": 65,
+      "available": true
+    },
+    {
+      "name": "Dra. Camila",
+      "role": "Biomédica Esteta",
+      "rating": 4.7,
+      "reviews": 90,
       "available": true
     }
   ],

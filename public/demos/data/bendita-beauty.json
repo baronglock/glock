@@ -143,24 +143,24 @@
   ],
   "staff": [
     {
-      "name": "Sergio",
-      "role": "Especialista",
-      "rating": 4.9,
-      "reviews": 352,
-      "available": true
-    },
-    {
-      "name": "Profissional 2",
-      "role": "Sênior",
+      "name": "Camila",
+      "role": "Hair Stylist",
       "rating": 4.8,
-      "reviews": 176,
+      "reviews": 40,
       "available": true
     },
     {
-      "name": "Profissional 3",
-      "role": "Premium",
-      "rating": 4.9,
-      "reviews": 117,
+      "name": "Fernanda",
+      "role": "Colorista",
+      "rating": 4.8,
+      "reviews": 65,
+      "available": true
+    },
+    {
+      "name": "Larissa",
+      "role": "Cabeleireira",
+      "rating": 4.8,
+      "reviews": 90,
       "available": true
     }
   ],
