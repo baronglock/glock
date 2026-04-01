@@ -29,6 +29,8 @@ const THEMES: Record<string, { dark: boolean; gold: string; navItems: string[]; 
   salao: { dark: false, gold: '#c9a96e', navItems: ['Serviços', 'Equipe', 'Galeria', 'Planos', 'Contato'], labels: { services: 'Nossos Serviços', gallery: 'Nosso Espaço', staff: 'Nosso Time', plans: 'Planos', reviews: 'Avaliações', contact: 'Agende seu Horário', about: 'Sobre Nós' } },
   academia: { dark: true, gold: '#d4790e', navItems: ['Treinos', 'Galeria', 'Planos', 'Contato'], labels: { services: 'Modalidades', gallery: 'Estrutura', staff: 'Instrutores', plans: 'Planos', reviews: 'Avaliações', contact: 'Bora Treinar', about: 'Sobre Nós' } },
   restaurante: { dark: true, gold: '#d4af37', navItems: ['Cardápio', 'Galeria', 'Avaliações', 'Reserva', 'Contato'], labels: { services: 'Nosso Cardápio', gallery: 'Ambientes', staff: 'Equipe', plans: 'Combos', reviews: 'Avaliações', contact: 'Reserve sua Mesa', about: 'Nossa História' } },
+  pet_shop: { dark: false, gold: '#4a9e6b', navItems: ['Serviços', 'Galeria', 'Equipe', 'Planos', 'Contato'], labels: { services: 'Nossos Serviços', gallery: 'Nosso Espaço', staff: 'Nossos Veterinários', plans: 'Planos', reviews: 'Avaliações', contact: 'Agende uma Consulta', about: 'Sobre Nós' } },
+  loja: { dark: false, gold: '#c9a96e', navItems: ['Produtos', 'Galeria', 'Avaliações', 'Contato'], labels: { services: 'Nossos Produtos', gallery: 'Nossa Loja', staff: 'Equipe', plans: 'Ofertas', reviews: 'Avaliações', contact: 'Visite-nos', about: 'Sobre Nós' } },
 };
 
 /* ── Fade on scroll ── */
