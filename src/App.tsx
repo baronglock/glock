@@ -74,13 +74,13 @@ function CosmicBackground({ theme }: any) {
       {dk ? (
         <img
           src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800&q=60&auto=format&fit=crop&fm=webp"
-          alt="" loading="lazy"
+          alt="" loading="eager"
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.1 }}
         />
       ) : (
         <img
           src="/bg-light.jpg"
-          alt="" loading="lazy"
+          alt="" loading="eager"
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.14 }}
         />
       )}
@@ -255,7 +255,7 @@ function Hero({ t, lang, colors }: any) {
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 32 }}>
               {[
-                { value: '912k+', label: lang === 'pt' ? 'Registros processados' : 'Records processed' },
+                { value: '1,7 mi', label: lang === 'pt' ? 'Registros processados' : 'Records processed' },
                 { value: '8', label: lang === 'pt' ? 'Segmentos atendidos' : 'Segments served' },
                 { value: '24/7', label: lang === 'pt' ? 'Automações ativas' : 'Active automations' },
               ].map(s => (
@@ -346,7 +346,7 @@ function ServiceCard({ icon: Icon, title, desc, slug, lang, colors }: any) {
       onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px) scale(1.02)'; e.currentTarget.style.borderColor = colors.borderHover; e.currentTarget.style.boxShadow = `0 24px 48px ${colors.shadow}, 0 0 40px rgba(13,148,136,0.1)`; }}
       onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0) scale(1)'; e.currentTarget.style.borderColor = colors.glassCardBorder; e.currentTarget.style.boxShadow = 'none'; }}
     >
-      <div style={{ width: 48, height: 48, borderRadius: 12, background: 'rgba(37,99,235,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
+      <div style={{ width: 48, height: 48, borderRadius: 12, background: 'rgba(13,148,136,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
         <Icon size={22} style={{ color: colors.brandLight }} />
       </div>
       <h3 style={{ fontSize: 'clamp(0.95rem, 1.8vw, 1.1rem)', fontWeight: 600, color: colors.white, marginBottom: 10 }}>{title}</h3>
@@ -374,10 +374,10 @@ function Services({ t, lang, colors }: any) {
     <Section id="servicos" colors={colors} style={{ padding: '96px 0' }}>
       <W>
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(37,99,235,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
+          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(13,148,136,0.12)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
             {t('services.tag')}
           </span>
-          <h2 className="reveal rv-d1" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white, marginBottom: 16 }}>
+          <h2 className="reveal rv-d1" style={{ fontFamily: "'Bricolage Grotesque', 'Trebuchet MS', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white, marginBottom: 16 }}>
             {t('services.title')}
           </h2>
           <p className="reveal rv-d2" style={{ color: colors.textMuted, maxWidth: 560, margin: '0 auto', lineHeight: 1.7 }}>
@@ -419,7 +419,7 @@ function Metrics({ lang, colors }: any) {
           <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(56,189,248,0.1)', color: colors.gold, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
             {lang === 'pt' ? 'Resultados' : 'Results'}
           </span>
-          <h2 className="reveal rv-d1" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white, marginBottom: 12 }}>
+          <h2 className="reveal rv-d1" style={{ fontFamily: "'Bricolage Grotesque', 'Trebuchet MS', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white, marginBottom: 12 }}>
             {lang === 'pt' ? 'Resultados que comprovam' : 'Proven results'}
           </h2>
           <p className="reveal rv-d2" style={{ color: colors.textMuted, maxWidth: 520, margin: '0 auto', lineHeight: 1.7 }}>
@@ -436,7 +436,7 @@ function Metrics({ lang, colors }: any) {
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0) scale(1)'; e.currentTarget.style.borderColor = colors.glassCardBorder; e.currentTarget.style.boxShadow = 'none'; }}
             >
               <m.icon size={24} style={{ color: colors.gold, margin: '0 auto 14px' }} />
-              <div style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', fontWeight: 300, color: colors.white, marginBottom: 6 }}>{m.value}</div>
+              <div style={{ fontFamily: "var(--font-sans)", fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', fontWeight: 300, color: colors.white, marginBottom: 6 }}>{m.value}</div>
               <div style={{ fontSize: 14, color: colors.text, fontWeight: 600, marginBottom: 8 }}>{m.label}</div>
               <div style={{ fontSize: 13, color: colors.textDim, lineHeight: 1.6 }}>{m.desc}</div>
             </div>
@@ -466,10 +466,10 @@ function Process({ lang, colors }: any) {
     <Section colors={colors} style={{ padding: '96px 0' }}>
       <W>
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(37,99,235,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
+          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(13,148,136,0.12)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
             {lang === 'pt' ? 'Processo' : 'Process'}
           </span>
-          <h2 className="reveal rv-d1" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white }}>
+          <h2 className="reveal rv-d1" style={{ fontFamily: "'Bricolage Grotesque', 'Trebuchet MS', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white }}>
             {lang === 'pt' ? 'Como trabalhamos' : 'How we work'}
           </h2>
         </div>
@@ -533,7 +533,7 @@ function About({ t, lang, colors }: any) {
               {/* Stats */}
               <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: 16 }}>
                 {[
-                  { v: '912k+', l: lang === 'pt' ? 'Registros processados' : 'Records processed', icon: Database },
+                  { v: '1,7 mi', l: lang === 'pt' ? 'Registros processados' : 'Records processed', icon: Database },
                   { v: '8', l: lang === 'pt' ? 'Segmentos atendidos' : 'Segments served', icon: Globe },
                   { v: '24/7', l: lang === 'pt' ? 'Automações ativas' : 'Active automations', icon: Bot },
                   { v: '< 7d', l: lang === 'pt' ? 'Tempo de entrega' : 'Delivery time', icon: Clock },
@@ -561,10 +561,10 @@ function About({ t, lang, colors }: any) {
           </div>
           {/* Text */}
           <div>
-            <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(37,99,235,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
+            <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(13,148,136,0.12)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
               {t('about.tag')}
             </span>
-            <h2 className="reveal rv-d1" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white, marginBottom: 24 }}>
+            <h2 className="reveal rv-d1" style={{ fontFamily: "'Bricolage Grotesque', 'Trebuchet MS', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white, marginBottom: 24 }}>
               {t('about.title')}
             </h2>
             <p className="reveal rv-d2" style={{ color: colors.textMuted, lineHeight: 1.75, marginBottom: 16 }}>{t('about.p1')}</p>
@@ -721,8 +721,8 @@ function SectorAutomation({ lang, colors }: any) {
           <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(45,212,191,0.1)', color: colors.gold, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
             {lang === 'pt' ? 'Automação Total' : 'Full Automation'}
           </span>
-          <h2 className="reveal rv-d1" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white, marginBottom: 16 }}>
-            {lang === 'pt' ? 'Automatize Setores Inteiros' : 'Automate Entire Departments'}
+          <h2 className="reveal rv-d1" style={{ fontFamily: "'Bricolage Grotesque', 'Trebuchet MS', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white, marginBottom: 16 }}>
+            {lang === 'pt' ? 'Automatize setores inteiros' : 'Automate Entire Departments'}
           </h2>
           <p className="reveal rv-d2" style={{ color: colors.textMuted, maxWidth: 640, margin: '0 auto', lineHeight: 1.8, fontSize: 'clamp(0.95rem, 1.8vw, 1.05rem)' }}>
             {lang === 'pt'
@@ -741,7 +741,7 @@ function SectorAutomation({ lang, colors }: any) {
         </div>
 
         {/* Department cards grid */}
-        <div id="sectors-grid" style={{ display: 'flex', gap: 16, overflowX: 'auto', scrollSnapType: 'x mandatory', paddingBottom: 8, WebkitOverflowScrolling: 'touch' }}>
+        <div id="sectors-grid" style={{ display: 'flex', gap: 16, overflowX: 'auto', scrollSnapType: 'x mandatory', alignItems: 'flex-start', paddingBottom: 8, WebkitOverflowScrolling: 'touch' }}>
           {departments.map((dept, i) => {
             const DeptIcon = dept.icon;
             const isExpanded = expanded === i;
@@ -820,7 +820,7 @@ function SectorAutomation({ lang, colors }: any) {
                     {dept.tasks.slice(0, 3).map((task, j) => (
                       <div key={j} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                         <div style={{ width: 4, height: 4, borderRadius: '50%', background: dept.color + '60', flexShrink: 0 }} />
-                        <span style={{ fontSize: 11, color: colors.textDim, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{task}</span>
+                        <span style={{ fontSize: 11, color: colors.textDim, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>{task}</span>
                       </div>
                     ))}
                     <span style={{ fontSize: 11, color: dept.color, fontWeight: 500, marginTop: 4 }}>
@@ -956,8 +956,8 @@ function Cases({ lang, colors }: any) {
     <Section id="cases" colors={colors} style={{ padding: '96px 0' }}>
       <W>
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(37,99,235,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>Portfolio</span>
-          <h2 className="reveal rv-d1" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white }}>Cases</h2>
+          <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(13,148,136,0.12)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>{lang === 'pt' ? 'Portfólio' : lang === 'pt' ? 'Portfólio' : 'Portfolio'}</span>
+          <h2 className="reveal rv-d1" style={{ fontFamily: "'Bricolage Grotesque', 'Trebuchet MS', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white }}>Cases</h2>
         </div>
 
         {/* Carousel container */}
@@ -1004,7 +1004,7 @@ function Cases({ lang, colors }: any) {
                   onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0) scale(1)'; e.currentTarget.style.borderColor = colors.glassCardBorder; e.currentTarget.style.boxShadow = 'none'; }}
                 >
                   <div style={{ position: 'relative', height: 200, overflow: 'hidden' }}>
-                    <img src={c.img} alt={c.title} loading="lazy" draggable={false} width={600} height={400}
+                    <img src={c.img} alt={c.title} loading="eager" draggable={false} width={600} height={400}
                       style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease', pointerEvents: 'none' }} />
                     <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%)' }} />
                     <span style={{ position: 'absolute', bottom: 12, left: 16, padding: '4px 12px', borderRadius: 6, background: 'rgba(56,189,248,0.2)', backdropFilter: 'blur(8px)', color: colors.gold, fontSize: 12, fontWeight: 600 }}>{c.metric}</span>
@@ -1042,14 +1042,15 @@ function Cases({ lang, colors }: any) {
 
 /* ═══════════════ CTA ═══════════════ */
 function CtaSection({ t }: any) {
+  const ref = useReveal();
   return (
-    <section style={{ position: 'relative', overflow: 'hidden', padding: '120px 0' }}>
+    <section ref={ref} style={{ position: 'relative', overflow: 'hidden', padding: '120px 0' }}>
       {/* Gradient background — smooth blend */}
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 0%, rgba(13,148,136,0.06) 30%, rgba(13,148,136,0.1) 50%, rgba(13,148,136,0.06) 70%, transparent 100%)' }} />
       <div style={{ position: 'absolute', left: '30%', top: '50%', transform: 'translate(-50%,-50%)', width: 500, height: 500, background: 'radial-gradient(circle, rgba(13,148,136,0.08) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(100px)' }} />
       <div style={{ position: 'absolute', right: '25%', top: '50%', transform: 'translate(50%,-50%)', width: 400, height: 400, background: 'radial-gradient(circle, rgba(45,212,191,0.05) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(80px)' }} />
       <W style={{ textAlign: 'center', position: 'relative', zIndex: 10 }}>
-        <h2 className="reveal" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 5vw, 3rem)', fontWeight: 300, color: '#fff', marginBottom: 24 }}>{t('cta.title')}</h2>
+        <h2 className="reveal" style={{ fontFamily: "'Bricolage Grotesque', 'Trebuchet MS', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 5vw, 3rem)', fontWeight: 300, color: '#fff', marginBottom: 24 }}>{t('cta.title')}</h2>
         <p className="reveal rv-d1" style={{ color: 'rgba(255,255,255,0.7)', maxWidth: 500, margin: '0 auto 40px', fontSize: 'clamp(1rem, 2vw, 1.125rem)', lineHeight: 1.7 }}>{t('cta.sub')}</p>
         <a href="#contato" className="btn-cta anim-pulse-glow reveal rv-d2" style={{ padding: '16px 40px', fontSize: 'clamp(0.95rem, 1.8vw, 1.125rem)' }}>
           {t('cta.btn')} <ArrowRight size={18} />
@@ -1089,10 +1090,10 @@ function Contact({ lang, colors }: any) {
       <W>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 360px), 1fr))', gap: 48 }}>
           <div>
-            <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(37,99,235,0.1)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
+            <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(13,148,136,0.12)', color: colors.brandLight, fontSize: 12, fontWeight: 500, letterSpacing: '0.05em', marginBottom: 16 }}>
               {lang === 'pt' ? 'Contato' : 'Contact'}
             </span>
-            <h2 className="reveal rv-d1" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white, marginBottom: 24 }}>
+            <h2 className="reveal rv-d1" style={{ fontFamily: "'Bricolage Grotesque', 'Trebuchet MS', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white, marginBottom: 24 }}>
               {lang === 'pt' ? 'Vamos conversar' : "Let's talk"}
             </h2>
             <p className="reveal rv-d2" style={{ color: colors.textMuted, lineHeight: 1.7, marginBottom: 32 }}>
@@ -1153,7 +1154,7 @@ export default function App() {
 
   return (
     <div style={{
-      minHeight: '100vh', color: colors.text, fontFamily: "'Inter', system-ui, sans-serif", width: '100%',
+      minHeight: '100vh', color: colors.text, fontFamily: "var(--font-sans)", width: '100%',
       transition: 'background-color 0.4s ease, color 0.4s ease',
       background: colors.bg,
     }}>
