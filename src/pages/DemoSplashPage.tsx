@@ -71,7 +71,7 @@ export default function DemoSplashPage() {
   if (err === 'not-splash') return <DemoPage />;
 
   if (err) return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0a0f', color: '#fff', fontFamily: "'Inter', sans-serif" }}>
+    <div style={{ minHeight: '100dvh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0a0f', color: '#fff', fontFamily: "'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif" }}>
       <div style={{ textAlign: 'center' }}>
         <h1 style={{ fontSize: 48, fontWeight: 200 }}>404</h1>
         <Link to="/" style={{ color: '#2dd4bf', textDecoration: 'none' }}>← Stauf.</Link>
@@ -80,7 +80,7 @@ export default function DemoSplashPage() {
   );
 
   if (!data) return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0a0f' }}>
+    <div style={{ minHeight: '100dvh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0a0f' }}>
       <div style={{ width: 40, height: 40, border: '3px solid #333', borderTopColor: '#d4a843', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
       <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
     </div>
@@ -92,7 +92,7 @@ export default function DemoSplashPage() {
   const bk = booking?.role === 'Cabeleireira' ? femColors : { primary: c.primary, bg: c.bg, text: c.text, textMuted: c.textMuted };
 
   return (
-    <div style={{ minHeight: '100vh', background: c.bg, color: c.text, fontFamily: "'Inter', system-ui, sans-serif", position: 'relative', overflow: 'hidden' }}>
+    <div style={{ minHeight: '100dvh', background: c.bg, color: c.text, fontFamily: "'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif", position: 'relative', overflow: 'hidden' }}>
       {/* Background image */}
       <div style={{ position: 'absolute', inset: 0 }}>
         <img src={data.hero.image} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'blur(3px)', transform: 'scale(1.05)' }} />
@@ -101,7 +101,7 @@ export default function DemoSplashPage() {
 
       {/* Content */}
       <div style={{
-        position: 'relative', zIndex: 2, minHeight: '100vh',
+        position: 'relative', zIndex: 2, minHeight: '100dvh',
         display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
         padding: '40px 24px',
         opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(20px)',

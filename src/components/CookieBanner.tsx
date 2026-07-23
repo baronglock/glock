@@ -32,8 +32,8 @@ export function CookieBanner({ colors }: { colors: any }) {
       role="dialog"
       aria-label="Aviso de cookies"
       style={{
-        position: 'fixed', bottom: 24, left: 24, right: 24, zIndex: 9999,
-        maxWidth: 480, margin: '0 auto',
+        position: 'fixed', bottom: 16, left: 16, right: 'auto', zIndex: 500,
+        maxWidth: 360,
         padding: '20px 24px',
         background: colors.glass,
         backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',

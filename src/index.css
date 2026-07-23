@@ -1,12 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-display: 'Playfair Display', Georgia, serif;
+  --font-sans: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Bricolage Grotesque', 'Trebuchet MS', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 }
 
-#root { width: 100%; min-height: 100vh; overflow-x: hidden; }
+#root { width: 100%; min-height: 100dvh; overflow-x: hidden; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
@@ -16,7 +17,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
   overflow-x: hidden;
   width: 100%;
   transition: background-color 0.4s ease, color 0.4s ease;
@@ -92,10 +93,11 @@ a:focus-visible, button:focus-visible {
   100% { transform: translateX(-50%); }
 }
 
-.anim-fade-up { animation: fade-up 0.7s ease-out both; }
-.anim-fade-in { animation: fade-in 0.6s ease-out both; }
-.anim-slide-right { animation: slide-right 0.7s ease-out both; }
-.anim-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+.anim-fade-up { animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-fade-in { animation: fade-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-slide-right { animation: slide-right 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+/* pulse infinito em indicador é ban de motion; brilho estático no lugar */
+.anim-pulse-glow { box-shadow: 0 0 30px rgba(13,148,136,0.25); }
 
 /* ── Reveal on scroll ── */
 .reveal {
@@ -135,8 +137,10 @@ a:focus-visible, button:focus-visible {
   position: absolute;
   top: 0; left: -100%;
   width: 50%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
-  animation: btn-shine 3s ease-in-out infinite;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.16), transparent);
+}
+.btn-cta:hover::after {
+  animation: btn-shine 1.1s cubic-bezier(0.22, 1, 0.36, 1) 1;
 }
 
 /* ── Microinteractions ── */
@@ -148,12 +152,21 @@ a:hover .svc-arrow {
   transform: translateX(4px);
 }
 
-/* ── Gradient text ── */
+/* ── Accent text (ex-gradient: texto em gradiente é ban de design; cor sólida com peso) ── */
 .text-gradient {
-  background: linear-gradient(135deg, #14b8a6, #0d9488, #2dd4bf);
-  background-size: 200% 200%;
-  animation: gradient-shift 4s ease infinite;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #2dd4bf;
+}
+html.light .text-gradient, [data-theme="light"] .text-gradient {
+  color: #0d9488;
+}
+
+/* ── Reduced motion (fallback completo) ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
 }

@@ -35,6 +35,12 @@ export function useReveal() {
     // Initial observation
     observeAll();
 
+    // Rede de segurança: NADA fica preso em opacity 0 (SEO, screenshot,
+    // print, IO quebrado). Após 1.2s tudo que não revelou, revela.
+    const failsafe = window.setTimeout(() => {
+      el.querySelectorAll('.reveal:not(.visible)').forEach((c) => c.classList.add('visible'));
+    }, 1200);
+
     // Re-observe when DOM changes (language switch, theme switch)
     const mutationObserver = new MutationObserver(() => {
       requestAnimationFrame(observeAll);
@@ -42,6 +48,7 @@ export function useReveal() {
     mutationObserver.observe(el, { childList: true, subtree: true });
 
     return () => {
+      window.clearTimeout(failsafe);
       observer.disconnect();
       mutationObserver.disconnect();
     };

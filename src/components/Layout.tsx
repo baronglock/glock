@@ -21,7 +21,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   }, [pathname]);
 
   return (
-    <div style={{ minHeight: '100vh', background: colors.bg, color: colors.text, fontFamily: "'Inter', system-ui, sans-serif", width: '100%', transition: 'background-color 0.4s ease, color 0.4s ease' }}>
+    <div style={{ minHeight: '100dvh', background: colors.bg, color: colors.text, fontFamily: "'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif", width: '100%', transition: 'background-color 0.4s ease, color 0.4s ease' }}>
       <Navbar t={t} lang={lang} toggle={toggle} colors={colors} theme={theme} toggleTheme={toggleTheme} />
       <div style={{
         opacity: visible ? 1 : 0,

@@ -12,11 +12,11 @@ const translations = {
   'nav.contact': { pt: 'Contato', en: 'Contact' },
 
   // Hero
-  'hero.title1': { pt: 'Seu negócio no piloto automático.', en: 'Your business on autopilot.' },
-  'hero.title2': { pt: 'IA que trabalha pra você.', en: 'AI that works for you.' },
+  'hero.title1': { pt: 'Sistemas que trabalham.', en: 'Systems that work.' },
+  'hero.title2': { pt: 'E que não esquecem.', en: 'And never forget.' },
   'hero.sub': {
-    pt: 'Sites, automações, chatbots e sistemas sob medida. A IA cuida do operacional — você foca no que importa.',
-    en: 'Websites, automations, chatbots and custom systems. AI handles the operations — you focus on what matters.',
+    pt: 'Sites, automações, chatbots e sistemas com memória, sob medida. Construído por quem assina o código: a IA cuida do operacional e lembra do que importa.',
+    en: 'Websites, automations, chatbots and systems with memory, built to order. Made by the people who sign the code: AI runs the operations and remembers what matters.',
   },
   'hero.cta': { pt: 'Fale conosco', en: 'Get in touch' },
   'hero.cta2': { pt: 'Ver serviços', en: 'View services' },

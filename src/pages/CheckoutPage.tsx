@@ -168,7 +168,7 @@ export function CheckoutPage() {
 
   if (!plan) {
     return (
-      <div ref={ref} style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div ref={ref} style={{ minHeight: '100dvh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ textAlign: 'center', padding: 40 }}>
           <h1 style={{ fontSize: 32, fontWeight: 300, color: colors.white, marginBottom: 16 }}>
             {en ? 'Plan not found' : 'Plano não encontrado'}
@@ -192,7 +192,7 @@ export function CheckoutPage() {
         <meta name="description" content={`Contrate o plano ${plan.name} de ${plan.service}`} />
       </Helmet>
 
-      <section style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', padding: '120px 0 80px', position: 'relative' }}>
+      <section style={{ minHeight: '100dvh', display: 'flex', alignItems: 'center', padding: '120px 0 80px', position: 'relative' }}>
         {/* Background gradient */}
         <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.3, background: `radial-gradient(ellipse at 30% 40%, ${colors.brand}15, transparent 50%)` }} />
 
@@ -211,7 +211,7 @@ export function CheckoutPage() {
                 {plan.service}
               </div>
 
-              <h1 style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 300, color: colors.white, marginBottom: 8 }}>
+              <h1 style={{ fontFamily: "'Bricolage Grotesque', 'Trebuchet MS', system-ui, sans-serif", fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 300, color: colors.white, marginBottom: 8 }}>
                 {en ? 'Plan' : 'Plano'} {plan.name}
               </h1>
 

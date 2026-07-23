@@ -22,7 +22,7 @@ export function TermosPage() {
           <span className="reveal" style={{ display: 'inline-block', padding: '4px 14px', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 500, color: colors.brand, background: `${colors.brand}15`, border: `1px solid ${colors.brand}25`, marginBottom: 20 }}>
             TERMOS
           </span>
-          <h1 className="reveal" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white, marginBottom: 16 }}>
+          <h1 className="reveal" style={{ fontFamily: "'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300, color: colors.white, marginBottom: 16 }}>
             Termos de Uso
           </h1>
           <p className="reveal" style={{ fontSize: 13, color: colors.textDim }}>

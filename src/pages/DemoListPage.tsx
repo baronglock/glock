@@ -26,7 +26,7 @@ export default function DemoListPage() {
   }, []);
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0a0a0f', color: '#f5f5f5', fontFamily: "'Inter', system-ui, sans-serif" }}>
+    <div style={{ minHeight: '100dvh', background: '#0a0a0f', color: '#f5f5f5', fontFamily: "'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif" }}>
       {/* Header */}
       <nav style={{ padding: '16px 32px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(45,212,191,0.1)' }}>
         <Link to="/" style={{ color: '#2dd4bf', fontSize: 22, fontWeight: 700, textDecoration: 'none', letterSpacing: '-0.02em' }}>STAUF.</Link>

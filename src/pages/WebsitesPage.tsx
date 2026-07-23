@@ -70,7 +70,7 @@ export function WebsitesPage() {
         <link rel="canonical" href="https://stauf.com.br/servicos/sites" />
       </Helmet>
       {/* ════ HERO ════ */}
-      <section style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', padding: '120px 0 80px' }}>
+      <section style={{ minHeight: '100dvh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', padding: '120px 0 80px' }}>
         {/* Subtle decorative lines */}
         <div style={{ position: 'absolute', left: 32, top: 120, width: 1, height: 160, background: `linear-gradient(to bottom, ${colors.brand}40, transparent)`, pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', right: 32, top: 180, width: 1, height: 120, background: `linear-gradient(to bottom, ${colors.gold}40, transparent)`, pointerEvents: 'none' }} />
@@ -90,7 +90,7 @@ export function WebsitesPage() {
               </div>
 
               <h1 className="anim-fade-up" style={{
-                fontFamily: "'Inter', system-ui, sans-serif",
+                fontFamily: "'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif",
                 fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 300,
                 lineHeight: 0.95, letterSpacing: '-0.03em',
                 marginBottom: 24, animationDelay: '0.15s',
@@ -208,7 +208,7 @@ export function WebsitesPage() {
               marginBottom: 20,
             }}>{en ? 'Niches' : 'Nichos'}</span>
             <h2 style={{
-              fontFamily: "'Inter', system-ui, sans-serif",
+              fontFamily: "'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif",
               fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 300,
               color: colors.white, lineHeight: 1.15, letterSpacing: '-0.02em',
             }}>
@@ -260,7 +260,7 @@ export function WebsitesPage() {
               marginBottom: 20,
             }}>{en ? 'Process' : 'Processo'}</span>
             <h2 style={{
-              fontFamily: "'Inter', system-ui, sans-serif",
+              fontFamily: "'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif",
               fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 300,
               color: colors.white, lineHeight: 1.15, letterSpacing: '-0.02em',
             }}>
@@ -277,7 +277,7 @@ export function WebsitesPage() {
                 <div style={{
                   position: 'absolute', top: 16, right: 20, fontSize: 64, fontWeight: 200,
                   color: dk ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.04)',
-                  fontFamily: "'Inter', system-ui, sans-serif", lineHeight: 1,
+                  fontFamily: "'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif", lineHeight: 1,
                 }}>{s.n}</div>
                 <div style={{
                   width: 36, height: 36, borderRadius: 8,
@@ -304,7 +304,7 @@ export function WebsitesPage() {
               marginBottom: 20,
             }}>{en ? 'Plans' : 'Planos'}</span>
             <h2 style={{
-              fontFamily: "'Inter', system-ui, sans-serif",
+              fontFamily: "'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif",
               fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 300,
               color: colors.white, lineHeight: 1.15, letterSpacing: '-0.02em',
             }}>
@@ -383,7 +383,7 @@ export function WebsitesPage() {
 
         <div style={{ maxWidth: 700, margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative', zIndex: 10 }}>
           <h2 className="reveal" style={{
-            fontFamily: "'Inter', system-ui, sans-serif",
+            fontFamily: "'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif",
             fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 300,
             color: colors.white, lineHeight: 1.15, letterSpacing: '-0.02em',
             marginBottom: 16,

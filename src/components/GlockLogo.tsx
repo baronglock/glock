@@ -1,7 +1,7 @@
 export function GlockLogo({ size = 28 }: { size?: number }) {
   return (
     <span style={{
-      fontFamily: "'Inter', system-ui, sans-serif",
+      fontFamily: "'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif",
       fontWeight: 900, fontSize: size, letterSpacing: '-0.04em',
       lineHeight: 1, whiteSpace: 'nowrap',
     }}>

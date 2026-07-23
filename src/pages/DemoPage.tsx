@@ -26,7 +26,7 @@ export default function DemoPage() {
   }, [slug]);
 
   if (err) return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0a0f', color: '#fff', fontFamily: "'Inter',sans-serif" }}>
+    <div style={{ minHeight: '100dvh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0a0f', color: '#fff', fontFamily: "'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif" }}>
       <div style={{ textAlign: 'center' }}>
         <h1 style={{ fontSize: 48, fontWeight: 200, marginBottom: 16 }}>404</h1>
         <p style={{ color: '#888', marginBottom: 32 }}>{err}</p>
@@ -36,11 +36,11 @@ export default function DemoPage() {
   );
 
   if (!data) return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0a0f' }}>
+    <div style={{ minHeight: '100dvh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0a0f' }}>
       <div style={{ width: 40, height: 40, border: '3px solid #333', borderTopColor: '#2dd4bf', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
       <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
     </div>
   );
 
-  return <Suspense fallback={<div style={{ minHeight: '100vh', background: data.colors?.bg || '#0a0a0f' }} />}><ProRenderer data={data} /></Suspense>;
+  return <Suspense fallback={<div style={{ minHeight: '100dvh', background: data.colors?.bg || '#0a0a0f' }} />}><ProRenderer data={data} /></Suspense>;
 }

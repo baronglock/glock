@@ -61,7 +61,7 @@ export function ServicePage({ data, slug }: { data: ServicePageData; slug: strin
   };
 
   const h2Style: React.CSSProperties = {
-    fontFamily: "'Inter', system-ui, sans-serif",
+    fontFamily: "'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif",
     fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 300,
     color: colors.white, lineHeight: 1.15, letterSpacing: '-0.02em',
   };
@@ -77,7 +77,7 @@ export function ServicePage({ data, slug }: { data: ServicePageData; slug: strin
       </Helmet>
 
       {/* ════ HERO ════ */}
-      <section style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', padding: '120px 0 80px' }}>
+      <section style={{ minHeight: '100dvh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', padding: '120px 0 80px' }}>
         {/* Background image with gradient fade */}
         {SERVICE_IMAGES[slug] && (
           <>
@@ -107,7 +107,7 @@ export function ServicePage({ data, slug }: { data: ServicePageData; slug: strin
             </div>
 
             <h1 className="anim-fade-up" style={{
-              fontFamily: "'Inter', system-ui, sans-serif",
+              fontFamily: "'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif",
               fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: 300,
               lineHeight: 0.95, letterSpacing: '-0.03em', marginBottom: 24,
               animationDelay: '0.2s',

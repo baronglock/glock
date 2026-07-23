@@ -13,7 +13,7 @@ export function StaufLogo({ size = 28, colors: colorsProp }: { size?: number; co
     }}>
       <img src="/stauf-icon.png" alt="Stauf" width={iconSize} height={iconSize} style={{ width: iconSize, height: iconSize, objectFit: 'contain', marginBottom: -1 }} />
       <span style={{
-        fontFamily: "'Inter', system-ui, sans-serif",
+        fontFamily: "'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif",
         fontSize: size, letterSpacing: '0.1em',
         fontWeight: 700, textTransform: 'uppercase' as const,
         color: textColor,
